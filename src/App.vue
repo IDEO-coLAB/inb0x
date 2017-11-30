@@ -1,60 +1,55 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div class="container">
+    <div class="body">
+      <h2>main</h2>
+      <router-view></router-view>
+      <div v-for="addr in addresses">
+        {{addr.messages}}
+        <hr>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  import _ from 'lodash'
+  import web3 from 'web3'
+  import { ADD_ADDRESS } from './constants/mutations'
+
+  const testRouteForAddrs = (route, store) => {
+    const addrsInStore = Object.keys(store.getters.addresses)
+    const addrsInQuery = route.query.addresses && route.query.addresses.split(',')
+
+    if (!addrsInQuery) return
+
+    addrsInQuery.forEach((addr) => {
+      const isValidAddr = web3.utils.isAddress(addr)
+      if (isValidAddr && !_.has(addrsInStore, addr)) {
+        store.commit(ADD_ADDRESS, addr)
+      }
+    })
+  }
+
+  export default {
+    beforeCreate () {
+      this.$router.push('/inbox?addresses=0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+    },
+    mounted () {
+      testRouteForAddrs(this.$route, this.$store)
+    },
+    watch: {
+      '$route' (to, from) {
+        testRouteForAddrs(to, this.$store)
+      }
+    },
+    computed: {
+      addresses () {
+        return this.$store.getters.addresses
+      }
     }
   }
-}
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+  @import "styles/main.scss"
 </style>
