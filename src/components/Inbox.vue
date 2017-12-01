@@ -1,25 +1,24 @@
 <template>
   <div>
-    <h2>Inbox!</h2>
+    <div class="row">
+      <div class="col-3">
+        <messages></messages>
+      </div>
+      <div class="col-9">
+        <message></message>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  // import { MUTATION_TYPES } from '../../constants/vue/mutations'
+  import Messages from './Messages'
+  import Message from './Message'
 
   export default {
-    methods: {
-      clear () {
-        // this.$store.commit(MUTATION_TYPES.CHANGE_ERROR, { error: null })
-      }
+    components: {
+      Messages,
+      Message,
     },
-    computed: {
-      errorMsg () {
-        // return this.$store.getters.error ? this.$store.getters.error.message : ""
-      },
-      hasError () {
-        // return this.$store.getters.error
-      },
-    }
   }
 </script>

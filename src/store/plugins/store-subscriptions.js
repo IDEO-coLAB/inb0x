@@ -3,7 +3,7 @@ import axios from 'axios'
 import web3 from 'web3'
 import { MUTATION_TYPES } from '../../constants/mutations'
 import { getTxUrlForAddress } from '../../constants/urls'
-import { isMEI, MEI } from '../../mei-protocol'
+import { isEIP, EIP } from '../../eip'
 
 export default (store) => {
 
@@ -11,54 +11,50 @@ export default (store) => {
     switch (mutation.type) {
 
       // Fetch transactions when a new address is added into the store
-      case MUTATION_TYPES.ADD_ADDRESS:
+      case MUTATION_TYPES.ADD_ADDR:
         let address = mutation.payload
         let addressTxFetchUrl = getTxUrlForAddress(address)
 
         // TODO: Add caching layer at some point
-        store.commit(MUTATION_TYPES.UPDATE_ADDRESS, { address, isUpdating: true })
 
         // Fetch recent transactions
         axios.get(addressTxFetchUrl)
           .then((response) => {
-            const transactions = response.data.result
+            const transactions = response.data.result || []
 
-            let mei = null
-            let updatedAddressInfo = {
-              isUpdating: false,
-              messages: [],
-              transactions,
-              address,
-            }
+            let eip = null
+            let messages = []
 
             // Find the most recent protocol definition
             _.forEach(transactions, (tx) => {
               const inputData = web3.utils.hexToAscii(tx.input)
-              if (isMEI(inputData)) {
-                mei = new MEI(inputData)
-                updatedAddressInfo.protocol = mei
-                // Kill the loop to only take the latest mei protocol definition
+              if (isEIP(inputData)) {
+                eip = new EIP(inputData)
+                // Kill the loop to only take the latest eip protocol definition
                 return false
               }
             })
 
-            // If an mei definition exists extract all messages
+            // If an eip exists extract all messages
             // meeting the terms of communication
-            if (mei) {
+            if (eip) {
               _.forEach(transactions, (tx) => {
                 const ethValue = Number(web3.utils.fromWei(tx.value))
-                if (ethValue >= mei.threshold) {
-                  updatedAddressInfo.messages.push(tx)
+                if (ethValue >= eip.threshold) {
+                  messages.push(tx)
                 }
               })
             }
 
-            store.commit(MUTATION_TYPES.UPDATE_ADDRESS, updatedAddressInfo)
+            // store.commit(MUTATION_TYPES.UPDATE_CURRENT_ADDRS, address)
+            store.commit(MUTATION_TYPES.SET_MESSAGES_FOR_ADDR, { address, messages, })
+            store.commit(MUTATION_TYPES.SET_EIP_FOR_ADDR, { address, eip, })
           })
           .catch((error) => {
             // GLOBAL ERROR
-            console.log('HANDLE CLIENT ERRORS GRACEFULLY:', error)
-            store.commit(MUTATION_TYPES.UPDATE_ADDRESS, { address, isUpdating: false })
+            console.error('TODO: HANDLE CLIENT ERRORS GRACEFULLY:', error)
+            // TODO: ADD CLEANUP HANDLER WHEN AN ADDRESS IS REMOVED!
+            store.commit(MUTATION_TYPES.REMOVE_ADDR, address)
           })
 
 

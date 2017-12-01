@@ -1,52 +1,36 @@
 import _ from 'lodash'
-import { ADD_ADDRESS, REMOVE_ADDRESS, UPDATE_ADDRESS, RESET_ADDRESS } from '../../constants/mutations'
-
-const createDefaultAddressObj = (address) => {
-  return {
-    address,
-    protocol: null,
-    messages: [],
-    transactions: [],
-    isUpdating: false,
-  }
-}
+import Vue from 'vue'
+import { ADD_ADDR, REMOVE_ADDR } from '../../constants/mutations'
 
 // Initial state
 const state = {
-  addresses: {}
+  // currentAddresses: [],
+  addresses: []
 }
 
 // Getters
 const getters = {
   addresses: state => state.addresses,
+  // currentAddresses: state => state.currentAddresses,
 }
 
 // Mutations
 const mutations = {
-  [ADD_ADDRESS] (state, address) {
-    if (_.has(state.addresses, address)) return
-    state.addresses[address] = createDefaultAddressObj(address)
+  // [UPDATE_CURRENT_ADDRS] (state, address) {
+  //   if (state.currentAddresses.includes(address)) return
+  //   state.currentAddresses.push(address)
+  // },
+
+  [ADD_ADDR] (state, address) {
+    if (!address || state.addresses.includes(address)) return
+    state.addresses.push(address)
+    console.log(ADD_ADDR, address)
   },
 
-  [UPDATE_ADDRESS] (state, data) {
-    const addrToUpdate = state.addresses[data.address]
-
-    if (_.has(data, 'isUpdating')) {
-      addrToUpdate.isUpdating = data.isUpdating
-    }
-    if (_.has(data, 'protocol')) {
-      addrToUpdate.protocol = data.protocol
-    }
-    if (_.has(data, 'transactions')) {
-      addrToUpdate.transactions = data.transactions
-    }
-    if (_.has(data, 'messages')) {
-      addrToUpdate.messages = data.messages
-    }
-  },
-
-  [REMOVE_ADDRESS] (state, address) {
-
+  [REMOVE_ADDR] (state, address) {
+    const index = state.addresses.indexOf(address)
+    state.addresses.splice(index, 1)
+    console.log(REMOVE_ADDR, address)
   },
 }
 
