@@ -56,11 +56,11 @@ export default (store) => {
           .catch((error) => {
             // GLOBAL ERROR
             console.error('TODO: HANDLE CLIENT ERRORS GRACEFULLY:', error)
-            // TODO: ADD CLEANUP HANDLER WHEN AN ADDRESS IS REMOVED!
-            store.commit(MUTATION_TYPES.UNSET_ADDR)
-            store.commit(MUTATION_TYPES.UNSET_CURRENT_MESSAGE_ID)
-            store.commit(MUTATION_TYPES.UNSET_MESSAGES)
-            store.commit(MUTATION_TYPES.UNSET_EAM)
+            // // TODO: ADD CLEANUP HANDLER WHEN AN ADDRESS IS REMOVED!
+            // store.commit(MUTATION_TYPES.UNSET_ADDR)
+            // store.commit(MUTATION_TYPES.UNSET_CURRENT_MESSAGE_ID)
+            // store.commit(MUTATION_TYPES.UNSET_MESSAGES)
+            // store.commit(MUTATION_TYPES.UNSET_EAM)
           })
 
 
