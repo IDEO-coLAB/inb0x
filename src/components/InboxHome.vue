@@ -1,8 +1,10 @@
 <template>
   <div>
-    <p>some header here</p>
-    <hr>
-    <router-view></router-view>
+    <div class="row">
+      <div class="col-12">
+        Inbox Home
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import storeSubscriptions from './plugins/store-subscriptions'
-import addresses from './modules/addresses'
+import address from './modules/address'
 import messages from './modules/messages'
-import eips from './modules/eips'
+import eam from './modules/eam'
 
 Vue.use(Vuex)
 
@@ -12,9 +12,9 @@ const debug = true // make dynamic?
 export default new Vuex.Store({
   plugins: [ storeSubscriptions ],
   modules: {
-    addresses,
+    address,
     messages,
-    eips,
+    eam,
   },
   strict: debug,
 })

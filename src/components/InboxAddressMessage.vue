@@ -1,7 +1,7 @@
 <template>
   <div>
-    eth inbox protocol (eip) message:<br><br>
-    {{message || `No eip message found.`}}
+    eth inbox protocol (EAM) message:<br><br>
+    {{message || `No EAM message found.`}}
   </div>
 </template>
 
@@ -12,11 +12,7 @@
     computed: {
       message () {
         const curMessageId = this.$store.getters.currentMessageId
-        const messages = _.flatten(
-          _.map(this.$store.getters.messages, (messages, addr) => {
-            return messages
-          })
-        )
+        const messages = this.$store.getters.messages
         const curMessage = _.find(messages, (msg) => msg.hash === curMessageId)
         return curMessage && web3.utils.hexToAscii(curMessage.input)
       }

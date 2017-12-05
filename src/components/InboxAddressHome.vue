@@ -1,8 +1,6 @@
 <template>
   <div>
-    <p>some header here</p>
-    <hr>
-    <router-view></router-view>
+    No Message Selected!
   </div>
 </template>
 

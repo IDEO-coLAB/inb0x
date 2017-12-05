@@ -1,14 +1,16 @@
 import _ from 'lodash'
 import Vue from 'vue'
 import {
+  SET_MESSAGES,
+  UNSET_MESSAGES,
   SET_CURRENT_MESSAGE_ID,
-  SET_MESSAGES_FOR_ADDR,
+  UNSET_CURRENT_MESSAGE_ID,
 } from '../../constants/mutations'
 
 // Initial state
 const state = {
   currentMessageId: null,
-  messages: {}
+  messages: [],
 }
 
 // Getters
@@ -24,15 +26,20 @@ const mutations = {
     console.log(SET_CURRENT_MESSAGE_ID, state.currentMessageId)
   },
 
-  [SET_MESSAGES_FOR_ADDR] (state, data) {
-    if (!data.address) return
-    if (!_.has(state.messages, data.address)) {
-      Vue.set(state.messages, data.address, data.messages)
-    } else {
-      state.messages[data.address] = data.messages
-    }
+  [UNSET_CURRENT_MESSAGE_ID] (state) {
+    state.currentMessageId = null
+    console.log(UNSET_CURRENT_MESSAGE_ID)
+  },
 
-    console.log(SET_MESSAGES_FOR_ADDR, state.messages)
+  [SET_MESSAGES] (state, messages) {
+    // Vue.set(state.messages, messages)
+    state.messages = messages
+    console.log(SET_MESSAGES, state.messages)
+  },
+
+  [UNSET_MESSAGES] (state) {
+    state.messages = []
+    console.log(UNSET_MESSAGES)
   },
 }
 
