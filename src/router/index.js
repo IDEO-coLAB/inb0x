@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Inbox from '../components/Inbox'
 import InboxHome from '../components/InboxHome'
+
 import InboxAddress from '../components/InboxAddress'
 import InboxAddressHome from '../components/InboxAddressHome'
 import InboxAddressMessage from '../components/InboxAddressMessage'
+
+import NewAddress from '../components/NewAddress'
+import NewAddressHome from '../components/NewAddressHome'
+import NewAddressSetup from '../components/NewAddressSetup'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/inbox',
-    name: 'inbox',
     component: Inbox,
     children: [
       {
@@ -35,12 +40,20 @@ const routes = [
     ]
   },
 
-  // // route: /add/:address
-  // {
-  //   path: '/add/:address',
-  //   name: 'addAddress',
-  //   component: AddressSetup,
-  // }
+  {
+    path: '/new/:address',
+    component: NewAddress,
+    children: [
+      {
+        path: '',
+        component: NewAddressHome
+      },
+      {
+        path: 'setup',
+        component: NewAddressSetup
+      }
+    ]
+  },
 ]
 
 export default new VueRouter({

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import { SET_CURRENT_MESSAGE_ID } from '../constants/mutations'
+  import { UPDATE_CURRENT_MESSAGE_ID } from '../constants/mutations'
 
   export default {
     computed: {
@@ -25,9 +25,9 @@
     },
     methods: {
       setCurrentMessage (message, event) {
-        this.$store.commit(SET_CURRENT_MESSAGE_ID, message.hash)
+        this.$store.commit(UPDATE_CURRENT_MESSAGE_ID, message.hash)
         this.$router.push({
-          path: `/inbox/${this.$store.getters.address}/${message.hash}`
+          path: `/inbox/${this.$store.getters.address.address}/${message.hash}`
         })
       },
     }

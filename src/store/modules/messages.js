@@ -1,11 +1,6 @@
 import _ from 'lodash'
 import Vue from 'vue'
-import {
-  SET_MESSAGES,
-  UNSET_MESSAGES,
-  SET_CURRENT_MESSAGE_ID,
-  UNSET_CURRENT_MESSAGE_ID,
-} from '../../constants/mutations'
+import { MUTATION_TYPES } from '../../constants/mutations'
 
 // Initial state
 const state = {
@@ -21,25 +16,25 @@ const getters = {
 
 // Mutations
 const mutations = {
-  [SET_CURRENT_MESSAGE_ID] (state, id) {
+  [MUTATION_TYPES.UPDATE_CURRENT_MESSAGE_ID] (state, id) {
     state.currentMessageId = id
-    console.log(SET_CURRENT_MESSAGE_ID, state.currentMessageId)
+    console.log(MUTATION_TYPES.UPDATE_CURRENT_MESSAGE_ID, state.currentMessageId)
   },
 
-  [UNSET_CURRENT_MESSAGE_ID] (state) {
+  [MUTATION_TYPES.RESET_CURRENT_MESSAGE_ID] (state) {
     state.currentMessageId = null
-    console.log(UNSET_CURRENT_MESSAGE_ID)
+    console.log(MUTATION_TYPES.RESET_CURRENT_MESSAGE_ID)
   },
 
-  [SET_MESSAGES] (state, messages) {
+  [MUTATION_TYPES.UPDATE_MESSAGES] (state, messages) {
     // Vue.set(state.messages, messages)
-    state.messages = messages
-    console.log(SET_MESSAGES, state.messages)
+    state.messages = state.messages.concat(messages)
+    console.log(MUTATION_TYPES.UPDATE_MESSAGES, state.messages)
   },
 
-  [UNSET_MESSAGES] (state) {
+  [MUTATION_TYPES.RESET_MESSAGES] (state) {
     state.messages = []
-    console.log(UNSET_MESSAGES)
+    console.log(MUTATION_TYPES.RESET_MESSAGES)
   },
 }
 

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import Vue from 'vue'
-import { SET_EAM, UNSET_EAM } from '../../constants/mutations'
+import { MUTATION_TYPES } from '../../constants/mutations'
 
 // Initial state
 const state = {
@@ -14,14 +14,14 @@ const getters = {
 
 // Mutations
 const mutations = {
-  [SET_EAM] (state, eam) {
+  [MUTATION_TYPES.UPDATE_EAM] (state, eam) {
     state.eam = eam
-    console.log(SET_EAM, eam)
+    console.log(MUTATION_TYPES.UPDATE_EAM, eam)
   },
 
-  [UNSET_EAM] (state) {
+  [MUTATION_TYPES.RESET_EAM] (state) {
     state.eam = null
-    console.log(UNSET_EAM)
+    console.log(MUTATION_TYPES.CLEAR_EAM)
   },
 }
 
