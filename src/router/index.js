@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Landing from '../components/Landing'
+
 import Inbox from '../components/Inbox'
 import InboxHome from '../components/InboxHome'
 
@@ -8,19 +10,26 @@ import InboxAddress from '../components/InboxAddress'
 import InboxAddressHome from '../components/InboxAddressHome'
 import InboxAddressMessage from '../components/InboxAddressMessage'
 
-import NewAddress from '../components/NewAddress'
-import NewAddressHome from '../components/NewAddressHome'
-import NewAddressSetup from '../components/NewAddressSetup'
+import UpdateAddress from '../components/UpdateAddress'
+import UpdateAddressHome from '../components/UpdateAddressHome'
+import UpdateAddressSetup from '../components/UpdateAddressSetup'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    component: Landing,
+    name: 'Landing',
+  },
+
   {
     path: '/inbox',
     component: Inbox,
     children: [
       {
         path: '',
+        name: 'InboxHome',
         component: InboxHome,
       },
       {
@@ -29,10 +38,12 @@ const routes = [
         children: [
           {
             path: '',
+            name: 'InboxAddressHome',
             component: InboxAddressHome
           },
           {
             path: ':message',
+            name: 'InboxAddressMessage',
             component: InboxAddressMessage
           }
         ]
@@ -41,16 +52,18 @@ const routes = [
   },
 
   {
-    path: '/new/:address',
-    component: NewAddress,
+    path: '/update/:address',
+    component: UpdateAddress,
     children: [
       {
         path: '',
-        component: NewAddressHome
+        name: 'UpdateAddressHome',
+        component: UpdateAddressHome
       },
       {
         path: 'setup',
-        component: NewAddressSetup
+        name: 'UpdateAddressSetup',
+        component: UpdateAddressSetup
       }
     ]
   },

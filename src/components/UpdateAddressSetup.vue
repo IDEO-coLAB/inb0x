@@ -29,11 +29,17 @@
     },
     data () {
       return {
-        threshold: 0.001,
         price: null,
       }
     },
     computed: {
+      threshold () {
+        let price = 0.02
+        if (this.$store.getters.eam) {
+          price = this.$store.getters.eam.valueThreshold
+        }
+        return price
+      },
       eamDefinition () {
         const eamDefinition = {
           mei: {

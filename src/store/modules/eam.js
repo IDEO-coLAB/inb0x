@@ -21,7 +21,7 @@ const mutations = {
 
   [MUTATION_TYPES.RESET_EAM] (state) {
     state.eam = null
-    console.log(MUTATION_TYPES.CLEAR_EAM)
+    console.log(MUTATION_TYPES.RESET_EAM)
   },
 }
 

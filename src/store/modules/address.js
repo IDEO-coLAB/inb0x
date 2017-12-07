@@ -3,22 +3,20 @@ import axios from 'axios'
 import web3 from 'web3'
 import { MUTATION_TYPES } from '../../constants/mutations'
 import { ACTION_TYPES } from '../../constants/actions'
-import { EAMError, MessageError } from '../../constants/errors'
+import { EAMError, MessageError, AddressError } from '../../constants/errors'
 import { getTxUrlForAddress } from '../../constants/urls'
 import { isEAM, EAM } from '../../eam'
 
 const PAGE_START_INDEX = 1
 const TX_BLOCK_OFFSET = 20
 
-const ADDR_RESET_OBJ = {
-  address: null,
-  isFetching: false,
-  pageIdx: PAGE_START_INDEX,
-}
-
 // Initial state
 const state = {
-  address: ADDR_RESET_OBJ,
+  address: {
+    address: null,
+    isFetching: false,
+    pageIdx: PAGE_START_INDEX,
+  }
 }
 
 // Getters
@@ -31,11 +29,13 @@ const actions = {
   [ACTION_TYPES.FETCH_ADDR_TX] ({ commit, state }, address) {
 
     if (!web3.utils.isAddress(address)) {
-      return Promise.reject('No Address')
+      return Promise.reject(new AddressError())
     }
 
     const pageToFetch = state.address.pageIdx
     const addressTxFetchUrl = getTxUrlForAddress(address, pageToFetch, TX_BLOCK_OFFSET)
+
+    commit(MUTATION_TYPES.UPDATE_ADDR, { isFetching: true, })
 
     return axios.get(addressTxFetchUrl)
       .then((response) => {
@@ -71,7 +71,7 @@ const actions = {
         // If no EAM is found, return failed promise to let the user decide
         // if they want to fetch more transactions to look for an EAM definition
         if (_.isNull(addrEAM)) {
-          return Promise.reject(new EAMError('EAM criteria not found'))
+          return Promise.reject(new EAMError())
         }
 
         // Update with the latest messages
@@ -85,11 +85,15 @@ const actions = {
         // If no messages are found, return failed promise to let the user decide
         // if they want to fetch more transactions to look for messages
         if (newMessages.length === 0) {
-          return Promise.reject(new MessageError('No messages match EAM criteria'))
+          return Promise.reject(new MessageError())
         }
         commit(MUTATION_TYPES.UPDATE_MESSAGES, newMessages)
       })
-
+      .catch((error) => {
+        // update the fetching state to false
+        commit(MUTATION_TYPES.UPDATE_ADDR, { isFetching: false, })
+        return Promise.reject(error)
+      })
 
 
   }
@@ -116,8 +120,11 @@ const mutations = {
   },
 
   [MUTATION_TYPES.RESET_ADDR] (state) {
-    state.address = ADDR_RESET_OBJ
-    console.log(MUTATION_TYPES.RESET_ADDR)
+    state.address.address = null
+    state.address.isFetching = false
+    state.address.pageIdx = PAGE_START_INDEX
+
+    console.log(MUTATION_TYPES.RESET_ADDR, state.address.pageIdx, state.address.address)
   }
 }
 

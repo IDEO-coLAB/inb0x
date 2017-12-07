@@ -21,7 +21,7 @@ const mutations = {
 
   [MUTATION_TYPES.RESET_TRANSACTIONS] (state) {
     state.transactions = []
-    console.log(MUTATION_TYPES.CLEAR_TRANSACTIONS)
+    console.log(MUTATION_TYPES.RESET_TRANSACTIONS)
   },
 }
 

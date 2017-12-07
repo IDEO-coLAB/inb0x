@@ -6,6 +6,7 @@ import web3 from 'web3'
 // TODO: UPDATE!!
 const EAM_ENTRY_PROPERTY = 'mei'
 
+// TODO: EAM should handle constructions based on amounts or valid eam json
 
 // This is sloppy while we're playing around
 // TODO: SPEND TIME WITH THIS
@@ -14,8 +15,9 @@ export const isEAM = (eamJsonString) => {
   try {
     definition = JSON.parse(eamJsonString)
   } catch (error) {
-    console.log('bailing 1')
+    return false
   }
+
 
   if (!definition || !_.has(definition, EAM_ENTRY_PROPERTY)) {
     return false

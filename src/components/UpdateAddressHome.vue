@@ -7,7 +7,7 @@
       <br><br>
       This address has not been set up to receive Ethereum Address Messages. To set this address up, click on one of the links below
       <br><br>
-      <router-link :to="{ path: `/new/${address}/setup` }">I control this address</router-link>
+      <router-link :to="{ path: `/address/${address}/setup` }">I control this address</router-link>
     </div>
   </div>
 </template>

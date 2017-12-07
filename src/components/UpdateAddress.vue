@@ -1,6 +1,6 @@
 <template>
   <div>
-    Inbox Page
+    Update Address Page
     <br><br>
     <div v-show="!address">
       Type an address into the address bar to get started
