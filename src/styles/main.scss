@@ -1,1 +1,18 @@
 @import 'spectre/spectre';
+
+
+.app-container {
+  height: 100%;
+}
+
+.app-body {
+  height: 100%;
+  // background-color: red;
+  overflow: hidden;
+}
+
+.app-sidebar {
+  height: 100%;
+  background-color: $bg-color-dark;
+  overflow: hidden;
+}

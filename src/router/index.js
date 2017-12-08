@@ -1,26 +1,29 @@
+import web3 from 'web3'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Landing from '../components/Landing'
+import About from '../components/About'
 
 import Inbox from '../components/Inbox'
 import InboxHome from '../components/InboxHome'
 
 import InboxAddress from '../components/InboxAddress'
-import InboxAddressHome from '../components/InboxAddressHome'
+// import InboxAddressHome from '../components/InboxAddressHome'
 import InboxAddressMessage from '../components/InboxAddressMessage'
 
-import UpdateAddress from '../components/UpdateAddress'
-import UpdateAddressHome from '../components/UpdateAddressHome'
-import UpdateAddressSetup from '../components/UpdateAddressSetup'
+// import Update from '../components/Update'
+// import UpdateHome from '../components/UpdateHome'
+import Settings from '../components/Settings'
+// import UpdateAddressHome from '../components/UpdateAddressHome'
+// import UpdateAddressControlled from '../components/UpdateAddressControlled'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    component: Landing,
-    name: 'Landing',
+    path: '/about',
+    name: 'About',
+    component: About,
   },
 
   {
@@ -34,41 +37,56 @@ const routes = [
       },
       {
         path: ':address',
+        name: 'InboxAddress',
         component: InboxAddress,
-        children: [
-          {
-            path: '',
-            name: 'InboxAddressHome',
-            component: InboxAddressHome
-          },
-          {
-            path: ':message',
-            name: 'InboxAddressMessage',
-            component: InboxAddressMessage
-          }
-        ]
       },
     ]
   },
 
   {
-    path: '/update/:address',
-    component: UpdateAddress,
-    children: [
-      {
-        path: '',
-        name: 'UpdateAddressHome',
-        component: UpdateAddressHome
-      },
-      {
-        path: 'setup',
-        name: 'UpdateAddressSetup',
-        component: UpdateAddressSetup
-      }
-    ]
+    path: '/inbox/:address/:message',
+    name: 'InboxAddressMessage',
+    component: InboxAddressMessage,
   },
+
+  {
+    path: '/settings/:address',
+    name: 'Settings',
+    component: Settings,
+  },
+
+
+
 ]
 
-export default new VueRouter({
+const router = new VueRouter({
   routes,
 })
+
+export default router
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

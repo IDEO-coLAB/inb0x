@@ -40,6 +40,10 @@
   width: 100%;
 }
 
+.height-full {
+  height: 100%;
+}
+
 // Spacing
 @include margin-variant(0, 0);
 

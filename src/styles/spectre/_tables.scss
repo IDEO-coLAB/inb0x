@@ -46,8 +46,10 @@
   th {
     border-bottom: $border-width solid $border-color;
     padding: $unit-3 $unit-2;
+    width: 100%;
   }
   th {
     border-bottom-width: $border-width-lg;
+    width: 100%;
   }
 }

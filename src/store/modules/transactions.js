@@ -16,7 +16,7 @@ const getters = {
 const mutations = {
   [MUTATION_TYPES.UPDATE_TRANSACTIONS] (state, transactions) {
     state.transactions = state.transactions.concat(transactions)
-    console.log(MUTATION_TYPES.UPDATE_TRANSACTIONS, state.transactions)
+    console.log(MUTATION_TYPES.UPDATE_TRANSACTIONS, transactions)
   },
 
   [MUTATION_TYPES.RESET_TRANSACTIONS] (state) {

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>New Address Setup</h1>
-    <br>
     <p>How many eth will you charge to read a message?</p>
     <input v-model="threshold" type="number" placeholder="input an amount">
     <br><br>

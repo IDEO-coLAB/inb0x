@@ -27,14 +27,17 @@ const getters = {
 // Actions
 const actions = {
   [ACTION_TYPES.FETCH_ADDR_TX] ({ commit, state }, address) {
+    const pageToFetch = state.address.pageIdx
+    const curAddress = state.address.address
 
-    if (!web3.utils.isAddress(address)) {
+    if (address && !web3.utils.isAddress(address)) {
       return Promise.reject(new AddressError())
     }
+    if (_.isUndefined(address) && curAddress) {
+      address = curAddress
+    }
 
-    const pageToFetch = state.address.pageIdx
     const addressTxFetchUrl = getTxUrlForAddress(address, pageToFetch, TX_BLOCK_OFFSET)
-
     commit(MUTATION_TYPES.UPDATE_ADDR, { isFetching: true, })
 
     return axios.get(addressTxFetchUrl)
@@ -70,9 +73,7 @@ const actions = {
 
         // If no EAM is found, return failed promise to let the user decide
         // if they want to fetch more transactions to look for an EAM definition
-        if (_.isNull(addrEAM)) {
-          return Promise.reject(new EAMError())
-        }
+        if (_.isNull(addrEAM)) return Promise.resolve()
 
         // Update with the latest messages
         _.forEach(transactions, (tx) => {
@@ -81,13 +82,8 @@ const actions = {
             newMessages.push(tx)
           }
         })
-
-        // If no messages are found, return failed promise to let the user decide
-        // if they want to fetch more transactions to look for messages
-        if (newMessages.length === 0) {
-          return Promise.reject(new MessageError())
-        }
         commit(MUTATION_TYPES.UPDATE_MESSAGES, newMessages)
+        return Promise.resolve()
       })
       .catch((error) => {
         // update the fetching state to false

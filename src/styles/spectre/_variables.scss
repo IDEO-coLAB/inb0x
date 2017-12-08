@@ -60,6 +60,7 @@ $unit-9: 1.8rem !default;
 $unit-10: 2rem !default;
 $unit-12: 2.4rem !default;
 $unit-16: 3.2rem !default;
+$unit-20: 4.0rem !default;
 
 // Font sizes
 $html-font-size: 20px !default;
@@ -109,3 +110,7 @@ $zindex-1: 100 !default;
 $zindex-2: 200 !default;
 $zindex-3: 300 !default;
 $zindex-4: 400 !default;
+
+// Navbar
+$navbar-height: $unit-16 !default;
+

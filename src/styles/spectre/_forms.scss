@@ -48,7 +48,6 @@ legend {
   padding: $control-padding-y $control-padding-x;
   position: relative;
   width: 100%;
-  max-width: 440px;
   &:focus {
     @include control-shadow();
     border-color: $primary-color;
