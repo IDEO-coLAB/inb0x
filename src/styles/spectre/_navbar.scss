@@ -4,15 +4,23 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: $unit-3 $unit-3;
+  color: $gray-color;
+  border-bottom: 1px solid $gray-color-light;
+  margin-bottom: $unit-8;
 
   .navbar-section {
     align-items: center;
     display: flex;
-    flex: 1 0 0;
+    flex: 1 0 100%;
     height: $navbar-height;
 
     &:last-child {
       justify-content: flex-end;
+    }
+
+    div {
+      width: 100%;
     }
   }
 
@@ -23,8 +31,10 @@
   }
 
   .navbar-brand {
-    font-size: $font-size-lg;
-    font-weight: 500;
-    text-decoration: none;
+    margin-bottom: 0;
+    display: inline-block;
+    line-height: $control-size-lg;
+    font-size: $font-size-xl;
+    margin-right: 1rem;
   }
 }

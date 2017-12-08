@@ -19,6 +19,11 @@ const testRouteForAddress = (router, store) => {
   const isNewAddrInUrl = urlAddr !== curAddr
   const urlAddrIsValid = web3.utils.isAddress(urlAddr)
 
+console.log('urlAddr', urlAddr)
+console.log('curAddr', curAddr)
+console.log('isNewAddrInUrl', isNewAddrInUrl)
+console.log('urlAddrIsValid', urlAddrIsValid)
+
   if (!urlAddr) return
 
   if (!urlAddrIsValid) {

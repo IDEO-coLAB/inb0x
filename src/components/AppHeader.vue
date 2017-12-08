@@ -1,57 +1,59 @@
 <template>
-  <!-- <div class="container bg-secondary"> -->
-  <div class="bg-secondary">
 
-      <div class="columns">
+  <div>
+
+<!--       <div class="columns">
         <div class="column col-12">
           <address-search-input></address-search-input>
         </div>
-      </div>
+      </div> -->
 
+    <div class="navbar">
+      <div class="navbar-section">
 
+        <span class="navbar-brand"><samp>inb0x</samp></span>
 
-    <!-- <section class="navbar-section">
-     <samp class="mxr-2">inb0x</samp> {{address}}
-    </section> -->
+        <div v-show="!isSearching">
 
-    <!-- <section class="navbar-section">
-
-      <div class="dropdown dropdown-right">
-        <div class="btn-group">
-          <a class="btn btn-link dropdown-toggle" tabindex="0">
-            Settings <i class="icon icon-arrow-down"></i>
-          </a>
-
-          <ul class="menu">
-            <li>
-              <router-link class="btn btn-link" active-class="active" :to="{ path: setDynamicPath('/inbox') }">Inbox</router-link>
-            </li>
-            <li>
-              <router-link class="btn btn-link" active-class="active" :to="{ path: setDynamicPath('/update') }">Settings</router-link>
-            </li>
-            <li>
-              <router-link exact class="btn btn-link" active-class="active" :to="{ path: `/about` }">About</router-link>
-            </li>
-          </ul>
+          <span class="float-right">
+            <button class="btn btn-lg btn-link" @click="toggleSearch">
+              <i class="icon icon-search"></i>
+            </button>
+          </span>
         </div>
-      </div>
 
+        <div v-show="isSearching" class="width-full">
+          <div class="input-group">
+            <input
+              class="form-input input-lg"
+              type="text"
+              v-model="searchAddress"
+              placeholder="Enter an Ethereum address"
+              v-on:keyup.enter="submit" />
 
-      <div class="dropdown dropdown-right">
-        <div class="btn-group">
-          <a class="btn btn-link dropdown-toggle" tabindex="0">
-            Search <i class="icon icon-search"></i>
-          </a>
+            <button class="btn input-group-btn btn-lg" @click="submit">
+              load <samp>inb0x</samp>
+            </button>
 
-          <div class="menu">
-            <address-search-input></address-search-input>
+            <button class="btn btn-lg btn-link mxl-2" @click="toggleSearch">
+              <i class="icon icon-cross"></i>
+            </button>
           </div>
         </div>
+
+
+
+
+
+
+
       </div>
-    </section> -->
+    </div>
+
+
 
   </div>
-  <!-- </div> -->
+
 </template>
 
 <script>
@@ -59,22 +61,54 @@
   import { MUTATION_TYPES } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
   import { EAMError, MessageError } from '../constants/errors'
-  import AddressSearchInput from './AddressSearchInput'
 
   export default {
-    components: {
-      AddressSearchInput,
+    data () {
+      return {
+        searchAddress: this.address || null,
+        isSearching: false,
+      }
     },
     methods: {
-      setDynamicPath (pathRoot) {
-        if (this.address) return `${pathRoot}/${this.address}`
-        return pathRoot
+      toggleSearch () {
+        this.isSearching = !this.isSearching
+      },
+      resetInput () {
+        this.searchAddress = this.address || null
+      },
+      submit () {
+        const searchAddress = this.searchAddress
+        const curAddress = this.$store.getters.address.address
+        const validEthAddress = web3.utils.isAddress(searchAddress)
+
+        // Bail if not a valid address
+        if (!validEthAddress) return
+
+        // Skip if the new address is the same as what we already have
+        if (searchAddress === curAddress) return
+
+        this.$store.commit(MUTATION_TYPES.RESET_ADDR)
+        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS)
+        this.$store.commit(MUTATION_TYPES.RESET_EAM)
+        this.$store.commit(MUTATION_TYPES.RESET_MESSAGES)
+        this.$store.commit(MUTATION_TYPES.RESET_CURRENT_MESSAGE)
+
+        // finally, fetch the details for the address
+        return this.$store.dispatch(ACTION_TYPES.FETCH_ADDR_TX, searchAddress)
+          .then(() => {
+            return this.$router.push({ path: `/inbox/${searchAddress}` })
+          })
+          .catch((error) => {
+            console.error('NEW ADDR FETCH ERROR', error)
+            return true
+          })
+          .then(() => {
+            this.isSearching = false
+            this.resetInput()
+          })
       },
     },
     computed: {
-      routeName () {
-        return this.$route.name
-      },
       address () {
         return this.$store.getters.address.address
       },

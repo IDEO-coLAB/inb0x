@@ -1,8 +1,10 @@
 <template>
 
-  <div>
+  <div class="width-full">
 
     <div v-show="!isSearching">
+      <h3 class="navbar-title">Inbox</h3>
+
       <span class="float-right">
         <button class="btn btn-link" @click="toggleSearch">
           <i class="icon icon-search"></i>

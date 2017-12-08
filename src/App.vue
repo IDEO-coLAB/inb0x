@@ -65,6 +65,7 @@
 
     },
     beforeCreate () {
+
       console.log('\n\n\n=================================')
       console.log('0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       console.log('0x1ed014aec47fae44c9e55bac7662c0b78ae61798')
@@ -73,6 +74,7 @@
       // if (!this.$route.params.address) {
         // this.$router.push('/inbox?addresses=0x8d12a197cb00d4747a1fe03395095ce2a5cc6819')
       // }
+      // this.$router.push('/inbox')
       // this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x1ed014aec47fae44c9e55bac7662c0b78ae61798/setup')
@@ -84,10 +86,12 @@
       route () { return this.$route },
     },
     mounted () {
+      console.log('mounted', this.$route)
       testRouteForAddressAndMessage(this.$router, this.$store)
     },
     watch: {
       '$route' (to, from) {
+        console.log('watch', this.$route)
         testRouteForAddressAndMessage(this.$router, this.$store)
       },
     },

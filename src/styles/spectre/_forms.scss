@@ -48,6 +48,7 @@ legend {
   padding: $control-padding-y $control-padding-x;
   position: relative;
   width: 100%;
+
   &:focus {
     @include control-shadow();
     border-color: $primary-color;
@@ -342,6 +343,7 @@ textarea.form-input {
 // Form element: Input groups
 .input-group {
   display: flex;
+  flex: 1 1 auto;
 
   .input-group-addon {
     background: $bg-color;
