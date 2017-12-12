@@ -1,18 +1,172 @@
 @import 'spectre/spectre';
 
 
+
+
 .app-container {
   height: 100%;
+  position: relative;
 }
 
 .app-body {
   height: 100%;
+  width: 100%;
   // background-color: red;
+  position: relative;
   overflow: hidden;
 }
 
-.app-sidebar {
+
+
+
+
+
+.page-main {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.page-sidebar {
   height: 100%;
   background-color: $bg-color-dark;
   overflow: hidden;
+  position: relative;
 }
+
+
+
+
+
+
+
+
+.section {
+  padding: $unit-4 $unit-3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.body {
+  // background-color: red;
+  height: 100%;
+  overflow: auto;
+}
+
+
+.body-with-navbar-and-footer {
+  height: calc(100% - #{$navbar-height} - #{$footer-height} - (#{$unit-3} * 4));
+}
+
+.body-with-navbar {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.message {
+  height: 100%;
+  display: flex;
+  padding: $unit-4 $unit-3;
+  padding-bottom: 0;
+  // background-color: green;
+
+  .message-nav {
+    height: 100%;
+    flex: 0 0 #{$control-size * 3};
+    padding: $unit-4;
+    position: relative;
+    // background-color: red;
+
+    .btn {
+      display: block;
+      margin: 0 auto;
+    }
+    .btn:first-child {
+      margin-bottom: $unit-10;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.header {
+  // // align-items: stretch;
+  // // display: flex;
+  // // flex-wrap: wrap;
+  // // justify-content: space-between;
+  // // background-color: red;
+
+  // // color: $gray-color;
+  // border-bottom: 1px solid $gray-color-light;
+  // // height: $navbar-height;
+
+
+  //   padding: $unit-3;
+  //   line-height: $control-size-lg;
+  //   font-size: $font-size-xl;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+.footer {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: $unit-3 $unit-3;
+  color: $gray-color;
+  border-top: 1px solid $gray-color-light;
+
+  .footer-section {
+    @include text-ellipsis();
+    align-items: center;
+    // background-color: red;
+    display: flex;
+    flex: 1 0;
+    height: $footer-height;
+    line-height: $control-size-lg;
+
+    &:last-child {
+      justify-content: flex-end;
+    }
+  }
+}
+
+
+
+

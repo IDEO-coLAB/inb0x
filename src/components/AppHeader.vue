@@ -1,59 +1,55 @@
 <template>
+  <div class="header">
 
-  <div>
+    <div class="header-section header-action">
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle" tabindex="0">
+          <i class="icon icon-menu"></i>
+        </button>
 
-<!--       <div class="columns">
-        <div class="column col-12">
-          <address-search-input></address-search-input>
-        </div>
-      </div> -->
+        <ul class="menu">
+          <li class="menu-item"><a href="">Home</a></li>
+        </ul>
+      </div>
+    </div>
 
-    <div class="navbar">
-      <div class="navbar-section">
+    <div class="header-section">
+      <div class="header-content">
 
-        <span class="navbar-brand"><samp>inb0x</samp></span>
+        <span v-show="!isSearching">
+          <span v-show="!address"><samp>inbox</samp></span>
+          <span v-show="address"><samp>inb<span>{{address}}</span></samp></span>
+        </span>
 
-        <div v-show="!isSearching">
+        <span class="input-group" v-show="isSearching">
+          <input
+            class="form-input"
+            type="text"
+            v-model="searchAddress"
+            placeholder="Enter an Ethereum address"
+            v-on:keyup.enter="submit" />
 
-          <span class="float-right">
-            <button class="btn btn-lg btn-link" @click="toggleSearch">
-              <i class="icon icon-search"></i>
-            </button>
-          </span>
-        </div>
-
-        <div v-show="isSearching" class="width-full">
-          <div class="input-group">
-            <input
-              class="form-input input-lg"
-              type="text"
-              v-model="searchAddress"
-              placeholder="Enter an Ethereum address"
-              v-on:keyup.enter="submit" />
-
-            <button class="btn input-group-btn btn-lg" @click="submit">
-              load <samp>inb0x</samp>
-            </button>
-
-            <button class="btn btn-lg btn-link mxl-2" @click="toggleSearch">
-              <i class="icon icon-cross"></i>
-            </button>
-          </div>
-        </div>
-
-
-
-
-
-
+          <button class="btn input-group-btn" @click="submit">
+            load <samp>inb0x</samp>
+          </button>
+        </span>
 
       </div>
     </div>
 
+    <div class="header-section header-action">
+      <span class="header-content">
+        <button class="btn btn-link" v-show="!isSearching" @click="toggleSearch">
+          <i class="icon icon-search"></i>
+        </button>
 
+        <button class="btn btn-link" v-show="isSearching" @click="toggleSearch">
+          <i class="icon icon-cross"></i>
+        </button>
+      </span>
+    </div>
 
   </div>
-
 </template>
 
 <script>
@@ -61,8 +57,12 @@
   import { MUTATION_TYPES } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
   import { EAMError, MessageError } from '../constants/errors'
+  import addressTruncate from '../directives/address-truncate'
 
   export default {
+    directives: {
+      addressTruncate,
+    },
     data () {
       return {
         searchAddress: this.address || null,

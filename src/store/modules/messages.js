@@ -27,6 +27,9 @@ const mutations = {
   },
 
   [MUTATION_TYPES.UPDATE_MESSAGES] (state, messages) {
+
+    // Do stats in here
+
     state.messages = state.messages.concat(messages)
     console.log(MUTATION_TYPES.UPDATE_MESSAGES, state.messages)
   },

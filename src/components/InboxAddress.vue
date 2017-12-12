@@ -1,86 +1,137 @@
 <template>
-  <div>
+  <div class="columns col-gapless app-body">
 
+    <!-- Main Section -->
+    <div class="column col-8 page-main">
+      <!-- Search header -->
+      <app-header></app-header>
 
-    <app-header></app-header>
+      <!-- Body Content -->
+      <div class="body body-with-navbar-and-footer">
+        <div class="columns">
+          <div class="column col-12">
 
+            <!-- No Inbox Set up -->
+            <div v-show="!eam" class="empty">
+              <div class="empty-icon">
+                <i class="icon icon-2x icon-search"></i>
+              </div>
+              <p class="empty-title h5"><samp>inb0x</samp> Not Found</p>
+              <p class="empty-subtitle">An <samp>inb0x</samp> set up was not found in the last {{transactions.length}} transactions.</p>
+              <div class="empty-action">
+                <button class="btn">Set it up now</button> <button class="btn" @click="fetchTransactions">Look through 20 more</button>
+              </div>
+              <div class="empty-action">
+                <div class="popover popover-top">
+                  <a>Why look through previous transactions?</a>
+                  <div class="popover-container">
+                    <div class="card">
+                      <div class="card-body">
+                        The <samp>inb0x</samp> for this address may have been set up before {{lastTransaction && lastTransaction.time.format('MMM D Y')}}. By looking through previous transactions, you might find its blah blah blah.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    <div v-show="!eam">
-      <div class="empty">
-        <div class="empty-icon">
-          <i class="icon icon-2x icon-search"></i>
+            <!-- No Messages Yet -->
+            <div v-show="eam && !messages" class="empty">
+              <div class="empty-icon">
+                <i class="icon icon-2x icon-search"></i>
+              </div>
+              <p class="empty-title h5">No Messages Found</p>
+              <p class="empty-subtitle">No messages were seen in the last {{transactions.length}} transactions</p>
+              <div class="empty-action">
+                <button class="btn" @click="fetchTransactions">Load the next 20</button>
+              </div>
+            </div>
+
+            <!-- Has Messages -->
+            <message-tile v-show="orderedMessages" v-for="message in orderedMessages" v-bind:message="message" :key="message.hash"></message-tile>
+
+          </div>
         </div>
-        <p class="empty-title h5">Missing <samp>inb0x</samp></p>
-        <p class="empty-subtitle">An <samp>inb0x</samp> may not be set up for this address.</p>
-        <div class="empty-action">
-          <button class="btn btn-primary">Set it up now</button>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-section">
+          <span v-show="lastMessage">
+            {{messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}}
+          </span>
         </div>
-        <div class="empty-action">
-          <button class="btn btn-link" @click="fetchTransactions">Load more transactions</button>
+        <div class="footer-section">
+          <button v-show="lastMessage" class="btn btn-link" @click="fetchTransactions">Find previous messages</button>
         </div>
       </div>
     </div>
 
-    <div v-show="eam && !messages">
-      <div class="empty">
-        <div class="empty-icon">
-          <i class="icon icon-2x icon-search"></i>
-        </div>
-        <p class="empty-title h5">No Messages Found</p>
-        <p class="empty-subtitle">No messages were seen in the last {{transactions.length}} transactions</p>
-        <div class="empty-action">
-          <button class="btn btn-primary" @click="fetchTransactions">Load more transactions</button>
-        </div>
-      </div>
-    </div>
+    <!-- Sidebar Section -->
+    <div class="column col-4 page-sidebar">
 
-    <div v-show="eam && messages">
-      <div class="columns">
-        <div class="column col-12">
-
-          <table class="table table-striped table-hover">
-            <tbody>
-              <tr v-for="message in orderedMessages" @click="setCurrentMessage(message, $event)">
-                <td>
-                  <h4>{{message && new Date(message.timeStamp * 1000).toLocaleString()}}</h4>
-                  {{message.hash}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
+      <div class="header">
+        <div class="header-section">
+          <div class="header-content">
+            {{messages.length}} Messages
+          </div>
         </div>
       </div>
+
+
+      <div class="section">
+        <p>{{transactions.length}} Transactions </p>
+        <p>XXX Ether Balance</p>
+        <p>Other stats here about this address</p>
+        <p>This address has not been set up yet</p>
+      </div>
+
     </div>
-
-
   </div>
 </template>
 
 <script>
   import web3 from 'web3'
-  import AppHeader from './AppHeader'
+  import _ from 'lodash'
   import { UPDATE_CURRENT_MESSAGE } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
+  import AppHeader from './AppHeader'
+  import MessageTile from './MessageTile'
+  import weiToEth from '../directives/wei-to-eth'
+  import addressTruncate from '../directives/address-truncate'
 
   export default {
     components: {
       AppHeader,
+      MessageTile,
+    },
+    directives: {
+      weiToEth,
+      addressTruncate,
     },
     computed: {
       transactions () {
         return this.$store.getters.transactions
       },
+      lastTransaction () {
+        return _.last(this.$store.getters.transactions)
+      },
       messages () {
         return this.$store.getters.messages
       },
+      lastMessage () {
+        return _.last(this.$store.getters.messages)
+      },
       orderedMessages () {
-        // return _.sortBy(this.messages, 'timeStamp')
         return this.messages
       },
       eam () {
         return this.$store.getters.eam
       },
+
+      error () { return this.$store.getters.error },
+      address () { return this.$store.getters.address },
+      route () { return this.$route },
     },
     methods: {
       setCurrentMessage (message, event) {

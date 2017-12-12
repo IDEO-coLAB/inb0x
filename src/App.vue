@@ -1,40 +1,44 @@
 <template>
   <div class="app-container">
+    <router-view></router-view>
 
-    <!-- <app-header></app-header> -->
 
     <!-- move to app-body! -->
 
-      <div class="columns col-gapless height-full">
-        <div class="column col-8 app-body">
-          <router-view></router-view>
+      <!-- <div class="columns col-gapless app-body">
+        <div class="column col-8"> -->
+          <!-- <router-view></router-view> -->
+        <!-- </div> -->
+
+<!--         <div class="column col-4">
+          <div class="app-sidebar">
+            <h1>12.002 ether</h1>
+            <p>received for messages</p>
+            <h4>Ethereum Address Info Here</h4>
+            <p>Address: {{address}}</p>
+            <p>Address: {{address.address}}</p>
+            <p>Pages Fetched: {{address.pageIdx-1}}</p>
+            <p>Current Tx Count: {{transactions.length}}</p>
+            <p>Route Name: {{route.name}}</p>
+
+            <router-link
+              class="btn btn-link"
+              active-class="active"
+              v-show="address.address"
+              :to="{ path: `/settings/${address.address}` }">
+              Settings
+            </router-link>
+
+            <router-link
+              class="btn btn-link"
+              active-class="active"
+              v-show="address.address"
+              :to="{ path: `/inbox/${address.address}` }">
+              Inbox
+            </router-link>
+          </div>
         </div>
-
-        <div class="column col-4 app-sidebar">
-          <h4>Ethereum Address Info Here</h4>
-          <p>Address: {{address}}</p>
-          <p>Address: {{address.address}}</p>
-          <p>Pages Fetched: {{address.pageIdx-1}}</p>
-          <p>Current Tx Count: {{transactions.length}}</p>
-          <p>Route Name: {{route.name}}</p>
-
-          <router-link
-            class="btn btn-link"
-            active-class="active"
-            v-show="address.address"
-            :to="{ path: `/settings/${address.address}` }">
-            Settings
-          </router-link>
-
-          <router-link
-            class="btn btn-link"
-            active-class="active"
-            v-show="address.address"
-            :to="{ path: `/inbox/${address.address}` }">
-            Inbox
-          </router-link>
-        </div>
-      </div>
+      </div> -->
 
 
 

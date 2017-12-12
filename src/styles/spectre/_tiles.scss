@@ -1,38 +1,92 @@
 // Tiles
 .tile {
   align-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   display: flex;
+  padding: $unit-4 $unit-3;
+  cursor: pointer;
 
-  .tile-icon,
-  .tile-action {
-    flex: 0 0 auto;
+  &:first-child {
+    padding-top: #{$unit-3 * 2};
   }
+  &:last-child {
+    padding-bottom: #{$unit-3 * 2};
+  }
+  &:hover {
+    background: $bg-color;
+  }
+
+  // .tile-intro,
+  // .tile-content {
+  //   @include text-ellipsis();
+  // }
+
+  // .tile-intro {
+  //   max-width: 250px;
+  //   font-weight: bold;
+  // }
+
   .tile-content {
-    flex: 1 1 auto;
+    @include text-ellipsis();
+    // background-color: yellow;
+    // border-right: 1px solid green;
+    flex: 1 0 0;
+
+    &:first-child {
+      // background-color: red;
+      max-width: 130px;
+      font-weight: bold;
+    }
+    &:last-child {
+     text-align: right;
+     color: $gray-color;
+     max-width: 180px;
+     text-transform: uppercase;
+    }
     &:not(:first-child) {
-      padding-left: $unit-2;
+      padding-left: $unit-3;
     }
     &:not(:last-child) {
-      padding-right: $unit-2;
+      padding-right: $unit-3;
     }
   }
-  .tile-title,
-  .tile-subtitle {
-    line-height: $line-height;
-  }
 
-  &.tile-centered {
-    align-items: center;
 
-    .tile-content {
-      overflow: hidden;
-    }
 
-    .tile-title,
-    .tile-subtitle {
-      @include text-ellipsis();
-      margin-bottom: 0;
-    }
-  }
+  // .tile-icon,
+  // .tile-action {
+  //   flex: 0 0 auto;
+  // }
+  // .tile-content {
+  //   flex: 1 1 auto;
+  //   &:not(:first-child) {
+  //     padding-left: $unit-2;
+  //   }
+  //   &:not(:last-child) {
+  //     padding-right: $unit-2;
+  //   }
+  // }
+  // .tile-title,
+  // .tile-subtitle {
+  //   line-height: $line-height;
+  // }
+
+  // &.tile-centered {
+  //   align-items: center;
+
+  //   .tile-content {
+  //     overflow: hidden;
+  //   }
+
+  //   .tile-title,
+  //   .tile-subtitle {
+  //     @include text-ellipsis();
+  //     margin-bottom: 0;
+  //   }
+  // }
 }
+
+
+// .tile:nth-of-type(odd) {
+//   background: $bg-color;
+// }

@@ -1,40 +1,105 @@
 // Navbar
-.navbar {
+.header {
   align-items: stretch;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: $unit-3 $unit-3;
-  color: $gray-color;
+  padding: $unit-3;
   border-bottom: 1px solid $gray-color-light;
-  margin-bottom: $unit-8;
 
-  .navbar-section {
+
+  .header-section {
     align-items: center;
     display: flex;
-    flex: 1 0 100%;
-    height: $navbar-height;
+    flex: 1 0 0;
+    min-width: 0;
+    // background-color: red;
 
-    &:last-child {
-      justify-content: flex-end;
+    // &:first-child {
+    //   // flex: 1 0 0;
+    //   // background-color: yellow;
+    //   max-width: calc((#{$control-padding-y} * 2) + 1em);
+    // }
+    // &:last-child {
+    //   // flex: 1 0 0;
+    //   // background-color: yellow;
+    //   max-width: calc((#{$control-padding-y} * 2) + 1em);
+    // }
+
+    &:not(:first-child):last-child {
+      // justify-content: flex-end;
+    }
+    &:not(:first-child) {
+      @include text-ellipsis();
     }
 
-    div {
-      width: 100%;
+    &.header-action {
+      max-width: calc((#{$control-padding-y} * 2) + 1em);
     }
   }
 
-  .navbar-center {
-    align-items: center;
-    display: flex;
-    flex: 0 0 auto;
-  }
 
-  .navbar-brand {
-    margin-bottom: 0;
-    display: inline-block;
+  .header-content {
+    @include text-ellipsis();
+    font-size: $font-size-lg;
     line-height: $control-size-lg;
-    font-size: $font-size-xl;
-    margin-right: 1rem;
+    // display: flex;
+    // justify-content: flex-end;
+    // background-color: green;
+    // flex: 1;
+    width: 100%;
   }
+  // &:first-child {
+  //   justify-content: flex-start;
+  // }
+
+
+  // display: flex;
+  // // align-items: stretch;
+  // align-items: center;
+  // // flex-wrap: wrap;
+  // justify-content: space-between;
+  // padding: $unit-3;
+  // color: $gray-color;
+  // border-bottom: 1px solid $gray-color-light;
+
+
+  // line-height: $control-size-xl;
+  // font-size: $font-size-xl;
+
+
+
+  // .header-section {
+  //   // align-items: center;
+  //   display: flex;
+  //   flex: 1 1 0;
+  //   min-width: 0;
+  //   width: 100%;
+
+  //   line-height: $control-size-xl;
+  //   font-size: $font-size-xl;
+
+  //   background-color: red;
+
+  //   // justify-content: flex-end;
+
+  //   // white-space: nowrap;
+  //   // overflow: hidden;
+
+
+  //   // height: $navbar-height;
+  //   // CHANGE THIS TO A VAR HEIGHT FOR HEADER / FOOTER!
+
+  //   &:last-child {
+  //     // justify-content: flex-end;
+  //     // flex: 1 0 75%;
+  //   }
+
+  //   .header-title {
+  //     @include text-ellipsis();
+  //     // font-size: $font-size-xl;
+  //   }
+
+  //   // .header-content
+  // }
 }

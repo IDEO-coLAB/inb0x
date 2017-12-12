@@ -1,7 +1,7 @@
 <template>
 
   <div class="width-full">
-
+<!--
     <div v-show="!isSearching">
       <h3 class="navbar-title">Inbox</h3>
 
@@ -29,7 +29,7 @@
           <i class="icon icon-cross"></i>
         </button>
       </div>
-    </div>
+    </div> -->
 
 
   </div>

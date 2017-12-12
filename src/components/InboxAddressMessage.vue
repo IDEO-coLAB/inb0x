@@ -1,17 +1,30 @@
 <template>
-  <div class="columns">
-    <div class="column col-3">
-      <button class="btn btn-action" @click="prev">
+  <div class="message">
+
+    <div class="message-nav">
+      <button class="btn btn-action" @click="exitMessage">
+        <i class="icon icon-cross"></i>
+      </button>
+      <button class="btn btn-action border-no-bottom" @click="prev">
         <i class="icon icon-arrow-up"></i>
       </button>
       <button class="btn btn-action" @click="next">
         <i class="icon icon-arrow-down"></i>
       </button>
-      <button class="btn btn-action" @click="exitMessage">
-        <i class="icon icon-cross"></i>
-      </button>
     </div>
-    <div class="column col-9">
+
+    <div class="message-body">
+      <div class="message-header">
+        <h1><span v-wei-to-eth="currentMessage && currentMessage.value"></span> eth</h1>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- <div class="column col-9">
       <h2>Message</h2>
       <h4>{{currentMessage && new Date(currentMessage.timeStamp * 1000).toLocaleString()}}</h4>
         {{currentMessageHash}}
@@ -19,15 +32,19 @@
         {{currentMessage}}
         <br>
         {{message}}
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
+  import weiToEth from '../directives/wei-to-eth'
 
   export default {
+    directives: {
+      weiToEth,
+    },
     data () {
       return {
         prevIdx: null,
@@ -75,6 +92,7 @@
               this.nextIdx = idx + 1
             }
 
+            console.log('FOUND MESSAGE', msg)
 
             return true
           }

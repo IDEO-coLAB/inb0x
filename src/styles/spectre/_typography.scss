@@ -55,6 +55,8 @@ a,
 ins,
 u {
   text-decoration-skip: ink edges;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 abbr[title] {

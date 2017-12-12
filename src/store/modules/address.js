@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import axios from 'axios'
 import web3 from 'web3'
+import moment from 'moment'
 import { MUTATION_TYPES } from '../../constants/mutations'
 import { ACTION_TYPES } from '../../constants/actions'
 import { EAMError, MessageError, AddressError } from '../../constants/errors'
@@ -54,6 +55,16 @@ const actions = {
         let newMessages = []
         let addrEAM = null
 
+
+
+        // TODO: Improve robustness of the models for transactions, messages, addresses, etc.
+
+
+
+        // add a formatted time object to each message
+        _.forEach(transactions, (tx) => {
+          tx.time = new moment.unix(tx.timeStamp)
+        })
         // Update with the latest fetched transactions
         commit(MUTATION_TYPES.UPDATE_TRANSACTIONS, transactions)
 
@@ -79,6 +90,8 @@ const actions = {
         _.forEach(transactions, (tx) => {
           const ethValue = Number(web3.utils.fromWei(tx.value))
           if (ethValue >= addrEAM.threshold) {
+            // // add a formatted time object to each message
+            // tx.time = new moment.unix(tx.timeStamp)
             newMessages.push(tx)
           }
         })
