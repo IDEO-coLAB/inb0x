@@ -22,15 +22,25 @@
 
         <!-- Header -->
         <div class="header">
+
           <div class="header-section">
-            <span class="header-content">
-              From <samp>{{currentMessage && currentMessage.from}}</samp>
-            </span>
+            <div class="header-content">
+              <span class="text-ellipsis">{{currentMessage && currentMessage.from}}</span>
+            </div>
           </div>
+
+          <div class="header-section header-action">
+            <div class="header-content">
+              <button class="btn btn-action" @click="linkTo('/compose')">
+                <i class="icon icon-edit"></i>
+              </button>
+            </div>
+          </div>
+
         </div>
 
         <!-- Body -->
-        <div class="body body-with-header-and-footer">
+        <div class="body body-with-header">
 
           <div class="section">
             <div class="columns">
@@ -55,11 +65,13 @@
         </div>
 
         <!-- Footer -->
-        <div class="footer">
+        <!-- <div class="footer">
           <div class="footer-section">
-            <button class="btn">Send a message to {{currentMessage && currentMessage.from}}</button>
+            <button class="btn" @click="linkTo('/compose')">
+              Message to {{currentMessage && currentMessage.from}}</button>
+              Message this address</button>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
@@ -85,6 +97,9 @@
       }
     },
     methods: {
+      linkTo (path) {
+        this.$router.push({ path })
+      },
       exitMessage () {
         this.$router.push({ path: `/inbox/${this.$store.getters.address.address}` })
       },

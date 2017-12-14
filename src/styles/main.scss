@@ -68,6 +68,7 @@
 
 
 // Header
+// CLEAN THIS SHIT UP
 .header {
   align-items: stretch;
   display: flex;
@@ -79,28 +80,35 @@
 
   .header-section {
     align-items: center;
-    display: flex;
+    // display: flex;
     flex: 1 0 0;
     min-width: 0;
+    // overflow: hidden;
 
     &:not(:first-child):last-child {
       // justify-content: flex-end;
     }
-    &:not(:first-child) {
-      @include text-ellipsis();
-    }
-
     &.header-action {
       max-width: calc((#{$control-padding-y} * 2) + 1em);
     }
   }
 
-
   .header-content {
     @include text-ellipsis();
+    align-items: center;
+    display: flex;
+
+    background-color: red;
+
     font-size: $font-size-lg;
+    min-height: $control-size-lg;
     line-height: $control-size-lg;
-    width: 100%;
+    // width: 100%;
+
+    &:not(:last-child) {
+      padding-right: $unit-3;
+      background-color: green;
+    }
   }
 }
 
@@ -177,6 +185,7 @@
 
 .section {
   padding: $unit-4 $unit-3;
+  position: relative;
 }
 
 

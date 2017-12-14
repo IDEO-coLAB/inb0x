@@ -11,6 +11,8 @@ import InboxAddress from '../components/InboxAddress'
 // import InboxAddressHome from '../components/InboxAddressHome'
 import InboxAddressMessage from '../components/InboxAddressMessage'
 
+import Compose from '../components/Compose'
+
 // import Update from '../components/Update'
 // import UpdateHome from '../components/UpdateHome'
 import Settings from '../components/Settings'
@@ -47,6 +49,12 @@ const routes = [
     path: '/inbox/:address/:message',
     name: 'InboxAddressMessage',
     component: InboxAddressMessage,
+  },
+
+  {
+    path: '/compose',
+    name: 'Compose',
+    component: Compose,
   },
 
   {
