@@ -6,7 +6,7 @@
     <div class="tile-content">
       <strong>{{messageSize}} bytes</strong> from {{message.from}}
     </div>
-    <div class="tile-content">
+    <div class="tile-content text-uppercase-light">
       {{message.time.format('MMM D Y')}}
     </div>
   </div>

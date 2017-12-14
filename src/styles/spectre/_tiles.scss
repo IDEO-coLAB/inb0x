@@ -38,10 +38,8 @@
       font-weight: bold;
     }
     &:last-child {
-     text-align: right;
-     color: $gray-color;
      max-width: 180px;
-     text-transform: uppercase;
+     text-align: right;
     }
     &:not(:first-child) {
       padding-left: $unit-3;

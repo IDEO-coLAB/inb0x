@@ -1,38 +1,70 @@
 <template>
-  <div class="message">
+  <div class="columns col-gapless height-full">
 
-    <div class="message-nav">
-      <button class="btn btn-action" @click="exitMessage">
-        <i class="icon icon-cross"></i>
-      </button>
-      <button class="btn btn-action border-no-bottom" @click="prev">
-        <i class="icon icon-arrow-up"></i>
-      </button>
-      <button class="btn btn-action" @click="next">
-        <i class="icon icon-arrow-down"></i>
-      </button>
-    </div>
+    <!-- Body -->
+    <div class="column col-8 page-container">
 
-    <div class="message-body">
-      <div class="message-header">
-        <h1><span v-wei-to-eth="currentMessage && currentMessage.value"></span> eth</h1>
+      <!-- Side nav -->
+      <div class="page-side-nav">
+        <button class="btn btn-action" @click="exitMessage">
+          <i class="icon icon-cross"></i>
+        </button>
+        <button class="btn btn-action border-no-bottom" @click="prev">
+          <i class="icon icon-arrow-up"></i>
+        </button>
+        <button class="btn btn-action" @click="next">
+          <i class="icon icon-arrow-down"></i>
+        </button>
       </div>
+
+      <!-- Main content -->
+      <div class="page-content">
+
+        <!-- Header -->
+        <div class="header">
+          <div class="header-section">
+            <span class="header-content">
+              From <samp>{{currentMessage && currentMessage.from}}</samp>
+            </span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="body body-with-header-and-footer">
+
+          <div class="section">
+            <div class="columns">
+              <div class="column col-6">
+                <span v-wei-to-eth="currentMessage && currentMessage.value"></span> Eth received
+              </div>
+              <div class="column col-6 text-right">
+                <span class="text-uppercase-light">
+                  {{currentMessage && currentMessage.time.format('MMM D Y')}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            {{currentMessage}}
+          </div>
+
+          <div class="section">
+            {{message}}
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+          <div class="footer-section">
+            <button class="btn">Send a message to {{currentMessage && currentMessage.from}}</button>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-
-
-
-
-
-    <!-- <div class="column col-9">
-      <h2>Message</h2>
-      <h4>{{currentMessage && new Date(currentMessage.timeStamp * 1000).toLocaleString()}}</h4>
-        {{currentMessageHash}}
-        <br>
-        {{currentMessage}}
-        <br>
-        {{message}}
-    </div> -->
   </div>
 </template>
 

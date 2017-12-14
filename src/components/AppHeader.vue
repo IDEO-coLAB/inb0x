@@ -1,7 +1,7 @@
 <template>
   <div class="header">
 
-    <div class="header-section header-action">
+    <!-- <div class="header-section header-action">
       <div class="dropdown">
         <button class="btn btn-link dropdown-toggle" tabindex="0">
           <i class="icon icon-menu"></i>
@@ -11,7 +11,7 @@
           <li class="menu-item"><a href="">Home</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
     <div class="header-section">
       <div class="header-content">
