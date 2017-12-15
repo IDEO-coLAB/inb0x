@@ -101,30 +101,34 @@
         this.$router.push({ path })
       },
       exitMessage () {
-        this.$router.push({ path: `/inbox/${this.$store.getters.address.address}` })
+        this.$router.push({ path: `/inbox/${this.$store.getters.currentAddressId}` })
       },
       prev () {
         if (!_.isNull(this.prevIdx)) {
-          const newMessage = this.$store.getters.messages[this.prevIdx]
+          const newMessage = this.$store.getters.messages[this.currentAddressId][this.prevIdx]
           const newMessageId = newMessage.hash
-          this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MESSAGE, newMessageId)
+          this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, newMessageId)
         }
       },
       next () {
         if (!_.isNull(this.nextIdx)) {
-          const newMessage = this.$store.getters.messages[this.nextIdx]
+          const newMessage = this.$store.getters.messages[this.currentAddressId][this.nextIdx]
           const newMessageId = newMessage.hash
-          this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MESSAGE, newMessageId)
+          this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, newMessageId)
         }
       },
     },
     computed: {
-      currentMessageHash () {
-        return this.$store.getters.currentMessageHash
+      currentAddressId () {
+        return this.$store.getters.currentAddressId
+      },
+      currentMessageId () {
+        return this.$store.getters.currentMessageId
       },
       currentMessage () {
-        return _.find(this.$store.getters.messages, (msg, idx) => {
-          if (msg.hash === this.currentMessageHash) {
+        const currentMessages = this.$store.getters.messages[this.currentAddressId]
+        return _.find(currentMessages, (msg, idx) => {
+          if (msg.hash === this.currentMessageId) {
             this.curIdx = idx
 
             if (idx === 0) {
@@ -133,7 +137,7 @@
               this.prevIdx = idx - 1
             }
 
-            if (idx === this.$store.getters.messages.length-1) {
+            if (idx === currentMessages.length-1) {
               this.nextIdx = null
             } else {
               this.nextIdx = idx + 1

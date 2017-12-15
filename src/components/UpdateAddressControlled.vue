@@ -31,10 +31,13 @@
       }
     },
     computed: {
+      currentAddressId () {
+        return this.$store.getters.currentAddressId
+      },
       threshold () {
         let price = 0.02
-        if (this.$store.getters.eam) {
-          price = this.$store.getters.eam.valueThreshold
+        if (this.$store.getters.eams[this.currentAddressId]) {
+          price = this.$store.getters.eams[this.currentAddressId].valueThreshold
         }
         return price
       },

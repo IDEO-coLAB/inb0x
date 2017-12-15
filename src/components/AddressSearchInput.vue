@@ -59,7 +59,7 @@
       },
       submit () {
         const searchAddress = this.searchAddress
-        const curAddress = this.$store.getters.address.address
+        const curAddress = this.$store.getters.currentAddressId
         const validEthAddress = web3.utils.isAddress(searchAddress)
 
         // Bail if not a valid address
@@ -68,14 +68,24 @@
         // Skip if the new address is the same as what we already have
         if (searchAddress === curAddress) return
 
-        this.$store.commit(MUTATION_TYPES.RESET_ADDR)
-        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS)
-        this.$store.commit(MUTATION_TYPES.RESET_EAM)
-        this.$store.commit(MUTATION_TYPES.RESET_MESSAGES)
-        this.$store.commit(MUTATION_TYPES.RESET_CURRENT_MESSAGE)
+        this.$store.commit(MUTATION_TYPES.RESET_CURRENT_ADDR_ID)
+        this.$store.commit(MUTATION_TYPES.RESET_CURRENT_MSG_ID)
+
+        const payload = { address: searchAddress }
+        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
+        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
+        this.$store.commit(MUTATION_TYPES.RESET_MESSAGES, payload)
+        this.$store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
+        this.$store.commit(MUTATION_TYPES.RESET_EAMS, payload)
+
+        // this.$store.commit(MUTATION_TYPES.RESET_ADDR)
+        // this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS)
+        // this.$store.commit(MUTATION_TYPES.RESET_EAM)
+        // this.$store.commit(MUTATION_TYPES.RESET_MESSAGES)
+        // this.$store.commit(MUTATION_TYPES.RESET_CURRENT_MESSAGE)
 
         // finally, fetch the details for the address
-        return this.$store.dispatch(ACTION_TYPES.FETCH_ADDR_TX, searchAddress)
+        return this.$store.dispatch(ACTION_TYPES.FETCH_TXS, searchAddress)
           .then(() => {
             return this.$router.push({ path: `/inbox/${searchAddress}` })
           })
@@ -91,7 +101,7 @@
     },
     computed: {
       address () {
-        return this.$store.getters.address.address
+        return this.$store.getters.currentAddressId
       },
     },
   }

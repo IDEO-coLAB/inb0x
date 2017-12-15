@@ -9,8 +9,8 @@
 <script>
   export default {
     computed: {
-      address () {
-        return this.$store.getters.address.address
+      currentAddressId () {
+        return this.$store.getters.currentAddressId
       }
     }
   }

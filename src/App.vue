@@ -85,7 +85,7 @@
     },
     computed: {
       error () { return this.$store.getters.error },
-      address () { return this.$store.getters.address },
+      addresses () { return this.$store.getters.addresses },
       transactions () { return this.$store.getters.transactions },
       route () { return this.$route },
     },

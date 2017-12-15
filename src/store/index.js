@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import address from './modules/address'
-import messages from './modules/messages'
+import addresses from './modules/addresses'
+import balances from './modules/balances'
 import transactions from './modules/transactions'
-import eam from './modules/eam'
+import messages from './modules/messages'
+import eams from './modules/eams'
 import error from './modules/error'
 
 Vue.use(Vuex)
@@ -12,10 +13,11 @@ const debug = true // make dynamic?
 
 export default new Vuex.Store({
   modules: {
-    address,
-    messages,
+    addresses,
+    balances,
     transactions,
-    eam,
+    messages,
+    eams,
     error,
   },
   strict: debug,

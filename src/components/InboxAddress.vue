@@ -20,7 +20,7 @@
                   <i class="icon icon-2x icon-search"></i>
                 </div>
                 <p class="empty-title h5"><samp>inb0x</samp> Not Found</p>
-                <p class="empty-subtitle">An <samp>inb0x</samp> set up was not found in the last {{transactions.length}} transactions.</p>
+                <p class="empty-subtitle">An <samp>inb0x</samp> set up was not found in the last {{transactions && transactions.length}} transactions.</p>
                 <div class="empty-action">
                   <button class="btn">Set it up now</button> <button class="btn" @click="fetchTransactions">Look through 20 more</button>
                 </div>
@@ -44,7 +44,7 @@
                   <i class="icon icon-2x icon-search"></i>
                 </div>
                 <p class="empty-title h5">No Messages Found</p>
-                <p class="empty-subtitle">No messages were seen in the last {{transactions.length}} transactions</p>
+                <p class="empty-subtitle">No messages were seen in the last {{transactions && transactions.length}} transactions</p>
                 <div class="empty-action">
                   <button class="btn" @click="fetchTransactions">Load the next 20</button>
                 </div>
@@ -61,7 +61,7 @@
         <div class="footer">
           <div class="footer-section">
             <span v-show="lastMessage">
-              {{messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}}
+              {{messages && messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}}
             </span>
           </div>
           <div class="footer-section">
@@ -83,14 +83,14 @@
         <div class="header">
           <div class="header-section">
             <div class="header-content">
-              {{messages.length}} Messages
+              {{messages && messages.length}} Messages
             </div>
           </div>
         </div>
 
 
         <div class="section">
-          <p>{{transactions.length}} Transactions </p>
+          <!-- <p>{{transactions.length}} Transactions </p> -->
           <p>XXX Ether Balance</p>
           <p>Other stats here about this address</p>
           <p>This address has not been set up yet</p>
@@ -122,38 +122,42 @@
       addressTruncate,
     },
     computed: {
+      currentAddressId () {
+        return this.$store.getters.currentAddressId
+      },
       transactions () {
-        return this.$store.getters.transactions
+        return this.$store.getters.transactions[this.currentAddressId]
       },
       lastTransaction () {
-        return _.last(this.$store.getters.transactions)
+        return _.last(this.transactions)
       },
       messages () {
-        return this.$store.getters.messages
+        return this.$store.getters.messages[this.currentAddressId]
       },
       lastMessage () {
-        return _.last(this.$store.getters.messages)
+        return _.last(this.messages)
       },
       orderedMessages () {
+        console.log(this.messages)
         return this.messages
       },
       eam () {
-        return this.$store.getters.eam
+        return this.$store.getters.eams[this.currentAddressId]
       },
 
       error () { return this.$store.getters.error },
-      address () { return this.$store.getters.address },
+      address () { return this.$store.getters.currentAddressId },
       route () { return this.$route },
     },
     methods: {
       setCurrentMessage (message, event) {
-        this.$store.commit(UPDATE_CURRENT_MESSAGE, message.hash)
+        this.$store.commit(UPDATE_CURRENT_MSG_ID, message.hash)
         this.$router.push({
           path: `/inbox/${this.$store.getters.address.address}/${message.hash}`
         })
       },
       fetchTransactions () {
-        this.$store.dispatch(ACTION_TYPES.FETCH_ADDR_TX)
+        this.$store.dispatch(ACTION_TYPES.FETCH_TXS, this.currentAddressId)
           .catch(console.warn)
       }
     }
