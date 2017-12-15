@@ -168,7 +168,7 @@ const mutations = {
     let newAddrObj = state.transactions[address] || []
     // newAddrObj.transactions = _.uniq(newAddrObj.concat(transactions))
 
-    Vue.set(state.transactions, address, _.uniq(newAddrObj.concat(transactions)))
+    Vue.set(state.transactions, address, _.uniqBy(newAddrObj.concat(transactions), 'hash'))
     console.log(MUTATION_TYPES.UPDATE_TRANSACTIONS, state.transactions[address])
   },
 

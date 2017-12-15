@@ -37,7 +37,7 @@ const mutations = {
   [MUTATION_TYPES.UPDATE_MESSAGES] (state, { address, messages }) {
     let newAddrMsgsObj = state.messages[address] || []
 
-    Vue.set(state.messages, address, _.uniq(newAddrMsgsObj.concat(messages)))
+    Vue.set(state.messages, address, _.uniqBy(newAddrMsgsObj.concat(messages), 'hash'))
     console.log(MUTATION_TYPES.UPDATE_MESSAGES, state.messages[address])
   },
 
