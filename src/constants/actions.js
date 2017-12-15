@@ -1,5 +1,5 @@
-export const FETCH_ADDR_TX = 'FETCH_ADDR_TX'
+export const FETCH_TXS = 'FETCH_TXS'
 
 export const ACTION_TYPES = {
-  [FETCH_ADDR_TX]: FETCH_ADDR_TX,
+  [FETCH_TXS]: FETCH_TXS,
 }

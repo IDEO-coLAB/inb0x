@@ -76,7 +76,7 @@
           <!-- Footer -->
           <div class="footer">
             <div class="footer-section">
-              <button class="btn" type="submit">Done</button>
+              <button class="btn" type="submit">What action here?</button>
             </div>
           </div>
 
