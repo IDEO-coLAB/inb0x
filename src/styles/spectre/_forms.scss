@@ -47,7 +47,8 @@ legend {
   font-size: $font-size;
   height: $control-size;
   line-height: $line-height;
-  max-width: 100%;
+  // max-width: 100%;
+  max-width: 650px;
   outline: none;
   padding: $control-padding-y $control-padding-x;
   position: relative;
@@ -83,6 +84,11 @@ legend {
   // Input types
   &[type="file"] {
     height: auto;
+  }
+
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
 }
 

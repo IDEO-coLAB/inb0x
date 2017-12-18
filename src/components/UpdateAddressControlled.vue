@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <p>How many eth will you charge to read a message?</p>
     <input v-model="threshold" type="number" placeholder="input an amount">
@@ -58,3 +58,4 @@
     components: {},
   }
 </script>
+ -->
