@@ -101,34 +101,34 @@
         this.$router.push({ path })
       },
       exitMessage () {
-        this.$router.push({ path: `/inbox/${this.$store.getters.currentAddressId}` })
+        this.$router.push({ path: `/inbox/${this.$store.getters.inboxAccountId}` })
       },
       prev () {
         if (!_.isNull(this.prevIdx)) {
-          const newMessage = this.$store.getters.messages[this.currentAddressId][this.prevIdx]
+          const newMessage = this.$store.getters.messages[this.inboxAccountId][this.prevIdx]
           const newMessageId = newMessage.hash
-          this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, newMessageId)
+          this.$store.commit(MUTATION_TYPES.UPDATE_MSG_ID, newMessageId)
         }
       },
       next () {
         if (!_.isNull(this.nextIdx)) {
-          const newMessage = this.$store.getters.messages[this.currentAddressId][this.nextIdx]
+          const newMessage = this.$store.getters.messages[this.inboxAccountId][this.nextIdx]
           const newMessageId = newMessage.hash
-          this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, newMessageId)
+          this.$store.commit(MUTATION_TYPES.UPDATE_MSG_ID, newMessageId)
         }
       },
     },
     computed: {
-      currentAddressId () {
-        return this.$store.getters.currentAddressId
+      inboxAccountId () {
+        return this.$store.getters.inboxAccountId
       },
-      currentMessageId () {
-        return this.$store.getters.currentMessageId
+      messageId () {
+        return this.$store.getters.messageId
       },
       currentMessage () {
-        const currentMessages = this.$store.getters.messages[this.currentAddressId]
+        const currentMessages = this.$store.getters.messages[this.inboxAccountId]
         return _.find(currentMessages, (msg, idx) => {
-          if (msg.hash === this.currentMessageId) {
+          if (msg.hash === this.messageId) {
             this.curIdx = idx
 
             if (idx === 0) {

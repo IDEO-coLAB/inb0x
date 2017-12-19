@@ -35,9 +35,9 @@
     },
     methods: {
       setCurrentMessage (message, event) {
-        this.$store.commit(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, message.hash)
+        this.$store.commit(MUTATION_TYPES.UPDATE_MSG_ID, message.hash)
         this.$router.push({
-          path: `/inbox/${this.$store.getters.currentAddressId}/${message.hash}`
+          path: `/inbox/${this.$store.getters.inboxAccountId}/${message.hash}`
         })
       },
     }

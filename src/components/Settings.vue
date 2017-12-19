@@ -15,7 +15,7 @@
 
               <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <samp @click="linkTo(`/inbox/${currentAddressId}`)">inb0x</samp>
+                  <samp @click="linkTo(`/inbox/${inboxAccountId}`)">inb0x</samp>
                 </li>
                 <li class="breadcrumb-item">
                   Settings
@@ -59,8 +59,8 @@
 <script>
   export default {
     computed: {
-      currentAddressId () {
-        return this.$store.getters.currentAddressId
+      inboxAccountId () {
+        return this.$store.getters.inboxAccountId
       }
     },
     methods: {

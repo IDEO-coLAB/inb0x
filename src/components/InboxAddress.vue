@@ -122,17 +122,17 @@
       addressTruncate,
     },
     computed: {
-      currentAddressId () {
-        return this.$store.getters.currentAddressId
+      inboxAccountId () {
+        return this.$store.getters.inboxAccountId
       },
       transactions () {
-        return this.$store.getters.transactions[this.currentAddressId]
+        return this.$store.getters.transactions[this.inboxAccountId]
       },
       lastTransaction () {
         return _.last(this.transactions)
       },
       messages () {
-        return this.$store.getters.messages[this.currentAddressId]
+        return this.$store.getters.messages[this.inboxAccountId]
       },
       lastMessage () {
         return _.last(this.messages)
@@ -142,11 +142,11 @@
         return this.messages
       },
       eam () {
-        return this.$store.getters.eams[this.currentAddressId]
+        return this.$store.getters.eams[this.inboxAccountId]
       },
 
       error () { return this.$store.getters.error },
-      address () { return this.$store.getters.currentAddressId },
+      address () { return this.$store.getters.inboxAccountId },
       route () { return this.$route },
     },
     methods: {
@@ -157,7 +157,7 @@
         })
       },
       fetchTransactions () {
-        this.$store.dispatch(ACTION_TYPES.FETCH_TXS, this.currentAddressId)
+        this.$store.dispatch(ACTION_TYPES.FETCH_TXS, this.inboxAccountId)
           .catch(console.warn)
       }
     }

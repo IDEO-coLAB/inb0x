@@ -49,6 +49,17 @@
 
                 <div class="section">
                   <div class="form-group">
+                    <label class="form-label">Amount to Send</label>
+                    <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="txAmount" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Gas Limit</label>
+                    <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="gasLimit" />
+                  </div>
+                </div>
+
+                <div class="section">
+                  <div class="form-group">
                     <textarea class="form-input" placeholder="Your message" rows="5" v-model="message"></textarea>
                   </div>
                 </div>
@@ -100,8 +111,23 @@
       return {
         recipient: null,
         message: '',
+        txAmount: 0,
+        gasLimit: 0,
       }
     },
+    // mounted () {
+    //   if (!_.isUndefined(web3)) {
+    //     // Use Mist/MetaMask's provider
+    //     const prov = new Web3(web3.currentProvider)
+    //     console.log('prov', prov)
+    //     console.log('prov', prov.eth.accounts)
+
+
+    //     // web3.version.getNetwork((err, netId) => {console.log(err, netId)})
+    //     // console.log('prov', )
+    //     // this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, prov)
+    //   }
+    // },
     methods: {
       exitCompose (event) {
         event.preventDefault()
@@ -111,6 +137,13 @@
         event.preventDefault()
         console.log('Submitted =>', event, this.messageHex)
         console.log('HEX => ', this.messageHex)
+
+        this.web3Provider.eth.sendTransaction({
+          to: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
+          from: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
+          value: '1',
+          data: 'this is something'
+        }, (err, data) => console.log(err, data))
       },
     },
     computed: {
@@ -121,6 +154,9 @@
       },
       messageHex () {
         return web3.utils.toHex(this.messageJSON)
+      },
+      web3Provider () {
+        return this.$store.getters.web3.provider
       }
     },
   }

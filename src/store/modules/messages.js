@@ -4,29 +4,29 @@ import { MUTATION_TYPES } from '../../constants/mutations'
 
 // Initial state
 const state = {
-  currentMessageId: null,
+  // currentMessageId: null,
   messages: {},
 }
 
 // Getters
 const getters = {
-  currentMessageId: state => state.currentMessageId,
+  // currentMessageId: state => state.currentMessageId,
   messages: state => state.messages,
 }
 
 // Mutations
 const mutations = {
 
-  [MUTATION_TYPES.UPDATE_CURRENT_MSG_ID] (state, id) {
-    // DO CHECKS HERE
-    state.currentMessageId = id
-    console.log(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, state.currentMessageId)
-  },
-  [MUTATION_TYPES.RESET_CURRENT_MSG_ID] (state) {
-    // DO CHECKS HERE
-    state.currentMessageId = null
-    console.log(MUTATION_TYPES.RESET_CURRENT_MSG_ID, state.currentMessageId)
-  },
+  // [MUTATION_TYPES.UPDATE_CURRENT_MSG_ID] (state, id) {
+  //   // DO CHECKS HERE
+  //   state.currentMessageId = id
+  //   console.log(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, state.currentMessageId)
+  // },
+  // [MUTATION_TYPES.RESET_CURRENT_MSG_ID] (state) {
+  //   // DO CHECKS HERE
+  //   state.currentMessageId = null
+  //   console.log(MUTATION_TYPES.RESET_CURRENT_MSG_ID, state.currentMessageId)
+  // },
 
 
 

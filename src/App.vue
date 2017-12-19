@@ -1,60 +1,12 @@
 <template>
   <div class="app-container">
     <router-view></router-view>
-
-
-    <!-- move to app-body! -->
-
-      <!-- <div class="columns col-gapless app-body">
-        <div class="column col-8"> -->
-          <!-- <router-view></router-view> -->
-        <!-- </div> -->
-
-<!--         <div class="column col-4">
-          <div class="app-sidebar">
-            <h1>12.002 ether</h1>
-            <p>received for messages</p>
-            <h4>Ethereum Address Info Here</h4>
-            <p>Address: {{address}}</p>
-            <p>Address: {{address.address}}</p>
-            <p>Pages Fetched: {{address.pageIdx-1}}</p>
-            <p>Current Tx Count: {{transactions.length}}</p>
-            <p>Route Name: {{route.name}}</p>
-
-            <router-link
-              class="btn btn-link"
-              active-class="active"
-              v-show="address.address"
-              :to="{ path: `/settings/${address.address}` }">
-              Settings
-            </router-link>
-
-            <router-link
-              class="btn btn-link"
-              active-class="active"
-              v-show="address.address"
-              :to="{ path: `/inbox/${address.address}` }">
-              Inbox
-            </router-link>
-          </div>
-        </div>
-      </div> -->
-
-
-
-
-
-
-
-
-
-
   </div>
 </template>
 
 <script>
   import _ from 'lodash'
-  import web3 from 'web3'
+  import Web3 from 'web3'
   import AppHeader from './components/AppHeader'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
@@ -62,14 +14,7 @@
   import { testRouteForAddressAndMessage } from './utils/route-utils'
 
   export default {
-    components: {
-      AppHeader,
-    },
-    methods: {
-
-    },
     beforeCreate () {
-
       console.log('\n\n\n=================================')
       console.log('0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       console.log('0x1ed014aec47fae44c9e55bac7662c0b78ae61798')
@@ -83,19 +28,50 @@
       // this.$router.push('/new/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x1ed014aec47fae44c9e55bac7662c0b78ae61798/setup')
     },
-    computed: {
-      error () { return this.$store.getters.error },
-      addresses () { return this.$store.getters.addresses },
-      transactions () { return this.$store.getters.transactions },
-      route () { return this.$route },
-    },
     mounted () {
-      console.log('mounted', this.$route)
       testRouteForAddressAndMessage(this.$router, this.$store)
+
+      // TODO: abstract this when better understood
+
+      // If web3 is defined metamask is installed, set up the app's web3 provider
+      if (!_.isUndefined(window.web3)) {
+        const provider = new Web3(window.web3.currentProvider)
+        this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
+
+        // This is why we poll
+        // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
+        const iterval = setInterval(() => {
+          provider.eth.getAccounts()
+            .then((accounts) => {
+              const curWeb3AccountId = this.$store.getters.web3AccountId
+              const newWeb3AccountId = _.first(accounts)
+
+              if (!newWeb3AccountId) return
+              if (!curWeb3AccountId) {
+                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+                return
+              }
+
+              if (curWeb3AccountId !== newWeb3AccountId) {
+                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+              }
+            })
+            .catch((error) => {
+              console.error('WEB 3 ERROR!', error)
+              console.error('DECIDE HOW TO HANDLE THESE')
+              // something outside will need to kick this thing off again if there is an error
+              clearInterval(iterval)
+            })
+        }, 2000)
+
+      }
+      // TODO: handle global info state and errors
+      // else {
+      //   this.$store.commit(MUTATION_TYPES.UPDATE_APP_INFO, 'app is missing ')
+      // }
     },
     watch: {
       '$route' (to, from) {
-        console.log('watch', this.$route)
         testRouteForAddressAndMessage(this.$router, this.$store)
       },
     },

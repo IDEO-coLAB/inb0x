@@ -4,8 +4,8 @@ import { ACTION_TYPES } from '../constants/actions'
 import { EAMError, MessageError } from '../constants/errors'
 
 const resetAppState = (store) => {
-  store.commit(MUTATION_TYPES.RESET_CURRENT_ADDR_ID)
-  store.commit(MUTATION_TYPES.RESET_CURRENT_MSG_ID)
+  store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
+  store.commit(MUTATION_TYPES.RESET_MSG_ID)
 }
 
 const resetStoreForAddress = (store, address) => {
@@ -34,15 +34,13 @@ const testRouteForAddress = (router, store) => {
 
   if (!urlAddrIsValid) {
     resetAppState(store)
-    console.log('HEYOOOOOOOO------------')
     // resetStoreForAddress(store, urlAddr)
     return router.push({ path: `/inbox` })
   }
 
   if (isNewAddrInUrl && urlAddrIsValid) {
     // resetStoreForAddress(store)
-    console.log('BMMMMMMMMMMMMMM------------')
-    store.commit(MUTATION_TYPES.UPDATE_CURRENT_ADDR_ID, urlAddr)
+    store.commit(MUTATION_TYPES.UPDATE_INBOX_ACCT_ID, urlAddr)
     return store.dispatch(ACTION_TYPES.FETCH_TXS, urlAddr)
   }
 }
@@ -57,13 +55,13 @@ const testRouteForMessage = (router, store) => {
   if (!urlMsgId || !urlAddress) return
 
   if (!msgIdInUrlIsValid) {
-    store.commit(MUTATION_TYPES.RESET_CURRENT_MSG_ID)
+    store.commit(MUTATION_TYPES.RESET_MSG_ID)
     router.push({ path: `/inbox/${urlAddress}` })
     return
   }
 
   if (isNewMsgIdInUrl && msgIdInUrlIsValid) {
-    return store.commit(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, urlMsgId)
+    return store.commit(MUTATION_TYPES.UPDATE_MSG_ID, urlMsgId)
   }
 }
 

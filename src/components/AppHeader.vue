@@ -78,7 +78,7 @@
       },
       submit () {
         const searchAddress = this.searchAddress
-        const curAddress = this.$store.getters.currentAddressId
+        const curAddress = this.$store.getters.inboxAccountId
         const validEthAddress = web3.utils.isAddress(searchAddress)
 
         // Bail if not a valid address
@@ -87,8 +87,8 @@
         // Skip if the new address is the same as what we already have
         if (searchAddress === curAddress) return
 
-        this.$store.commit(MUTATION_TYPES.RESET_CURRENT_ADDR_ID)
-        this.$store.commit(MUTATION_TYPES.RESET_CURRENT_MSG_ID)
+        this.$store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
+        this.$store.commit(MUTATION_TYPES.RESET_MSG_ID)
 
         const payload = { address: searchAddress }
         this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
@@ -114,7 +114,7 @@
     },
     computed: {
       address () {
-        return this.$store.getters.currentAddressId
+        return this.$store.getters.inboxAccountId
       },
     },
   }
