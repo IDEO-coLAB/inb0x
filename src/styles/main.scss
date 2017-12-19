@@ -43,7 +43,7 @@
     flex: 0 0 #{$control-size * 2};
     padding-top: $unit-4;
     position: relative;
-    background-color: red;
+    // background-color: red;
 
     .btn {
       display: block;
@@ -58,7 +58,7 @@
     height: 100%;
     flex: 1;
     overflow: hidden;
-    background-color: yellow;
+    // background-color: yellow;
   }
 }
 
@@ -98,7 +98,7 @@
     align-items: center;
     display: flex;
 
-    background-color: red;
+    // background-color: red;
 
     font-size: $font-size-lg;
     min-height: $control-size-lg;
@@ -107,7 +107,7 @@
 
     &:not(:last-child) {
       padding-right: $unit-3;
-      background-color: green;
+      // background-color: green;
     }
   }
 }
@@ -145,12 +145,12 @@
   padding: $unit-3;
   color: $gray-color;
   border-top: 1px solid $gray-color-light;
-  background-color: blue;
+  // background-color: blue;
 
   .footer-section {
     @include text-ellipsis();
     align-items: center;
-    background-color: red;
+    // background-color: red;
     display: flex;
     flex: 1 0;
     min-height: $control-size-lg;

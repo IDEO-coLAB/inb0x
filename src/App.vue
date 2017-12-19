@@ -25,7 +25,7 @@
         // this.$router.push('/inbox?addresses=0x8d12a197cb00d4747a1fe03395095ce2a5cc6819')
       // }
       // this.$router.push('/inbox')
-      // this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+      this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x1ed014aec47fae44c9e55bac7662c0b78ae61798/setup')
     },
