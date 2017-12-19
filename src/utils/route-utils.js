@@ -19,27 +19,25 @@ const resetStoreForAddress = (store, address) => {
 
 const testRouteForAddress = (router, store) => {
   const route = router.currentRoute
-  const curAddr = store.getters.currentAddressId
+  const curAddr = store.getters.inboxAccountId
   const urlAddr = route.params.address
 
   const isNewAddrInUrl = urlAddr !== curAddr
   const urlAddrIsValid = web3.utils.isAddress(urlAddr)
 
-  // console.log('urlAddr', urlAddr)
-  // console.log('curAddr', curAddr)
-  // console.log('isNewAddrInUrl', isNewAddrInUrl)
-  // console.log('urlAddrIsValid', urlAddrIsValid)
+  console.log('urlAddr', urlAddr)
+  console.log('curAddr', curAddr)
+  console.log('isNewAddrInUrl', isNewAddrInUrl)
+  console.log('urlAddrIsValid', urlAddrIsValid)
 
   if (!urlAddr) return
 
   if (!urlAddrIsValid) {
     resetAppState(store)
-    // resetStoreForAddress(store, urlAddr)
     return router.push({ path: `/inbox` })
   }
 
   if (isNewAddrInUrl && urlAddrIsValid) {
-    // resetStoreForAddress(store)
     store.commit(MUTATION_TYPES.UPDATE_INBOX_ACCT_ID, urlAddr)
     return store.dispatch(ACTION_TYPES.FETCH_TXS, urlAddr)
   }

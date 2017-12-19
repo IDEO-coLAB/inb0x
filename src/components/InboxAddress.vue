@@ -110,7 +110,6 @@
   import AppHeader from './AppHeader'
   import MessageTile from './MessageTile'
   import weiToEth from '../directives/wei-to-eth'
-  import addressTruncate from '../directives/address-truncate'
 
   export default {
     components: {
@@ -119,7 +118,6 @@
     },
     directives: {
       weiToEth,
-      addressTruncate,
     },
     computed: {
       inboxAccountId () {

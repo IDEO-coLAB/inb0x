@@ -4,7 +4,6 @@ import { MUTATION_TYPES } from '../../constants/mutations'
 
 // Initial state
 const state = {
-  errors: [],
   notifications: [],
   inboxAccountId: null,
   web3AccountId: null,
@@ -13,7 +12,6 @@ const state = {
 
 // Getters
 const getters = {
-  errors: state => state.errors,
   notifications: state => state.notifications,
   inboxAccountId: state => state.inboxAccountId,
   web3AccountId: state => state.web3AccountId,
@@ -24,27 +22,15 @@ const getters = {
 // Mutations
 const mutations = {
 
-  [MUTATION_TYPES.UPDATE_ERRORS] (state, error) {
-    state.errors.push(error)
-    console.log(MUTATION_TYPES.UPDATE_ERRORS, state.errors)
+  [MUTATION_TYPES.UPDATE_NOTIFICATIONS] (state, notification) {
+    state.notifications.push(notification)
+    console.log(MUTATION_TYPES.UPDATE_NOTIFICATIONS, state.notifications)
   },
 
-  [MUTATION_TYPES.REMOVE_ERROR] (state, error) {
-    const errIdx = _.indexOf(state.errors, error)
-    state.errors = _.slice(state.errors, errIdx, errIdx+1)
-    console.log(MUTATION_TYPES.REMOVE_ERROR, state.errors)
-  },
-
-
-  [MUTATION_TYPES.UPDATE_NOTIFICATIONS] (state, info) {
-    state.info.push(info)
-    console.log(MUTATION_TYPES.UPDATE_NOTIFICATIONS, state.info)
-  },
-
-  [MUTATION_TYPES.REMOVE_NOTIFICATION] (state, info) {
-    const infoIdx = _.indexOf(state.info, info)
-    state.info = _.slice(state.info, infoIdx, infoIdx+1)
-    console.log(MUTATION_TYPES.REMOVE_NOTIFICATION, state.info)
+  [MUTATION_TYPES.REMOVE_NOTIFICATION] (state, notification) {
+    const noteIdx = _.indexOf(state.notifications, notification)
+    state.notifications = _.slice(state.notifications, noteIdx, noteIdx+1)
+    console.log(MUTATION_TYPES.REMOVE_NOTIFICATION, state.notifications)
   },
 
 

@@ -15,11 +15,9 @@
 
 <script>
   import AppHeader from './AppHeader'
-  import AddressSearchInput from './AddressSearchInput'
 
   export default {
     components: {
-      AddressSearchInput,
       AppHeader,
     },
   }

@@ -57,12 +57,8 @@
   import { MUTATION_TYPES } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
   import { EAMError, MessageError } from '../constants/errors'
-  import addressTruncate from '../directives/address-truncate'
 
   export default {
-    directives: {
-      addressTruncate,
-    },
     data () {
       return {
         searchAddress: this.address || null,

@@ -156,7 +156,7 @@
         return web3.utils.toHex(this.messageJSON)
       },
       web3Provider () {
-        return this.$store.getters.web3.provider
+        return this.$store.getters.web3Provider
       }
     },
   }

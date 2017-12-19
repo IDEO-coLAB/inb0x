@@ -12,6 +12,7 @@
   import { ACTION_TYPES } from './constants/actions'
   import { EAMError, MessageError } from './constants/errors'
   import { testRouteForAddressAndMessage } from './utils/route-utils'
+  import { Notification, NOTIFICATION_TYPES } from './models/notification'
 
   export default {
     beforeCreate () {
@@ -66,9 +67,20 @@
 
       }
       // TODO: handle global info state and errors
-      // else {
-      //   this.$store.commit(MUTATION_TYPES.UPDATE_APP_INFO, 'app is missing ')
-      // }
+      else {
+
+        const note = new Notification({
+          description: 'This is some descriptive text for the notification.',
+          type: NOTIFICATION_TYPES.INFO,
+          actions: [{
+            name: 'action name',
+            fn: () => console.log('clicked an action in the notification'),
+          }],
+          onClose: () => console.log('clicked close')
+        })
+        console.log(note)
+        this.$store.commit(MUTATION_TYPES.UPDATE_NOTIFICATIONS, note)
+      }
     },
     watch: {
       '$route' (to, from) {
