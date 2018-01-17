@@ -3,21 +3,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import About from '../components/About'
-
 import Inbox from '../components/Inbox'
 import InboxHome from '../components/InboxHome'
-
 import InboxAddress from '../components/InboxAddress'
-// import InboxAddressHome from '../components/InboxAddressHome'
+
+// TODO: These now all get wrapped into components,
+// there is no longer a route for these.
 import InboxAddressMessage from '../components/InboxAddressMessage'
-
 import Compose from '../components/Compose'
-
-// import Update from '../components/Update'
-// import UpdateHome from '../components/UpdateHome'
-import Settings from '../components/Settings'
-// import UpdateAddressHome from '../components/UpdateAddressHome'
-// import UpdateAddressControlled from '../components/UpdateAddressControlled'
 
 Vue.use(VueRouter)
 
@@ -45,26 +38,17 @@ const routes = [
     ]
   },
 
+  // TODO: Move these into universal components
   {
     path: '/inbox/:address/:message',
     name: 'InboxAddressMessage',
     component: InboxAddressMessage,
   },
-
   {
     path: '/compose',
     name: 'Compose',
     component: Compose,
   },
-
-  {
-    path: '/settings/:address',
-    name: 'Settings',
-    component: Settings,
-  },
-
-
-
 ]
 
 const router = new VueRouter({

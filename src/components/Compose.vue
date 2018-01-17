@@ -115,6 +115,7 @@
         gasLimit: 0,
       }
     },
+    // MetaMask code scratch...to be used soon :)
     // mounted () {
     //   if (!_.isUndefined(web3)) {
     //     // Use Mist/MetaMask's provider

@@ -14,9 +14,6 @@ const getters = {
 
 // Mutations
 const mutations = {
-
-
-
   [MUTATION_TYPES.UPDATE_EAMS] (state, { address, eam }) {
     // let newAddrEamObj = state.eams[address] || {}
     // newAddrEamObj.eam = eam
@@ -34,19 +31,6 @@ const mutations = {
     console.log(MUTATION_TYPES.RESET_EAMS, state.eams[address])
   },
 
-
-
-
-
-  // [MUTATION_TYPES.UPDATE_EAM] (state, eam) {
-  //   state.eams = eam
-  //   console.log(MUTATION_TYPES.UPDATE_EAM, eam)
-  // },
-
-  // [MUTATION_TYPES.RESET_EAM] (state) {
-  //   state.eams = null
-  //   console.log(MUTATION_TYPES.RESET_EAM)
-  // },
 }
 
 export default {

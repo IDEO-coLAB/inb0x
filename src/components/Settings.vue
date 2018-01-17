@@ -1,14 +1,16 @@
+<!--
+
 <template>
   <div class="columns col-gapless height-full">
 
-    <!-- Body -->
+
     <div class="column col-12 page-container">
 
-      <!-- Main content -->
+
       <div class="page-content">
 
 
-        <!-- Header -->
+
         <div class="header">
           <div class="header-section">
             <span class="header-content">
@@ -70,3 +72,4 @@
     }
   }
 </script>
+ -->

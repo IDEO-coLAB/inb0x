@@ -35,7 +35,6 @@ const mutations = {
 
 
 
-
   [MUTATION_TYPES.UPDATE_INBOX_ACCT_ID] (state, id) {
     // DO CHECKS HERE
     state.inboxAccountId = id

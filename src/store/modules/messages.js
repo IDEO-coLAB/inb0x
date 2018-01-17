@@ -17,23 +17,6 @@ const getters = {
 // Mutations
 const mutations = {
 
-  // [MUTATION_TYPES.UPDATE_CURRENT_MSG_ID] (state, id) {
-  //   // DO CHECKS HERE
-  //   state.currentMessageId = id
-  //   console.log(MUTATION_TYPES.UPDATE_CURRENT_MSG_ID, state.currentMessageId)
-  // },
-  // [MUTATION_TYPES.RESET_CURRENT_MSG_ID] (state) {
-  //   // DO CHECKS HERE
-  //   state.currentMessageId = null
-  //   console.log(MUTATION_TYPES.RESET_CURRENT_MSG_ID, state.currentMessageId)
-  // },
-
-
-
-
-
-
-
   [MUTATION_TYPES.UPDATE_MESSAGES] (state, { address, messages }) {
     let newAddrMsgsObj = state.messages[address] || []
 
@@ -46,34 +29,6 @@ const mutations = {
     console.log(MUTATION_TYPES.RESET_MESSAGES, state.messages[address])
   },
 
-
-
-
-
-
-
-  // [MUTATION_TYPES.UPDATE_CURRENT_MESSAGE] (state, hash) {
-  //   state.currentMessageHash = hash
-  //   console.log(MUTATION_TYPES.UPDATE_CURRENT_MESSAGE, state.currentMessageHash)
-  // },
-
-  // [MUTATION_TYPES.RESET_CURRENT_MESSAGE] (state) {
-  //   state.currentMessageHash = null
-  //   console.log(MUTATION_TYPES.RESET_CURRENT_MESSAGE)
-  // },
-
-  // [MUTATION_TYPES.UPDATE_MESSAGES] (state, messages) {
-
-  //   // Do stats in here
-
-  //   state.messages = state.messages.concat(messages)
-  //   console.log(MUTATION_TYPES.UPDATE_MESSAGES, state.messages)
-  // },
-
-  // [MUTATION_TYPES.RESET_MESSAGES] (state) {
-  //   state.messages = []
-  //   console.log(MUTATION_TYPES.RESET_MESSAGES)
-  // },
 }
 
 export default {

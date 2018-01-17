@@ -10,7 +10,6 @@
   import AppHeader from './components/AppHeader'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
-  import { EAMError, MessageError } from './constants/errors'
   import { testRouteForAddressAndMessage } from './utils/route-utils'
   import { Notification, NOTIFICATION_TYPES } from './models/notification'
 

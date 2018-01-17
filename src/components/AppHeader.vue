@@ -56,7 +56,6 @@
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
-  import { EAMError, MessageError } from '../constants/errors'
 
   export default {
     data () {

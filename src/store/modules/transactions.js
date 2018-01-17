@@ -6,7 +6,6 @@ import moment from 'moment'
 import { MUTATION_TYPES } from '../../constants/mutations'
 import { ACTION_TYPES } from '../../constants/actions'
 
-import { EAMError, MessageError, AddressError } from '../../constants/errors'
 import { getTxUrlForAddress } from '../../constants/urls'
 import { isEAM, EAM } from '../../eam'
 
@@ -43,15 +42,12 @@ const getters = {
 const actions = {
   [ACTION_TYPES.FETCH_TXS] ({ commit, state }, address) {
     const pageToFetch = state.state.pageIdx || PAGE_START_INDEX
+
     // TODO: CACHING!!!!
-    // const curAddress = address
 
     if (address && !web3.utils.isAddress(address)) {
       return Promise.reject(new AddressError())
     }
-    // if (_.isUndefined(address) && curAddress) {
-    //   address = curAddress
-    // }
 
     const addressTxFetchUrl = getTxUrlForAddress(address, pageToFetch, RESULTS_PER_PAGE)
     commit(MUTATION_TYPES.UPDATE_TRANSACTIONS_STATE, {
@@ -166,30 +162,16 @@ const mutations = {
 
   [MUTATION_TYPES.UPDATE_TRANSACTIONS] (state, { address, transactions }) {
     let newAddrObj = state.transactions[address] || []
-    // newAddrObj.transactions = _.uniq(newAddrObj.concat(transactions))
 
     Vue.set(state.transactions, address, _.uniqBy(newAddrObj.concat(transactions), 'hash'))
     console.log(MUTATION_TYPES.UPDATE_TRANSACTIONS, state.transactions[address])
   },
 
   [MUTATION_TYPES.RESET_TRANSACTIONS] (state, { address }) {
-    // let newAddrObj = state.transactions[address] || []
-    // newAddrObj.transactions = []
-
     Vue.set(state.transactions, address, [])
     console.log(MUTATION_TYPES.RESET_TRANSACTIONS, state.transactions[address])
   },
 
-
-  // [MUTATION_TYPES.UPDATE_TRANSACTIONS] (state, transactions) {
-  //   state.transactions = state.transactions.concat(transactions)
-  //   console.log(MUTATION_TYPES.UPDATE_TRANSACTIONS, transactions)
-  // },
-
-  // [MUTATION_TYPES.RESET_TRANSACTIONS] (state) {
-  //   state.transactions = []
-  //   console.log(MUTATION_TYPES.RESET_TRANSACTIONS)
-  // },
 }
 
 export default {
