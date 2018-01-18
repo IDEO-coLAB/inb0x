@@ -1,7 +1,7 @@
 <template>
       <div class="columns">
         <div class="column col-1">
-          this is something
+          <SideNav></SideNav>
         </div>
 
         <div class="column col-11 body">
@@ -72,12 +72,14 @@
   import { ACTION_TYPES } from '../constants/actions'
   import MessageTile from './MessageTile'
   import SearchBar from './SearchBar'
+  import SideNav from './SideNav'
   import weiToEth from '../directives/wei-to-eth'
 
   export default {
     components: {
       MessageTile,
-      SearchBar
+      SearchBar,
+      SideNav
     },
     directives: {
       weiToEth,
