@@ -136,7 +136,7 @@
         return _.last(this.messages)
       },
       orderedMessages () {
-        console.log(this.messages)
+        console.log("these are the messages" + this.messages)
         return this.messages
       },
       eam () {

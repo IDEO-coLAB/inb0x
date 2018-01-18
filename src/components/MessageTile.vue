@@ -17,7 +17,7 @@
       <p class="message-item--header--bounty"><span v-wei-to-eth="message.value"></span> ETH</p>
       <p class="message-item--header--date">{{message.time.format('MMM D Y')}}</p>
     </div>
-    <p class="message-item--text">{{message.blockHash}}</p>
+    <p class="message-item--text" v-hex-to-ascii="message.input"></p>
   </div>
 </template>
 
@@ -25,10 +25,12 @@
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
   import weiToEth from '../directives/wei-to-eth'
+  import hexToAscii from '../directives/hex-to-ascii'
 
   export default {
     directives: {
       weiToEth,
+      hexToAscii,
     },
     props: {
       message: {
