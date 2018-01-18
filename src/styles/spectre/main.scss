@@ -1,14 +1,7 @@
 @import 'spectre/spectre';
 
 
-// body{
-//   height: 100vh;
-// }
 
-.columns{
-  height: 100%;
-  box-sizing: border-box;
-}
 
 .app-container {
   height: 100%;
@@ -17,10 +10,26 @@
 
 
 
+
+
+
+
+
 .height-full {
   height: 100%;
   position: relative;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 .page-container {
@@ -114,17 +123,17 @@
   &.body-with-footer {
     height: calc(100% - #{$control-size-lg} - (#{$unit-3} * 2));
   }
-  // &.body-with-header {
-  //   height: calc(100% - #{$control-size-lg} - (#{$unit-3} * 20));
-  // }
   &.body-with-header {
-    height: 85%;
-    // need to actually figure out the measurements.
+    height: calc(100% - #{$control-size-lg} - (#{$unit-3} * 2));
   }
   &.body-with-header-and-footer {
     height: calc(100% - (#{$control-size-lg} * 2) - (#{$unit-3} * 4));
   }
 }
+
+
+
+
 
 
 
@@ -194,3 +203,13 @@
   color: $gray-color;
   text-transform: uppercase;
 }
+
+
+
+
+
+
+
+
+
+

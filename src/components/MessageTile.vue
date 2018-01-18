@@ -1,16 +1,4 @@
 <template>
-  <!-- <div class="tile" @click="setCurrentMessage(message, $event)">
-    <div class="tile-content">
-      <span v-wei-to-eth="message.value"></span> Eth
-    </div>
-    <div class="tile-content">
-      <strong>{{messageSize}} bytes</strong> from {{message.from}}
-    </div>
-    <div class="tile-content text-uppercase-light">
-      {{message.time.format('MMM D Y')}}
-    </div>
-  </div> -->
-
   <div class="message-item" @click="setCurrentMessage(message, $event)">
     <div class="message-item--header">
       <p class="message-item--header--addr">{{message.from}}</p>
@@ -60,9 +48,13 @@
   .message-item{
     background-color: #F7F9FB;
     padding: 1rem;
-    margin-top: 2rem;
     box-shadow: 0;
     transition: box-shadow 0.3s ease-in-out;
+  }
+
+  // all but first
+  .message-item ~ .message-item{
+    margin-top: 2rem;
   }
 
   .message-item--text{
