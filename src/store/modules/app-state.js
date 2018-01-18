@@ -51,6 +51,7 @@ const mutations = {
   [MUTATION_TYPES.UPDATE_MSG_ID] (state, id) {
     // DO CHECKS HERE
     state.messageId = id
+    console.log("I think we mutation");
     console.log(MUTATION_TYPES.UPDATE_MSG_ID, state.messageId)
   },
   [MUTATION_TYPES.RESET_MSG_ID] (state) {

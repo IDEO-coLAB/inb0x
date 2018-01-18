@@ -161,3 +161,15 @@
     }
   }
 </script>
+
+<style type="scss" scoped>
+
+  .col-12{
+    padding: 2rem;
+  }
+
+  .col-4{
+    background-color: #F7F9FB;
+  }
+
+</style>

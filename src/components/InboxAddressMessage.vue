@@ -49,7 +49,7 @@
               </div>
               <div class="column col-6 text-right">
                 <span class="text-uppercase-light">
-                  {{currentMessage && currentMessage.time.format('MMM D Y')}}
+                  {{currentMessage.time.format('MMM D Y')}}
                 </span>
               </div>
             </div>
@@ -57,6 +57,7 @@
 
           <div class="section">
             {{currentMessage}}
+            actual
           </div>
 
           <div class="section">
