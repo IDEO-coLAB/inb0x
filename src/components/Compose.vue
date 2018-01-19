@@ -53,6 +53,10 @@
                     <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="txAmount" />
                   </div>
                   <div class="form-group">
+                    <label class="form-label">Reply Bountry</label>
+                    <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="replyBounty" />
+                  </div>
+                  <div class="form-group">
                     <label class="form-label">Gas Limit</label>
                     <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="gasLimit" />
                   </div>
@@ -76,6 +80,10 @@
                     <label class="form-label">Transaction Input Hex</label>
                     <textarea readonly class="form-input" rows="3" v-model="messageHex"></textarea>
                   </div>
+                </div>
+
+                <div v-on:click="submitOnContract">
+                  submit
                 </div>
 
               </div>
@@ -111,9 +119,28 @@
       return {
         recipient: null,
         message: '',
+        replyBounty: null,
         txAmount: 0,
         gasLimit: 0,
       }
+    },
+    created () {
+
+      // the only way I could get this going was creating a new web3 instance.
+      // I checked in the main app instance, and there was a web3 init, but im
+      // not sure it was working. This will do for now.
+      // we should also set it up to be production (joes server) and test (testrpc)
+
+
+      //TODO: abstract this web3 initialization to the main view.
+
+      // this web3 instance is using testrpc
+      var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+      var inboxContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
+
+      var inbox = inboxContract.at("0x672d0b2e5a53d4b188a91f884a65d480802f6d3e");
+
     },
     // MetaMask code scratch...to be used soon :)
     // mounted () {
@@ -146,6 +173,24 @@
           data: 'this is something'
         }, (err, data) => console.log(err, data))
       },
+      submitOnContract (event) {
+        // im p sure theres a defualt vue thing for prevent default
+        event.preventDefault();
+
+        var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+        var inboxContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
+
+        var inbox = inboxContract.at("0x672d0b2e5a53d4b188a91f884a65d480802f6d3e");
+
+        inbox.sendMessage(this.recipient, this.message, parseFloat(this.txAmount), parseFloat(this.replyBounty), {from:web3.eth.accounts[0], value:web3.toWei(parseFloat(this.txAmount)+parseFloat(this.replyBounty)), gas:3000000 }, function(error, result) {
+            if (!error)
+                console.log("worked")
+            else
+                console.error(error);
+        });
+
+      }
     },
     computed: {
       messageJSON () {
