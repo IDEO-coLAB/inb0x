@@ -86,6 +86,7 @@
     display: inline-flex;
     align-items: center;
     margin-bottom: 2rem;
+    width: 100%;
   }
 
   .logobar input{
@@ -94,7 +95,7 @@
     border-radius: none;
     color: #002D47;
     margin-left: -1px;
-    width: 1200px;
+    width: 100%;
   }
 
   ::-webkit-input-placeholder { color: #002D47;  }
