@@ -9,7 +9,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 web3.eth.getAccounts()
 .then((accounts) => {
 
-  const code = fs.readFileSync('contracts/inb0x.sol').toString();
+  const code = fs.readFileSync('src/contracts/inb0x.sol').toString();
   const compiledCode = solc.compile(code);
 
   const byteCode = compiledCode.contracts[':Inbox'].bytecode;
