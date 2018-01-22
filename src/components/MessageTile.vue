@@ -2,7 +2,7 @@
   <div class="message-item" @click="setCurrentMessage(message, $event)">
     <div class="message-item--header">
       <p class="message-item--header--addr">{{message.from}}</p>
-      <p class="message-item--header--bounty">{{message.value}}ETH</p>
+      <p class="message-item--header--bounty">{{message.value}} ETH</p>
       <!-- <p class="message-item--header--date">{{message.time.format('MMM D Y')}}</p> -->
     </div>
     <p class="message-item--text">{{message.input}}</p>

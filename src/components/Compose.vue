@@ -124,38 +124,6 @@
         gasLimit: 0,
       }
     },
-    created () {
-
-      // the only way I could get this going was creating a new web3 instance.
-      // I checked in the main app instance, and there was a web3 init, but im
-      // not sure it was working. This will do for now.
-      // we should also set it up to be production (joes server) and test (testrpc)
-
-
-      //TODO: abstract this web3 initialization to the main view.
-
-      // this web3 instance is using testrpc
-      var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-
-      var inboxContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
-
-      var inbox = inboxContract.at("0xc4088c9bc6a7929c0c30ccd322fc41032292f5da");
-
-    },
-    // MetaMask code scratch...to be used soon :)
-    // mounted () {
-    //   if (!_.isUndefined(web3)) {
-    //     // Use Mist/MetaMask's provider
-    //     const prov = new Web3(web3.currentProvider)
-    //     console.log('prov', prov)
-    //     console.log('prov', prov.eth.accounts)
-
-
-    //     // web3.version.getNetwork((err, netId) => {console.log(err, netId)})
-    //     // console.log('prov', )
-    //     // this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, prov)
-    //   }
-    // },
     methods: {
       exitCompose (event) {
         event.preventDefault()
@@ -181,24 +149,7 @@
 
         var inboxContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
 
-        /*
-
-
-        UPDATE THE CONTRACT ADDRESS EACH TIME!!! VERY IMPORTANT FOR TESTING.
-
-
-        */
-        var inbox = inboxContract.at("0xa9270baa07bf29bda83f07ad4792749c2636114b");
-        console.log(inbox);
-
-        /*
-
-
-        MAKE SURE THE ABOVE STATEMENT IS UP TO DATE!!
-
-
-        */
-
+        var inbox = inboxContract.at(this.$store.state.appState.contractID);
 
         inbox.sendMessage(this.recipient, this.message, parseFloat(this.txAmount), parseFloat(this.replyBounty), {from:web3.eth.accounts[0], value:web3.toWei(parseFloat(this.txAmount)+parseFloat(this.replyBounty)), gas:3000000 }, function(error, result) {
             if (!error){
@@ -207,8 +158,6 @@
             else
                 console.error(error)
         });
-
-
       }
     },
     computed: {

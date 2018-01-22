@@ -8,6 +8,7 @@ const state = {
   inboxAccountId: null,
   web3AccountId: null,
   messageId: null,
+  contractID: "0xa9270baa07bf29bda83f07ad4792749c2636114b",
 }
 
 // Getters
@@ -16,6 +17,7 @@ const getters = {
   inboxAccountId: state => state.inboxAccountId,
   web3AccountId: state => state.web3AccountId,
   messageId: state => state.messageId,
+  contractID : state => state.contractID,
   app: state => state,
 }
 
