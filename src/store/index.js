@@ -6,6 +6,7 @@ import messages from './modules/messages'
 import eams from './modules/eams'
 import appState from './modules/app-state'
 import web3Provider from './modules/web3-provider'
+import contract from './modules/contract'
 
 Vue.use(Vuex)
 
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     eams,
     appState,
     web3Provider,
+    contract,
   },
   strict: debug,
 })

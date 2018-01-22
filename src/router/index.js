@@ -6,6 +6,7 @@ import About from '../components/About'
 import Inbox from '../components/Inbox'
 import InboxHome from '../components/InboxHome'
 import InboxAddress from '../components/InboxAddress'
+import ContractInbox from '../components/ContractInbox'
 
 // TODO: These now all get wrapped into components,
 // there is no longer a route for these.
@@ -19,6 +20,12 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About,
+  },
+
+  {
+    path: '/contractinbox',
+    name: 'ContractInbox',
+    component: ContractInbox,
   },
 
   {
@@ -57,29 +64,3 @@ const router = new VueRouter({
 })
 
 export default router
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

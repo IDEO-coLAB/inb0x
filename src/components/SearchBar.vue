@@ -17,6 +17,9 @@
 </template>
 
 <script>
+  import web3 from 'web3'
+  import { MUTATION_TYPES } from '../constants/mutations'
+  import { ACTION_TYPES } from '../constants/actions'
 
   export default {
     data () {
@@ -35,39 +38,40 @@
       },
       submit () {
         const searchAddress = this.searchAddress
-        const curAddress = this.$store.getters.inboxAccountId
+        const curAddress = this.$store.getters.getAddress
         const validEthAddress = web3.utils.isAddress(searchAddress)
 
-        // Bail if not a valid address
         if (!validEthAddress) return
-
-        // Skip if the new address is the same as what we already have
         if (searchAddress === curAddress) return
 
-        this.$store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
-        this.$store.commit(MUTATION_TYPES.RESET_MSG_ID)
-
-        const payload = { address: searchAddress }
-        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_MESSAGES, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_EAMS, payload)
-
-        // finally, fetch the details for the address
-        return this.$store.dispatch(ACTION_TYPES.FETCH_TXS, searchAddress)
-          .then(() => {
-            return this.$router.push({ path: `/inbox/${searchAddress}` })
-          })
-          .catch((error) => {
-            console.error('NEW ADDR FETCH ERROR', error)
-            return true
-          })
-          .then(() => {
-            this.isSearching = false
-            this.resetInput()
-          })
-      }
+        this.$store.commit(MUTATION_TYPES.UPDATE_ADDRESS, searchAddress)
+        this.$store.commit(MUTATION_TYPES.UPDATE_ADDRMESSAGES, searchAddress)
+      },
+      // submit () {
+      //   this.$store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
+      //   this.$store.commit(MUTATION_TYPES.RESET_MSG_ID)
+      //
+      //   const payload = { address: searchAddress }
+      //   this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
+      //   this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
+      //   this.$store.commit(MUTATION_TYPES.RESET_MESSAGES, payload)
+      //   this.$store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
+      //   this.$store.commit(MUTATION_TYPES.RESET_EAMS, payload)
+      //
+      //   // finally, fetch the details for the address
+      //   return this.$store.dispatch(ACTION_TYPES.FETCH_TXS, searchAddress)
+      //     .then(() => {
+      //       return this.$router.push({ path: `/inbox/${searchAddress}` })
+      //     })
+      //     .catch((error) => {
+      //       console.error('NEW ADDR FETCH ERROR', error)
+      //       return true
+      //     })
+      //     .then(() => {
+      //       this.isSearching = false
+      //       this.resetInput()
+      //     })
+      // }
     },
   }
 

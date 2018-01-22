@@ -49,7 +49,7 @@
 
                 <div class="section">
                   <div class="form-group">
-                    <label class="form-label">Amount to Send</label>
+                    <label class="form-label">tx amount</label>
                     <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="txAmount" />
                   </div>
                   <div class="form-group">
@@ -139,7 +139,7 @@
 
       var inboxContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
 
-      var inbox = inboxContract.at("0x672d0b2e5a53d4b188a91f884a65d480802f6d3e");
+      var inbox = inboxContract.at("0xc4088c9bc6a7929c0c30ccd322fc41032292f5da");
 
     },
     // MetaMask code scratch...to be used soon :)
@@ -181,14 +181,33 @@
 
         var inboxContract = web3.eth.contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]);
 
-        var inbox = inboxContract.at("0xc4088c9bc6a7929c0c30ccd322fc41032292f5da");
+        /*
+
+
+        UPDATE THE CONTRACT ADDRESS EACH TIME!!! VERY IMPORTANT FOR TESTING.
+
+
+        */
+        var inbox = inboxContract.at("0xa9270baa07bf29bda83f07ad4792749c2636114b");
+        console.log(inbox);
+
+        /*
+
+
+        MAKE SURE THE ABOVE STATEMENT IS UP TO DATE!!
+
+
+        */
+
 
         inbox.sendMessage(this.recipient, this.message, parseFloat(this.txAmount), parseFloat(this.replyBounty), {from:web3.eth.accounts[0], value:web3.toWei(parseFloat(this.txAmount)+parseFloat(this.replyBounty)), gas:3000000 }, function(error, result) {
-            if (!error)
+            if (!error){
                 console.log("worked")
+              }
             else
-                console.error(error);
+                console.error(error)
         });
+
 
       }
     },
