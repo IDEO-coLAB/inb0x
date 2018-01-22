@@ -11,12 +11,8 @@
 
     <div class="column col-11 body">
       <SearchBar></SearchBar>
-        {{address}}
       <div class="body body-with-header noflow">
-        <li v-for="message in addrmessages">
-          {{ message.message }}
-
-        </li>
+        <MessageTile v-for="message in addrmessages" v-bind:message="message" v-bind:key="message.key"></MessageTile>
       </div>
     </div>
 </div>

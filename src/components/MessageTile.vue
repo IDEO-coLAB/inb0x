@@ -2,22 +2,20 @@
   <div class="message-item" @click="setCurrentMessage(message, $event)">
     <div class="message-item--header">
       <p class="message-item--header--addr">{{message.from}}</p>
-      <p class="message-item--header--bounty"><span v-wei-to-eth="message.value"></span> ETH</p>
-      <p class="message-item--header--date">{{message.time.format('MMM D Y')}}</p>
+      <p class="message-item--header--bounty">{{message.value}}ETH</p>
+      <!-- <p class="message-item--header--date">{{message.time.format('MMM D Y')}}</p> -->
     </div>
-    <p class="message-item--text" v-hex-to-ascii="message.input"></p>
+    <p class="message-item--text">{{message.input}}</p>
   </div>
 </template>
 
 <script>
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
-  import weiToEth from '../directives/wei-to-eth'
   import hexToAscii from '../directives/hex-to-ascii'
 
   export default {
     directives: {
-      weiToEth,
       hexToAscii,
     },
     props: {
@@ -28,7 +26,6 @@
     },
     computed: {
       messageSize () {
-        // return web3.utils.hexToAscii(this.message.input)
         return web3.utils.hexToBytes(this.message.input).length
       }
     },
