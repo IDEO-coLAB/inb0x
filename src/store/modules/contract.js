@@ -27,11 +27,12 @@ const mutations = {
     //sweep this for errors
     const inbox = this.getters.contractObject;
     console.log(inbox);
-    inbox.methods.getInbox(address).call({from: '0xa9933ffa51983d93f2e288709d6d7fa5b9176014'})
+    inbox.methods.getInbox(address).call({from: '0xb09cc94e279a95b924578f57cae68686c175245f'})
     .then(function(result){
       var recs = result[1];
+      console.log(recs);
       for (var i = 0; i < recs; i++) {
-        inbox.methods.getMessage(address,i).call({from: '0xa9933ffa51983d93f2e288709d6d7fa5b9176014'})
+        inbox.methods.getMessage(address,i).call({from: '0xb09cc94e279a95b924578f57cae68686c175245f'})
         .then(function(result,error){
           if(!error){
             console.log(result);

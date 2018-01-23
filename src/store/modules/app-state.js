@@ -8,7 +8,7 @@ const state = {
   inboxAccountId: null,
   web3AccountId: null,
   messageId: null,
-  contractID: "0xa9270baa07bf29bda83f07ad4792749c2636114b",
+  contractID: "0xcc2c4311162c4b70a5126e8815adfe272de73592",
   contractObject: null,
 }
 
