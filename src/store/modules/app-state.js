@@ -9,6 +9,7 @@ const state = {
   web3AccountId: null,
   messageId: null,
   contractID: "0xa9270baa07bf29bda83f07ad4792749c2636114b",
+  contractObject: null,
 }
 
 // Getters
@@ -18,6 +19,7 @@ const getters = {
   web3AccountId: state => state.web3AccountId,
   messageId: state => state.messageId,
   contractID : state => state.contractID,
+  contractObject: state => state.contractObject,
   app: state => state,
 }
 
@@ -53,7 +55,6 @@ const mutations = {
   [MUTATION_TYPES.UPDATE_MSG_ID] (state, id) {
     // DO CHECKS HERE
     state.messageId = id
-    console.log("I think we mutation");
     console.log(MUTATION_TYPES.UPDATE_MSG_ID, state.messageId)
   },
   [MUTATION_TYPES.RESET_MSG_ID] (state) {
@@ -61,8 +62,6 @@ const mutations = {
     state.messageId = null
     console.log(MUTATION_TYPES.RESET_MSG_ID, state.messageId)
   },
-
-
 
 
   [MUTATION_TYPES.UPDATE_WEB3_ACCT_ID] (state, id) {
@@ -75,6 +74,13 @@ const mutations = {
     state.web3AccountId = null
     console.log(MUTATION_TYPES.RESET_WEB3_ACCT_ID, state.web3AccountId)
   },
+
+  [MUTATION_TYPES.UPDATE_CONTRACT_OBJECT] (state, contract) {
+    // hopefully this fixes the loop
+    state.contractObject = Object.freeze(contract)
+    console.log(MUTATION_TYPES.UPDATE_CONTRACT_OBJECT, state.contractObject)
+  },
+
 
 }
 

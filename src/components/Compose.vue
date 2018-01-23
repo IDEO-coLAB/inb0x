@@ -14,8 +14,6 @@
       <!-- Main content -->
       <div class="page-content">
 
-
-
         <form  v-on:submit="submit">
 
           <!-- Header -->
@@ -68,20 +66,6 @@
                   </div>
                 </div>
 
-                <div class="section">
-                  <div class="form-group">
-                    <label class="form-label">Message JSON</label>
-                    <textarea readonly class="form-input" rows="3" v-model="messageJSON"></textarea>
-                  </div>
-                </div>
-
-                <div class="section">
-                  <div class="form-group">
-                    <label class="form-label">Transaction Input Hex</label>
-                    <textarea readonly class="form-input" rows="3" v-model="messageHex"></textarea>
-                  </div>
-                </div>
-
                 <div v-on:click="submitOnContract">
                   submit
                 </div>
@@ -90,16 +74,6 @@
             </div>
 
           </div>
-
-
-          <!-- Footer -->
-          <div class="footer">
-            <div class="footer-section">
-              <button class="btn" type="submit">What action here?</button>
-            </div>
-          </div>
-
-
 
         </form>
 

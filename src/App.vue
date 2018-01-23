@@ -24,13 +24,14 @@
 
       // If web3 is defined metamask is installed, set up the app's web3 provider
       if (!_.isUndefined(window.web3)) {
-        const provider = new Web3(window.web3.currentProvider)
-        this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
+        const web3 = new Web3(window.web3.currentProvider)
+        this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, web3)
 
         // This is why we poll
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
         const iterval = setInterval(() => {
-          provider.eth.getAccounts()
+
+          web3.eth.getAccounts()
             .then((accounts) => {
               const curWeb3AccountId = this.$store.getters.web3AccountId
               const newWeb3AccountId = _.first(accounts)
@@ -53,7 +54,13 @@
             })
         }, 2000)
 
+        // lets make a state variable for this contract object.
+        const inboxContract = new web3.eth.Contract([{"constant":true,"inputs":[{"name":"_recipient","type":"address"}],"name":"getInbox","outputs":[{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReplyBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"revokeReadBounty","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_recipient","type":"address"},{"name":"_index","type":"uint256"}],"name":"getMessage","outputs":[{"name":"","type":"address"},{"name":"","type":"string"},{"name":"","type":"bool"},{"name":"","type":"uint256"},{"name":"","type":"uint256"},{"name":"","type":"bool"},{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_mNumber","type":"uint256"},{"name":"_didReply","type":"bool"}],"name":"readMessage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_messageText","type":"string"},{"name":"_readBounty","type":"uint256"},{"name":"_replyBounty","type":"uint256"}],"name":"sendMessage","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_mNumber","type":"uint256"}],"name":"confirmReply","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}],this.$store.state.appState.contractID);
+
+        console.log(inboxContract);
+        this.$store.commit(MUTATION_TYPES.UPDATE_CONTRACT_OBJECT, inboxContract)
       }
+
       // TODO: handle global info state and errors
       else {
 
