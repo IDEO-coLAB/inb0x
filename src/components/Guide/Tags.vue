@@ -6,23 +6,23 @@
   <div>
     <h1>Tags</h1>
     <p>
-      Form elements are the elements that range from inputs (like searchbars), to sliders, dropdowns, and checkboxes.
+      Tags are used when showing which parameters in a search are currently active. Each tag should be initialized with .tag, no matter which type it is.
     </p>
 
     <div class="grid-container">
 
       <div class="section">
         <h3 class="section--title">Search Tags</h3>
-        <p class="section-description">There are three classes of searchbars in the inb0x component library, each used on a different page.
-        The searchbar is an input elemnt with the primary class .searchbar, and a secondary class of searchbar-[inbox/search/segment] depending on the page.</p>
+        <p class="section-description">The first set of tags are for the search panel. These tags are most likely used for different tokens that a user may be querying through the searchbar.
+        Search tags take the class .tag-search, and are given an closing x by including a span with the class tag-close. By default, this span includes an 'x' symbol. However, there is no JS to actually close
+      the tag or plum any data.</p>
           <div class="tag tag-search">REP <span class="tag-close"></span></div>
           <div class="tag tag-search">ZRX <span class="tag-close"></span></div>
       </div>
 
       <div class="section">
         <h3 class="section--title">Segment Tags</h3>
-        <p class="section-description">There are three classes of searchbars in the inb0x component library, each used on a different page.
-        The searchbar is an input elemnt with the primary class .searchbar, and a secondary class of searchbar-[inbox/search/segment] depending on the page.</p>
+        <p class="section-description">Segment tags are used to show the users active segments. This feature is tbd, and not included in the MVP. Segment tags take the class .tag-segment.</p>
           <div class="tag tag-segment">REP Holders > 50 ETH</div>
       </div>
     </div>

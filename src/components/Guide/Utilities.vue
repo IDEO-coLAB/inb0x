@@ -6,25 +6,31 @@
   <div>
     <h1>Utilities</h1>
     <p>
-      Form elements are the elements that range from inputs (like searchbars), to sliders, dropdowns, and checkboxes.
+      Utilities are the group of css classes that transform a property of the element.
+      They are not components themselves, but can modify the elements for certain edge cases.
     </p>
 
     <div class="grid-container">
 
       <div class="section">
-        <h3 class="section--title">Search Tags</h3>
-        <p class="section-description">There are three classes of searchbars in the inb0x component library, each used on a different page.
-        The searchbar is an input elemnt with the primary class .searchbar, and a secondary class of searchbar-[inbox/search/segment] depending on the page.</p>
-          <div class="tag tag-search">REP <span class="tag-close"></span></div>
-          <div class="tag tag-search">ZRX <span class="tag-close"></span></div>
+        <div class="subsection">
+          <h5 class="subsection--title">All Caps (.caps)</h5>
+          <p class="section-description">Changes the text to all capital letters.</p>
+          <p class="caps" style="font-size: .7rem; display: inline;">This is all caps</p>
+          <p style="font-size: .7rem; display: inline;">this is not all caps</p>
+        </div>
+        <div class="subsection">
+          <h5 class="subsection--title">Hidden (.hidden)</h5>
+          <p class="section-description">Hides the element.</p>
+        </div>
+        <div class="subsection">
+          <h5 class="subsection--title">Underline (.underline)</h5>
+          <p class="section-description">Hides the element.</p>
+
+          <h5 class="underline" style="display: inline; padding: 5px;">Inbox</h5>
+        </div>
       </div>
 
-      <div class="section">
-        <h3 class="section--title">Segment Tags</h3>
-        <p class="section-description">There are three classes of searchbars in the inb0x component library, each used on a different page.
-        The searchbar is an input elemnt with the primary class .searchbar, and a secondary class of searchbar-[inbox/search/segment] depending on the page.</p>
-          <div class="tag tag-segment">REP Holders > 50 ETH</div>
-      </div>
     </div>
 
 
