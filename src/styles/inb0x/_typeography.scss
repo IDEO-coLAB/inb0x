@@ -1,0 +1,45 @@
+// typeography
+// font sizes, weights, font-imports etc.
+
+
+// font-family imports. These paths likely need to be changed to reflect architecture
+@font-face {
+  font-family: cerebriReg;
+  src: url('./assets/fonts/CerebriSans-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/CerebriSans-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: cerebriMed;
+  src: url('./assets/fonts/CerebriSans-Medium.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/CerebriSans-Medium.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: cerebriSemi;
+  src: url('./assets/fonts/CerebriSans-SemiBold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/CerebriSans-SemiBold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: cerebriBold;
+  src: url('./assets/fonts/CerebriSans-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('./assets/fonts/CerebriSans-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: larish;
+  src: url('./assets/fonts/larishneue-webfont.ttf') format('truetype'),
+       url('./assets/fonts/larishneue-webfont.woff') format('woff');  /* Pretty Modern Browsers */
+}
+
+h1{
+  font-size: 20px;
+}
+
+.larish{
+  font-family: Larish;
+}
+
+.cerebri{
+  font-family: cerebriMed;
+}

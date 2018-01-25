@@ -1,0 +1,21 @@
+.button {
+  border-radius: 5px;
+  font-size: .75rem;
+  padding: .6rem 1.2rem;
+  letter-spacing: 0;
+  border:none;
+
+  &.button-main{
+    background-color: $color-green;
+  }
+
+  &.button-dark{
+    background-color: $color-blue-dark;
+    color: #FFF;
+  }
+
+  &.button-inactive{
+    background-color: $color-blue-dark;
+    opacity: .3;
+  }
+}

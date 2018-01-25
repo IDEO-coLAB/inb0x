@@ -1,0 +1,37 @@
+// grid
+// the grid system used for inb0x.
+// TODO: need an option for no margin (example -- the sidebar)
+
+// variables
+$breakpoint-sm: 400px;
+$margin-0: 0%;
+$margin-sm: 1.5%;
+$margin: 5%;
+$col: ( 100% / 12 ) - $margin;
+
+// mixins
+@mixin col( $w ) {
+  width: ( $col * $w ) + ( $margin * ( $w - 1 ) );
+}
+
+.grid-container{
+  clear: left;
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// main function to generate cols
+@for $i from 1 through 12 {
+  .col#{$i} {
+    @include col($i);
+  }
+}
+
+[class*='col'] {
+  float: left;
+  clear: none;
+  box-sizing: border-box;
+  margin: 0 ( $margin / 2 ) $margin;
+}
