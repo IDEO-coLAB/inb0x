@@ -20,6 +20,12 @@ $col: ( 100% / 12 ) - $margin;
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
+
+  // when we have a sub grid nested inside,
+  // we don't want the margin: 0 auto.
+  &.grid-container{
+    margin: 0;
+  }
 }
 
 // main function to generate cols
