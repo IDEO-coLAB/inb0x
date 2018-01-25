@@ -7,6 +7,7 @@
 <script>
   import _ from 'lodash'
   import Web3 from 'web3'
+  import inb0xABI from './ethereum/inb0x-abi'
   import AppHeader from './components/AppHeader'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
@@ -31,12 +32,22 @@
     mounted () {
       testRouteForAddressAndMessage(this.$router, this.$store)
 
-      // TODO: abstract this when better understood
+      // TODO: abstract this section into cleaner code when better understood
+      // TODO: abstract this section into cleaner code when better understood
+      // TODO: abstract this section into cleaner code when better understood
 
       // If web3 is defined metamask is installed, set up the app's web3 provider
       if (!_.isUndefined(window.web3)) {
         const provider = new Web3(window.web3.currentProvider)
         this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
+
+
+        // Store the contract interface so we can interact with it directly
+        const inboxContract = new provider.eth.Contract(inb0xABI, this.$store.getters.inboxContractId)
+        this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, inboxContract)
+
+
+
 
         // This is why we poll
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
@@ -63,11 +74,10 @@
               clearInterval(iterval)
             })
         }, 2000)
-
       }
+
       // TODO: handle global info state and errors
       else {
-
         const note = new Notification({
           description: 'This is some descriptive text for the notification.',
           type: NOTIFICATION_TYPES.INFO,
