@@ -16,6 +16,8 @@ import GuideButton from '../components/Guide/Button'
 import GuideType from '../components/Guide/Typography'
 import GuideAtomic from '../components/Guide/Atomic'
 import GuideForms from '../components/Guide/Forms'
+import GuideTags from '../components/Guide/Tags'
+import GuideUtilities from '../components/Guide/Utilities'
 
 // TODO: These now all get wrapped into components,
 // there is no longer a route for these.
@@ -84,13 +86,23 @@ const routes = [
       },
       {
         path: 'typography',
-        name: 'button',
+        name: 'type',
         component: GuideType,
       },
       {
         path: 'atomic',
         name: 'atomic',
         component: GuideAtomic,
+      },
+      {
+        path: 'tags',
+        name: 'tags',
+        component: GuideTags,
+      },
+      {
+        path: 'utilities',
+        name: 'utilities',
+        component: GuideUtilities,
       },
       {
         path: 'forms',

@@ -21,19 +21,13 @@
         </div>
         <div class="subsection">
           <h5 class="subsection--title">Search</h5>
-          <input type="text" name="" value="" class="searchbar searchbar-segments">
+          <input type="text" name="" value="" class="searchbar searchbar-search">
           <div class="filler">Search filters go here.</div>
 
-          <div class="col6">
-            gfdgd
-          </div>
-          <div class="col6">
-            notes
-          </div>
         </div>
         <div class="subsection">
           <h5 class="subsection--title">Segments*</h5>
-          <input type="text" name="" value="" class="searchbar searchbar-search">
+          <input type="text" name="" value="" class="searchbar searchbar-segments">
         </div>
       </div>
 
@@ -61,10 +55,6 @@
 
 <style type="scss" scoped>
 
-.col6{
-  border: 2px solid black;
-}
-
 .section{
   margin-bottom: 48px;
 }
@@ -89,7 +79,7 @@
 }
 
 .searchbar-search{
-  background-color: #002D47;
+  background-color: #00E7C0;
   border-radius: 5px 5px 0 0;
 }
 
@@ -101,7 +91,7 @@
 }
 
 .searchbar-segments{
-  background-color: #00E7C0;
+  background-color: #002D47;
   border-radius: 5px;
 }
 
