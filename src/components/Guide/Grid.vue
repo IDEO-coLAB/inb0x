@@ -3,13 +3,12 @@
  -->
 
 <template>
-      <div>
+      <div style="border: 2px solid red;">
         <h1>Grid System</h1>
         <p>
-          The grid system for inb0x is made up of 12 columns that can be mixed and matched to create the layout you desire.
-          Each group must add to 12. Each col block has a default margin of 1.5%. This can be changed tbd.
+          There is no need to reinvent the wheel, so inb0x uses sprectre's grid layout.
         </p>
-
+<!--
         <div class="grid-container">
           <div class="col12 grid-demo">col12</div>
 
@@ -24,7 +23,23 @@
           <div class="col3 grid-demo">col3</div>
           <div class="col3 grid-demo">col3</div>
           <div class="col3 grid-demo">col3</div>
+        </div> -->
+
+        <div class="container" style="border:2px solid blue">
+          <div class="columns">
+            <div class="column col-6">col-6</div>
+            <div class="column col-3">col-3</div>
+            <div class="column col-2">col-2</div>
+            <div class="column col-1">col-1</div>
+          </div>
+
+          <div class="columns col-gapless">
+            <div class="column col-6">col-6</div>
+            <div class="column col-6">col-6</div>
+          </div>
+
         </div>
+
       </div>
 </template>
 
@@ -42,6 +57,14 @@
     height: 50px;
     line-height: 50px;
     text-align: center;
+  }
+
+  .column{
+    background-color: #002D47;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
   }
 
 

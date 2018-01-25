@@ -3,9 +3,11 @@
 
 <template>
   <div class="guide-header">
-    <div class="grid-container">
-      <div class="col3">
-        <a href="#" class="header--nav larish">inb0x | Component Library</a>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-3">
+          <a href="#" class="header--nav larish">inb0x | Component Library</a>
+        </div>
       </div>
     </div>
   </div>
@@ -25,10 +27,6 @@
 
 
 <style type="scss" scoped>
-
-  .grid-container{
-    max-width: 72em;
-  }
 
   .guide-header{
     height: 60px;

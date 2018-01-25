@@ -1,13 +1,15 @@
 <template>
-  <div class="">
+  <div>
     <GuideHeader></GuideHeader>
-    <div class="grid-container">
-      <div class="col3">
-        <GuideNav></GuideNav>
-      </div>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-3">
+          <GuideNav></GuideNav>
+        </div>
 
-      <div class="col9">
-        <router-view></router-view>
+        <div class="column col-9">
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>
