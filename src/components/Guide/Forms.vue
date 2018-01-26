@@ -22,6 +22,9 @@
             <img src="../../assets/search-icon.png" alt="search-icon" class="searchbar-icon">
           </div>
         </div>
+
+        <codemirror v-model="code" :options="cmOptions"></codemirror>
+
         <div class="subsection">
           <h5 class="subsection--title">Search</h5>
           <div class="searchbar-container">
@@ -56,12 +59,35 @@
   </div>
 
 </template>
-
 <script>
 
-  export default {
+import { codemirror } from 'vue-codemirror'
 
+export default {
+  data () {
+    return {
+      code:
+`<div class="searchbar-container">
+  <input type="text" name="" value="" class="searchbar searchbar-search">
+  <div class="filler">Search filters go here.</div>
+  <img src="../../assets/search-icon.png" alt="search-icon" class="searchbar-icon">
+</div>`,
+      code2: '<html></html>',
+      cmOptions: {
+        tabSize: 4,
+        mode: 'text/javascript',
+        theme: 'base16-dark',
+        lineNumbers: true,
+        line: true,
+        readOnly: true,
+      }
+    }
+  },
+  components: {
+    codemirror
   }
+}
+
 </script>
 
 <style type="scss" scoped>
