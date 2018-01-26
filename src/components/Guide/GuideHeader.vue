@@ -6,7 +6,7 @@
     <div class="container">
       <div class="columns">
         <div class="column col-3">
-          <a href="#" class="header--nav larish">inb0x | Component Library</a>
+          <a href="#" class="header--nav larish" style="margin-left: calc(2.5rem);">inb0x | Component Library</a>
         </div>
       </div>
     </div>

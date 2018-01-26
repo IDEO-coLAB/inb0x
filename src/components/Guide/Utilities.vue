@@ -16,8 +16,6 @@
         <div class="subsection">
           <h5 class="subsection--title">All Caps (.caps)</h5>
           <p class="section-description">Changes the text to all capital letters.</p>
-          <p class="caps" style="font-size: .7rem; display: inline;">This is all caps</p>
-          <p style="font-size: .7rem; display: inline;">this is not all caps</p>
         </div>
         <div class="subsection">
           <h5 class="subsection--title">Hidden (.hidden)</h5>
@@ -26,8 +24,6 @@
         <div class="subsection">
           <h5 class="subsection--title">Underline (.underline)</h5>
           <p class="section-description">Hides the element.</p>
-
-          <h5 class="underline" style="display: inline; padding: 5px;">Inbox</h5>
         </div>
       </div>
 

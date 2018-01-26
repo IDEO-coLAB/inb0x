@@ -45,7 +45,7 @@ $col: ( 100% / 12 ) - $margin;
 
 
 /// remove above when ready
-// Layout
+// Layout spacing needs to be brought in if we ever take out spectre
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -126,6 +126,10 @@ $col: ( 100% / 12 ) - $margin;
   &.col-2,
   &.col-1 {
     flex: none;
+  }
+
+  &.column-padding--lg{
+    padding: 3rem;
   }
 }
 .col-12 {

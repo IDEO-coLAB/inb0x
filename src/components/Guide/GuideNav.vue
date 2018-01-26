@@ -3,7 +3,7 @@
  -->
 
 <template>
-  <div class="">
+  <div>
     <h3 class="nav--header">Getting Started</h3>
     <a href="#/guide/"><h6 class="nav--item">Introduction</h6></a>
     <a href="#/guide/atomic"><h6 class="nav--item nav--item-last">Atomic Design</h6></a>
@@ -11,7 +11,7 @@
     <h3 class="nav--header">Basics</h3>
     <a href="/#/guide/typography"><h6 class="nav--item">Typeography</h6></a>
     <a href="/#/guide/colors"><h6 class="nav--item">Colors</h6></a>
-    <a href="/#/guide/grid"><h6 class="nav--item">Images</h6></a>
+    <a href="/#/guide/placeholder"><h6 class="nav--item">Placeholders</h6></a>
     <a href="/#/guide/grid"><h6 class="nav--item">Grid System</h6></a>
     <a href="/#/guide/utilities"><h6 class="nav--item nav--item-last">Utilities</h6></a>
 
@@ -19,12 +19,10 @@
     <a href="/#/guide/button"><h6 class="nav--item">Buttons</h6></a>
     <a href="/#/guide/tags"><h6 class="nav--item">Tags</h6></a>
     <a href="/#/guide/forms"><h6 class="nav--item">Forms</h6></a>
-    <a href="/#/guide/button"><h6 class="nav--item">Navigation</h6></a>
-    <a href="/#/guide/button"><h6 class="nav--item nav--item-last">Cards</h6></a>
-
-
-
+    <a href="/#/guide/nav"><h6 class="nav--item">Navigation</h6></a>
+    <a href="/#/guide/cards"><h6 class="nav--item nav--item-last">Cards</h6></a>
   </div>
+
 </template>
 
 <script>

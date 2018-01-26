@@ -3,11 +3,11 @@
     <GuideHeader></GuideHeader>
     <div class="container">
       <div class="columns">
-        <div class="column col-3">
+        <div class="column column-padding--lg col-3">
           <GuideNav></GuideNav>
         </div>
 
-        <div class="column col-9">
+        <div class="column column-padding--lg col-9">
           <router-view></router-view>
         </div>
       </div>

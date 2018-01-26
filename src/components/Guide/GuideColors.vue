@@ -9,13 +9,15 @@
       Below are swatches of colors inb0x uses. The color global values can be found in palette.scss. Click on each swatch to copy it's hex value.
     </p>
 
-    <div class="grid-container">
-      <div class="bg-1 swatch swatch-dark col3">#002D47</div>
-      <div class="bg-2 swatch col3">#00E7C0</div>
-      <div class="bg-3 swatch col3">#F7F9FB</div>
-      <div class="swatch col3" style="border: 1px solid black;">#FFFFFF</div>
+    <div class="container">
+      <div class="columns">
+        <div class="column col-3 bg-1 swatch swatch-dark">#002D47</div>
+        <div class="column col-3 bg-2 swatch">#00E7C0</div>
+        <div class="column col-3 bg-3 swatch">#F7F9FB</div>
+        <div class="column col-3 swatch" style="border: 1px solid black;">#FFFFFF</div>
+      </div>
     </div>
-
+    
   </div>
 
 </template>

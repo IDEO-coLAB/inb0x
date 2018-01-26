@@ -1,4 +1,14 @@
 .searchbar{
   width: 100%;
   border-radius: 5 5 0 0;
+
+  &.searchbar-inbox{
+    background-color: #F7F9FB;
+    border-radius: 5px;
+  }
+
+  &.searchbar-search{
+    background-color: #00E7C0;
+    border-radius: 5px 5px 0 0;
+  }
 }
