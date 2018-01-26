@@ -40,6 +40,8 @@
                  Try creating a segment to search for holders of the token your application uses!</p>
             </div>
           </div>
+
+          <codemirror v-model="code" :options="cmOptions"></codemirror>
         </div>
 
 
@@ -48,9 +50,36 @@
 
 <script>
 
-  export default {
+import { codemirror } from 'vue-codemirror'
 
+export default {
+  data () {
+    return {
+      code:
+`<div class="placeholder">
+  <div class="">
+    // swap out the image for the correct one
+    <img src="../../assets/segments.png" alt="placeholder">
+    <h6 class="caps">No address entered</h6>
+    <p>Segments help you define audiences to send bulk messages to. Launching a new product?
+       Try creating a segment to search for holders of the token your application uses!</p>
+  </div>
+</div>`,
+      cmOptions: {
+        tabSize: 4,
+        mode: 'text/javascript',
+        theme: 'base16-dark',
+        lineNumbers: true,
+        line: true,
+        readOnly: true,
+      }
+    }
+  },
+  components: {
+    codemirror
   }
+}
+
 </script>
 
 <style type="scss" scoped>

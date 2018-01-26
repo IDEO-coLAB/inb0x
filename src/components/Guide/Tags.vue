@@ -25,6 +25,7 @@
         <p class="section-description">Segment tags are used to show the users active segments. This feature is tbd, and not included in the MVP. Segment tags take the class .tag-segment.</p>
           <div class="tag tag-segment">REP Holders > 50 ETH</div>
       </div>
+        <codemirror v-model="code" :options="cmOptions"></codemirror>
     </div>
 
 
@@ -34,9 +35,29 @@
 
 <script>
 
-  export default {
+import { codemirror } from 'vue-codemirror'
 
+export default {
+  data () {
+    return {
+      code:
+`<div class="tag tag-search">ZRX <span class="tag-close"></span></div>
+<div class="tag tag-segment">REP Holders > 50 ETH</div>`,
+      cmOptions: {
+        tabSize: 4,
+        mode: 'text/javascript',
+        theme: 'base16-dark',
+        lineNumbers: true,
+        line: true,
+        readOnly: true,
+      }
+    }
+  },
+  components: {
+    codemirror
   }
+}
+
 </script>
 
 <style type="scss" scoped>
