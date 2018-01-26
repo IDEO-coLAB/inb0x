@@ -7,25 +7,90 @@
         <h1>Grid System</h1>
         <p>
           There is no need to reinvent the wheel, so inb0x uses sprectre's grid layout. <br />
-          Spectre's grid is relatively easy to use. You must start by declaring an opening div with the the class '.container'.
-          Inside this div comes another div with the class '.columns', and inside <i>this</i> div comes any sort of grid you want.
-          These elements must have the class '.column', followed by the class '.col-*' where * is any number from 1 to 12.
-          1 represents 1/12 the width of the page, and 12 represents a full 100% width.
+          Below is an example of how to use spectres grid to layout the general idea of inb0x's design.
         </p>
 
-        <div class="container" style="border:2px solid blue">
+        <div class="container" style="border: 1px solid #444444">
           <div class="columns">
-            <div class="column col-6">col-6</div>
-            <div class="column col-3">col-3</div>
-            <div class="column col-2">col-2</div>
-            <div class="column col-1">col-1</div>
-          </div>
+            <div class="column col-9">
+              <div class="columns">
+                  <div class="column col-2 nav-item underline">
+                    Inbox
+                  </div>
+                  <div class="column col-2 nav-item nav-item-inactive">
+                    Search
+                  </div>
+                  <div class="column col-2 nav-item nav-item-inactive">
+                    Segments
+                  </div>
+              </div>
 
-          <div class="columns col-gapless">
-            <div class="column col-6">col-6</div>
-            <div class="column col-6">col-6</div>
-          </div>
+              <div class="columns">
+                <input class="searchbar searchbar-inbox column col-12" />
+              </div>
 
+              <div class="columns">
+                <div class="column col-1 message">1</div>
+                <div class="column col-2 message">inbox.eth</div>
+                <div class="column col-4 message">hello i am trying to test...</div>
+                <div class="column col-2 message">0.1 eth</div>
+                <div class="column col-2 message">1/19/17</div>
+                <div class="column col-1 message">v</div>
+              </div>
+
+              <div class="columns">
+                <div class="column col-1 message">1</div>
+                <div class="column col-2 message">inbox.eth</div>
+                <div class="column col-4 message">hello i am trying to test...</div>
+                <div class="column col-2 message">0.1 eth</div>
+                <div class="column col-2 message">1/19/17</div>
+                <div class="column col-1 message">v</div>
+              </div>
+
+              <div class="columns">
+                <div class="column col-1 message">1</div>
+                <div class="column col-2 message">inbox.eth</div>
+                <div class="column col-4 message">hello i am trying to test...</div>
+                <div class="column col-2 message">0.1 eth</div>
+                <div class="column col-2 message">1/19/17</div>
+                <div class="column col-1 message">v</div>
+              </div>
+
+              <div class="columns">
+                <div class="column col-1 message">1</div>
+                <div class="column col-2 message">inbox.eth</div>
+                <div class="column col-4 message">hello i am trying to test...</div>
+                <div class="column col-2 message">0.1 eth</div>
+                <div class="column col-2 message">1/19/17</div>
+                <div class="column col-1 message">v</div>
+              </div>
+
+              <div class="columns">
+                <div class="column col-1 message">1</div>
+                <div class="column col-2 message">inbox.eth</div>
+                <div class="column col-4 message">hello i am trying to test...</div>
+                <div class="column col-2 message">0.1 eth</div>
+                <div class="column col-2 message">1/19/17</div>
+                <div class="column col-1 message">v</div>
+              </div>
+
+              <div class="columns">
+                <div class="column col-1 message">1</div>
+                <div class="column col-2 message">inbox.eth</div>
+                <div class="column col-4 message">hello i am trying to test...</div>
+                <div class="column col-2 message">0.1 eth</div>
+                <div class="column col-2 message">1/19/17</div>
+                <div class="column col-1 message">v</div>
+              </div>
+
+
+            </div>
+
+            <div class="column col-3">
+              <div style="background-color: #F7F9FB; width: 100%; height: 300px;"></div>
+              <div style="background-color: #002D47; width: 100%; height: 200px;"></div>
+            </div>
+          </div>
         </div>
 
         <form>
@@ -71,6 +136,32 @@
 
 <style type="scss" scoped>
 
+  .searchbar{
+    margin: 10px 0;
+  }
+
+  .tables{
+    height: calc(100% - 100px);
+    border: 2px solid red;
+  }
+
+  .sidenav{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidenav-top{
+    background-color: #F7F9FB;
+    height: 60%;
+    width: 100%;
+  }
+
+  .sidenav-bottom{
+    background-color: #002D47;
+    height: 40%;
+    width: 100%;
+  }
+
   .grid-demo{
     background-color: #00E7C0;
     height: 50px;
@@ -78,13 +169,6 @@
     text-align: center;
   }
 
-  .column{
-    background-color: #002D47;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    color: white;
-  }
 
 
 </style>

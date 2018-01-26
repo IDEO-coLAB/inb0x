@@ -15,16 +15,15 @@
         <h3 class="section--title">Nav</h3>
         <p class="section-description">The active nav-item takes the class '.underline' to give it a highlight. The inactive nav-items take the class nav-item-inactive to give them less of a highlight.</p>
 
-          <div class="nav col8 border">
-            <div class="grid-container">
-              <p class="col2 nav-item underline">inbox</p>
-              <p class="col2 nav-item nav-item-inactive">search</p>
-              <p class="col2 nav-item nav-item-inactive">segments</p>
-            </div>
+        <div class="container">
+          <div class="columns">
+            <div class="column col-2 nav-item underline">inbox</div>
+            <div class="column col-2 nav-item nav-item-inactive">search</div>
+            <div class="column col-2 nav-item nav-item-inactive">segments</div>
+
           </div>
-
+        </div>
       </div>
-
     </div>
 
 
@@ -40,6 +39,10 @@
 </script>
 
 <style type="scss" scoped>
+
+.nav-item{
+  text-align: center;
+}
 
 
 .section{

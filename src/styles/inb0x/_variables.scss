@@ -4,8 +4,10 @@
 $color-blue-dark: #002D47;
 $color-blue-light: #F7F9FB;
 $color-green: #00E7C0;
+$white: #FFFFFF;
 
 
 $color-text: #444444;
-$color-grey: #525860;
-$color-grey-light: lighten($color-grey, 30%);
+$color-text-inactive: opacify($color-text, .3);
+$color-text-grey: #525860;
+$colot-text-blue: #89969F;
