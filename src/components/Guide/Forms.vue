@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <codemirror v-model="code" :options="cmOptions"></codemirror>
+        <codemirror v-model="code1" :options="cmOptions"></codemirror>
 
         <div class="subsection">
           <h5 class="subsection--title">Search</h5>
@@ -33,6 +33,7 @@
             <img src="../../assets/search-icon.png" alt="search-icon" class="searchbar-icon">
           </div>
 
+          <codemirror v-model="code2" :options="cmOptions"></codemirror>
 
         </div>
         <div class="subsection">
@@ -41,6 +42,8 @@
             <input type="text" name="" value="" class="searchbar searchbar-segments">
             <img src="../../assets/search-icon-white.png" alt="search-icon" class="searchbar-icon">
           </div>
+
+          <codemirror v-model="code3" :options="cmOptions"></codemirror>
 
         </div>
       </div>
@@ -66,13 +69,22 @@ import { codemirror } from 'vue-codemirror'
 export default {
   data () {
     return {
-      code:
+      code1:
+`<div class="searchbar-container">
+  <input type="text" name="" value="" class="searchbar searchbar-inbox">
+  <img src="../../assets/search-icon.png" alt="search-icon" class="searchbar-icon">
+</div>`,
+      code2:
 `<div class="searchbar-container">
   <input type="text" name="" value="" class="searchbar searchbar-search">
   <div class="filler">Search filters go here.</div>
   <img src="../../assets/search-icon.png" alt="search-icon" class="searchbar-icon">
 </div>`,
-      code2: '<html></html>',
+      code3:
+`<div class="searchbar-container">
+<input type="text" name="" value="" class="searchbar searchbar-segments">
+<img src="../../assets/search-icon-white.png" alt="search-icon" class="searchbar-icon">
+</div>`,
       cmOptions: {
         tabSize: 4,
         mode: 'text/javascript',
