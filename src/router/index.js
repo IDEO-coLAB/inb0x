@@ -15,12 +15,6 @@ import Compose from '../components/Compose'
 Vue.use(VueRouter)
 
 const routes = [
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: About,
-  // },
-
   {
     path: '/inbox',
     component: Inbox,
@@ -37,6 +31,8 @@ const routes = [
       },
     ]
   },
+
+
 
   // TODO: Move these into universal components
   {

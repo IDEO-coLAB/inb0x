@@ -18,9 +18,6 @@ const state = {
 
   // the ethereum address for the (if connected) metamask wallet
   web3AccountId: null,
-  // the hash of the current message being viewed
-  // DO WE NEED THIS NOW?
-  messageId: null,
 }
 
 // Getters
@@ -32,7 +29,6 @@ const getters = {
   inboxContractObj: state => state.inboxContractObj,
 
   web3AccountId: state => state.web3AccountId,
-  messageId: state => state.messageId,
   app: state => state,
 }
 
@@ -88,18 +84,6 @@ const mutations = {
 
 
 
-
-
-  [MUTATION_TYPES.UPDATE_MSG_ID] (state, id) {
-    // DO CHECKS HERE
-    state.messageId = id
-    console.log(MUTATION_TYPES.UPDATE_MSG_ID, state.messageId)
-  },
-  [MUTATION_TYPES.RESET_MSG_ID] (state) {
-    // DO CHECKS HERE
-    state.messageId = null
-    console.log(MUTATION_TYPES.RESET_MSG_ID, state.messageId)
-  },
 
 
 
