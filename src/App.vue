@@ -49,80 +49,37 @@
         const provider = new Web3(window.web3.currentProvider)
         this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
 
-
-
         // Store the contract interface so we can interact with it directly
-        // const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractId)
-        const inboxContract = provider.eth.contract(inboxABI)
-        var contractInstance = inboxContract.at(this.$store.getters.inboxContractId)
+        const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractId)
+        this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, inboxContract)
         console.log('inboxContract',inboxContract)
-        console.log('contractInstance',contractInstance)
-        this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, contractInstance)
-
-
-
 
         // This is why we poll
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
         const iterval = setInterval(() => {
+          provider.eth.getAccounts()
+            .then((accounts) => {
+              const curWeb3AccountId = this.$store.getters.web3AccountId
+              const newWeb3AccountId = _.first(accounts)
 
-          provider.eth.getAccounts((error, accounts) => {
-            const curWeb3AccountId = this.$store.getters.web3AccountId
-            const newWeb3AccountId = _.first(accounts)
+              if (!newWeb3AccountId) return Promise.resolve()
 
-            if (!newWeb3AccountId) return
-            if (!curWeb3AccountId) {
-              this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+              if (!curWeb3AccountId) {
+                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+                return this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, newWeb3AccountId)
+              }
 
-              // NEW STUFF
-              this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
-                .catch(console.warn)
-
-              return
-            }
-
-            if (curWeb3AccountId !== newWeb3AccountId) {
-              this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-
-              // NEW STUFF
-              this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
-                .catch(console.warn)
-
-              return
-            }
-          })
-
-
-
-          // provider.eth.getAccounts()
-            // .then((accounts) => {
-            //   const curWeb3AccountId = this.$store.getters.web3AccountId
-            //   const newWeb3AccountId = _.first(accounts)
-
-            //   if (!newWeb3AccountId) return
-            //   if (!curWeb3AccountId) {
-            //     this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-
-            //     // NEW STUFF
-            //     return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
-            //       .catch(console.warn)
-
-            //   }
-
-            //   if (curWeb3AccountId !== newWeb3AccountId) {
-            //     this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-
-            //     // NEW STUFF
-            //     return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
-            //       .catch(console.warn)
-            //   }
-            // })
-            // .catch((error) => {
-            //   console.error('WEB 3 ERROR!', error)
-            //   console.error('DECIDE HOW TO HANDLE THESE')
-            //   // something outside will need to kick this thing off again if there is an error
-            //   clearInterval(iterval)
-            // })
+              if (curWeb3AccountId !== newWeb3AccountId) {
+                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+                return this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, newWeb3AccountId)
+              }
+            })
+            .catch((error) => {
+              console.error('WEB 3 ERROR!', error)
+              console.error('DECIDE HOW TO HANDLE THESE')
+              // something outside will need to kick this thing off again if there is an error
+              clearInterval(iterval)
+            })
 
 
         }, 2000)

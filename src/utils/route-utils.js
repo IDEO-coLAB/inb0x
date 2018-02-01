@@ -1,4 +1,5 @@
 import web3Utils from 'web3-utils'
+import web3 from 'web3'
 import { MUTATION_TYPES } from '../constants/mutations'
 import { ACTION_TYPES } from '../constants/actions'
 

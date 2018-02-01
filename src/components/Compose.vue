@@ -140,7 +140,8 @@
 
 
         const contract = this.$store.getters.inboxContractObj
-        // var inbox = contract.at(this.$store.getters.inboxContractId)
+
+
 
         // if (!contract) console.warn('NO CONTRACT!')
         //   return
@@ -154,16 +155,19 @@
 
         console.log(send_to, message, readBounty, replyBounty)
 
-        contract.sendMessage(send_to, message, readBounty, replyBounty, {
-          from: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
-          value: web3Utils.toWei(value),
-          gas: 3000000,
-        }, (error, result) => {
-          if (!error)
-            console.log("message sent!!", result)
-          else
-            console.error('ERROR', error)
-        })
+        contract.methods
+          .sendMessage(send_to, message, readBounty, replyBounty)
+          .send({
+            from: this.$store.getters.web3AccountId,
+            value: web3Utils.toWei(value),
+            gas: 3000000,
+          })
+          .then(() => {
+            console.log('SENT!!!')
+          })
+          .catch((error) => {
+            console.warn('ERROR SENDING', error)
+          })
 
 
 

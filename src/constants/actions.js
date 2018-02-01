@@ -1,7 +1,7 @@
-// export const FETCH_TXS = 'FETCH_TXS'
-export const FETCH_MSGS = 'FETCH_MSGS'
+export const FETCH_MSG_HEADERS = 'FETCH_MSG_HEADERS'
+export const FETCH_MSG = 'FETCH_MSG'
 
 export const ACTION_TYPES = {
-  // [FETCH_TXS]: FETCH_TXS,
-  [FETCH_MSGS]: FETCH_MSGS,
+  [FETCH_MSG_HEADERS]: FETCH_MSG_HEADERS,
+  [FETCH_MSG]: FETCH_MSG,
 }
