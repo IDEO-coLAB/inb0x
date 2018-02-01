@@ -82,18 +82,22 @@
         // Skip if the new address is the same as what we already have
         if (searchAddress === curAddress) return
 
+
+        // We are only fetching
+
+
         this.$store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
-        this.$store.commit(MUTATION_TYPES.RESET_MSG_ID)
+        // this.$store.commit(MUTATION_TYPES.RESET_MSG_ID)
 
         const payload = { address: searchAddress }
-        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
+        // this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
+        // this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
         this.$store.commit(MUTATION_TYPES.RESET_MESSAGES, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_EAMS, payload)
+        // this.$store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
+        // this.$store.commit(MUTATION_TYPES.RESET_EAMS, payload)
 
         // finally, fetch the details for the address
-        return this.$store.dispatch(ACTION_TYPES.FETCH_TXS, searchAddress)
+        return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, searchAddress)
           .then(() => {
             return this.$router.push({ path: `/inbox/${searchAddress}` })
           })

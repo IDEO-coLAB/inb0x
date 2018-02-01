@@ -14,8 +14,8 @@
           <div class="columns">
             <div class="column col-12">
 
-              <!-- No Inbox Set up -->
-              <div v-show="!eam" class="empty">
+
+<!--               <div v-show="!eam" class="empty">
                 <div class="empty-icon">
                   <i class="icon icon-2x icon-search"></i>
                 </div>
@@ -38,7 +38,7 @@
                 </div>
               </div>
 
-              <!-- No Messages Yet -->
+
               <div v-show="eam && !messages" class="empty">
                 <div class="empty-icon">
                   <i class="icon icon-2x icon-search"></i>
@@ -48,10 +48,10 @@
                 <div class="empty-action">
                   <button class="btn" @click="fetchTransactions">Load the next 20</button>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Has Messages -->
-              <message-tile v-show="orderedMessages" v-for="message in orderedMessages" v-bind:message="message" :key="message.hash"></message-tile>
+              <message-tile v-show="messages" v-for="message in messages" v-bind:message="message" :key="message.hash"></message-tile>
 
             </div>
           </div>
@@ -60,12 +60,10 @@
         <!-- Footer -->
         <div class="footer">
           <div class="footer-section">
-            <span v-show="lastMessage">
-              {{messages && messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}}
+            <span>
+              FOO
+              <!-- {{messages && messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}} -->
             </span>
-          </div>
-          <div class="footer-section">
-            <button v-show="lastMessage" class="btn btn-link" @click="fetchTransactions">Find previous messages</button>
           </div>
         </div>
 
@@ -123,25 +121,25 @@
       inboxAccountId () {
         return this.$store.getters.inboxAccountId
       },
-      transactions () {
-        return this.$store.getters.transactions[this.inboxAccountId]
-      },
-      lastTransaction () {
-        return _.last(this.transactions)
-      },
+      // transactions () {
+      //   return this.$store.getters.transactions[this.inboxAccountId]
+      // },
+      // lastTransaction () {
+      //   return _.last(this.transactions)
+      // },
       messages () {
         return this.$store.getters.messages[this.inboxAccountId]
       },
-      lastMessage () {
-        return _.last(this.messages)
-      },
-      orderedMessages () {
-        console.log(this.messages)
-        return this.messages
-      },
-      eam () {
-        return this.$store.getters.eams[this.inboxAccountId]
-      },
+      // lastMessage () {
+      //   return _.last(this.messages)
+      // },
+      // orderedMessages () {
+      //   console.log(this.messages)
+      //   return this.messages
+      // },
+      // eam () {
+      //   return this.$store.getters.eams[this.inboxAccountId]
+      // },
 
       error () { return this.$store.getters.error },
       address () { return this.$store.getters.inboxAccountId },
@@ -155,7 +153,7 @@
         })
       },
       fetchTransactions () {
-        this.$store.dispatch(ACTION_TYPES.FETCH_TXS, this.inboxAccountId)
+        this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, this.inboxAccountId)
           .catch(console.warn)
       }
     }

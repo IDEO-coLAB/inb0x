@@ -71,12 +71,12 @@
                   </div>
                 </div>
 
-                <div class="section">
+                <!-- <div class="section">
                   <div class="form-group">
                     <label class="form-label">Transaction Input Hex</label>
                     <textarea readonly class="form-input" rows="3" v-model="messageHex"></textarea>
                   </div>
-                </div>
+                </div> -->
 
               </div>
             </div>
@@ -104,6 +104,7 @@
 
 <script>
   import web3 from 'web3'
+  import web3Utils from 'web3-utils'
   import { MUTATION_TYPES } from '../constants/mutations'
 
   export default {
@@ -136,15 +137,46 @@
       },
       submit (event) {
         event.preventDefault()
-        console.log('Submitted =>', event, this.messageHex)
-        console.log('HEX => ', this.messageHex)
 
-        this.web3Provider.eth.sendTransaction({
-          to: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
+
+        const contract = this.$store.getters.inboxContractObj
+        // var inbox = contract.at(this.$store.getters.inboxContractId)
+
+        // if (!contract) console.warn('NO CONTRACT!')
+        //   return
+
+
+        var send_to = '0x0F03FAb4E407165a7eb7e67E3017370038dc43F9'
+        var message = this.message
+        var readBounty = 0.001
+        var replyBounty = 0.001
+        const value = (readBounty+replyBounty).toString()
+
+        console.log(send_to, message, readBounty, replyBounty)
+
+        contract.sendMessage(send_to, message, readBounty, replyBounty, {
           from: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
-          value: '1',
-          data: 'this is something'
-        }, (err, data) => console.log(err, data))
+          value: web3Utils.toWei(value),
+          gas: 3000000,
+        }, (error, result) => {
+          if (!error)
+            console.log("message sent!!", result)
+          else
+            console.error('ERROR', error)
+        })
+
+
+
+
+        // console.log('Submitted =>', event, this.messageHex)
+        // console.log('HEX => ', this.messageHex)
+
+        // this.web3Provider.eth.sendTransaction({
+        //   to: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
+        //   from: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
+        //   value: '1',
+        //   data: 'this is something'
+        // }, (err, data) => console.log(err, data))
       },
     },
     computed: {
@@ -153,9 +185,9 @@
           eam: { message: this.message }
         })
       },
-      messageHex () {
-        return web3.utils.toHex(this.messageJSON)
-      },
+      // messageHex () {
+      //   return web3.toHex(this.messageJSON)
+      // },
       web3Provider () {
         return this.$store.getters.web3Provider
       }

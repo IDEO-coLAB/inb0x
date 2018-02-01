@@ -7,7 +7,7 @@
 <script>
   import _ from 'lodash'
   import Web3 from 'web3'
-  import inb0xABI from './ethereum/inb0x-abi'
+  import inboxABI from './ethereum/inbox-abi'
   import AppHeader from './components/AppHeader'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
@@ -24,7 +24,7 @@
       // if (!this.$route.params.address) {
         // this.$router.push('/inbox?addresses=0x8d12a197cb00d4747a1fe03395095ce2a5cc6819')
       // }
-      // this.$router.push('/inbox')
+      this.$router.push('/compose')
       // this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/new/0x1ed014aec47fae44c9e55bac7662c0b78ae61798/setup')
@@ -38,13 +38,26 @@
 
       // If web3 is defined metamask is installed, set up the app's web3 provider
       if (!_.isUndefined(window.web3)) {
+
+
+        console.log('--------------------------------------')
+        console.log(window.web3.version.api)
+        // console.log(Web3.version.api)
+        console.log('--------------------------------------')
+        console.log('')
+
         const provider = new Web3(window.web3.currentProvider)
         this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
 
 
+
         // Store the contract interface so we can interact with it directly
-        const inboxContract = new provider.eth.Contract(inb0xABI, this.$store.getters.inboxContractId)
-        this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, inboxContract)
+        // const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractId)
+        const inboxContract = provider.eth.contract(inboxABI)
+        var contractInstance = inboxContract.at(this.$store.getters.inboxContractId)
+        console.log('inboxContract',inboxContract)
+        console.log('contractInstance',contractInstance)
+        this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, contractInstance)
 
 
 
@@ -52,27 +65,66 @@
         // This is why we poll
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
         const iterval = setInterval(() => {
-          provider.eth.getAccounts()
-            .then((accounts) => {
-              const curWeb3AccountId = this.$store.getters.web3AccountId
-              const newWeb3AccountId = _.first(accounts)
 
-              if (!newWeb3AccountId) return
-              if (!curWeb3AccountId) {
-                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-                return
-              }
+          provider.eth.getAccounts((error, accounts) => {
+            const curWeb3AccountId = this.$store.getters.web3AccountId
+            const newWeb3AccountId = _.first(accounts)
 
-              if (curWeb3AccountId !== newWeb3AccountId) {
-                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-              }
-            })
-            .catch((error) => {
-              console.error('WEB 3 ERROR!', error)
-              console.error('DECIDE HOW TO HANDLE THESE')
-              // something outside will need to kick this thing off again if there is an error
-              clearInterval(iterval)
-            })
+            if (!newWeb3AccountId) return
+            if (!curWeb3AccountId) {
+              this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+
+              // NEW STUFF
+              this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
+                .catch(console.warn)
+
+              return
+            }
+
+            if (curWeb3AccountId !== newWeb3AccountId) {
+              this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+
+              // NEW STUFF
+              this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
+                .catch(console.warn)
+
+              return
+            }
+          })
+
+
+
+          // provider.eth.getAccounts()
+            // .then((accounts) => {
+            //   const curWeb3AccountId = this.$store.getters.web3AccountId
+            //   const newWeb3AccountId = _.first(accounts)
+
+            //   if (!newWeb3AccountId) return
+            //   if (!curWeb3AccountId) {
+            //     this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+
+            //     // NEW STUFF
+            //     return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
+            //       .catch(console.warn)
+
+            //   }
+
+            //   if (curWeb3AccountId !== newWeb3AccountId) {
+            //     this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+
+            //     // NEW STUFF
+            //     return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, newWeb3AccountId)
+            //       .catch(console.warn)
+            //   }
+            // })
+            // .catch((error) => {
+            //   console.error('WEB 3 ERROR!', error)
+            //   console.error('DECIDE HOW TO HANDLE THESE')
+            //   // something outside will need to kick this thing off again if there is an error
+            //   clearInterval(iterval)
+            // })
+
+
         }, 2000)
       }
 

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container">
     <h1>About MyEtherInbox</h1>
     <span v-show="!address">
@@ -28,3 +28,4 @@
     },
   }
 </script>
+ -->

@@ -10,7 +10,9 @@ const state = {
   // the current ethereum address in the search bar
   inboxAccountId: null,
   // the hash for the inbox smart contract
-  inboxContractId: '0x4c15691c11eacbc25b58ce43ed9f9295732cf08b',
+  // Currently on the Ropsten testnet
+  // https://ropsten.etherscan.io/address/0x22abb8354bb201d32e77777b1a8304befec737cd
+  inboxContractId: '0x22ABB8354bB201d32E77777B1A8304BEfec737CD',
   // the object interface for the inbox smart contract
   inboxContractObj: null,
 
