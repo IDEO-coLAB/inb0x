@@ -60,6 +60,8 @@ const mutations = {
     console.log(MUTATION_TYPES.RESET_INBOX_ACCT_ID, state.inboxAccountId)
   },
 
+
+
   [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ID] (state, id) {
     // DO CHECKS HERE
     state.inboxContractId = id
@@ -70,6 +72,8 @@ const mutations = {
     state.inboxContractId = null
     console.log(MUTATION_TYPES.RESET_INBOX_CONTRACT_ID, state.inboxContractId)
   },
+
+
 
   [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ] (state, contract) {
     // DO CHECKS HERE

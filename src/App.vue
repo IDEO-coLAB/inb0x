@@ -20,14 +20,9 @@
       console.log('0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       console.log('0x1ed014aec47fae44c9e55bac7662c0b78ae61798')
       console.log('=================================\n\n\n')
-      // this.$store.commit(SET_ADDR, '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
-      // if (!this.$route.params.address) {
-        // this.$router.push('/inbox?addresses=0x8d12a197cb00d4747a1fe03395095ce2a5cc6819')
-      // }
-      this.$router.push('/compose')
-      // this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
-      // this.$router.push('/new/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
-      // this.$router.push('/new/0x1ed014aec47fae44c9e55bac7662c0b78ae61798/setup')
+
+      // this.$router.push('/compose')
+      this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
     },
     mounted () {
       testRouteForAddressAndMessage(this.$router, this.$store)
@@ -36,23 +31,26 @@
       // TODO: abstract this section into cleaner code when better understood
       // TODO: abstract this section into cleaner code when better understood
 
+      const provider = new Web3(window.web3.currentProvider)
+      this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
+
+      // Store the contract interface so we can interact with it directly
+      const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractId)
+      this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, inboxContract)
+
+      console.log('JUST SET THE INBOX CONTRACT OBJECT')
+
+      // if (this.$store.getters.inboxContractObj) {
+      console.log('FETCHING MESSAGES!')
+      this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, this.$store.getters.inboxAccountId)
+      // }
+
+
+
+
+
       // If web3 is defined metamask is installed, set up the app's web3 provider
       if (!_.isUndefined(window.web3)) {
-
-
-        console.log('--------------------------------------')
-        console.log(window.web3.version.api)
-        // console.log(Web3.version.api)
-        console.log('--------------------------------------')
-        console.log('')
-
-        const provider = new Web3(window.web3.currentProvider)
-        this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
-
-        // Store the contract interface so we can interact with it directly
-        const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractId)
-        this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, inboxContract)
-        console.log('inboxContract',inboxContract)
 
         // This is why we poll
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
@@ -62,17 +60,26 @@
               const curWeb3AccountId = this.$store.getters.web3AccountId
               const newWeb3AccountId = _.first(accounts)
 
-              if (!newWeb3AccountId) return Promise.resolve()
+              if (!newWeb3AccountId) return
 
               if (!curWeb3AccountId) {
                 this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-                return this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, newWeb3AccountId)
+                console.log('JUST SET THE WEB3 ID')
               }
 
               if (curWeb3AccountId !== newWeb3AccountId) {
                 this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
-                return this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, newWeb3AccountId)
+                console.log('JUST SET THE WEB3 ID')
               }
+
+
+
+              // const inboxAddress = this.$store.getters.inboxAccountId
+              // if (inboxAddress) {
+              //   this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, inboxAddress)
+              // }
+
+
             })
             .catch((error) => {
               console.error('WEB 3 ERROR!', error)

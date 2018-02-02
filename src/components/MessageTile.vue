@@ -1,25 +1,25 @@
 <template>
-  <div class="tile" @click="setCurrentMessage(message, $event)">
-    <div class="tile-content">
-      <span v-wei-to-eth="message.value"></span> Eth
+  <div>
+    <div @click="toggleMessage(message, $event)">
+      <span>{{message[0]}}</span> - <span>toggle me (is open: {{isExpanded}})</span>
     </div>
-    <div class="tile-content">
-      <strong>{{messageSize}} bytes</strong> from {{message.from}}
+    <div v-show="isExpanded">
+      The message: <br>
+      <span>{{message[1]}}</span>
     </div>
-    <div class="tile-content text-uppercase-light">
-      {{message.time.format('MMM D Y')}}
-    </div>
+    <hr>
   </div>
 </template>
 
 <script>
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
-  import weiToEth from '../directives/wei-to-eth'
 
   export default {
-    directives: {
-      weiToEth,
+    data () {
+      return {
+        isExpanded: false,
+      }
     },
     props: {
       message: {
@@ -34,11 +34,12 @@
       }
     },
     methods: {
-      setCurrentMessage (message, event) {
-        this.$store.commit(MUTATION_TYPES.UPDATE_MSG_ID, message.hash)
-        this.$router.push({
-          path: `/inbox/${this.$store.getters.inboxAccountId}/${message.hash}`
-        })
+      toggleMessage (message, event) {
+        this.isExpanded = !this.isExpanded
+        // this.$store.commit(MUTATION_TYPES.UPDATE_MSG_ID, message.hash)
+        // this.$router.push({
+        //   path: `/inbox/${this.$store.getters.inboxAccountId}/${message.hash}`
+        // })
       },
     }
   }

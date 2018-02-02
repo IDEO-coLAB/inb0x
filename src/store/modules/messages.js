@@ -19,8 +19,9 @@ const getters = {
 // Mutations
 const mutations = {
   [MUTATION_TYPES.UPDATE_MSGS] (state, { message, index }) {
-    state.messages.list[index] = message
-    console.log(MUTATION_TYPES.UPDATE_MSGS, state.messages.list)
+    // Vue does not track deeply nested objects
+    Vue.set(state.messages.list, index, message)
+    console.log(MUTATION_TYPES.UPDATE_MSGS, index, message)
   },
 
   [MUTATION_TYPES.RESET_MSGS] (state) {
@@ -43,16 +44,36 @@ const mutations = {
 
 // Actions
 const actions = {
-  [ACTION_TYPES.FETCH_MSG_HEADERS] ({ commit }, address) {
+  [ACTION_TYPES.FETCH_MSG_HEADERS] ({ dispatch, commit, state }, address) {
     const contract = this.getters.inboxContractObj
-    if (!contract) throw new Error('Missing inb0x contract')
+
+    if (!contract) {
+      console.error('MISSING A CONTRACT—CANNOT FETCH MESSAGES YET')
+      return
+     // throw new Error('Missing inb0x contract')
+    }
 
     return contract.methods
       .getInbox(address)
       .call()
       .then((headers) => {
         commit(MUTATION_TYPES.UPDATE_MSG_HEADERS, headers)
-        return headers
+        const msgCount = parseInt(headers[1], 10)
+        let msgFetches = []
+
+        _.times(msgCount, (index) => {
+          if (_.isUndefined(state.messages.list[index])) {
+            let msgAsyncFetch = new Promise((resolve, reject) => {
+              return dispatch(ACTION_TYPES.FETCH_MSG, { address, index })
+                .then(resolve)
+                .catch(reject)
+            })
+            msgFetches.push(msgAsyncFetch)
+          }
+        })
+
+        if (msgFetches.length) return Promise.all(msgFetches)
+        return Promise.resolve()
       })
   },
 
