@@ -23,6 +23,7 @@
 
       // this.$router.push('/compose')
       this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+      // this.$router.push('/inbox/0x0F03FAb4E407165a7eb7e67E3017370038dc43F9')
     },
     mounted () {
       testRouteForAddressAndMessage(this.$router, this.$store)
