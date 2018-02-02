@@ -1,11 +1,13 @@
 <template>
   <div>
     <div @click="toggleMessage(message, $event)">
-      <span>{{message[0]}}</span> - <span>toggle me (is open: {{isExpanded}})</span>
+      <span>Message {{index}}</span> - <span>Click to {{isExpanded ? 'close' : 'open'}}</span>
     </div>
     <div v-show="isExpanded">
-      The message: <br>
+      <br>
       <span>{{message[1]}}</span>
+      <br>
+      <br>
     </div>
     <hr>
   </div>
@@ -24,6 +26,10 @@
     props: {
       message: {
         type: Object,
+        required: true
+      },
+      index: {
+        type: Number,
         required: true
       },
     },

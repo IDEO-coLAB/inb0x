@@ -15,7 +15,7 @@
             <div class="column col-12">
 
               <!-- Has Messages -->
-              <message-tile v-show="messages" v-for="(message, index) in messages" v-bind:message="message" :key="index"></message-tile>
+              <message-tile v-show="messages" v-for="(message, index) in messages" :message="message" :index="index" :key="index"></message-tile>
 
             </div>
           </div>
