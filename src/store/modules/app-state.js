@@ -7,34 +7,37 @@ const state = {
   // stores global info and error objects for the user
   notifications: [],
 
-  // the current ethereum address in the search bar
-  inboxAccountId: null,
   // the hash for the inbox smart contract
-  // Currently on the Ropsten testnet
   // https://ropsten.etherscan.io/address/0x22abb8354bb201d32e77777b1a8304befec737cd
-  inboxContractId: '0x22ABB8354bB201d32E77777B1A8304BEfec737CD',
+  inboxContractAddr: '0x22ABB8354bB201d32E77777B1A8304BEfec737CD',
   // the object interface for the inbox smart contract
   inboxContractObj: null,
 
+  // search bar values depending on the query
+  search: {
+    tokenAddr: null,
+    messageAddr: null,
+  },
+
   // the ethereum address for the (if connected) metamask wallet
-  web3AccountId: null,
+  web3Addr: null,
 }
 
 // Getters
 const getters = {
   notifications: state => state.notifications,
 
-  inboxAccountId: state => state.inboxAccountId,
-  inboxContractId: state => state.inboxContractId,
+  inboxContractAddr: state => state.inboxContractAddr,
   inboxContractObj: state => state.inboxContractObj,
 
-  web3AccountId: state => state.web3AccountId,
-  app: state => state,
+  search: state => state.search,
+
+  web3Addr: state => state.web3Addr,
 }
 
 // Mutations
 const mutations = {
-  // Notifications
+  // NOTIFICATIONS
 
   [MUTATION_TYPES.UPDATE_NOTIFICATIONS] (state, notification) {
     state.notifications.push(notification)
@@ -47,33 +50,18 @@ const mutations = {
     console.log(MUTATION_TYPES.REMOVE_NOTIFICATION, state.notifications)
   },
 
-  // Inbox-specific
+  // INB0X CONTRACT
 
-  [MUTATION_TYPES.UPDATE_INBOX_ACCT_ID] (state, id) {
+  [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ADDR] (state, address) {
     // DO CHECKS HERE
-    state.inboxAccountId = id
-    console.log(MUTATION_TYPES.UPDATE_INBOX_ACCT_ID, state.inboxAccountId)
+    state.inboxContractAddr = address
+    console.log(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ADDR, state.inboxContractAddr)
   },
-  [MUTATION_TYPES.RESET_INBOX_ACCT_ID] (state) {
+  [MUTATION_TYPES.RESET_INBOX_CONTRACT_ADDR] (state) {
     // DO CHECKS HERE
-    state.inboxAccountId = null
-    console.log(MUTATION_TYPES.RESET_INBOX_ACCT_ID, state.inboxAccountId)
+    state.inboxContractAddr = null
+    console.log(MUTATION_TYPES.RESET_INBOX_CONTRACT_ADDR, state.inboxContractAddr)
   },
-
-
-
-  [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ID] (state, id) {
-    // DO CHECKS HERE
-    state.inboxContractId = id
-    console.log(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ID, state.inboxContractId)
-  },
-  [MUTATION_TYPES.RESET_INBOX_CONTRACT_ID] (state) {
-    // DO CHECKS HERE
-    state.inboxContractId = null
-    console.log(MUTATION_TYPES.RESET_INBOX_CONTRACT_ID, state.inboxContractId)
-  },
-
-
 
   [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ] (state, contract) {
     // DO CHECKS HERE
@@ -87,20 +75,39 @@ const mutations = {
   },
 
 
+  // search
 
-
-
-
-
-  [MUTATION_TYPES.UPDATE_WEB3_ACCT_ID] (state, id) {
+  [MUTATION_TYPES.UPDATE_SEARCH_TOKEN_ADDR] (state, address) {
     // DO CHECKS HERE
-    state.web3AccountId = id
-    console.log(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, state.web3AccountId)
+    state.search.tokenAddr = address
+    console.log(MUTATION_TYPES.UPDATE_SEARCH_TOKEN_ADDR, address)
   },
-  [MUTATION_TYPES.RESET_WEB3_ACCT_ID] (state) {
+  [MUTATION_TYPES.RESET_SEARCH_TOKEN_ADDR] (state) {
+    state.search.tokenAddr = null
+    console.log(MUTATION_TYPES.RESET_SEARCH_TOKEN_ADDR, state.search.tokenAddr)
+  },
+
+  [MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR] (state, address) {
     // DO CHECKS HERE
-    state.web3AccountId = null
-    console.log(MUTATION_TYPES.RESET_WEB3_ACCT_ID, state.web3AccountId)
+    state.search.messageAddr = address
+    console.log(MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR, address)
+  },
+  [MUTATION_TYPES.RESET_SEARCH_MSG_ADDR] (state) {
+    state.search.messageAddr = null
+    console.log(MUTATION_TYPES.RESET_SEARCH_MSG_ADDR, state.search.messageAddr)
+  },
+
+  // METAMASK / WEB3
+
+  [MUTATION_TYPES.UPDATE_WEB3_ADDR] (state, id) {
+    // DO CHECKS HERE
+    state.web3Addr = id
+    console.log(MUTATION_TYPES.UPDATE_WEB3_ADDR, state.web3Addr)
+  },
+  [MUTATION_TYPES.RESET_WEB3_ADDR] (state) {
+    // DO CHECKS HERE
+    state.web3Addr = null
+    console.log(MUTATION_TYPES.RESET_WEB3_ADDR, state.web3Addr)
   },
 
 }

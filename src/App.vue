@@ -7,11 +7,12 @@
 <script>
   import _ from 'lodash'
   import Web3 from 'web3'
+
   import inboxABI from './ethereum/inbox-abi'
   import AppHeader from './components/AppHeader'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
-  import { testRouteForAddressAndMessage } from './utils/route-utils'
+  import { testRouteForAddress } from './utils/route-utils'
   import { Notification, NOTIFICATION_TYPES } from './models/notification'
 
   export default {
@@ -22,11 +23,12 @@
       console.log('=================================\n\n\n')
 
       // this.$router.push('/compose')
-      this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+      // this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/inbox/0x0F03FAb4E407165a7eb7e67E3017370038dc43F9')
+      this.$router.push('/search')
     },
     mounted () {
-      testRouteForAddressAndMessage(this.$router, this.$store)
+      testRouteForAddress(this.$router, this.$store)
 
       // TODO: abstract this section into cleaner code when better understood
       // TODO: abstract this section into cleaner code when better understood
@@ -42,8 +44,8 @@
       console.log('JUST SET THE INBOX CONTRACT OBJECT')
 
       // if (this.$store.getters.inboxContractObj) {
-      console.log('FETCHING MESSAGES!')
-      this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, this.$store.getters.inboxAccountId)
+      //   console.log('FETCHING MESSAGES!')
+      //   this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, this.$store.getters.search.messagesAddr)
       // }
 
 
@@ -64,23 +66,14 @@
               if (!newWeb3AccountId) return
 
               if (!curWeb3AccountId) {
-                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ADDR, newWeb3AccountId)
                 console.log('JUST SET THE WEB3 ID')
               }
 
               if (curWeb3AccountId !== newWeb3AccountId) {
-                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ACCT_ID, newWeb3AccountId)
+                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ADDR, newWeb3AccountId)
                 console.log('JUST SET THE WEB3 ID')
               }
-
-
-
-              // const inboxAddress = this.$store.getters.inboxAccountId
-              // if (inboxAddress) {
-              //   this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, inboxAddress)
-              // }
-
-
             })
             .catch((error) => {
               console.error('WEB 3 ERROR!', error)
@@ -110,7 +103,7 @@
     },
     watch: {
       '$route' (to, from) {
-        testRouteForAddressAndMessage(this.$router, this.$store)
+        testRouteForAddress(this.$router, this.$store)
       },
     },
   }

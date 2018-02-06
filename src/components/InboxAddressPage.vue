@@ -69,9 +69,7 @@
       //   return _.last(this.transactions)
       // },
       messages () {
-        // return this.$store.getters.messages[this.inboxAccountId]
-        console.warn('CALLING IN INBOX COMPONENT')
-        return this.$store.getters.messages.list
+        return this.$store.getters.messageList
       },
       // lastMessage () {
       //   return _.last(this.messages)

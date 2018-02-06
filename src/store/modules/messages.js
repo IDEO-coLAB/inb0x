@@ -13,7 +13,12 @@ const state = {
 
 // Getters
 const getters = {
-  messages: state => state.messages,
+  messageHeaders: state => state.messages.headers,
+  messageList: (state) => {
+    return _.filter(state.messages.list, (msg) => {
+      return !_.isUndefined(msg)
+    })
+  }
 }
 
 // Mutations
@@ -52,6 +57,9 @@ const actions = {
       return
      // throw new Error('Missing inb0x contract')
     }
+
+    commit(MUTATION_TYPES.RESET_MSGS)
+    commit(MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR, address)
 
     return contract.methods
       .getInbox(address)

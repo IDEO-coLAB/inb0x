@@ -65,41 +65,12 @@
       }
     },
     methods: {
-      toggleSearch () {
-        this.isSearching = !this.isSearching
-      },
-      resetInput () {
-        this.searchAddress = this.address || null
-      },
-      submit () {
-        const searchAddress = this.searchAddress
-        const curAddress = this.$store.getters.inboxAccountId
-        const validEthAddress = web3.utils.isAddress(searchAddress)
-
-        // Bail if not a valid address
-        if (!validEthAddress) return
-
-        // Skip if the new address is the same as what we already have
-        if (searchAddress === curAddress) return
-
-
-        // We are only fetching
-
-
-        this.$store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
-        // this.$store.commit(MUTATION_TYPES.RESET_MSG_ID)
-
-        const payload = { address: searchAddress }
-        // this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
-        // this.$store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
-        this.$store.commit(MUTATION_TYPES.RESET_MESSAGES, payload)
-        // this.$store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
-        // this.$store.commit(MUTATION_TYPES.RESET_EAMS, payload)
-
-        // finally, fetch the details for the address
-        return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS, searchAddress)
+      fetchTokenHolders (address) {
+        return this.$store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, address)
           .then(() => {
-            return this.$router.push({ path: `/inbox/${searchAddress}` })
+            console.log()
+            return true
+            // return this.$router.push({ path: `/inbox/${address}` })
           })
           .catch((error) => {
             console.error('NEW ADDR FETCH ERROR', error)
@@ -109,6 +80,56 @@
             this.isSearching = false
             this.resetInput()
           })
+      },
+
+
+      fetchMessages (address) {
+        return this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, address)
+          .then(() => {
+            return this.$router.push({ path: `/inbox/${address}` })
+          })
+          .catch((error) => {
+            console.error('NEW ADDR FETCH ERROR', error)
+            return true
+          })
+          .then(() => {
+            this.isSearching = false
+            this.resetInput()
+          })
+      },
+
+
+
+      toggleSearch () {
+        this.isSearching = !this.isSearching
+      },
+      resetInput () {
+        this.searchAddress = this.address || null
+      },
+      submit () {
+
+        const routeName = this.$route.name
+        const searchAddress = this.searchAddress
+        const curAddress = this.$store.getters.inboxAccountId
+        const validEthAddress = web3.utils.isAddress(searchAddress)
+
+        // Bail if not a valid address
+        if (!validEthAddress) return
+
+        if (routeName === 'SearchPage') {
+          console.log('fetching token holders')
+          return this.fetchTokenHolders(searchAddress)
+        }
+        console.log('fetching messages')
+        return this.fetchMessages(searchAddress)
+
+
+
+
+
+
+
+
       },
     },
     computed: {

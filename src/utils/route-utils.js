@@ -1,25 +1,23 @@
 import web3Utils from 'web3-utils'
 import web3 from 'web3'
+
 import { MUTATION_TYPES } from '../constants/mutations'
 import { ACTION_TYPES } from '../constants/actions'
 
 const resetAppState = (store) => {
-  store.commit(MUTATION_TYPES.RESET_INBOX_ACCT_ID)
-  store.commit(MUTATION_TYPES.RESET_MSG_ID)
+  store.commit(MUTATION_TYPES.RESET_SEARCH_MSG_ADDR)
 }
 
 const resetStoreForAddress = (store, address) => {
-  const payload = { address }
-  store.commit(MUTATION_TYPES.RESET_TRANSACTIONS_STATE, payload)
-  store.commit(MUTATION_TYPES.RESET_TRANSACTIONS, payload)
-  store.commit(MUTATION_TYPES.RESET_MESSAGES, payload)
-  store.commit(MUTATION_TYPES.RESET_BALANCE, payload)
-  store.commit(MUTATION_TYPES.RESET_EAMS, payload)
+  store.commit(MUTATION_TYPES.RESET_TOKEN_HOLDERS)
+  store.commit(MUTATION_TYPES.RESET_MSG_HEADERS)
+  store.commit(MUTATION_TYPES.RESET_MSGS)
 }
 
-const testRouteForAddress = (router, store) => {
+export const testRouteForAddress = (router, store) => {
   const route = router.currentRoute
-  const curAddr = store.getters.inboxAccountId
+
+  const curAddr = store.getters.search.messagesAddr
   const urlAddr = route.params.address
 
   const isNewAddrInUrl = urlAddr !== curAddr
@@ -32,6 +30,13 @@ const testRouteForAddress = (router, store) => {
   // console.log('isNewAddrInUrl', isNewAddrInUrl)
   // console.log('urlAddrIsValid', urlAddrIsValid)
 
+
+
+  // DETERMINE CHECKS BASED ON URL
+
+
+
+
   if (!urlAddr) return
 
   if (!urlAddrIsValid) {
@@ -40,7 +45,7 @@ const testRouteForAddress = (router, store) => {
   }
 
   if (isNewAddrInUrl && urlAddrIsValid) {
-    store.commit(MUTATION_TYPES.UPDATE_INBOX_ACCT_ID, urlAddr)
+    store.commit(MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR, urlAddr)
 
     // HACK
     // HACK
@@ -50,8 +55,4 @@ const testRouteForAddress = (router, store) => {
 
     return store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, urlAddr)
   }
-}
-
-export const testRouteForAddressAndMessage = (router, store) => {
-  testRouteForAddress(router, store)
 }
