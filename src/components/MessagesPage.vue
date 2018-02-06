@@ -15,7 +15,7 @@
             <div class="column col-12">
 
               <!-- Has Messages -->
-              <message-tile v-show="messages" v-for="(message, index) in messages" :message="message" :index="index" :key="index"></message-tile>
+              <message-tile v-show="messages" v-for="(message, index) in messages" :message-object="message" :index="index" :key="index"></message-tile>
 
             </div>
           </div>
@@ -25,7 +25,7 @@
         <div class="footer">
           <div class="footer-section">
             <span>
-              {{messages.length}} messages :)
+              we have {{messages.length}} messages :)
               <!-- {{messages && messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}} -->
             </span>
           </div>

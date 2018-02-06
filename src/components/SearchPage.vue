@@ -14,10 +14,7 @@
           <div class="columns">
             <div class="column col-12">
 
-              <!-- Has Messages -->
-              <h4>current token holders</h4>
-              <br>
-              {{ tokenHolders }}
+              <search-tile v-show="tokenHolders" v-for="(tokenHolder, index) in tokenHolders" :search-object="tokenHolder" :index="index" :key="index"></search-tile>
 
             </div>
           </div>
@@ -36,12 +33,12 @@
   import _ from 'lodash'
   import { ACTION_TYPES } from '../constants/actions'
   import AppHeader from './AppHeader'
-  // import MessageTile from './MessageTile'
+  import SearchTile from './SearchTile'
 
   export default {
     components: {
       AppHeader,
-      // MessageTile,
+      SearchTile,
     },
     computed: {
       inboxAccountId () {

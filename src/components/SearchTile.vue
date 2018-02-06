@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div @click="toggleMessage(messageObject, $event)">
-      <span>Message {{index}}</span> from {{messageObject[0]}} - <span>Click to {{isExpanded ? 'close' : 'open'}}</span>
+    <div @click="toggleMessage(searchObject, $event)">
+      <span>{{searchObject.address}} has {{searchObject.amount}} - Click to {{isExpanded ? 'close' : 'open'}}</span>
     </div>
     <div v-show="isExpanded">
       <br>
-      <span>{{messageObject[1]}}</span>
+      <span>Make them an offer</span>
       <br>
       <br>
-      <message-reply :recipient="messageObject[0]"></message-reply>
+      <message-reply :recipient="searchObject.address"></message-reply>
       <br>
     </div>
     <hr>
@@ -30,7 +30,7 @@
       }
     },
     props: {
-      messageObject: {
+      searchObject: {
         type: Object,
         required: true
       },
@@ -40,7 +40,7 @@
       },
     },
     methods: {
-      toggleMessage (messageObject, event) {
+      toggleMessage (searchObject, event) {
         this.isExpanded = !this.isExpanded
       },
     }
