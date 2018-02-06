@@ -18,6 +18,8 @@ const state = {
     tokensAddr: null,
     messagesAddr: null,
   },
+
+  isLocked: false,
 }
 
 // Getters
@@ -65,6 +67,12 @@ const mutations = {
       state.inboxContractObj = Object.freeze(contract)
     }
     console.log(MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ, contract)
+  },
+
+  [MUTATION_TYPES.SET_LOCK_STATE] (state, isLocked) {
+    // DO CHECKS HERE
+    state.isLocked = isLocked
+    console.log(MUTATION_TYPES.SET_LOCK_STATE, isLocked)
   },
 
 

@@ -35,13 +35,19 @@ const actions = {
     commit(MUTATION_TYPES.SET_TOKEN_HOLDERS)
     // update the latest token search addr
     commit(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR, address)
+    commit(MUTATION_TYPES.SET_LOCK_STATE, true)
 
     const url = getTokenFetchUrl(address)
     return axios.get(url)
       .then((result) => {
         const tokenHolders = result.data
         commit(MUTATION_TYPES.SET_TOKEN_HOLDERS, tokenHolders)
+        commit(MUTATION_TYPES.SET_LOCK_STATE, false)
         return true
+      })
+      .catch((error) => {
+        commit(MUTATION_TYPES.SET_LOCK_STATE, false)
+        return Promise.reject(error)
       })
   },
 }

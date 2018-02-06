@@ -56,6 +56,7 @@ const actions = {
 
     commit(MUTATION_TYPES.SET_MSGS)
     commit(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR, address)
+    commit(MUTATION_TYPES.SET_LOCK_STATE, true)
 
     return contract.methods
       .getInbox(address)
@@ -79,6 +80,14 @@ const actions = {
         if (msgFetches.length) return Promise.all(msgFetches)
         return Promise.resolve()
       })
+      .then(() => {
+        commit(MUTATION_TYPES.SET_LOCK_STATE, false)
+        return Promise.resolve(true)
+      })
+      .catch((error) => {
+        commit(MUTATION_TYPES.SET_LOCK_STATE, false)
+        return Promise.reject(error)
+      })
   },
 
   [ACTION_TYPES.FETCH_MSG] ({ commit }, { address, index }) {
@@ -101,9 +110,3 @@ export default {
   actions,
   mutations,
 }
-
-
-
-
-
-
