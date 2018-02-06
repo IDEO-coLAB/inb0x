@@ -73,9 +73,9 @@ const mutations = {
   [MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR] (state, address) {
     // DO CHECKS HERE
     if (_.isUndefined(address)) {
-      state.search.tokenAddr = null
+      state.search.tokensAddr = null
     } else {
-      state.search.tokenAddr = address
+      state.search.tokensAddr = address
     }
     console.log(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR, address)
   },

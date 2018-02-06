@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <!-- sidebar and header -->
+
     <router-view></router-view>
   </div>
 </template>

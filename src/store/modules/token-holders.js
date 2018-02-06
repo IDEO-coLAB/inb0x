@@ -31,15 +31,17 @@ const mutations = {
 // Actions
 const actions = {
   [ACTION_TYPES.FETCH_TOKEN_HOLDERS] ({ commit, state }, address) {
-    const url = getTokenFetchUrl(address)
     // remove current token holders
     commit(MUTATION_TYPES.SET_TOKEN_HOLDERS)
+    // update the latest token search addr
+    commit(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR, address)
 
+    const url = getTokenFetchUrl(address)
     return axios.get(url)
       .then((result) => {
         const tokenHolders = result.data
         commit(MUTATION_TYPES.SET_TOKEN_HOLDERS, tokenHolders)
-        console.log('GOT TOKEN HODLER RESULTS!', tokenHolders)
+        return true
       })
   },
 }
