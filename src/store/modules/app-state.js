@@ -15,12 +15,9 @@ const state = {
 
   // search bar values depending on the query
   search: {
-    tokenAddr: null,
-    messageAddr: null,
+    tokensAddr: null,
+    messagesAddr: null,
   },
-
-  // the ethereum address for the (if connected) metamask wallet
-  web3Addr: null,
 }
 
 // Getters
@@ -31,17 +28,15 @@ const getters = {
   inboxContractObj: state => state.inboxContractObj,
 
   search: state => state.search,
-
-  web3Addr: state => state.web3Addr,
 }
 
 // Mutations
 const mutations = {
   // NOTIFICATIONS
 
-  [MUTATION_TYPES.UPDATE_NOTIFICATIONS] (state, notification) {
+  [MUTATION_TYPES.ADD_NOTIFICATION] (state, notification) {
     state.notifications.push(notification)
-    console.log(MUTATION_TYPES.UPDATE_NOTIFICATIONS, state.notifications)
+    console.log(MUTATION_TYPES.ADD_NOTIFICATION, state.notifications)
   },
 
   [MUTATION_TYPES.REMOVE_NOTIFICATION] (state, notification) {
@@ -52,64 +47,50 @@ const mutations = {
 
   // INB0X CONTRACT
 
-  [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ADDR] (state, address) {
+  [MUTATION_TYPES.SET_INBOX_CONTRACT_ADDR] (state, address) {
     // DO CHECKS HERE
-    state.inboxContractAddr = address
-    console.log(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_ADDR, state.inboxContractAddr)
-  },
-  [MUTATION_TYPES.RESET_INBOX_CONTRACT_ADDR] (state) {
-    // DO CHECKS HERE
-    state.inboxContractAddr = null
-    console.log(MUTATION_TYPES.RESET_INBOX_CONTRACT_ADDR, state.inboxContractAddr)
+    if (_.isUndefined(address)) {
+      state.inboxContractAddr = null
+    } else {
+      state.inboxContractAddr = address
+    }
+    console.log(MUTATION_TYPES.SET_INBOX_CONTRACT_ADDR, address)
   },
 
-  [MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ] (state, contract) {
+  [MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ] (state, contract) {
     // DO CHECKS HERE
-    state.inboxContractObj = Object.freeze(contract)
-    console.log(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, state.inboxContractObj)
-  },
-  [MUTATION_TYPES.RESET_INBOX_CONTRACT_OBJ] (state) {
-    // DO CHECKS HERE
-    state.inboxContractObj = null
-    console.log(MUTATION_TYPES.RESET_INBOX_CONTRACT_OBJ, state.inboxContractObj)
+    if (_.isUndefined(contract)) {
+      state.inboxContractObj = null
+    } else {
+      state.inboxContractObj = Object.freeze(contract)
+    }
+    console.log(MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ, contract)
   },
 
 
   // search
 
-  [MUTATION_TYPES.UPDATE_SEARCH_TOKEN_ADDR] (state, address) {
+  [MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR] (state, address) {
     // DO CHECKS HERE
-    state.search.tokenAddr = address
-    console.log(MUTATION_TYPES.UPDATE_SEARCH_TOKEN_ADDR, address)
-  },
-  [MUTATION_TYPES.RESET_SEARCH_TOKEN_ADDR] (state) {
-    state.search.tokenAddr = null
-    console.log(MUTATION_TYPES.RESET_SEARCH_TOKEN_ADDR, state.search.tokenAddr)
+    if (_.isUndefined(address)) {
+      state.search.tokenAddr = null
+    } else {
+      state.search.tokenAddr = address
+    }
+    console.log(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR, address)
   },
 
-  [MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR] (state, address) {
-    // DO CHECKS HERE
-    state.search.messageAddr = address
-    console.log(MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR, address)
-  },
-  [MUTATION_TYPES.RESET_SEARCH_MSG_ADDR] (state) {
-    state.search.messageAddr = null
-    console.log(MUTATION_TYPES.RESET_SEARCH_MSG_ADDR, state.search.messageAddr)
-  },
 
-  // METAMASK / WEB3
 
-  [MUTATION_TYPES.UPDATE_WEB3_ADDR] (state, id) {
+  [MUTATION_TYPES.SET_SEARCH_MSGS_ADDR] (state, address) {
     // DO CHECKS HERE
-    state.web3Addr = id
-    console.log(MUTATION_TYPES.UPDATE_WEB3_ADDR, state.web3Addr)
+    if (_.isUndefined(address)) {
+      state.search.messagesAddr = null
+    } else {
+      state.search.messagesAddr = address
+    }
+    console.log(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR, address)
   },
-  [MUTATION_TYPES.RESET_WEB3_ADDR] (state) {
-    // DO CHECKS HERE
-    state.web3Addr = null
-    console.log(MUTATION_TYPES.RESET_WEB3_ADDR, state.web3Addr)
-  },
-
 }
 
 export default {

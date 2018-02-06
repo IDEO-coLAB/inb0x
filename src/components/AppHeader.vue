@@ -56,6 +56,7 @@
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
+  import ROUTE_NAMES from '../constants/routes'
 
   export default {
     data () {
@@ -66,14 +67,21 @@
     },
     methods: {
       fetchTokenHolders (address) {
+        const curAddress = this.$store.getters.search.tokensAddr
+
+        if (address === curAddress) return
+
+        console.log('FETCHING TOKEN HOLDERS IN THE SEARCH BAR!')
+
         return this.$store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, address)
           .then(() => {
-            console.log()
-            return true
-            // return this.$router.push({ path: `/inbox/${address}` })
+            return this.$router.push({
+              path: `/search`,
+              query: { address },
+            })
           })
           .catch((error) => {
-            console.error('NEW ADDR FETCH ERROR', error)
+            console.error('NEW TOKENS FETCH ERROR', error)
             return true
           })
           .then(() => {
@@ -84,12 +92,21 @@
 
 
       fetchMessages (address) {
-        return this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, address)
+        const curAddress = this.$store.getters.search.messagesAddr
+
+        if (address === curAddress) return
+
+        console.log('FETCHING MESSAGES IN THE SEARCH BAR!')
+
+        return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS_HEADERS, address)
           .then(() => {
-            return this.$router.push({ path: `/inbox/${address}` })
+            return this.$router.push({
+              path: `/messages`,
+              query: { address },
+            })
           })
           .catch((error) => {
-            console.error('NEW ADDR FETCH ERROR', error)
+            console.error('NEW MESSAGES FETCH ERROR', error)
             return true
           })
           .then(() => {
@@ -107,29 +124,20 @@
         this.searchAddress = this.address || null
       },
       submit () {
-
-        const routeName = this.$route.name
         const searchAddress = this.searchAddress
-        const curAddress = this.$store.getters.inboxAccountId
         const validEthAddress = web3.utils.isAddress(searchAddress)
 
         // Bail if not a valid address
         if (!validEthAddress) return
 
-        if (routeName === 'SearchPage') {
-          console.log('fetching token holders')
-          return this.fetchTokenHolders(searchAddress)
+        switch (this.$route.name) {
+          case ROUTE_NAMES.MESSAGES_PAGE:
+            this.fetchMessages(searchAddress)
+            break
+          case ROUTE_NAMES.SEARCH_PAGE:
+            this.fetchTokenHolders(searchAddress)
+            break
         }
-        console.log('fetching messages')
-        return this.fetchMessages(searchAddress)
-
-
-
-
-
-
-
-
       },
     },
     computed: {

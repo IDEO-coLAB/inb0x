@@ -3,56 +3,64 @@ import web3 from 'web3'
 
 import { MUTATION_TYPES } from '../constants/mutations'
 import { ACTION_TYPES } from '../constants/actions'
+import ROUTE_NAMES from '../constants/routes'
 
-const resetAppState = (store) => {
-  store.commit(MUTATION_TYPES.RESET_SEARCH_MSG_ADDR)
-}
-
-const resetStoreForAddress = (store, address) => {
-  store.commit(MUTATION_TYPES.RESET_TOKEN_HOLDERS)
-  store.commit(MUTATION_TYPES.RESET_MSG_HEADERS)
-  store.commit(MUTATION_TYPES.RESET_MSGS)
-}
-
-export const testRouteForAddress = (router, store) => {
-  const route = router.currentRoute
-
+const handleMessagesRoute = (router, store) => {
   const curAddr = store.getters.search.messagesAddr
-  const urlAddr = route.params.address
+  const routeAddr = router.currentRoute.query.address
+  const routeHasNewAddr = curAddr && (routeAddr !== curAddr)
+  const routeAddrIsValid = web3Utils.isAddress(routeAddr)
 
-  const isNewAddrInUrl = urlAddr !== curAddr
-  const urlAddrIsValid = web3Utils.isAddress(urlAddr)
-
-  // (Crappy) Debugging:
-  // =============================================
-  // console.log('urlAddr', urlAddr)
-  // console.log('curAddr', curAddr)
-  // console.log('isNewAddrInUrl', isNewAddrInUrl)
-  // console.log('urlAddrIsValid', urlAddrIsValid)
-
-
-
-  // DETERMINE CHECKS BASED ON URL
-
-
-
-
-  if (!urlAddr) return
-
-  if (!urlAddrIsValid) {
-    resetAppState(store)
-    return router.push({ path: `/inbox` })
+  // reset the messages state in the app
+  if (!routeAddrIsValid) {
+    store.commit(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR)
+    store.commit(MUTATION_TYPES.SET_MSGS_HEADERS)
+    store.commit(MUTATION_TYPES.SET_MSGS)
+    router.push({ path: `/messages` })
+    return
   }
 
-  if (isNewAddrInUrl && urlAddrIsValid) {
-    store.commit(MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR, urlAddr)
+  // fetch messages and update the search addr
+  if (routeHasNewAddr && routeAddrIsValid) {
+    console.log('FETCHING MESSAGES FROM THE ROUTE_UTILS')
+    store.commit(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR, routeAddr)
+    store.dispatch(ACTION_TYPES.FETCH_MSGS_HEADERS, routeAddr)
+    return
+  }
+}
 
-    // HACK
-    // HACK
-    if (!store.getters.inboxContractObj) return console.warn('ROUTE UTILS => NO CONTRACT YET')
-    // HACK
-    // HACK
+const handleSearchRoute = (router, store) => {
+  const curAddr = store.getters.search.tokensAddr
+  const routeAddr = router.currentRoute.query.address
+  const routeHasNewAddr = curAddr && (routeAddr !== curAddr)
+  const routeAddrIsValid = web3Utils.isAddress(routeAddr)
 
-    return store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, urlAddr)
+  if (!routeHasNewAddr) return
+
+  // reset the token holders state in the app
+  if (!routeAddrIsValid) {
+    store.commit(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR)
+    store.commit(MUTATION_TYPES.SET_TOKEN_HOLDERS)
+    router.push({ path: `/search` })
+    return
+  }
+
+  // fetch token holders and update the search addr
+  if (routeHasNewAddr && routeAddrIsValid) {
+    console.log('FETCHING TOKEN HOLDERS FROM THE ROUTE_UTILS')
+    store.commit(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR, routeAddr)
+    store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, routeAddr)
+    return
+  }
+}
+
+export default (router, store) => {
+  switch (router.currentRoute.name) {
+    case ROUTE_NAMES.MESSAGES_PAGE:
+      handleMessagesRoute(router, store)
+      break
+    case ROUTE_NAMES.SEARCH_PAGE:
+      handleSearchRoute(router, store)
+      break
   }
 }

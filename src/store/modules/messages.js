@@ -23,33 +23,29 @@ const getters = {
 
 // Mutations
 const mutations = {
-  [MUTATION_TYPES.UPDATE_MSGS] (state, { message, index }) {
+  [MUTATION_TYPES.SET_MSGS] (state, message) {
     // Vue does not track deeply nested objects
-    Vue.set(state.messages.list, index, message)
-    console.log(MUTATION_TYPES.UPDATE_MSGS, index, message)
+    if (_.isUndefined(message)) {
+      state.messages.list = []
+    } else {
+      Vue.set(state.messages.list, message.index, message.message)
+    }
+    console.log(MUTATION_TYPES.SET_MSGS, message)
   },
 
-  [MUTATION_TYPES.RESET_MSGS] (state) {
-    state.messages.list = []
-    console.log(MUTATION_TYPES.RESET_MSGS, state.messages.list)
-  },
-
-  [MUTATION_TYPES.UPDATE_MSG_HEADERS] (state, headers) {
-    state.messages.headers = headers
-    console.log(MUTATION_TYPES.UPDATE_MSG_HEADERS, state.messages.headers)
-  },
-
-  [MUTATION_TYPES.RESET_MSG_HEADERS] (state) {
-    state.messages.headers = null
-    console.log(MUTATION_TYPES.RESET_MSG_HEADERS, state.messages.headers)
+  [MUTATION_TYPES.SET_MSGS_HEADERS] (state, headers) {
+    if (_.isUndefined(headers)) {
+      state.messages.headers = null
+    } else {
+      state.messages.headers = headers
+    }
+    console.log(MUTATION_TYPES.SET_MSGS_HEADERS, headers)
   },
 }
 
-
-
 // Actions
 const actions = {
-  [ACTION_TYPES.FETCH_MSG_HEADERS] ({ dispatch, commit, state }, address) {
+  [ACTION_TYPES.FETCH_MSGS_HEADERS] ({ dispatch, commit, state }, address) {
     const contract = this.getters.inboxContractObj
 
     if (!contract) {
@@ -58,14 +54,14 @@ const actions = {
      // throw new Error('Missing inb0x contract')
     }
 
-    commit(MUTATION_TYPES.RESET_MSGS)
-    commit(MUTATION_TYPES.UPDATE_SEARCH_MSG_ADDR, address)
+    commit(MUTATION_TYPES.SET_MSGS)
+    commit(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR, address)
 
     return contract.methods
       .getInbox(address)
       .call()
       .then((headers) => {
-        commit(MUTATION_TYPES.UPDATE_MSG_HEADERS, headers)
+        commit(MUTATION_TYPES.SET_MSGS_HEADERS, headers)
         const msgCount = parseInt(headers[1], 10)
         let msgFetches = []
 
@@ -91,7 +87,7 @@ const actions = {
 
     return contract.methods.getMessage(address, index).call()
       .then((message) => {
-        commit(MUTATION_TYPES.UPDATE_MSGS, { message, index })
+        commit(MUTATION_TYPES.SET_MSGS, { message, index })
         return message
       })
   }

@@ -12,44 +12,38 @@
   import AppHeader from './components/AppHeader'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
-  import { testRouteForAddress } from './utils/route-utils'
   import { Notification, NOTIFICATION_TYPES } from './models/notification'
+  import testRouteForAddress from './utils/route-utils'
 
   export default {
     beforeCreate () {
       console.log('\n\n\n=================================')
+      console.log('MESSAGES ADDR:')
       console.log('0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
-      console.log('0x1ed014aec47fae44c9e55bac7662c0b78ae61798')
+      console.log('CONTRACT ADDR:')
+      console.log('0xf230b790e05390fc8295f4d3f60332c93bed42e2')
       console.log('=================================\n\n\n')
 
-      // this.$router.push('/compose')
-      // this.$router.push('/inbox/0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
-      // this.$router.push('/inbox/0x0F03FAb4E407165a7eb7e67E3017370038dc43F9')
-      this.$router.push('/search')
+      // this.$router.push('/messages?address=0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+      // this.$router.push('/messages?address=somethingBogus')
+      // this.$router.push('/search?address=somethingnotGood')
+      // this.$router.push('/search?address=0xf230b790e05390fc8295f4d3f60332c93bed42e2')
     },
     mounted () {
-      testRouteForAddress(this.$router, this.$store)
-
       // TODO: abstract this section into cleaner code when better understood
       // TODO: abstract this section into cleaner code when better understood
       // TODO: abstract this section into cleaner code when better understood
 
       const provider = new Web3(window.web3.currentProvider)
-      this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, provider)
+      this.$store.commit(MUTATION_TYPES.SET_WEB3_PROVIDER, provider)
 
       // Store the contract interface so we can interact with it directly
-      const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractId)
-      this.$store.commit(MUTATION_TYPES.UPDATE_INBOX_CONTRACT_OBJ, inboxContract)
+      const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractAddr)
+      this.$store.commit(MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ, inboxContract)
 
       console.log('JUST SET THE INBOX CONTRACT OBJECT')
 
-      // if (this.$store.getters.inboxContractObj) {
-      //   console.log('FETCHING MESSAGES!')
-      //   this.$store.dispatch(ACTION_TYPES.FETCH_MSG_HEADERS, this.$store.getters.search.messagesAddr)
-      // }
-
-
-
+      testRouteForAddress(this.$router, this.$store)
 
 
       // If web3 is defined metamask is installed, set up the app's web3 provider
@@ -57,21 +51,21 @@
 
         // This is why we poll
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
-        const iterval = setInterval(() => {
+        const interval = setInterval(() => {
           provider.eth.getAccounts()
             .then((accounts) => {
-              const curWeb3AccountId = this.$store.getters.web3AccountId
-              const newWeb3AccountId = _.first(accounts)
+              const curWeb3Addr = this.$store.getters.web3Addr
+              const newWeb3Addr = _.first(accounts)
 
-              if (!newWeb3AccountId) return
+              if (!newWeb3Addr) return
 
-              if (!curWeb3AccountId) {
-                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ADDR, newWeb3AccountId)
+              if (!curWeb3Addr) {
+                this.$store.commit(MUTATION_TYPES.SET_WEB3_ADDR, newWeb3Addr)
                 console.log('JUST SET THE WEB3 ID')
               }
 
-              if (curWeb3AccountId !== newWeb3AccountId) {
-                this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_ADDR, newWeb3AccountId)
+              if (curWeb3Addr !== newWeb3Addr) {
+                this.$store.commit(MUTATION_TYPES.SET_WEB3_ADDR, newWeb3Addr)
                 console.log('JUST SET THE WEB3 ID')
               }
             })
@@ -79,7 +73,7 @@
               console.error('WEB 3 ERROR!', error)
               console.error('DECIDE HOW TO HANDLE THESE')
               // something outside will need to kick this thing off again if there is an error
-              clearInterval(iterval)
+              clearInterval(interval)
             })
 
 
@@ -98,7 +92,7 @@
           onClose: () => console.log('clicked close')
         })
         console.log(note)
-        this.$store.commit(MUTATION_TYPES.UPDATE_NOTIFICATIONS, note)
+        this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, note)
       }
     },
     watch: {

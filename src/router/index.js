@@ -2,34 +2,22 @@ import web3 from 'web3'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import InboxPage from '../components/InboxPage'
-import InboxHomePage from '../components/InboxHomePage'
-import InboxAddressPage from '../components/InboxAddressPage'
+import ROUTE_NAMES from '../constants/routes'
+import MessagesPage from '../components/MessagesPage'
 import SearchPage from '../components/SearchPage'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/inbox',
-    component: InboxPage,
-    children: [
-      {
-        path: '',
-        name: 'InboxHomePage',
-        component: InboxHomePage,
-      },
-      {
-        path: ':address',
-        name: 'InboxAddressPage',
-        component: InboxAddressPage,
-      },
-    ]
+    path: '/messages',
+    component: MessagesPage,
+    name: ROUTE_NAMES.MESSAGES_PAGE,
   },
   {
     path: '/search',
-    name: 'SearchPage',
     component: SearchPage,
+    name: ROUTE_NAMES.SEARCH_PAGE,
   }
 ]
 
