@@ -7,14 +7,14 @@
       <div class="page-content">
 
         <!-- Search header -->
-        <app-header></app-header>
+        <!-- <search-bar-component></search-bar-component> -->
 
         <!-- Body Content -->
         <div class="body body-with-header-and-footer">
           <div class="columns">
             <div class="column col-12">
 
-              <search-tile v-show="tokenHolders" v-for="(tokenHolder, index) in tokenHolders" :search-object="tokenHolder" :index="index" :key="index"></search-tile>
+              <search-result-tile-component v-show="tokenHolders" v-for="(tokenHolder, index) in tokenHolders" :search-object="tokenHolder" :index="index" :key="index"></search-result-tile-component>
 
             </div>
           </div>
@@ -32,13 +32,13 @@
   import web3 from 'web3'
   import _ from 'lodash'
   import { ACTION_TYPES } from '../constants/actions'
-  import AppHeader from './AppHeader'
-  import SearchTile from './SearchTile'
+  import SearchBarComponent from './SearchBarComponent'
+  import SearchResultTileComponent from './SearchResultTileComponent'
 
   export default {
     components: {
-      AppHeader,
-      SearchTile,
+      SearchBarComponent,
+      SearchResultTileComponent,
     },
     computed: {
       inboxAccountId () {

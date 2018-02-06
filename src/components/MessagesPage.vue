@@ -7,7 +7,7 @@
       <div class="page-content">
 
         <!-- Search header -->
-        <app-header></app-header>
+<!--         <search-bar-component></search-bar-component> -->
 
         <!-- Body Content -->
         <div class="body body-with-header-and-footer">
@@ -15,7 +15,7 @@
             <div class="column col-12">
 
               <!-- Has Messages -->
-              <message-tile v-show="messages" v-for="(message, index) in messages" :message-object="message" :index="index" :key="index"></message-tile>
+              <message-tile-component v-show="messages" v-for="(message, index) in messages" :message-object="message" :index="index" :key="index"></message-tile-component>
 
             </div>
           </div>
@@ -44,13 +44,13 @@
   import _ from 'lodash'
   import { UPDATE_CURRENT_MESSAGE } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
-  import AppHeader from './AppHeader'
-  import MessageTile from './MessageTile'
+  import SearchBarComponent from './SearchBarComponent'
+  import MessageTileComponent from './MessageTileComponent'
 
   export default {
     components: {
-      AppHeader,
-      MessageTile,
+      SearchBarComponent,
+      MessageTileComponent,
     },
     // mounted () {
     //   console.error('CALLING IN INBOX COMPONENT')

@@ -1,8 +1,19 @@
 <template>
   <div class="app-container">
-    <!-- sidebar and header -->
+    <div class="columns col-gapless height-full">
 
-    <router-view></router-view>
+      <div class="column col-8">
+
+        <search-bar-component></search-bar-component>
+        <router-view></router-view>
+      </div>
+
+      <div class="column col-4">
+        This will be our side nav :)
+      </div>
+
+    </div>
+
   </div>
 </template>
 
@@ -11,13 +22,16 @@
   import Web3 from 'web3'
 
   import inboxABI from './ethereum/inbox-abi'
-  import AppHeader from './components/AppHeader'
+  import SearchBarComponent from './components/SearchBarComponent'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
   import { Notification, NOTIFICATION_TYPES } from './models/notification'
   import testRouteForAddress from './utils/route-utils'
 
   export default {
+    components: {
+      SearchBarComponent,
+    },
     beforeCreate () {
       console.log('\n\n\n=================================')
       console.log('MESSAGES ADDR:')

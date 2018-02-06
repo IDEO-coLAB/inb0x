@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div @click="toggleMessage(messageObject, $event)">
-      <span>Message {{index}}</span> from {{messageObject[0]}} - <span>Click to {{isExpanded ? 'close' : 'open'}}</span>
+    <div @click="toggleMessage(searchObject, $event)">
+      <span>{{searchObject.address}} has {{searchObject.amount}} - Click to {{isExpanded ? 'close' : 'open'}}</span>
     </div>
     <div v-show="isExpanded">
       <br>
-      <span>{{messageObject[1]}}</span>
+      <span>Make them an offer</span>
       <br>
       <br>
-      <message-reply :recipient="messageObject[0]"></message-reply>
+      <compose-component :recipient="searchObject.address"></compose-component>
       <br>
     </div>
     <hr>
@@ -18,11 +18,11 @@
 <script>
   import web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
-  import MessageReply from './MessageReply'
+  import ComposeComponent from './ComposeComponent'
 
   export default {
     components: {
-      MessageReply,
+      ComposeComponent,
     },
     data () {
       return {
@@ -30,7 +30,7 @@
       }
     },
     props: {
-      messageObject: {
+      searchObject: {
         type: Object,
         required: true
       },
@@ -40,7 +40,7 @@
       },
     },
     methods: {
-      toggleMessage (messageObject, event) {
+      toggleMessage (searchObject, event) {
         this.isExpanded = !this.isExpanded
       },
     }
