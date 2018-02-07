@@ -6,7 +6,7 @@
         <input
           class="pure-input-3-4"
           type="text"
-          v-model="searchAddress"
+          v-model="cachedAddress"
           placeholder="Enter an Ethereum address"
           v-on:keyup.enter="submit" />
 
@@ -24,16 +24,16 @@
   import ROUTE_NAMES from '../constants/routes'
 
   export default {
-    data () {
-      return {
-        searchAddress: this.cachedAddress || null,
-      }
-    },
+    // data () {
+    //   return {
+    //     searchAddress: this.cachedAddress || null,
+    //   }
+    // },
     methods: {
       submit (event) {
         event.preventDefault()
 
-        const searchAddress = this.searchAddress
+        const searchAddress = this.cachedAddress
         const validEthAddress = web3.utils.isAddress(searchAddress)
         const curAddress = this.$store.getters.search.messagesAddr
 
