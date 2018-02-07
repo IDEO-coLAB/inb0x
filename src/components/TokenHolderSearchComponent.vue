@@ -6,7 +6,7 @@
         <input
           class="pure-input-3-4"
           type="text"
-          v-model="searchAddress"
+          v-model="input"
           placeholder="Enter an Ethereum address"
           v-on:keyup.enter="submit" />
 
@@ -26,43 +26,31 @@
   export default {
     data () {
       return {
-        searchAddress: this.cachedAddress || null,
+        input: this.$store.getters.search.tokensAddr,
       }
     },
     methods: {
-      resetInput () {
-        this.searchAddress = this.cachedAddress || null
-      },
-
       submit (event) {
         event.preventDefault()
 
-        const searchAddress = this.searchAddress
-        const validEthAddress = web3.utils.isAddress(searchAddress)
+        const inputAddress = this.input
+        const validEthAddress = web3.utils.isAddress(inputAddress)
         const curAddress = this.$store.getters.search.tokensAddr
 
-        if (!validEthAddress) return
-        if (searchAddress === curAddress) return
+        if (!validEthAddress) return // SHOW SOME ERROR
+        if (inputAddress === curAddress) return
 
-        return this.$store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, searchAddress)
+        return this.$store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, inputAddress)
           .then(() => {
             return this.$router.push({
-              path: `/search`,
-              query: { address: searchAddress },
+              path: `/tokens`,
+              query: { address: inputAddress },
             })
           })
           .catch((error) => {
+            // SHOW SOME ERROR
             console.error('NEW TOKENS FETCH ERROR', error)
-            return true
           })
-          .then(() => {
-            this.resetInput()
-          })
-      },
-    },
-    computed: {
-      cachedAddress () {
-        return this.$store.getters.search.tokensAddr
       },
     },
   }

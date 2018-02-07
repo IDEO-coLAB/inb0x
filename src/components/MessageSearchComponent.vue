@@ -6,7 +6,7 @@
         <input
           class="pure-input-3-4"
           type="text"
-          v-model="cachedAddress"
+          v-model="input"
           placeholder="Enter an Ethereum address"
           v-on:keyup.enter="submit" />
 
@@ -24,48 +24,37 @@
   import ROUTE_NAMES from '../constants/routes'
 
   export default {
-    // data () {
-    //   return {
-    //     searchAddress: this.cachedAddress || null,
-    //   }
-    // },
+    data () {
+      return {
+        input: this.$store.getters.search.messagesAddr,
+      }
+    },
     methods: {
       submit (event) {
         event.preventDefault()
 
-        const searchAddress = this.cachedAddress
-        const validEthAddress = web3.utils.isAddress(searchAddress)
+        const inputAddress = this.input
+        const validEthAddress = web3.utils.isAddress(inputAddress)
         const curAddress = this.$store.getters.search.messagesAddr
 
         // Bail if not a valid address
-        if (!validEthAddress) return
-        if (searchAddress === curAddress) return
+        if (!validEthAddress) return // SHOW SOME ERROR
+        if (inputAddress === curAddress) return
 
         console.log('FETCHING MESSAGES IN THE SEARCH BAR!')
 
-        return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS_HEADERS, searchAddress)
+        return this.$store.dispatch(ACTION_TYPES.FETCH_MSGS_HEADERS, inputAddress)
           .then(() => {
             return this.$router.push({
               path: `/messages`,
-              query: { address: searchAddress },
+              query: { address: inputAddress },
             })
           })
           .catch((error) => {
+            // SHOW SOME ERROR
             console.error('NEW MESSAGES FETCH ERROR', error)
-            return true
-          })
-          .then(() => {
-            this.resetInput()
           })
 
-      },
-      resetInput () {
-        this.searchAddress = this.cachedAddress || null
-      },
-    },
-    computed: {
-      cachedAddress () {
-        return this.$store.getters.search.messagesAddr
       },
     },
   }
