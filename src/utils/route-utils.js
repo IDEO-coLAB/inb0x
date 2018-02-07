@@ -15,9 +15,12 @@ export default (router, store) => {
 
     // Handler for /messages
     case ROUTE_NAMES.MESSAGES_PAGE:
+      // if there is nothing new in the url, exit
+      if (!routeHasNewAddr) return console.log('no new address for messages in route utils')
+
       // if route params are invalid,
       // reset the messages and associated search state in the app
-      if (!routeAddr || !routeAddrIsValid) {
+      if (!routeAddrIsValid) {
         console.log('clearing out messages in route utils')
         store.commit(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR)
         store.commit(MUTATION_TYPES.SET_MSGS_HEADERS)
@@ -25,9 +28,6 @@ export default (router, store) => {
         router.push({ path: `/messages` })
         return
       }
-
-      // if there is nothing new in the url, exit
-      if (!routeHasNewAddr) return console.log('no new address for messages in route utils')
 
       // if a new address is in the url,
       // fetch messages and update the search state
@@ -39,20 +39,20 @@ export default (router, store) => {
       }
       break
 
-    // Handler for /search
-    case ROUTE_NAMES.SEARCH_PAGE:
+    // Handler for /tokens
+    case ROUTE_NAMES.TOKENS_PAGE:
+      // if there is nothing new in the url, exit
+      if (!routeHasNewAddr) return console.log('no new address for token holders in route utils')
+
       // if route params are invalid,
       // reset the token holders and associated search state in the app
-      if (!routeAddr || !routeAddrIsValid) {
+      if (!routeAddrIsValid) {
         console.log('clearing out token holders in route utils')
         store.commit(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR)
         store.commit(MUTATION_TYPES.SET_TOKEN_HOLDERS)
-        router.push({ path: `/search` })
+        router.push({ path: `/tokens` })
         return
       }
-
-      // if there is nothing new in the url, exit
-      if (!routeHasNewAddr) return console.log('no new address for token holders in route utils')
 
       // if a new address is in the url,
       // fetch token holders and update the search state

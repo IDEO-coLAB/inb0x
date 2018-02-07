@@ -1,17 +1,23 @@
 <template>
-  <div>
-    <div @click="toggleMessage(messageObject, $event)">
-      <span>Message {{index}}</span> from {{messageObject[0]}} - <span>Click to {{isExpanded ? 'close' : 'open'}}</span>
+  <div class="pure-g">
+
+    <div class="pure-u-2-3">
+      <span>{{searchObject.address}} has {{searchObject.amount}}</span>
     </div>
-    <div v-show="isExpanded">
+
+    <div class="pure-u-1-3" @click="toggleMessage(searchObject, $event)">
+      Click to {{isExpanded ? 'close' : 'open'}}
+    </div>
+
+    <div class="pure-u-1-1" v-show="isExpanded">
       <br>
-      <span>{{messageObject[1]}}</span>
+      <span>Make them an offer</span>
       <br>
       <br>
-      <compose-component :recipient="messageObject[0]"></compose-component>
+      <compose-component :recipient="searchObject.address"></compose-component>
       <br>
     </div>
-    <hr>
+
   </div>
 </template>
 
@@ -30,7 +36,7 @@
       }
     },
     props: {
-      messageObject: {
+      searchObject: {
         type: Object,
         required: true
       },
@@ -40,7 +46,7 @@
       },
     },
     methods: {
-      toggleMessage (messageObject, event) {
+      toggleMessage (searchObject, event) {
         this.isExpanded = !this.isExpanded
       },
     }

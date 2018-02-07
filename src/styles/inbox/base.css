@@ -1,0 +1,81 @@
+@import url("../pure/pure.css");
+
+.app-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.main {
+  height: inherit;
+  width: calc(100% - 250px);
+  background-color: yellow;
+  /*overflow: auto;*/
+}
+
+.sidebar {
+  height: inherit;
+  max-width: 250px;
+  background-color: red;
+  /*overflow: hidden;*/
+}
+
+
+
+
+
+
+
+
+.main-header {
+  min-height: 90px;
+}
+
+.main-body {
+  height: calc(100% - 90px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.body-search {
+  background-color: blue;
+  min-height: 90px;
+}
+
+.body-content {
+  /* 90px searchbar; 90px footer; */
+  height: calc(100% - 180px);
+  overflow: scroll;
+  background-color: orange;
+}
+
+.body-footer {
+  height: 90px;
+  background-color: green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@media only screen and (max-width : 480px) {}*/

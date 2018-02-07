@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 
 import ROUTE_NAMES from '../constants/routes'
 import MessagesPage from '../components/MessagesPage'
-import SearchPage from '../components/SearchPage'
+import TokensPage from '../components/TokensPage'
 
 Vue.use(VueRouter)
 
@@ -15,9 +15,9 @@ const routes = [
     name: ROUTE_NAMES.MESSAGES_PAGE,
   },
   {
-    path: '/search',
-    component: SearchPage,
-    name: ROUTE_NAMES.SEARCH_PAGE,
+    path: '/tokens',
+    component: TokensPage,
+    name: ROUTE_NAMES.TOKENS_PAGE,
   }
 ]
 

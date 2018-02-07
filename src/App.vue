@@ -1,19 +1,25 @@
 <template>
-  <div class="app-container">
-    <div class="columns col-gapless height-full">
+  <div class="app-container pure-g">
+    <div class="main pure-u-1">
 
-      <div class="column col-8">
+      <!-- turn into header component -->
+      <div class="main-header">some header logo</div>
+      <!-- turn into header component -->
 
-        <search-bar-component></search-bar-component>
-        <router-view></router-view>
-      </div>
-
-      <div class="column col-4">
-        This will be our side nav :)
-      </div>
-
+      <router-view></router-view>
     </div>
 
+    <div class="sidebar pure-u-1">
+      CUR ROUTE: <br> {{$router.currentRoute.name}}
+      <br>
+      <br>
+      <router-link
+        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}">TOKENS</router-link>
+      <br>
+      <br>
+      <router-link
+        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}">MESSAGES</router-link>
+    </div>
   </div>
 </template>
 
@@ -22,16 +28,13 @@
   import Web3 from 'web3'
 
   import inboxABI from './ethereum/inbox-abi'
-  import SearchBarComponent from './components/SearchBarComponent'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
   import { Notification, NOTIFICATION_TYPES } from './models/notification'
   import testRouteForAddress from './utils/route-utils'
 
   export default {
-    components: {
-      SearchBarComponent,
-    },
+    components: {},
     beforeCreate () {
       console.log('\n\n\n=================================')
       console.log('MESSAGES ADDR:')
@@ -119,6 +122,6 @@
   }
 </script>
 
-<style lang="scss">
-  @import "styles/main.scss"
+<style lang="css">
+  @import "styles/inbox/base.css"
 </style>

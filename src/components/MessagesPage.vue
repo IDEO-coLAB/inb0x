@@ -1,39 +1,19 @@
 <template>
-  <div class="columns col-gapless height-full">
+  <div class="main-body">
 
-    <!-- Main Section -->
-    <div class="column col-12 page-container">
+    <message-search-component />
 
-      <div class="page-content">
+    <div class="body-content">
+      <message-search-result-tile-component
+        v-show="messages"
+        v-for="(message, index) in messages"
+        :message-object="message"
+        :index="index"
+        :key="index" />
+    </div>
 
-        <!-- Search header -->
-<!--         <search-bar-component></search-bar-component> -->
-
-        <!-- Body Content -->
-        <div class="body body-with-header-and-footer">
-          <div class="columns">
-            <div class="column col-12">
-
-              <!-- Has Messages -->
-              <message-tile-component v-show="messages" v-for="(message, index) in messages" :message-object="message" :index="index" :key="index"></message-tile-component>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-          <div class="footer-section">
-            <span>
-              we have {{messages.length}} messages :)
-              <!-- {{messages && messages.length}} messages since {{lastMessage && lastMessage.time.format('MMM D Y')}} -->
-            </span>
-          </div>
-        </div>
-
-
-      </div>
-
+    <div class="body-footer">
+      Some messages footer :)
     </div>
 
   </div>
@@ -44,13 +24,13 @@
   import _ from 'lodash'
   import { UPDATE_CURRENT_MESSAGE } from '../constants/mutations'
   import { ACTION_TYPES } from '../constants/actions'
-  import SearchBarComponent from './SearchBarComponent'
-  import MessageTileComponent from './MessageTileComponent'
+  import MessageSearchComponent from './MessageSearchComponent'
+  import MessageSearchResultTileComponent from './MessageSearchResultTileComponent'
 
   export default {
     components: {
-      SearchBarComponent,
-      MessageTileComponent,
+      MessageSearchComponent,
+      MessageSearchResultTileComponent,
     },
     // mounted () {
     //   console.error('CALLING IN INBOX COMPONENT')
