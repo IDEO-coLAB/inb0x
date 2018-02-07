@@ -6,17 +6,22 @@ import { ACTION_TYPES } from '../constants/actions'
 import ROUTE_NAMES from '../constants/routes'
 
 export default (router, store) => {
-  const curAddr = store.getters.search.messagesAddr
   const routeAddr = router.currentRoute.query.address
-  const routeHasNewAddr = routeAddr && (routeAddr !== curAddr)
   const routeAddrIsValid = web3Utils.isAddress(routeAddr)
+
+  const curMessagesAddr = store.getters.search.messagesAddr
+  const curTokensAddr = store.getters.search.tokensAddr
+
+  const routeHasNewMessagesAddr = routeAddr && (routeAddr !== curMessagesAddr)
+  const routeHasNewTokensAddr = routeAddr && (routeAddr !== curTokensAddr)
 
   switch (router.currentRoute.name) {
 
     // Handler for /messages
     case ROUTE_NAMES.MESSAGES_PAGE:
+
       // if there is nothing new in the url, exit
-      if (!routeHasNewAddr) return console.log('no new address for messages in route utils')
+      if (!routeHasNewMessagesAddr) return console.log('no new address for messages in route utils')
 
       // if route params are invalid,
       // reset the messages and associated search state in the app
@@ -31,7 +36,7 @@ export default (router, store) => {
 
       // if a new address is in the url,
       // fetch messages and update the search state
-      if (routeHasNewAddr && routeAddrIsValid) {
+      if (routeHasNewMessagesAddr && routeAddrIsValid) {
         console.log('fetching messages from route utils')
         store.commit(MUTATION_TYPES.SET_SEARCH_MSGS_ADDR, routeAddr)
         store.dispatch(ACTION_TYPES.FETCH_MSGS_HEADERS, routeAddr)
@@ -42,7 +47,7 @@ export default (router, store) => {
     // Handler for /tokens
     case ROUTE_NAMES.TOKENS_PAGE:
       // if there is nothing new in the url, exit
-      if (!routeHasNewAddr) return console.log('no new address for token holders in route utils')
+      if (!routeHasNewTokensAddr) return console.log('no new address for token holders in route utils')
 
       // if route params are invalid,
       // reset the token holders and associated search state in the app
@@ -56,7 +61,7 @@ export default (router, store) => {
 
       // if a new address is in the url,
       // fetch token holders and update the search state
-      if (routeHasNewAddr && routeAddrIsValid) {
+      if (routeHasNewTokensAddr && routeAddrIsValid) {
         console.log('fetching token holders from route utils')
         store.commit(MUTATION_TYPES.SET_SEARCH_TOKENS_ADDR, routeAddr)
         store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, routeAddr)
