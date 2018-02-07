@@ -123,5 +123,5 @@
 </script>
 
 <style lang="css">
-  @import "styles/inbox/base.css"
+  @import "styles/inbox/inbox.css"
 </style>
