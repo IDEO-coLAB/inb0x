@@ -1,5 +1,4 @@
-import web3Utils from 'web3-utils'
-import web3 from 'web3'
+import Web3 from 'web3'
 
 import { MUTATION_TYPES } from '../constants/mutations'
 import { ACTION_TYPES } from '../constants/actions'
@@ -7,7 +6,7 @@ import ROUTE_NAMES from '../constants/routes'
 
 export default (router, store) => {
   const routeAddr = router.currentRoute.query.address
-  const routeAddrIsValid = web3Utils.isAddress(routeAddr)
+  const routeAddrIsValid = Web3.utils.isAddress(routeAddr)
 
   const curMessagesAddr = store.getters.search.messagesAddr
   const curTokensAddr = store.getters.search.tokensAddr

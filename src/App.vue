@@ -1,5 +1,8 @@
 <template>
   <div class="app-container pure-g">
+
+    <app-notifications-component />
+
     <div class="main pure-u-1">
 
       <!-- turn into header component -->
@@ -28,13 +31,16 @@
   import Web3 from 'web3'
 
   import inboxABI from './ethereum/inbox-abi'
+  import AppNotificationsComponent from './components/AppNotificationsComponent'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
-  import { Notification, NOTIFICATION_TYPES } from './models/notification'
+  import { NOTIFICATION_TYPES } from './models/notification'
   import testRouteForAddress from './utils/route-utils'
 
   export default {
-    components: {},
+    components: {
+      AppNotificationsComponent,
+    },
     beforeCreate () {
       console.log('\n\n\n=================================')
       console.log('MESSAGES ADDR:')
@@ -111,7 +117,6 @@
           onClose: () => console.log('clicked close')
         })
         console.log(note)
-        this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, note)
       }
     },
     watch: {

@@ -11,7 +11,7 @@
 
     <div class="pure-u-1-1" v-show="isExpanded">
       <br>
-      <span>Make them an offer</span>
+      <span>Send this token holder a message</span>
       <br>
       <br>
       <compose-component :recipient="searchObject.address"></compose-component>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import web3 from 'web3'
+  import Web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
   import ComposeComponent from './ComposeComponent'
 

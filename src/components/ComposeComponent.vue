@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import web3 from 'web3'
+  import Web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
 
   export default {
@@ -63,12 +63,12 @@
         const recipient = this.recipient
 
         const message = this.message
-        const readBounty = web3.utils.toWei(this.readBounty.toString())
-        const replyBounty = web3.utils.toWei(this.replyBounty.toString())
+        const readBounty = Web3.utils.toWei(this.readBounty.toString())
+        const replyBounty = Web3.utils.toWei(this.replyBounty.toString())
 
         const txValue = (Number(replyBounty) + Number(readBounty)).toString()
         const gas = this.gas.toString()
-        const gasPrice = web3.utils.toWei(this.gasPrice.toString(), 'gwei')
+        const gasPrice = Web3.utils.toWei(this.gasPrice.toString(), 'gwei')
 
         // http://web3js.readthedocs.io/en/1.0/web3-eth-contract.html?highlight=.send#methods-mymethod-send
         contract.methods

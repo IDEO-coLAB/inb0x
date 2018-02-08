@@ -1,8 +1,10 @@
 <template>
   <div class="main-body">
 
+    <!-- search bar -->
     <token-holder-search-component />
 
+    <!-- search results -->
     <div class="body-content">
       <token-search-result-tile-component
         v-show="tokenHolders"
@@ -12,6 +14,7 @@
         :key="index" />
     </div>
 
+    <!-- pagination / footer -->
     <div class="body-footer">
       Some search footer :)
     </div>
@@ -20,9 +23,6 @@
 </template>
 
 <script>
-  import web3 from 'web3'
-  import _ from 'lodash'
-  import { ACTION_TYPES } from '../constants/actions'
   import TokenHolderSearchComponent from './TokenHolderSearchComponent'
   import TokenSearchResultTileComponent from './TokenSearchResultTileComponent'
 
@@ -32,14 +32,6 @@
       TokenSearchResultTileComponent,
     },
     computed: {
-      inboxAccountId () {
-        return this.$store.getters.inboxAccountId
-      },
-      tokenHolders () {
-        return this.$store.getters.tokenHolders
-      },
-      error () { return this.$store.getters.error },
-      address () { return this.$store.getters.inboxAccountId },
       route () { return this.$route },
     },
   }
