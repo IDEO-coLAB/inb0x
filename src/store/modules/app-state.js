@@ -9,6 +9,8 @@ import { Notification } from '../../models/notification'
 const state = {
   // stores global info and error objects for the user
   notifications: [],
+  // the ethereum address for the (if connected) metamask wallet
+  web3Addr: null,
   // the hash for the inbox smart contract
   // https://ropsten.etherscan.io/address/0x22abb8354bb201d32e77777b1a8304befec737cd
   inboxContractAddr: '0x22ABB8354bB201d32E77777B1A8304BEfec737CD',
@@ -28,6 +30,7 @@ const getters = {
   notifications: state => state.notifications,
   inboxContractAddr: state => state.inboxContractAddr,
   inboxContractObj: state => state.inboxContractObj,
+  web3Addr: state => state.web3Addr,
   isLocked: state => state.isLocked,
   search: state => state.search,
 }
@@ -48,6 +51,18 @@ const mutations = {
     // remove the notification
     state.notifications.splice(noteIdx, 1)
     console.log(MUTATION_TYPES.REMOVE_NOTIFICATION, notification)
+  },
+
+  // web3 / metamask
+
+  [MUTATION_TYPES.SET_WEB3_ADDR] (state, address) {
+    // DO CHECKS HERE
+    if (_.isUndefined(address)) {
+      state.web3Addr = null
+    } else {
+      state.web3Addr = address
+    }
+    console.log(MUTATION_TYPES.SET_WEB3_ADDR, address)
   },
 
   // inbox smart contract

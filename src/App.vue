@@ -12,6 +12,7 @@
       <router-view></router-view>
     </div>
 
+    <!-- turn into sidebar component -->
     <div class="sidebar pure-u-1">
       CUR ROUTE: <br> {{$router.currentRoute.name}}
       <br>
@@ -23,6 +24,8 @@
       <router-link
         :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}">MESSAGES</router-link>
     </div>
+    <!-- turn into sidebar component -->
+
   </div>
 </template>
 
@@ -55,26 +58,17 @@
       // this.$router.push('/search?address=0xf230b790e05390fc8295f4d3f60332c93bed42e2')
     },
     mounted () {
-      // TODO: abstract this section into cleaner code when better understood
-      // TODO: abstract this section into cleaner code when better understood
-      // TODO: abstract this section into cleaner code when better understood
-
-      const provider = new Web3(window.web3.currentProvider)
-      this.$store.commit(MUTATION_TYPES.SET_WEB3_PROVIDER, provider)
-
-      // Store the contract interface so we can interact with it directly
-      const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractAddr)
-      this.$store.commit(MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ, inboxContract)
-
-      console.log('JUST SET THE INBOX CONTRACT OBJECT')
-
-      testRouteForAddress(this.$router, this.$store)
-
-
-      // If web3 is defined metamask is installed, set up the app's web3 provider
+      // If web3 is defined, set up the app
       if (!_.isUndefined(window.web3)) {
+        // Store the contract interface so we can interact with it directly
+        const provider = new Web3(window.web3.currentProvider)
+        const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractAddr)
+        this.$store.commit(MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ, inboxContract)
 
-        // This is why we poll
+        // only test the url for messages if we have a contract to interact with
+        testRouteForAddress(this.$router, this.$store)
+
+        // Poll to listen for metamask account/key changes
         // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
         const interval = setInterval(() => {
           provider.eth.getAccounts()
@@ -100,23 +94,13 @@
               // something outside will need to kick this thing off again if there is an error
               clearInterval(interval)
             })
-
-
         }, 2000)
-      }
-
-      // TODO: handle global info state and errors
-      else {
-        const note = new Notification({
-          description: 'This is some descriptive text for the notification.',
+      } else {
+        const note = {
+          text: 'Where the hell is Web3? Install now peas. Fang you.',
           type: NOTIFICATION_TYPES.INFO,
-          actions: [{
-            name: 'action name',
-            fn: () => console.log('clicked an action in the notification'),
-          }],
-          onClose: () => console.log('clicked close')
-        })
-        console.log(note)
+        }
+        this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, note)
       }
     },
     watch: {
