@@ -1,14 +1,378 @@
 
+/*csslint box-model:false*/
+/*
+Box-model set to false because we're setting a height on select elements, which
+also have border and padding. This is done because some browsers don't render
+the padding. We explicitly set the box-model for select elements to border-box,
+so we can ignore the csslint warning.
+*/
 
-
-.btn {
-
+.inbox-form input[type="text"],
+.inbox-form input[type="password"],
+.inbox-form input[type="email"],
+.inbox-form input[type="url"],
+.inbox-form input[type="date"],
+.inbox-form input[type="month"],
+.inbox-form input[type="time"],
+.inbox-form input[type="datetime"],
+.inbox-form input[type="datetime-local"],
+.inbox-form input[type="week"],
+.inbox-form input[type="number"],
+.inbox-form input[type="search"],
+.inbox-form input[type="tel"],
+.inbox-form input[type="color"],
+.inbox-form select,
+.inbox-form textarea {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
 }
 
-.btn--disabled {
-
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.inbox-form input:not([type]) {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.btn--primary {
 
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+.inbox-form input[type="color"] {
+    padding: 0.2em 0.5em;
+}
+
+
+.inbox-form input[type="text"]:focus,
+.inbox-form input[type="password"]:focus,
+.inbox-form input[type="email"]:focus,
+.inbox-form input[type="url"]:focus,
+.inbox-form input[type="date"]:focus,
+.inbox-form input[type="month"]:focus,
+.inbox-form input[type="time"]:focus,
+.inbox-form input[type="datetime"]:focus,
+.inbox-form input[type="datetime-local"]:focus,
+.inbox-form input[type="week"]:focus,
+.inbox-form input[type="number"]:focus,
+.inbox-form input[type="search"]:focus,
+.inbox-form input[type="tel"]:focus,
+.inbox-form input[type="color"]:focus,
+.inbox-form select:focus,
+.inbox-form textarea:focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.inbox-form input:not([type]):focus {
+    outline: 0;
+    border-color: #129FEA;
+}
+
+.inbox-form input[type="file"]:focus,
+.inbox-form input[type="radio"]:focus,
+.inbox-form input[type="checkbox"]:focus {
+    outline: thin solid #129FEA;
+    outline: 1px auto #129FEA;
+}
+.inbox-form .inbox-checkbox,
+.inbox-form .inbox-radio {
+    margin: 0.5em 0;
+    display: block;
+}
+
+.inbox-form input[type="text"][disabled],
+.inbox-form input[type="password"][disabled],
+.inbox-form input[type="email"][disabled],
+.inbox-form input[type="url"][disabled],
+.inbox-form input[type="date"][disabled],
+.inbox-form input[type="month"][disabled],
+.inbox-form input[type="time"][disabled],
+.inbox-form input[type="datetime"][disabled],
+.inbox-form input[type="datetime-local"][disabled],
+.inbox-form input[type="week"][disabled],
+.inbox-form input[type="number"][disabled],
+.inbox-form input[type="search"][disabled],
+.inbox-form input[type="tel"][disabled],
+.inbox-form input[type="color"][disabled],
+.inbox-form select[disabled],
+.inbox-form textarea[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.inbox-form input:not([type])[disabled] {
+    cursor: not-allowed;
+    background-color: #eaeded;
+    color: #cad2d3;
+}
+.inbox-form input[readonly],
+.inbox-form select[readonly],
+.inbox-form textarea[readonly] {
+    background-color: #eee; /* menu hover bg color */
+    color: #777; /* menu text color */
+    border-color: #ccc;
+}
+
+.inbox-form input:focus:invalid,
+.inbox-form textarea:focus:invalid,
+.inbox-form select:focus:invalid {
+    color: #b94a48;
+    border-color: #e9322d;
+}
+.inbox-form input[type="file"]:focus:invalid:focus,
+.inbox-form input[type="radio"]:focus:invalid:focus,
+.inbox-form input[type="checkbox"]:focus:invalid:focus {
+    outline-color: #e9322d;
+}
+.inbox-form select {
+    /* Normalizes the height; padding is not sufficient. */
+    height: 2.25em;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+.inbox-form select[multiple] {
+    height: auto;
+}
+.inbox-form label {
+    margin: 0.5em 0 0.2em;
+}
+.inbox-form fieldset {
+    margin: 0;
+    padding: 0.35em 0 0.75em;
+    border: 0;
+}
+.inbox-form legend {
+    display: block;
+    width: 100%;
+    padding: 0.3em 0;
+    margin-bottom: 0.3em;
+    color: #333;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.inbox-form-stacked input[type="text"],
+.inbox-form-stacked input[type="password"],
+.inbox-form-stacked input[type="email"],
+.inbox-form-stacked input[type="url"],
+.inbox-form-stacked input[type="date"],
+.inbox-form-stacked input[type="month"],
+.inbox-form-stacked input[type="time"],
+.inbox-form-stacked input[type="datetime"],
+.inbox-form-stacked input[type="datetime-local"],
+.inbox-form-stacked input[type="week"],
+.inbox-form-stacked input[type="number"],
+.inbox-form-stacked input[type="search"],
+.inbox-form-stacked input[type="tel"],
+.inbox-form-stacked input[type="color"],
+.inbox-form-stacked input[type="file"],
+.inbox-form-stacked select,
+.inbox-form-stacked label,
+.inbox-form-stacked textarea {
+    display: block;
+    margin: 0.25em 0;
+}
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+.inbox-form-stacked input:not([type]) {
+    display: block;
+    margin: 0.25em 0;
+}
+.inbox-form-aligned input,
+.inbox-form-aligned textarea,
+.inbox-form-aligned select,
+/* NOTE: inbox-help-inline is deprecated. Use .inbox-form-message-inline instead. */
+.inbox-form-aligned .inbox-help-inline,
+.inbox-form-message-inline {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+}
+.inbox-form-aligned textarea {
+    vertical-align: top;
+}
+
+/* Aligned Forms */
+.inbox-form-aligned .inbox-control-group {
+    margin-bottom: 0.5em;
+}
+.inbox-form-aligned .inbox-control-group label {
+    text-align: right;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10em;
+    margin: 0 1em 0 0;
+}
+.inbox-form-aligned .inbox-controls {
+    margin: 1.5em 0 0 11em;
+}
+
+/* Rounded Inputs */
+.inbox-form input.inbox-input-rounded,
+.inbox-form .inbox-input-rounded {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+}
+
+/* Grouped Inputs */
+.inbox-form .inbox-group fieldset {
+    margin-bottom: 10px;
+}
+.inbox-form .inbox-group input,
+.inbox-form .inbox-group textarea {
+    display: block;
+    padding: 10px;
+    margin: 0 0 -1px;
+    border-radius: 0;
+    position: relative;
+    top: -1px;
+}
+.inbox-form .inbox-group input:focus,
+.inbox-form .inbox-group textarea:focus {
+    z-index: 3;
+}
+.inbox-form .inbox-group input:first-child,
+.inbox-form .inbox-group textarea:first-child {
+    top: 1px;
+    border-radius: 4px 4px 0 0;
+    margin: 0;
+}
+.inbox-form .inbox-group input:first-child:last-child,
+.inbox-form .inbox-group textarea:first-child:last-child {
+    top: 1px;
+    border-radius: 4px;
+    margin: 0;
+}
+.inbox-form .inbox-group input:last-child,
+.inbox-form .inbox-group textarea:last-child {
+    top: -2px;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+}
+.inbox-form .inbox-group button {
+    margin: 0.35em 0;
+}
+
+.inbox-form .inbox-input-1 {
+    width: 100%;
+}
+.inbox-form .inbox-input-3-4 {
+    width: 75%;
+}
+.inbox-form .inbox-input-2-3 {
+    width: 66%;
+}
+.inbox-form .inbox-input-1-2 {
+    width: 50%;
+}
+.inbox-form .inbox-input-1-3 {
+    width: 33%;
+}
+.inbox-form .inbox-input-1-4 {
+    width: 25%;
+}
+
+/* Inline help for forms */
+/* NOTE: inbox-help-inline is deprecated. Use .inbox-form-message-inline instead. */
+.inbox-form .inbox-help-inline,
+.inbox-form-message-inline {
+    display: inline-block;
+    padding-left: 0.3em;
+    color: #666;
+    vertical-align: middle;
+    font-size: 0.875em;
+}
+
+/* Block help for forms */
+.inbox-form-message {
+    display: block;
+    color: #666;
+    font-size: 0.875em;
+}
+
+@media only screen and (max-width : 480px) {
+    .inbox-form button[type="submit"] {
+        margin: 0.7em 0 0;
+    }
+
+    .inbox-form input:not([type]),
+    .inbox-form input[type="text"],
+    .inbox-form input[type="password"],
+    .inbox-form input[type="email"],
+    .inbox-form input[type="url"],
+    .inbox-form input[type="date"],
+    .inbox-form input[type="month"],
+    .inbox-form input[type="time"],
+    .inbox-form input[type="datetime"],
+    .inbox-form input[type="datetime-local"],
+    .inbox-form input[type="week"],
+    .inbox-form input[type="number"],
+    .inbox-form input[type="search"],
+    .inbox-form input[type="tel"],
+    .inbox-form input[type="color"],
+    .inbox-form label {
+        margin-bottom: 0.3em;
+        display: block;
+    }
+
+    .inbox-group input:not([type]),
+    .inbox-group input[type="text"],
+    .inbox-group input[type="password"],
+    .inbox-group input[type="email"],
+    .inbox-group input[type="url"],
+    .inbox-group input[type="date"],
+    .inbox-group input[type="month"],
+    .inbox-group input[type="time"],
+    .inbox-group input[type="datetime"],
+    .inbox-group input[type="datetime-local"],
+    .inbox-group input[type="week"],
+    .inbox-group input[type="number"],
+    .inbox-group input[type="search"],
+    .inbox-group input[type="tel"],
+    .inbox-group input[type="color"] {
+        margin-bottom: 0;
+    }
+
+    .inbox-form-aligned .inbox-control-group label {
+        margin-bottom: 0.3em;
+        text-align: left;
+        display: block;
+        width: 100%;
+    }
+
+    .inbox-form-aligned .inbox-controls {
+        margin: 1.5em 0 0 0;
+    }
+
+    /* NOTE: inbox-help-inline is deprecated. Use .inbox-form-message-inline instead. */
+    .inbox-form .inbox-help-inline,
+    .inbox-form-message-inline,
+    .inbox-form-message {
+        display: block;
+        font-size: 0.75em;
+        /* Increased bottom padding to make it group with its related input element. */
+        padding: 0.2em 0 0.8em;
+    }
 }
