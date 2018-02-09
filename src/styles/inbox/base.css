@@ -8,6 +8,7 @@
   height: inherit;
   width: calc(100% - 250px);
   background-color: yellow;
+  float: left;
   /*overflow: auto;*/
 }
 
@@ -15,6 +16,7 @@
   height: inherit;
   max-width: 250px;
   background-color: red;
+  float: left;
   /*overflow: hidden;*/
 }
 

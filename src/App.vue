@@ -1,9 +1,9 @@
 <template>
-  <div class="app-container pure-g">
+  <div class="app-container">
 
     <app-notifications-component />
 
-    <div class="main pure-u-1">
+    <div class="main">
 
       <!-- turn into header component -->
       <div class="main-header">some header logo</div>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- turn into sidebar component -->
-    <div class="sidebar pure-u-1">
+    <div class="sidebar">
       CUR ROUTE: <br> {{$router.currentRoute.name}}
       <br>
       <br>
