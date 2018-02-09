@@ -22,7 +22,8 @@
       </div>
 
       <div>
-        <button type="submit" @click="submit">Reply to this Message</button>
+        <button v-show="!isLocked" type="submit" @click="submit">Send Message</button>
+        <button v-show="isLocked">Sending, please wait...</button>
       </div>
 
 
@@ -50,6 +51,11 @@
         type: String,
         required: true
       },
+    },
+    computed: {
+      isLocked () {
+        return this.$store.getters.isLocked
+      }
     },
     methods: {
       submit (event) {

@@ -9,7 +9,19 @@
           v-model="input"
           placeholder="Enter an Ethereum address" />
 
-        <button type="submit" class="pure-button pure-button-primary pure-input-1-4" @click="submit">Search</button>
+        <button
+          class="pure-button pure-button-primary pure-input-1-4"
+          v-show="!isLocked"
+          type="submit"
+          @click="submit">
+          Search
+        </button>
+
+        <button
+          class="pure-button pure-button-primary pure-input-1-4"
+          v-show="isLocked">
+          Searching...
+        </button>
       </fieldset>
     </form>
 
@@ -27,6 +39,11 @@
     data () {
       return {
         input: this.$store.getters.search.messagesAddr,
+      }
+    },
+    computed: {
+      isLocked () {
+        return this.$store.getters.isLocked
       }
     },
     methods: {
