@@ -1,19 +1,19 @@
 <template>
-  <div class="app-container">
+  <div class="app-container pure-g">
 
     <app-notifications-component />
 
-    <div class="main">
+    <div class="app-main pure-u-3-4">
 
       <!-- turn into header component -->
-      <div class="main-header">some header logo</div>
+      <div class="main-header"><samp>inb0x</samp> header logo etc.</div>
       <!-- turn into header component -->
 
       <router-view></router-view>
     </div>
 
     <!-- turn into sidebar component -->
-    <div class="sidebar">
+    <div class="app-sidebar pure-u-1-4">
       CUR ROUTE: <br> {{$router.currentRoute.name}}
       <br>
       <br>
@@ -110,5 +110,5 @@
 </script>
 
 <style lang="css">
-  @import "styles/inbox/inbox.css"
+  @import "styles/inbox/inbox-gavin.css"
 </style>
