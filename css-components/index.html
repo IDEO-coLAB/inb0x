@@ -1,11 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-    <title>inb0x Component Library</title>
-    <link rel="stylesheet" href="../src/styles/inbox/inbox.css">
-  </head>
-  <body>
-    <h2>HEY !</h2>
-  </body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the inbox website.">
+    <title>Responsive Side Menu &ndash; Layout Examples &ndash; inbox</title>
+    
+    <link rel="stylesheet" href="../src/styles/inbox/inbox.css" >
+    
+    
+    
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet" href="css/layouts/side-menu.css">
+        <!--<![endif]-->
+</head>
+<body>
+
+
+
+
+
+
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="inbox-menu">
+            <a class="inbox-menu-heading" href="#">Inb0x</a>
+
+            <ul class="inbox-menu-list">
+                <li class="inbox-menu-item inbox-menu-selected"><a href="#" class="inbox-menu-link">Menu Items</a></li>
+                
+
+                
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>Inb0x CSS Library</h1>
+            <h2>A subtitle for your page goes here</h2>
+        </div>
+
+        <div class="content">
+            <h2 class="content-subhead">Forms</h2>
+            <p>
+                This will be contain form elements
+                <form class="inbox-form">
+				    <!-- appending -->
+					<!-- appending -->
+					<div class="input-group">
+					  <input class="input-group-field">
+					  <button class=" btn btn-success input-group-item">Submit</button>
+					</div>
+
+					<!-- prepending -->
+					<div class="input-group">
+					  <span class="input-group-item">Submit</span>
+					  <input class="input-group-field">
+					</div>
+
+					<!-- both -->
+					<div class="input-group">
+					  <span class="input-group-item">Submit</span>
+					  <input class="input-group-field">
+					  <button class=" btn btn-secondary input-group-item">Submit</button>
+					</div>
+				</form>
+
+				<div class="select-style">
+				  <select>
+				    <option value="volvo">Volvo</option>
+				    <option value="saab">Saab</option>
+				    <option value="mercedes">Mercedes</option>
+				    <option value="audi">Audi</option>
+				  </select>
+				</div>
+
+            </p>
+            
+            
+        </div>
+
+        
+
+        <div class="content">
+            <h2 class="content-subhead">Buttons</h2>
+            <p>
+                This will be contain button elements
+            </p>
+            <a class="btn" href="#">An Inb0x Button</a>
+			<button class="btn btn-success">An Inb0x Button</button>
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<script src="js/ui.js"></script>
+<style type="text/css">
+    
+    .select-style {
+    border: 1px solid #ccc;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("icons/Arrow Down.png") no-repeat 90% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+</style>
+
+</body>
 </html>

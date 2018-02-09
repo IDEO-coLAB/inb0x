@@ -1,0 +1,187 @@
+/*!
+inbox v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/inbox/blob/master/LICENSE.md
+*/
+/*csslint adjoining-classes: false, box-model:false*/
+.inbox-menu {
+    box-sizing: border-box;
+}
+
+.inbox-menu-fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.inbox-menu-list,
+.inbox-menu-item {
+    position: relative;
+}
+
+.inbox-menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.inbox-menu-item {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.inbox-menu-link,
+.inbox-menu-heading {
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* HORIZONTAL MENU */
+.inbox-menu-horizontal {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.inbox-menu-horizontal .inbox-menu-list {
+    display: inline-block;
+}
+
+/* Initial menus should be inline-block so that they are horizontal */
+.inbox-menu-horizontal .inbox-menu-item,
+.inbox-menu-horizontal .inbox-menu-heading,
+.inbox-menu-horizontal .inbox-menu-separator {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+/* Submenus should still be display: block; */
+.inbox-menu-item .inbox-menu-item {
+    display: block;
+}
+
+.inbox-menu-children {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 3;
+}
+
+.inbox-menu-horizontal .inbox-menu-children {
+    left: 0;
+    top: auto;
+    width: inherit;
+}
+
+.inbox-menu-allow-hover:hover > .inbox-menu-children,
+.inbox-menu-active > .inbox-menu-children {
+    display: block;
+    position: absolute;
+}
+
+/* Vertical Menus - show the dropdown arrow */
+.inbox-menu-has-children > .inbox-menu-link:after {
+    padding-left: 0.5em;
+    content: "\25B8";
+    font-size: small;
+}
+
+/* Horizontal Menus - show the dropdown arrow */
+.inbox-menu-horizontal .inbox-menu-has-children > .inbox-menu-link:after {
+    content: "\25BE";
+}
+
+/* scrollable menus */
+.inbox-menu-scrollable {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.inbox-menu-scrollable .inbox-menu-list {
+    display: block;
+}
+
+.inbox-menu-horizontal.inbox-menu-scrollable .inbox-menu-list {
+    display: inline-block;
+}
+
+.inbox-menu-horizontal.inbox-menu-scrollable {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    /* a little extra padding for this style to allow for scrollbars */
+    padding: .5em 0;
+}
+
+.inbox-menu-horizontal.inbox-menu-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
+/* misc default styling */
+
+.inbox-menu-separator,
+.inbox-menu-horizontal .inbox-menu-children .inbox-menu-separator {
+    background-color: #ccc;
+    height: 1px;
+    margin: .3em 0;
+}
+
+.inbox-menu-horizontal .inbox-menu-separator {
+    width: 1px;
+    height: 1.3em;
+    margin: 0 .3em ;
+}
+
+/* Need to reset the separator since submenu is vertical */
+.inbox-menu-horizontal .inbox-menu-children .inbox-menu-separator {
+    display: block;
+    width: auto;
+}
+
+.inbox-menu-heading {
+    text-transform: uppercase;
+    color: #565d64;
+}
+
+.inbox-menu-link {
+    color: #777;
+}
+
+.inbox-menu-children {
+    background-color: #fff;
+}
+
+.inbox-menu-link,
+.inbox-menu-disabled,
+.inbox-menu-heading {
+    padding: .5em 1em;
+}
+
+.inbox-menu-disabled {
+    opacity: .5;
+}
+
+.inbox-menu-disabled .inbox-menu-link:hover {
+    background-color: transparent;
+}
+
+.inbox-menu-active > .inbox-menu-link,
+.inbox-menu-link:hover,
+.inbox-menu-link:focus {
+    background-color: #eee;
+}
+
+.inbox-menu-selected .inbox-menu-link,
+.inbox-menu-selected .inbox-menu-link:visited {
+    color: #000;
+}
