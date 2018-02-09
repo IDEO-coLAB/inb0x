@@ -78,29 +78,27 @@
 
               if (!newWeb3Addr) return
 
-              if (!curWeb3Addr) {
+              if (!curWeb3Addr || !_.isEqual(curWeb3Addr, newWeb3Addr)) {
                 this.$store.commit(MUTATION_TYPES.SET_WEB3_ADDR, newWeb3Addr)
-                console.log('JUST SET THE WEB3 ID')
-              }
-
-              if (curWeb3Addr !== newWeb3Addr) {
-                this.$store.commit(MUTATION_TYPES.SET_WEB3_ADDR, newWeb3Addr)
-                console.log('JUST SET THE WEB3 ID')
               }
             })
             .catch((error) => {
-              console.error('WEB 3 ERROR!', error)
-              console.error('DECIDE HOW TO HANDLE THESE')
-              // something outside will need to kick this thing off again if there is an error
+              // TODO: there is a better way to handle this, but can wait
+              const notification = {
+                text: `There was an issue loading Web3. Please refresh the page.`,
+                type: NOTIFICATION_TYPES.INFO,
+              }
+              this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
               clearInterval(interval)
             })
         }, 2000)
-      } else {
-        const note = {
-          text: 'Where the hell is Web3? Install now peas. Fang you.',
+      }
+      else {
+        const notification = {
+          text: `You cannot use inb0x without metamask or a Web3 client. Please install one.`,
           type: NOTIFICATION_TYPES.INFO,
         }
-        this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, note)
+        this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
       }
     },
     watch: {

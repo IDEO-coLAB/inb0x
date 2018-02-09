@@ -10,7 +10,7 @@
         <div class="pure-u-1-1">
           <hr>
           {{notification.type}} <br>
-          {{notification.text}} <br>
+          {{notification.text}} <br><br>
           <button @click="handleClose(notification)">Close Me</button>
           <hr>
         </div>
@@ -36,7 +36,7 @@
   }
 </script>
 
-<!-- TODO: this is a spike for style; move into css -->
+<!-- FIXME: this is a spike for style; move thisinto css -->
 <style scoped>
   .notification-container {
     position: absolute;

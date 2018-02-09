@@ -31,8 +31,5 @@
       TokenHolderSearchComponent,
       TokenSearchResultTileComponent,
     },
-    computed: {
-      route () { return this.$route },
-    },
   }
 </script>

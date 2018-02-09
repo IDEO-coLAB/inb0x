@@ -104,7 +104,6 @@ const mutations = {
   },
 
   [MUTATION_TYPES.SET_SEARCH_MSGS_ADDR] (state, address) {
-    // DO CHECKS HERE
     if (_.isUndefined(address)) {
       state.search.messagesAddr = null
     } else {

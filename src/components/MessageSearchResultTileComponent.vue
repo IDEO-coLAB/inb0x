@@ -22,8 +22,6 @@
 </template>
 
 <script>
-  import web3 from 'web3'
-  import { MUTATION_TYPES } from '../constants/mutations'
   import ComposeComponent from './ComposeComponent'
 
   export default {

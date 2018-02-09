@@ -33,6 +33,7 @@
 <script>
   import Web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
+  import { NOTIFICATION_TYPES } from '../models/notification'
 
   export default {
     data () {
@@ -53,11 +54,7 @@
     methods: {
       submit (event) {
         event.preventDefault()
-
         const contract = this.$store.getters.inboxContractObj
-
-        // handle no contract
-        // handle no metamask integration
 
         const sender = this.$store.getters.web3Addr
         const recipient = this.recipient
@@ -70,6 +67,8 @@
         const gas = this.gas.toString()
         const gasPrice = Web3.utils.toWei(this.gasPrice.toString(), 'gwei')
 
+        this.$store.commit(MUTATION_TYPES.SET_LOCK_STATE, true)
+
         // http://web3js.readthedocs.io/en/1.0/web3-eth-contract.html?highlight=.send#methods-mymethod-send
         contract.methods
           .sendMessage(recipient, message, readBounty, replyBounty)
@@ -80,13 +79,27 @@
             gasPrice,
           })
           .then(() => {
+            this.$store.commit(MUTATION_TYPES.SET_LOCK_STATE, false)
             console.log(`Sent from: ${sender}  => to: ${recipient}`)
             console.log(`${message}`)
             console.log(`read bounty: ${readBounty}`)
             console.log(`gas: ${gasPrice}, tx value: ${txValue}`)
+
+            const notification = {
+              text: `Your message was successfully sent.`,
+              type: NOTIFICATION_TYPES.SUCCESS,
+            }
+            this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
+
           })
           .catch((error) => {
+            this.$store.commit(MUTATION_TYPES.SET_LOCK_STATE, false)
             console.warn('ERROR SENDING', error)
+            const notification = {
+              text: `Your message failed to send: ${error.message}`,
+              type: NOTIFICATION_TYPES.ERROR,
+            }
+            this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
           })
       },
     },

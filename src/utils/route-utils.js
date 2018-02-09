@@ -16,7 +16,7 @@ export default (router, store) => {
 
   switch (router.currentRoute.name) {
 
-    // Handler for /messages
+    // Route handler for /messages
     case ROUTE_NAMES.MESSAGES_PAGE:
 
       // if there is nothing new in the url, exit
@@ -43,7 +43,7 @@ export default (router, store) => {
       }
       break
 
-    // Handler for /tokens
+    // Route handler for /tokens
     case ROUTE_NAMES.TOKENS_PAGE:
       // if there is nothing new in the url, exit
       if (!routeHasNewTokensAddr) return console.log('no new address for token holders in route utils')
