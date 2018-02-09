@@ -7,8 +7,7 @@
           class="pure-input-3-4"
           type="text"
           v-model="input"
-          placeholder="Enter an Ethereum address"
-          v-on:keyup.enter="submit" />
+          placeholder="Enter an Ethereum address" />
 
         <button type="submit" class="pure-button pure-button-primary pure-input-1-4" @click="submit">Search</button>
       </fieldset>

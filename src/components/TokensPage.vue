@@ -31,5 +31,10 @@
       TokenHolderSearchComponent,
       TokenSearchResultTileComponent,
     },
+    computed: {
+      tokenHolders () {
+        return this.$store.getters.tokenHolders
+      }
+    }
   }
 </script>
