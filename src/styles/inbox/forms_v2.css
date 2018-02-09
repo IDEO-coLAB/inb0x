@@ -1,0 +1,18 @@
+.message-container {
+  display: block;
+  height: 21.571em;
+  width: 68.571em;
+  background-color: #F7F9FB;
+}
+
+.message-content-container {
+  padding-top: 2.643em;
+  padding-left: 2.214em;
+}
+
+.message-one-line-data{
+  display: block;
+  height: 2.643em;
+  width: 68.571em;
+  background-color: #F7F9FB;
+}

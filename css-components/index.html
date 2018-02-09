@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A layout example with a side menu that hides on mobile, just like the inbox website.">
     <title>Responsive Side Menu &ndash; Layout Examples &ndash; inbox</title>
-    
+
     <link rel="stylesheet" href="../src/styles/inbox/inbox.css" >
-    
-    
-    
+
+    <!-- Adam adding seperate css stylesheets fopr easy code review -->
+    <link rel="stylesheet" href="../src/styles/inbox/type.css" >
+    <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
+
+
         <!--[if lte IE 8]>
             <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
         <![endif]-->
@@ -37,9 +40,9 @@
 
             <ul class="inbox-menu-list">
                 <li class="inbox-menu-item inbox-menu-selected"><a href="#" class="inbox-menu-link">Menu Items</a></li>
-                
 
-                
+
+
         </div>
     </div>
 
@@ -85,11 +88,11 @@
 				</div>
 
             </p>
-            
-            
+
+
         </div>
 
-        
+
 
         <div class="content">
             <h2 class="content-subhead">Buttons</h2>
@@ -97,8 +100,49 @@
                 This will be contain button elements
             </p>
             <a class="btn" href="#">An Inb0x Button</a>
-			<button class="btn btn-success">An Inb0x Button</button>
-            
+      			<button class="btn btn-success">An Inb0x Button</button>
+
+        </div>
+
+        <div class="content">
+            <h1 class="content-subhead">Type and Fonts</h1>
+            <p>Here you will find font implementation</p>
+            <br>
+            <h1>h1 - nav</h1>
+            <h2>h2 - label</h2>
+            <h3>h3 - label</h3>
+            <h4>h4 - read only form</h4>
+            <p>p - form<p>
+
+            <br>
+
+            <div class="message-one-line-data">
+              <ul>
+                <li class="message-one-line-number"><p class="message-data-value">1</p></li>
+                <li class="message-one-line-address"><p class="message-data-value">0xFBb1b73C</p></li>
+                <li class="message-one-line-message"><p class="message-data-value">Noticed you have a ton of REP, you looking to sell? I'll pay 1.5x mar...</p></li>
+                <li class="message-one-line-bounty"><p class="message-data-value">0.1 ETH</p></li>
+                <li class="message-one-line-timestamp"><p class="message-data-value"> 1/18/2017, 1:49 PM</p></li>
+              </ul>
+            </div>
+
+            <br>
+
+            <div class="message-container">
+              <div class="message-one-line-data">
+                <ul>
+                  <li class="message-one-line-number"><p class="message-data-value">1</p></li>
+                  <li class="message-one-line-address"><p class="message-data-value">0xFBb1b73C</p></li>
+                  <li class="message-one-line-message"><p class="message-data-value">Noticed you have a ton of REP, you looking to sell? I'll pay 1.5x mar...</p></li>
+                  <li class="message-one-line-bounty"><p class="message-data-value">0.1 ETH</p></li>
+                  <li class="message-one-line-timestamp"><p class="message-data-value"> 1/18/2017, 1:49 PM</p></li>
+                </ul>
+              </div>
+              <div class="message-content-container">
+                <h3 class="message-data-descriptor">MESSAGE</h3>
+                <p class="message-content">Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?</p>
+              </div>
+            </div>
         </div>
 
     </div>
@@ -109,7 +153,7 @@
 
 <script src="js/ui.js"></script>
 <style type="text/css">
-    
+
     .select-style {
     border: 1px solid #ccc;
     width: 120px;
