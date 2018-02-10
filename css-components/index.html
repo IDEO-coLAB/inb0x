@@ -8,9 +8,11 @@
 
     <link rel="stylesheet" href="../src/styles/inbox/inbox.css" >
 
+
     <!-- Adam adding seperate css stylesheets fopr easy code review -->
     <link rel="stylesheet" href="../src/styles/inbox/type.css" >
     <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
+    <link rel="stylesheet" href="../src/styles/inbox/grids.css" >
 
 
         <!--[if lte IE 8]>
@@ -116,28 +118,48 @@
 
             <br>
 
-            <div class="message-one-line-data">
-              <ul>
-                <li class="message-one-line-number"><p class="message-data-value">1</p></li>
-                <li class="message-one-line-address"><p class="message-data-value">0xFBb1b73C</p></li>
-                <li class="message-one-line-message"><p class="message-data-value">Noticed you have a ton of REP, you looking to sell? I'll pay 1.5x mar...</p></li>
-                <li class="message-one-line-bounty"><p class="message-data-value">0.1 ETH</p></li>
-                <li class="message-one-line-timestamp"><p class="message-data-value"> 1/18/2017, 1:49 PM</p></li>
-              </ul>
-            </div>
+
+
+
+
+            <form class="ib-form ib-form-stacked">
+                <fieldset>
+                    <div class="ib-g">
+                        <div class="ib-u-1-24">
+                            <input id="first-name" class="ib-u-23-24" type="text" value="1" disabled>
+                        </div>
+
+                        <div class="ib-u-5-24">
+                            <input id="last-name" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" disabled>
+                        </div>
+
+                        <div class="ib-u-8-24">
+                            <input id="email" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." disabled>
+                        </div>
+
+                        <div class="ib-u-4-24">
+                            <input id="city" class="ib-u-23-24" type="text" value="0.1 ETH" disabled>
+                        </div>
+
+                        <div class="ib-u-5-24">
+                            <input id="city" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" disabled>
+                        </div>
+
+                        <div class="ib-u-1-24">
+                            <h3>svg</h3>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+
+
+
+
 
             <br>
 
             <div class="message-container">
-              <div class="message-one-line-data">
-                <ul>
-                  <li class="message-one-line-number"><p class="message-data-value">1</p></li>
-                  <li class="message-one-line-address"><p class="message-data-value">0xFBb1b73C</p></li>
-                  <li class="message-one-line-message"><p class="message-data-value">Noticed you have a ton of REP, you looking to sell? I'll pay 1.5x mar...</p></li>
-                  <li class="message-one-line-bounty"><p class="message-data-value">0.1 ETH</p></li>
-                  <li class="message-one-line-timestamp"><p class="message-data-value"> 1/18/2017, 1:49 PM</p></li>
-                </ul>
-              </div>
               <div class="message-content-container">
                 <h3 class="message-data-descriptor">MESSAGE</h3>
                 <p class="message-content">Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?</p>
