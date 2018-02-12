@@ -11,12 +11,12 @@
 
     <!-- Adam adding seperate css stylesheets fopr easy code review -->
     <link rel="stylesheet" href="../src/styles/inbox/type.css" >
-    <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
     <link rel="stylesheet" href="../src/styles/inbox/grids.css" >
+    <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
     <link rel="stylesheet" href="../src/styles/inbox/radio-buttons.css" >
 
     <link rel="stylesheet" type="text/css" href="css/layouts/side-menu.css">
-        
+
 </head>
 <body>
 
@@ -39,7 +39,7 @@
       <ul class="inbox-menu-list">
         <li class="inbox-menu-item inbox-menu-selected"><a href="#" class="inbox-menu-link">Menu Items</a></li>
       </ul>
-                              
+
     </div>
   </div>
 
@@ -51,7 +51,7 @@
 
     <div class="content">
       <h2 class="content-subhead">Forms</h2>
-      
+
       This will contain form elements
       <form class="inbox-form">
 		    <!-- appending -->
@@ -88,27 +88,27 @@
 			</div>
 
       <p>Radio Buttons</p>
-      
-        
+
+
           <input class="" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
         <label class="" for="exampleRadios1">
           Default radio
         </label>
 
-        
-      
+
+
         <input class="" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
         <label class="" for="exampleRadios2">
           Second default radio
         </label>
-      
-      
+
+
         <input class="" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled="">
         <label class="" for="exampleRadios3">
           Disabled radio
         </label>
-     
-       
+
+
     </div>
 
 
@@ -130,8 +130,7 @@
             <br>
             <h1>h1 - nav</h1>
             <h2>h2 - label</h2>
-            <h3>h3 - label</h3>
-            <h4>h4 - read only form</h4>
+            <label>label</label>
             <p>p - form<p>
 
             <br>
@@ -144,23 +143,23 @@
                 <fieldset>
                     <div class="ib-g">
                         <div class="ib-u-1-24">
-                            <input id="first-name" class="ib-u-23-24" type="text" value="1" disabled>
+                            <input id="first-name" class="ib-u-23-24" type="text" value="1" readonly>
                         </div>
 
                         <div class="ib-u-5-24">
-                            <input id="last-name" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" disabled>
+                            <input id="last-name" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
                         </div>
 
                         <div class="ib-u-8-24">
-                            <input id="email" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." disabled>
+                            <input id="email" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
                         </div>
 
                         <div class="ib-u-4-24">
-                            <input id="city" class="ib-u-23-24" type="text" value="0.1 ETH" disabled>
+                            <input id="city" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
                         </div>
 
                         <div class="ib-u-5-24">
-                            <input id="city" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" disabled>
+                            <input id="city" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
                         </div>
 
                         <div class="ib-u-1-24">
@@ -172,27 +171,29 @@
 
 
 
+            <br>
 
-
+            <form class="ib-form ib-form-stacked">
+                <fieldset>
+                    <div class="ib-g">
+                        <div class="ib-u-1">
+                          <label class="ib-u-1">Message</label>
+                          <textarea id="message" class="ib-input-1" placeholder="Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
 
             <br>
 
-            <div class="message-container">
-              <div class="message-content-container">
-                <h3 class="message-data-descriptor">MESSAGE</h3>
-                <p class="message-content">Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?</p>
-              </div>
-            </div>
+            
+
         </div>
 
 
     <div class="content">
-      <h2 class="content-subhead">Buttons</h2>
-      <p>
-          This will contain button elements
-      </p>
       <a class="btn" href="#">An Inb0x Button</a>
-	    <button class="btn btn-success">An Inb0x Button</button>  
+	    <button class="btn btn-success">An Inb0x Button</button>
     </div>
   </div>
 </div>
