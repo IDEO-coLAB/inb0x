@@ -7,9 +7,7 @@
     <title>Responsive Side Menu &ndash; Layout Examples &ndash; inbox</title>
     
     <link rel="stylesheet" href="../src/styles/inbox/inbox.css" >
-    
-    
-    
+
         <!--[if lte IE 8]>
             <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
         <![endif]-->
@@ -25,83 +23,100 @@
 
 
 <div id="layout">
-    <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
-        <!-- Hamburger icon -->
-        <span></span>
-    </a>
+  <!-- Menu toggle -->
+  <a href="#menu" id="menuLink" class="menu-link">
+      <!-- Hamburger icon -->
+      <span></span>
+  </a>
 
-    <div id="menu">
-        <div class="inbox-menu">
-            <a class="inbox-menu-heading" href="#">Inb0x</a>
+  <div id="menu">
+    <div class="inbox-menu">
+      <a class="inbox-menu-heading" href="#">Inb0x</a>
 
-            <ul class="inbox-menu-list">
-                <li class="inbox-menu-item inbox-menu-selected"><a href="#" class="inbox-menu-link">Menu Items</a></li>
-                
+      <ul class="inbox-menu-list">
+        <li class="inbox-menu-item inbox-menu-selected"><a href="#" class="inbox-menu-link">Menu Items</a></li>
+      </ul>
+                              
+    </div>
+  </div>
 
-                
-        </div>
+  <div id="main">
+    <div class="header">
+      <h1>Inb0x CSS Library</h1>
+      <h2>A subtitle for your page goes here</h2>
     </div>
 
-    <div id="main">
-        <div class="header">
-            <h1>Inb0x CSS Library</h1>
-            <h2>A subtitle for your page goes here</h2>
-        </div>
-
-        <div class="content">
-            <h2 class="content-subhead">Forms</h2>
-            <p>
-                This will be contain form elements
-                <form class="inbox-form">
-				    <!-- appending -->
-					<!-- appending -->
-					<div class="input-group">
-					  <input class="input-group-field">
-					  <button class=" btn btn-success input-group-item">Submit</button>
-					</div>
-
-					<!-- prepending -->
-					<div class="input-group">
-					  <span class="input-group-item">Submit</span>
-					  <input class="input-group-field">
-					</div>
-
-					<!-- both -->
-					<div class="input-group">
-					  <span class="input-group-item">Submit</span>
-					  <input class="input-group-field">
-					  <button class=" btn btn-secondary input-group-item">Submit</button>
-					</div>
-				</form>
-
-				<div class="select-style">
-				  <select>
-				    <option value="volvo">Volvo</option>
-				    <option value="saab">Saab</option>
-				    <option value="mercedes">Mercedes</option>
-				    <option value="audi">Audi</option>
-				  </select>
+    <div class="content">
+      <h2 class="content-subhead">Forms</h2>
+      
+      This will contain form elements
+      <form class="inbox-form">
+		    <!-- appending -->
+			  <!-- appending -->
+        <p>Input Groups</p>
+				<div class="input-group">
+				  <input class="input-group-field">
+				  <button class=" btn btn-success input-group-item">Submit</button>
 				</div>
 
-            </p>
-            
-            
+				<!-- prepending -->
+				<div class="input-group">
+				  <span class="input-group-item">Submit</span>
+				  <input class="input-group-field">
+				</div>
+
+				<!-- both -->
+				<div class="input-group">
+				  <span class="input-group-item">Submit</span>
+				  <input class="input-group-field">
+				  <button class=" btn btn-secondary input-group-item">Submit</button>
+				</div>
+	    </form>
+
+      <p>Select</p>
+			<div class="select-style">
+			  <select>
+			    <option value="volvo">Volvo</option>
+			    <option value="saab">Saab</option>
+			    <option value="mercedes">Mercedes</option>
+			    <option value="audi">Audi</option>
+			  </select>
+			</div>
+
+      <p>Radio Buttons</p>
+      <form class="ib-form">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
+        <label class="form-check-label" for="exampleRadios1">
+          Default radio
+        </label>
         </div>
-
-        
-
-        <div class="content">
-            <h2 class="content-subhead">Buttons</h2>
-            <p>
-                This will be contain button elements
-            </p>
-            <a class="btn" href="#">An Inb0x Button</a>
-			<button class="btn btn-success">An Inb0x Button</button>
-            
-        </div>
-
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          Second default radio
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled="">
+        <label class="form-check-label" for="exampleRadios3">
+          Disabled radio
+        </label>
+      </div>
+      </form>  
     </div>
+
+      
+
+    <div class="content">
+      <h2 class="content-subhead">Buttons</h2>
+      <p>
+          This will contain button elements
+      </p>
+      <a class="btn" href="#">An Inb0x Button</a>
+	    <button class="btn btn-success">An Inb0x Button</button>  
+    </div>
+  </div>
 </div>
 
 
