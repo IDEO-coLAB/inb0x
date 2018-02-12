@@ -1,0 +1,53 @@
+/* Manage typesetting */
+
+h1, h4, p {
+  font-family: 'Cerebri Sans Regular';
+  color: #042D45;
+}
+
+h1 {
+  font-size: 1.571em;
+}
+
+h2 {
+  font-family: 'Larish Neue';
+  font-size: 1em;
+  color: #666666;
+}
+
+h3 {
+  font-family: 'Cerebri Sans Medium';
+  text-transform: uppercase;
+  font-size: 0.786em;
+  color: #89969F;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+p {
+  font-size: 1.286em;
+  line-height: 1.6em;
+}
+
+
+/* adding relevant fonts */
+
+@font-face {
+font-family: "Larish Neue";
+src:
+url("../../fonts/larishneue-webfont.ttf") format("ttf");
+}
+
+@font-face {
+font-family: "Cerebri Sans Regular";
+src:
+url("../../fonts/CerebriSans-Regular.otf");
+}
+
+@font-face {
+font-family: "Cerebri Sans Medium";
+src:
+url("../../fonts/CerebriSans-Medium.otf");
+}

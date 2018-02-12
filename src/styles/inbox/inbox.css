@@ -151,14 +151,12 @@ dfn {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
+
 
 /**
  * Address styling not present in IE 8/9.
  */
+
 
 mark {
   background: #ff0;
@@ -756,7 +754,7 @@ this the same font stack that Normalize.css sets for the `body`.
 .inbox-u-24-24 {
     width: 100%;
 }
-.btn { 
+.btn {
     /* Structure */
     display: inline-block;
     zoom: 1;
@@ -1568,4 +1566,3 @@ striping:
 .input-group-item:last-child {
   border-radius: 0 2px 2px 0;
 }
-
