@@ -1440,14 +1440,19 @@ since IE8 won't execute CSS that contains a CSS3 selector.
     opacity: .5;
 }
 
-.inbox-menu-disabled .inbox-menu-link:hover {
-    background-color: transparent;
+.inbox-menu-disabled .inbox-menu-link:hover > .ib-menu-text {
+    /*background-color: transparent;*/
+    text-decoration: none;   
+    border-bottom: 3px solid rgb(87, 226, 194);
 }
 
+
 .inbox-menu-active > .inbox-menu-link,
-.inbox-menu-link:hover,
-.inbox-menu-link:focus {
-    background-color: #eee;
+.inbox-menu-link:hover > .ib-menu-text,
+.inbox-menu-link:focus > .ib-menu-text {
+    /*background-color: #eee;*/
+    text-decoration: none;
+    border-bottom: 3px solid rgb(87, 226, 194);
 }
 
 .inbox-menu-selected .inbox-menu-link,
@@ -1566,3 +1571,25 @@ striping:
 .input-group-item:last-child {
   border-radius: 0 2px 2px 0;
 }
+
+  .ib-form-select {
+  border: 1px solid #ccc;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fafafa url("icons/Arrow Down.png") no-repeat 90% 50%;
+  }
+
+  .ib-form-select select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+  }
+
+  .ib-form-select select:focus {
+    outline: none;
+  }

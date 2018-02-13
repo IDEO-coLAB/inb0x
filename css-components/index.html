@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
     <link rel="stylesheet" href="../src/styles/inbox/grids.css" >
     <link rel="stylesheet" href="../src/styles/inbox/radio-buttons.css" >
+    <link rel="stylesheet" href="../src/styles/inbox/icons.css" >
 
     <link rel="stylesheet" type="text/css" href="css/layouts/side-menu.css">
         
@@ -27,23 +28,44 @@
 
 <div id="layout">
   <!-- Menu toggle -->
-  <a href="#menu" id="menuLink" class="menu-link">
-      <!-- Hamburger icon -->
-      <span></span>
-  </a>
+  
+  
 
+  <div id="main">
+    <input class="" type="checkbox" name="exampleRadios" id="menuLink1" value="option1" >
+  <label class="" for="menuLink1">
+    <span class="ib-icon-leftarrow"></span>
+  </label>
+  
   <div id="menu">
-    <div class="inbox-menu">
+    
+      
       <a class="inbox-menu-heading" href="#">Inb0x</a>
 
       <ul class="inbox-menu-list">
-        <li class="inbox-menu-item inbox-menu-selected"><a href="#" class="inbox-menu-link">Menu Items</a></li>
+        <li class="inbox-menu-item ">
+          <a href="#" class="inbox-menu-link">
+            <span class="ib-icon-compose"></span>
+            <span class="ib-menu-text">Compose</span>
+          </a>
+        </li>
+        <li class="inbox-menu-item ">
+          <a href="#" class="inbox-menu-link">
+            <span class="ib-icon-compose"></span>
+            <span class="ib-menu-text">Inb0x</span>
+          </a>
+        </li>
+        <li class="inbox-menu-item ">
+          <a href="#" class="inbox-menu-link">
+            <span class="ib-icon-compose"></span>
+            <span class="ib-menu-text">Search</span>
+          </a>
+        </li>
       </ul>
                               
-    </div>
+    
   </div>
 
-  <div id="main">
     <div class="header">
       <h1>Inb0x CSS Library</h1>
       <h2>A subtitle for your page goes here</h2>
@@ -78,7 +100,7 @@
 	    </form>
 
       <p>Select</p>
-			<div class="select-style">
+			<div class="ib-form-select">
 			  <select>
 			    <option value="volvo">Volvo</option>
 			    <option value="saab">Saab</option>
@@ -203,27 +225,7 @@
 
 <style type="text/css">
 
-    .select-style {
-    border: 1px solid #ccc;
-    width: 120px;
-    border-radius: 3px;
-    overflow: hidden;
-    background: #fafafa url("icons/Arrow Down.png") no-repeat 90% 50%;
-}
 
-.select-style select {
-    padding: 5px 8px;
-    width: 130%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-}
-
-.select-style select:focus {
-    outline: none;
-}
 </style>
 
 </body>
