@@ -376,3 +376,25 @@ since IE8 won't execute CSS that contains a CSS3 selector.
         padding: 0.2em 0 0.8em;
     }
 }
+
+  .ib-form-select {
+  border: 1px solid #ccc;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fafafa url("icons/Arrow Down.png") no-repeat 90% 50%;
+  }
+
+  .ib-form-select select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+  }
+
+  .ib-form-select select:focus {
+    outline: none;
+  }

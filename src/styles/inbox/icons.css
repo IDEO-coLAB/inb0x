@@ -1,0 +1,17 @@
+.ib-icon-compose { 
+   background:url(icons/compose-icon.svg) left top; 
+   width:15px; 
+   height:16px;
+   display: block;
+   float: left;
+   margin-right: 6px;
+}
+
+.ib-icon-leftarrow { 
+   background:url(icons/thin-arrow-inbox.svg) left top; 
+   width:42px; 
+   height:16px;
+   display: block;
+   float: left;
+   margin-right: 6px;
+}
