@@ -1,10 +1,4 @@
-/*!
-Pure v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/pure/blob/master/LICENSE.md
-*/
-.btn { 
+.ib-btn {
     /* Structure */
     display: inline-block;
     zoom: 1;
@@ -22,13 +16,13 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 }
 
 /* Firefox: Get rid of the inner focus border */
-.btn::-moz-focus-inner {
+.ib-btn::-moz-focus-inner {
     padding: 0;
     border: 0;
 }
 
 /* Inherit .pure-g styles */
-.btn-group {
+.ib-btn-group {
     letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
     *letter-spacing: normal; /* reset IE < 8 */
     *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
@@ -36,11 +30,11 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 }
 
 .opera-only :-o-prefocus,
-.btn-group {
+.ib-btn-group {
     word-spacing: -0.43em;
 }
 
-.btn-group .btn {
+.ib-btn-group .ib-btn {
     letter-spacing: normal;
     word-spacing: normal;
     vertical-align: top;
@@ -49,59 +43,59 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 
 /*csslint outline-none:false*/
 
-.btn {
+.ib-btn {
     font-family: inherit;
     font-size: 100%;
     padding: 0.9em 1.7em;
-    color: white; /* rgba not supported (IE 8) */
-    color: rgba(255,255,255, 0.9); /* rgba supported */
+    color: inherit;
     border: 1px solid #999;  /*IE 6/7/8*/
     border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
-    background-color: rgba(151, 151, 151, .5);
+    background-color: rgb(247, 249, 251);
     text-decoration: none;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.btn-success {
+.ib-btn-success {
     background: rgb(87, 226, 194); /* this is a green */
+    color: white;
 }
 
-.btn-error {
-    background: rgb(202, 60, 60); /* this is a maroon */
+.ib-btn-danger{
+    background: #FCCFCF; /* this is a maroon */
 }
 
-.btn-warning {
+.ib-btn-warning {
     background: rgb(223, 117, 20); /* this is an orange */
 }
 
-.btn-secondary {
+.ib-btn-secondary {
     background: rgb(4, 45, 69); /* this is a light blue */
 }
 
-.btn-hover,
-.btn:hover,
-.btn:focus {
+.ib-btn-hover,
+.ib-btn:hover,
+.ib-btn:focus {
     /* csslint ignore:start */
     filter: alpha(opacity=90);
     /* csslint ignore:end */
     background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
     background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
 }
-.btn:focus {
+.ib-btn:focus {
     outline: 0;
 }
-.btn-active,
-.btn:active {
+.ib-btn-active,
+.ib-btn:active {
     box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
     border-color: #000\9;
 }
 
-.btn[disabled],
-.btn-disabled,
-.btn-disabled:hover,
-.btn-disabled:focus,
-.btn-disabled:active {
+.ib-btn[disabled],
+.ib-btn-disabled,
+.ib-btn-disabled:hover,
+.ib-btn-disabled:focus,
+.ib-btn-disabled:active {
     border: none;
     background-image: none;
     /* csslint ignore:start */
@@ -113,20 +107,20 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
     pointer-events: none;
 }
 
-.btn-hidden {
+.ib-btn-hidden {
     display: none;
 }
 
-.btn-primary,
-.btn-selected,
-a.btn-primary,
-a.btn-selected {
+.ib-btn-primary,
+.ib-btn-selected,
+a.ib-btn-primary,
+a.ib-btn-selected {
     background: rgb(87, 226, 194); /* this is a green */
     color: #fff;
 }
 
 /* Button Groups */
-.btn-group .btn {
+.ib-btn-group .ib-btn {
     margin: 0;
     border-radius: 0;
     border-right: 1px solid #111;  /* fallback color for rgba() for IE7/8 */
@@ -134,11 +128,11 @@ a.btn-selected {
 
 }
 
-.btn-group .btn:first-child {
+.ib-btn-group .ib-btn:first-child {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
 }
-.btn-group .btn:last-child {
+.ib-btn-group .ib-btn:last-child {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
     border-right: none;

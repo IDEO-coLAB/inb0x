@@ -39,3 +39,47 @@ pre {
 	font-weight: 400;
 	line-height: 18.5714px;
 }
+/* type */
+
+/* Manage typesetting */
+
+h1, p {
+  font-family: 'Cerebri Sans Regular';
+  color: #042D45;
+}
+
+h1 {
+  font-size: 1.571em;
+}
+
+h2 {
+  font-family: 'Cerebri Sans Medium';
+  font-size: 0.786em;
+  color: #89969F;
+}
+
+p {
+  font-size: 1.286em;
+  line-height: 1.6em;
+}
+
+label {
+  font-family: 'Cerebri Sans Medium';
+  text-transform: uppercase;
+  font-size: 0.786em;
+  color: #89969F;
+}
+
+/* adding relevant fonts */
+@font-face {
+font-family: "Cerebri Sans Regular";
+src:
+url("../../fonts/CerebriSans-Regular.otf");
+}
+
+@font-face {
+font-family: "Cerebri Sans Medium";
+src:
+url("../../fonts/CerebriSans-Medium.otf");
+}
+

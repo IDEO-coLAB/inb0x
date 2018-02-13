@@ -9,10 +9,9 @@
 Add transition to containers so they can push in and out.
 */
 #layout,
-#menu,
-#menuLink,
+#side-bar,
 .menu-link {
-    -webkit-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out; 
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -22,15 +21,15 @@ Add transition to containers so they can push in and out.
 /*#menu:active {
     width: 0px;
 }*/
-#menuLink1 {display: none}
-#menuLink1 + label {
+#menu-toggle {display: none}
+#menu-toggle + label {
     position: absolute;
     right: 0;
     z-index: 1001;
 }
 
-#menuLink1:checked ~ #menu {width: 36px;}
-#menuLink1:checked ~ .content {margin-left: 150px;}
+#menu-toggle:checked ~ #side-bar {width: 54px; overflow-x: hidden;}
+#menu-toggle:checked ~ .content {margin-left: 198px;}
 
 /*
 This is the parent `<div>` that contains the menu and the content area.
@@ -40,13 +39,13 @@ This is the parent `<div>` that contains the menu and the content area.
     left: 0;
     padding-left: 0;
 }
-    #layout.active #menu {
-        right: -150px;
+    #layout.active #side-bar {
+        right: -198px;
         width: 0px;
     }
 
     #layout.active .menu-link {
-        /*left: 150px;*/
+        
     }
 /*
 The content `<div>` is where all your content goes.
@@ -79,21 +78,24 @@ The content `<div>` is where all your content goes.
     }
 
 
-#menu {
+#side-bar{
    padding-top: 36px; 
-    width: 150px;
+    width: 198px;
     position: fixed;
     top: 0;
+    right: 0;
     bottom: 0;
     z-index: 1000; /* so the menu stays above all content */
-    background: rgba(151, 151, 151, .5);
+    background: rgb(247, 249, 251);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    padding-left: 24px;
 }
     /*
     All anchors inside the menu should be styled like this.
     */
-    #menu a {
+    #side-bar a {
         color: #999;
         border: none;
         padding: 0.6em 0 0.6em 0.6em;
@@ -107,7 +109,7 @@ The content `<div>` is where all your content goes.
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
-@media (min-width: 48em) {
+/*@media (min-width: 48em) {
 
     .header,
     .content {
@@ -116,7 +118,7 @@ The content `<div>` is where all your content goes.
     }
 
     #layout {
-        padding-left: 0px; /* left col width "#menu" */
+        padding-left: 0px;  left col width "#menu" 
         left: 0;
     }
     #menu {
@@ -127,6 +129,6 @@ The content `<div>` is where all your content goes.
 @media (max-width: 48em) {
     #layout.active {
         position: relative;
-        left: 150px;
+        left: 198px;
     }
-}
+}*/

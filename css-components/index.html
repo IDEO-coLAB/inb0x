@@ -1,339 +1,329 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A layout example with a side menu that hides on mobile, just like the inbox website.">
-    <title>Responsive Side Menu &ndash; Layout Examples &ndash; inbox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A layout example with a side menu that hides on mobile, just like the inbox website.">
+  <title>Responsive Side Menu &ndash; Layout Examples &ndash; inbox</title>
 
-    <link rel="stylesheet" href="../src/styles/inbox/inbox.css" >
+  <!-- <link rel="stylesheet" href="../src/styles/inbox/inbox.css" > -->
 
 
-    <!-- Adam adding seperate css stylesheets fopr easy code review -->
-    <link rel="stylesheet" href="../src/styles/inbox/base.css" >
-    <link rel="stylesheet" href="../src/styles/inbox/type.css" >
-    <link rel="stylesheet" href="../src/styles/inbox/grids.css" >
-    <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
-    <link rel="stylesheet" href="../src/styles/inbox/radio-buttons.css" >
-    <link rel="stylesheet" href="../src/styles/inbox/icons.css" >
+  <!-- seperate css stylesheets fopr easy code review -->
+  <link rel="stylesheet" href="../src/styles/inbox/reset.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/base.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/buttons.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/typography.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/grids.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/menus.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/forms_v2.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/tables.css" >
 
-    <link rel="stylesheet" type="text/css" href="css/layouts/side-menu.css">
+  <link rel="stylesheet" href="../src/styles/inbox/radio-buttons.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/icons.css" >
+
+  <!--  -->
 
 </head>
 <body>
 
 
-
-
-
-
-<div id="layout">
+<div id="ib-layout">
   <!-- Menu toggle -->
-  
-  
 
-  <div id="main">
-    <input class="" type="checkbox" name="exampleRadios" id="menuLink1" value="option1" >
-  <label class="" for="menuLink1">
+  <div id="ib-main">
+    <input class="menu-toggle" type="checkbox" name="exampleRadios" id="menu-toggle" value="option1" >
+  <label for="menu-toggle">
     <span class="ib-icon-leftarrow"></span>
   </label>
   
-  <div id="menu">
-    
-      
-      <a class="inbox-menu-heading" href="#">Inb0x</a>
+  <div id="ib-side-bar">
 
-      <ul class="inbox-menu-list">
-        <li class="inbox-menu-item ">
-          <a href="#" class="inbox-menu-link">
-            <span class="ib-icon-compose"></span>
-            <span class="ib-menu-text">Compose</span>
-          </a>
-        </li>
-        <li class="inbox-menu-item ">
-          <a href="#" class="inbox-menu-link">
-            <span class="ib-icon-compose"></span>
-            <span class="ib-menu-text">Inb0x</span>
-          </a>
-        </li>
-        <li class="inbox-menu-item ">
-          <a href="#" class="inbox-menu-link">
-            <span class="ib-icon-compose"></span>
-            <span class="ib-menu-text">Search</span>
-          </a>
-        </li>
-      </ul>
-
-
-    </div>
+    <ul class="ib-menu-list">
+      <li class="ib-menu-item ">
+        <a href="#" class="ib-menu-link">
+          <span class="ib-icon-compose"></span>
+          <span class="ib-menu-text">Compose</span>
+        </a>
+      </li>
+      <li class="ib-menu-item ">
+        <a href="#" class="ib-menu-link">
+          <span class="ib-icon-mail"></span>
+          <span class="ib-menu-text">Inb0x</span>
+        </a>
+      </li>
+      <li class="ib-menu-item ">
+        <a href="#" class="ib-menu-link">
+          <span class="ib-icon-search"></span>
+          <span class="ib-menu-text">Search</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 
   
 
-    <div class="header">
-      <h1>Inb0x CSS Library</h1>
-      <h2>A subtitle for your page goes here</h2>
+  <div class="ib-header">
+    <h1>Inb0x CSS Library</h1>
+    <h2>A subtitle for your page goes here</h2>
+  </div>
+
+  <div class="ib-content">
+    <h2>Forms</h2>
+
+    This will contain form elements
+    <form class="ib-form">
+      <!-- appending -->
+      <!-- appending -->
+      <p>Input Groups</p>
+      <div class="ib-input-group">
+        <input class="ib-input-group-field " placeholder="0x7df9a875a174b3bc565e6424a0050ebc1b2d1d82">
+        <button class=" ib-btn ib-input-group-item"><span class="ib-icon-search"></span></button>
+      </div>
+
+      <!-- prepending -->
+      <div class="ib-input-group">
+        <input class="ib-input-group-field ib-input-success" placeholder="INBX">
+        <button class=" ib-btn ib-btn-success ib-input-group-item"><span class="ib-icon-search" ></span></button>
+      </div>
+
+
+      <div class="ib-input-group">
+        <input class="ib-input-group-field ib-input-danger" placeholder="0xf41c74c9ae680c1aa78f42e5647a62f353b7bdde">
+        <button class=" ib-btn ib-btn-danger ib-input-group-item"><span class="ib-icon-search"></span></button>
+      </div>
+    </form>
+
+    <p>Select</p>
+		<div class="ib-form-select">
+		  <select>
+		    <option value="volvo">Volvo</option>
+		    <option value="saab">Saab</option>
+		    <option value="mercedes">Mercedes</option>
+		    <option value="audi">Audi</option>
+		  </select>
+		</div>
+
+
+    <p>Radio Buttons</p>
+
+    <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
+    <label for="exampleRadios1">
+      Default radio
+    </label>
+
+    <input type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+    <label for="exampleRadios2">
+      Second default radio
+    </label>
+
+
+    <input type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled="">
+    <label for="exampleRadios3">
+      Disabled radio
+    </label>
+
+    <p>Alerts</p>
+
+    Error
+    <div class="ib-alert-error">
+      No Token Found for "Nosh"
     </div>
 
-    <div class="content">
-      <h2 class="content-subhead">Forms</h2>
+    Error Big
+    <div class="ib-alert-error-big">
+      No Token Found for "Nosh"
+    </div>
 
-      This will contain form elements
-      <form class="inbox-form">
-        <!-- appending -->
-        <!-- appending -->
-        <p>Input Groups</p>
-        <div class="input-group">
-          <input class="input-group-field">
-          <button class=" btn btn-success input-group-item">Submit</button>
+    Success
+    <div class="ib-alert-success">
+      Message sent
+    </div>
+
+    Success Big
+    <div class="ib-alert-success-big">
+      Message sent
+    </div>
+
+  </div>
+
+  <div class="ib-content">
+    <h2 class="content-subhead">Buttons</h2>
+    <p>
+        This will be contain button elements
+    </p>
+    <a class="ib-btn" href="#">An Inb0x Button</a>
+    <button class="ib-btn ib-btn-success">An Inb0x Button</button>
+  </div>
+
+
+
+  <div class="ib-content">
+
+    <h1>Type and Fonts</h1>
+    <p>Here you will find font implementation</p>
+    <hr>
+    <h1>Nav uses h1 tag</h1>
+    <label>labels use label tag</label>
+
+    <br>
+    <br>
+
+    <h1>Forms</h1>
+    <p>Here you will find forms as discrete atoms, set in grid and placed in ib-containter</p>
+    <hr>
+    <h2>Standard form and form in grid</h2>
+
+    <form class="ib-form ib-form-stacked">
+      <fieldset>
+        <div class="ib-g">
+          <div class="ib-u-1">
+            <input id="increment" class="ib-u-1-3" type="text" value="standard form at ib-u-1-3" readonly>
+          </div>
         </div>
+      </fieldset>
+    </form>
 
-        <!-- prepending -->
-        <div class="input-group">
-          <span class="input-group-item">Submit</span>
-          <input class="input-group-field">
+    <form class="ib-form ib-form-stacked">
+      <fieldset>
+        <div class="ib-g">
+          <div class="ib-u-1-24">
+              <input id="increment" class="ib-u-23-24" type="text" value="1" readonly>
+          </div>
+
+          <div class="ib-u-5-24">
+              <input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
+          </div>
+
+          <div class="ib-u-8-24">
+              <input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
+          </div>
+
+          <div class="ib-u-4-24">
+              <input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
+          </div>
+
+          <div class="ib-u-5-24">
+              <input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
+          </div>
+
+          <div class="ib-u-1-24">
+              <h3>svg</h3>
+          </div>
         </div>
+      </fieldset>
+    </form>
 
+    <br>
 
-        <!-- both -->
-        <div class="input-group">
-          <span class="input-group-item">Submit</span>
-          <input class="input-group-field">
-          <button class=" btn btn-secondary input-group-item">Submit</button>
+    <h2>Standard text area and label</h2>
+    <form class="ib-form ib-form-stacked">
+      <fieldset>
+        <div class="ib-g">
+          <div class="ib-u-1">
+            <label class="ib-u-1">Message</label>
+            <textarea id="message" class="ib-input-1" placeholder="Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?"></textarea>
+          </div>
         </div>
+      </fieldset>
+    </form>
+
+    <br>
+
+    <h2>Form in container</h2>
+    <div class="ib-container">
+
+    <form class="ib-form ib-form-stacked">
+      <fieldset>
+        <div class="ib-g">
+          <div class="ib-u-1-24">
+            <input id="increment" class="ib-u-23-24" type="text" value="1" readonly>
+          </div>
+
+          <div class="ib-u-5-24">
+            <input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
+          </div>
+
+          <div class="ib-u-8-24">
+            <input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
+          </div>
+
+          <div class="ib-u-4-24">
+            <input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
+          </div>
+
+          <div class="ib-u-5-24">
+            <input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
+          </div>
+
+          <div class="ib-u-1-24">
+            <h3>svg</h3>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    </div>
+
+    <br>
+    <h2>Form and text area together in container</h2>
+
+    <div class="ib-container">
+
+      <form class="ib-form ib-form-stacked">
+        <fieldset>
+          <div class="ib-g">
+            <div class="ib-u-1-24">
+                <input id="increment" class="ib-u-23-24" type="text" value="1" readonly>
+            </div>
+
+            <div class="ib-u-5-24">
+                <input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
+            </div>
+
+            <div class="ib-u-8-24">
+                <input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
+            </div>
+
+            <div class="ib-u-4-24">
+                <input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
+            </div>
+
+            <div class="ib-u-5-24">
+                <input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
+            </div>
+
+            <div class="ib-u-1-24">
+                <h3>svg</h3>
+            </div>
+          </div>
+        </fieldset>
       </form>
 
-      <p>Select</p>
-			<div class="ib-form-select">
-			  <select>
-			    <option value="volvo">Volvo</option>
-			    <option value="saab">Saab</option>
-			    <option value="mercedes">Mercedes</option>
-			    <option value="audi">Audi</option>
-			  </select>
-			</div>
-
-
-      <p>Radio Buttons</p>
-
-
-          <input class="" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
-        <label class="" for="exampleRadios1">
-          Default radio
-        </label>
-
-
-
-        <input class="" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="" for="exampleRadios2">
-          Second default radio
-        </label>
-
-
-        <input class="" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled="">
-        <label class="" for="exampleRadios3">
-          Disabled radio
-        </label>
-
+      <form class="ib-form ib-form-stacked">
+        <fieldset>
+          <div class="ib-g">
+            <div class="ib-u-1">
+              <label class="ib-u-1">Message</label>
+              <textarea id="message" class="ib-input-1" placeholder="Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?"></textarea>
+            </div>
+          </div>
+        </fieldset>
+      </form>
 
     </div>
 
-
-
-
-        <div class="content">
-            <h2 class="content-subhead">Buttons</h2>
-            <p>
-                This will be contain button elements
-            </p>
-            <a class="btn" href="#">An Inb0x Button</a>
-            <button class="btn btn-success">An Inb0x Button</button>
-
-        </div>
-
-
-<!-- Adam html -->
-        <div class="content">
-
-            <h1>Type and Fonts</h1>
-            <p>Here you will find font implementation</p>
-            <hr>
-            <h1>Nav uses h1 tag</h1>
-            <label>labels use label tag</label>
-
-            <br>
-            <br>
-
-
-
-
-            <h1>Forms</h1>
-            <p>Here you will find forms as discrete atoms, set in grid and placed in ib-containter</p>
-            <hr>
-            <h2>Standard form and form in grid</h2>
-
-            <form class="ib-form ib-form-stacked">
-                <fieldset>
-                    <div class="ib-g">
-                        <div class="ib-u-1">
-                            <input id="increment" class="ib-u-1-3" type="text" value="standard form at ib-u-1-3" readonly>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-
-            <form class="ib-form ib-form-stacked">
-                <fieldset>
-                    <div class="ib-g">
-                        <div class="ib-u-1-24">
-                            <input id="increment" class="ib-u-23-24" type="text" value="1" readonly>
-                        </div>
-
-                        <div class="ib-u-5-24">
-                            <input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
-                        </div>
-
-                        <div class="ib-u-8-24">
-                            <input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
-                        </div>
-
-                        <div class="ib-u-4-24">
-                            <input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
-                        </div>
-
-                        <div class="ib-u-5-24">
-                            <input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
-                        </div>
-
-                        <div class="ib-u-1-24">
-                            <h3>svg</h3>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-
-
-
-            <br>
-
-            <h2>Standard text area and label</h2>
-            <form class="ib-form ib-form-stacked">
-                <fieldset>
-                    <div class="ib-g">
-                        <div class="ib-u-1">
-                          <label class="ib-u-1">Message</label>
-                          <textarea id="message" class="ib-input-1" placeholder="Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?"></textarea>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-
-            <br>
-
-            <h2>Form in container</h2>
-            <div class="ib-container">
-
-                <form class="ib-form ib-form-stacked">
-                    <fieldset>
-                        <div class="ib-g">
-                            <div class="ib-u-1-24">
-                                <input id="increment" class="ib-u-23-24" type="text" value="1" readonly>
-                            </div>
-
-                            <div class="ib-u-5-24">
-                                <input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
-                            </div>
-
-                            <div class="ib-u-8-24">
-                                <input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
-                            </div>
-
-                            <div class="ib-u-4-24">
-                                <input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
-                            </div>
-
-                            <div class="ib-u-5-24">
-                                <input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
-                            </div>
-
-                            <div class="ib-u-1-24">
-                                <h3>svg</h3>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-
-            </div>
-
-            <br>
-            <h2>Form and text area together in container</h2>
-
-            <div class="ib-container">
-
-                <form class="ib-form ib-form-stacked">
-                    <fieldset>
-                        <div class="ib-g">
-                            <div class="ib-u-1-24">
-                                <input id="increment" class="ib-u-23-24" type="text" value="1" readonly>
-                            </div>
-
-                            <div class="ib-u-5-24">
-                                <input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly>
-                            </div>
-
-                            <div class="ib-u-8-24">
-                                <input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly>
-                            </div>
-
-                            <div class="ib-u-4-24">
-                                <input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly>
-                            </div>
-
-                            <div class="ib-u-5-24">
-                                <input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly>
-                            </div>
-
-                            <div class="ib-u-1-24">
-                                <h3>svg</h3>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-
-                <form class="ib-form ib-form-stacked">
-                    <fieldset>
-                        <div class="ib-g">
-                            <div class="ib-u-1">
-                              <label class="ib-u-1">Message</label>
-                              <textarea id="message" class="ib-input-1" placeholder="Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?"></textarea>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-
-            </div>
-
-            <br>
-            <h1>Bounty and Send Molecule</h1>
-            <p>Molecule for setting bounty and transacting the send</p>
-            <hr>
-
-
-        </div>
-<!-- Adam html -->
-
+    <br>
+    <h1>Bounty and Send Molecule</h1>
+    <p>Molecule for setting bounty and transacting the send</p>
+    <hr>
+  </div>
 
 
   </div>
 </div>
 
 
-
-
-
-<style type="text/css">
-
-
-</style>
 
 </body>
 </html>

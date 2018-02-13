@@ -15,3 +15,22 @@
    float: left;
    margin-right: 6px;
 }
+
+.ib-icon-mail{
+   background:url(icons/mail.svg) left top; 
+   width:16px; 
+   height:11px;
+   display: block;
+   float: left;
+   margin-right: 6px;
+}
+
+.ib-icon-search{
+   background:url(icons/search.svg) left top; 
+   width:16px; 
+   height:16px;
+   display: block;
+   float: left;
+   margin-right: 6px;
+   
+}

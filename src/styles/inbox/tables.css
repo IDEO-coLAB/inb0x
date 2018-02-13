@@ -1,10 +1,5 @@
-/*!
-inbox v1.0.0
-Copyright 2013 Yahoo!
-Licensed under the BSD License.
-https://github.com/yahoo/inbox/blob/master/LICENSE.md
-*/
-.inbox-table {
+
+.ib-table {
     /* Remove spacing between table cells (from Normalize.css) */
     border-collapse: collapse;
     border-spacing: 0;
@@ -12,15 +7,15 @@ https://github.com/yahoo/inbox/blob/master/LICENSE.md
     border: 1px solid #cbcbcb;
 }
 
-.inbox-table caption {
+.ib-table caption {
     color: #000;
     font: italic 85%/1 arial, sans-serif;
     padding: 1em 0;
     text-align: center;
 }
 
-.inbox-table td,
-.inbox-table th {
+.ib-table td,
+.ib-table th {
     border-left: 1px solid #cbcbcb;/*  inner column border */
     border-width: 0 0 0 1px;
     font-size: inherit;
@@ -31,12 +26,12 @@ https://github.com/yahoo/inbox/blob/master/LICENSE.md
 
 /* Consider removing this next declaration block, as it causes problems when
 there's a rowspan on the first cell. Case added to the tests. issue#432 */
-.inbox-table td:first-child,
-.inbox-table th:first-child {
+.ib-table td:first-child,
+.ib-table th:first-child {
     border-left-width: 0;
 }
 
-.inbox-table thead {
+.ib-table thead {
     background-color: #e0e0e0;
     color: #000;
     text-align: left;
@@ -48,34 +43,34 @@ striping:
    even - #fff (white)
    odd  - #f2f2f2 (light gray)
 */
-.inbox-table td {
+.ib-table td {
     background-color: transparent;
 }
-.inbox-table-odd td {
+.ib-table-odd td {
     background-color: #f2f2f2;
 }
 
 /* nth-child selector for modern browsers */
-.inbox-table-striped tr:nth-child(2n-1) td {
+.ib-table-striped tr:nth-child(2n-1) td {
     background-color: #f2f2f2;
 }
 
 /* BORDERED TABLES */
-.inbox-table-bordered td {
+.ib-table-bordered td {
     border-bottom: 1px solid #cbcbcb;
 }
-.inbox-table-bordered tbody > tr:last-child > td {
+.ib-table-bordered tbody > tr:last-child > td {
     border-bottom-width: 0;
 }
 
 
 /* HORIZONTAL BORDERED TABLES */
 
-.inbox-table-horizontal td,
-.inbox-table-horizontal th {
+.ib-table-horizontal td,
+.ib-table-horizontal th {
     border-width: 0 0 1px 0;
     border-bottom: 1px solid #cbcbcb;
 }
-.inbox-table-horizontal tbody > tr:last-child > td {
+.ib-table-horizontal tbody > tr:last-child > td {
     border-bottom-width: 0;
 }
