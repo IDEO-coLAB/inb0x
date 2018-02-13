@@ -107,8 +107,9 @@ since IE8 won't execute CSS that contains a CSS3 selector.
 .ib-form .ib-checkbox,
 .ib-form .ib-radio {
     margin: 0.5em 0;
-    display: block;
+
 }
+
 
 .ib-form input[type="text"][disabled],
 .ib-form input[type="password"][disabled],
