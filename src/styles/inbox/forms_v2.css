@@ -56,7 +56,6 @@ Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
 since IE8 won't execute CSS that contains a CSS3 selector.
 */
 .ib-form input:not([type]) {
-<<<<<<< HEAD
     padding: 0.5em 0.6em;
     display: inline-block;
     border: none;
@@ -439,7 +438,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
 .ib-input-group-item:first-child {
   border-radius: 4px 0 0 4px;
   margin-right: -1px;
-  
+
 }
 .ib-input-group-field:last-child,
 .ib-input-group-item:last-child {
