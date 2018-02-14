@@ -451,7 +451,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   width: 120px;
   border-radius: 3px;
   overflow: hidden;
-  background: #fafafa url("icons/Arrow Down.png") no-repeat 90% 50%;
+  background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
   }
 
   .ib-form-select select {
@@ -474,8 +474,8 @@ since IE8 won't execute CSS that contains a CSS3 selector.
     background: #EA4D4D;
     border-radius: 0  0 4px 4px;
     color: white;
-    padding: 6px;
-    line-height: 36px;
+    padding: 12px 0 0 12px;
+    
   }
 
   .ib-alert-success{
@@ -484,8 +484,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
     background: #50E3C2;
     border-radius: 0  0 4px 4px;
     color: white;
-    padding: 6px;
-    line-height: 36px;
+    padding: 12px 0 0 12px;
   }
 
   .ib-alert-error-big{
@@ -494,8 +493,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
     background: #EA4D4D;
     border-radius: 4px;
     color: white;
-    padding: 6px;
-    line-height: 36px;
+    padding: 18px 0 0 12px;
     text-align: center;
   }
 
@@ -505,8 +503,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
     background: #50E3C2;
     border-radius: 4px;
     color: white;
-    padding: 6px;
-    line-height: 36px;
+    padding: 18px 0 0 12px;
     text-align: center;
   }
 

@@ -1,36 +1,36 @@
 .ib-icon-compose { 
-   background:url(icons/compose-icon.svg) left top; 
+   background:url(../../icons/compose-icon.svg) left top; 
    width:15px; 
    height:16px;
    display: block;
    float: left;
-   margin-right: 6px;
+   /*margin-right: 12px;*/
 }
 
 .ib-icon-leftarrow { 
-   background:url(icons/thin-arrow-inbox.svg) left top; 
+   background:url(../../icons/thin-arrow-inbox.svg) left top; 
    width:42px; 
    height:16px;
    display: block;
    float: left;
-   margin-right: 6px;
+   /*margin-right: 12px;*/
 }
 
 .ib-icon-mail{
-   background:url(icons/mail.svg) left top; 
+   background:url(../../icons/mail.svg) left top; 
    width:16px; 
    height:11px;
    display: block;
    float: left;
-   margin-right: 6px;
+   /*margin-right: 1px;*/
 }
 
 .ib-icon-search{
-   background:url(icons/search.svg) left top; 
+   background:url(../../icons/search.svg) left top; 
    width:16px; 
    height:16px;
    display: block;
    float: left;
-   margin-right: 6px;
+   /*margin-right: 12px;*/
    
 }

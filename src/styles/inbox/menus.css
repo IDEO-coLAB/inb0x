@@ -168,6 +168,7 @@
     /*background-color: transparent;*/
     text-decoration: none;   
     border-bottom: 3px solid rgb(87, 226, 194);
+    color:#979797;
 }
 
 
@@ -177,6 +178,7 @@
     /*background-color: #eee;*/
     text-decoration: none;
     border-bottom: 3px solid rgb(87, 226, 194);
+    color: #979797;
 }
 
 .ib-menu-selected .ib-menu-link,
@@ -282,9 +284,13 @@ The content `<div>` is where all your content goes.
     All anchors inside the menu should be styled like this.
     */
     #ib-side-bar a {
-        color: #999;
+        color: rgba(151, 151, 151, .5);
         border: none;
         padding: 0.6em 0 0.6em 0.6em;
     }
+
+.ib-menu-link > span{
+    margin-right: 12px;
+}
 
 

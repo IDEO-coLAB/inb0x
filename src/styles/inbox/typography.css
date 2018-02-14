@@ -43,7 +43,7 @@ pre {
 
 /* Manage typesetting */
 
-h1, p {
+html, h1, p {
   font-family: 'Cerebri Sans Regular';
   color: #042D45;
 }
