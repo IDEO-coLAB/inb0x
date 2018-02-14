@@ -57,6 +57,8 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+
+
 .ib-btn-container {
   float: right;
   padding-right: 0.75em;
@@ -112,6 +114,8 @@
 .ib-btn-disabled:active {
     border: none;
     background-image: none;
+    background-color: #E1E6E8;
+    color: black;
     /* csslint ignore:start */
     filter: alpha(opacity=40);
     /* csslint ignore:end */
