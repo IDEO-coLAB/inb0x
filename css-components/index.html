@@ -153,8 +153,8 @@
       <p>
           This will be contain button elements
       </p>
-      <a class="ib-btn" href="#">An Inb0x Button</a>
-      <button class="ib-btn ib-btn-success">An Inb0x Button</button>
+      <a class="ib-btn" href="#">Button</a>
+      <button class="ib-btn ib-btn-success">Button</button>
     </div>
 
 
@@ -164,8 +164,12 @@
       <h1>Type and Fonts</h1>
       <p>Here you will find font implementation</p>
       <hr>
-      <h1>Nav uses h1 tag</h1>
-      <label>labels use label tag</label>
+
+      <h2>Fonts in use:</h2>
+
+      <h1>Cerebri Sans Regular at 1.571em</h1>
+      <p>Cerebri Sans Regular at 1.286em with line height at 1.6em</p>
+      <label>Cerebri Sans Medium uppercase at 0.786em</label>
 
       <br>
       <br>
@@ -318,36 +322,67 @@
       <h1>Bounty and Send Molecule</h1>
       <p>Molecule for setting bounty and transacting the send</p>
       <hr>
+      <h2>Message action element</h2>
+      <div class="ib-container">
+        <form class="ib-form ib-form-stacked">
+          <fieldset>
+            <div class="ib-g">
+              <div class="ib-u-1-4">
 
-      <form class="ib-form ib-form-stacked">
-        <fieldset>
-          <div class="ib-g">
-            <div class="ib-u-1">
-              <label class="ib-u-1">Message</label>
-            </div>
+                <label class="ib-u-1">Read Bounty</label>
+                <div class="ib-u-1 ib-container-register-to-grid">
 
-            <div class="ib-u-1">
-              <div class="ib-container-register-to-grid">
-                <div class="ib-u-1-12">
-                  <input id="select-01" type="radio" name="optionsRadios" value=".01" checked>
-                  <label for="select-01" class="ib-radio ib-inline">.01</label>
+                  <div class="ib-u-1-5">
+                    <input id="select-01" type="radio" name="optionsRadios" value=".01" checked>
+                    <label for="select-01" class="ib-radio ">.01</label>
+                  </div>
+                  <div class="ib-u-1-5">
+                    <input id="select-05" type="radio" name="optionsRadios" value=".01">
+                    <label for="select-05" class="ib-radio ">.05</label>
+                  </div>
+<!-- Flag as question for gacvin about both specific style for this element and ::after psuedo elements as labels -->
+                  <div class="ib-u-1-3">
+                    <input id="readbounty" class="ib-u-1" type="number" value=".01" style="background-color: #E1E6E8;">
+                  </div>
                 </div>
-                <div class="ib-u-1-12">
-                  <input id="select-05" type="radio" name="optionsRadios" value=".01">
-                  <label for="select-05" class="ib-radio ib-inline">.05</label>
+
+              </div>
+              <div class="ib-u-1-2">
+                <div class="ib-u-1">
+                  <div class="ib-u-1-4">
+                    <label class="ib-u-1">Gas Limit</label>
+                  </div>
+                  <div class="ib-u-1-4">
+                    <label class="ib-u-1">Gas </label>
+                  </div>
+                  <div class="ib-u-1-4">
+                    <label class="ib-u-1">Total </label>
+                  </div>
                 </div>
-                <div class="ib-u-1-12">
-                  <input id="readbounty" class="ib-u-1" type="number" value=".01">
-                </div>
-                <div class="ib-u-1-12">
-                  <label class="ib-inline">ETH</label>
+
+                <div class="ib-u-1">
+                  <div class="ib-u-1-4">
+                    <input id="gaslimit" class="ib-u-1" type="number" value="21000" >
+                  </div>
+                  <div class="ib-u-1-4">
+                    <input id="gas" class="ib-u-1" type="number" value="7000" >
+                  </div>
+                  <div class="ib-u-1-4">
+                    <input id="total" class="ib-u-1" type="number" value="0.050021" >
+                  </div>
                 </div>
               </div>
-            </div>
 
-          </div>
-        </fieldset>
-      </form>
+              <div class="ib-u-1-4">
+                <div class="ib-btn-container">
+                  <button class="ib-btn ib-btn-success">Send</button>
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </form>
+      </div>
 
 
     </div>

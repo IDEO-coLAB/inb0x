@@ -900,13 +900,40 @@ th {
   border: 0px;
   border-radius: 4px;
   margin-bottom: 0.5em;
+  opacity: .99;
+  padding-bottom: 0.4em;
 }
 
 .ib-container-register-to-grid{
-  padding: 0em 0.5em;
+  padding-left: 0.55em;
 }
 
+.ib-content {
+    margin: 0 0 0 36px;
+    padding: 0 2em;
+    max-width: 80%;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
 
+.ib-header {
+     margin: 0;
+     color: #333;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     border-bottom: 1px solid #eee;
+ }
+.ib-header h1 {
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+}
+.ib-header h2 {
+        font-weight: 300;
+        color: #ccc;
+        padding: 0;
+        margin-top: 0;
+}
 
 
 

@@ -166,7 +166,7 @@
 
 .ib-menu-disabled .ib-menu-link:hover > .ib-menu-text {
     /*background-color: transparent;*/
-    text-decoration: none;   
+    text-decoration: none;
     border-bottom: 3px solid rgb(87, 226, 194);
     color:#979797;
 }
@@ -199,7 +199,7 @@ Add transition to containers so they can push in and out.
 #layout,
 #side-bar,
 .menu-link {
-    -webkit-transition: all 0.3s ease-out; 
+    -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -233,41 +233,15 @@ This is the parent `<div>` that contains the menu and the content area.
     }
 
 #ib-layout.active .menu-link {
-        
+
     }
 /*
 The content `<div>` is where all your content goes.
 */
-.ib-content {
-    margin: 0 0 0 36px;
-    padding: 0 2em;
-    max-width: 800px;
-    margin-bottom: 50px;
-    line-height: 1.6em;
-}
-
-.ib-header {
-     margin: 0;
-     color: #333;
-     text-align: center;
-     padding: 2.5em 2em 0;
-     border-bottom: 1px solid #eee;
- }
-.ib-header h1 {
-        margin: 0.2em 0;
-        font-size: 3em;
-        font-weight: 300;
-}
-.ib-header h2 {
-        font-weight: 300;
-        color: #ccc;
-        padding: 0;
-        margin-top: 0;
-    }
 
 
 #ib-side-bar{
-   padding-top: 36px; 
+   padding-top: 36px;
     width: 198px;
     position: fixed;
     top: 0;
@@ -292,5 +266,6 @@ The content `<div>` is where all your content goes.
 .ib-menu-link > span{
     margin-right: 12px;
 }
+
 
 
