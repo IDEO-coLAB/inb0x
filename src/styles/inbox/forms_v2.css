@@ -465,7 +465,7 @@ border: 1px solid #ccc;
 width: 120px;
 border-radius: 3px;
 overflow: hidden;
-background: #fafafa url("icons/Arrow Down.png") no-repeat 90% 50%;
+background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
 }
 
 .ib-form-select select {
