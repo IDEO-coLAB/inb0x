@@ -11,7 +11,7 @@
 
   <!-- seperate css stylesheets fopr easy code review -->
   <link rel="stylesheet" href="../src/styles/inbox/reset.css" >
-  <!-- <link rel="stylesheet" href="../src/styles/inbox/base.css" > -->
+  <link rel="stylesheet" href="../src/styles/inbox/base.css" >
   <link rel="stylesheet" href="../src/styles/inbox/buttons.css" >
   <link rel="stylesheet" href="../src/styles/inbox/typography.css" >
   <link rel="stylesheet" href="../src/styles/inbox/grids.css" >
@@ -27,16 +27,16 @@
 <body>
 
 
-<div id="ib-layout">
+<div class="ib-layout">
   <!-- Menu toggle -->
 
-  <div id="ib-main">
-    <input class="menu-toggle" type="checkbox" name="exampleRadios" id="menu-toggle" value="option1" >
-    <label for="menu-toggle">
-      <span class="ib-icon-leftarrow"></span>
-    </label>
+  <div class="ib-main">
+      <input class="ib-menu-toggle" type="checkbox" role="button" id="ib-menu-toggle" >
+      <label for="ib-menu-toggle">
+        <span class="ib-icon-leftarrow"></span>
+      </label>
 
-    <div id="ib-side-bar">
+    <div class="ib-side-bar">
 
       <ul class="ib-menu-list">
         <li class="ib-menu-item ">
@@ -106,7 +106,7 @@
 
       <p>Radio Buttons</p>
 
-      
+
       <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
       <label for="exampleRadios1">
         Default radio
@@ -395,7 +395,7 @@
             <div class="ib-container-flex">
               <input id="searchfield" class="ib-u-1 ib-form-search" type="text" placeholder="search an address" style="">
               <button class="ib-btn ib-btn-search"><span class="ib-icon-search" ></span></button>
-            <div>
+            </div>
           </div>
         </div>
       </form>

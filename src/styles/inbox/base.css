@@ -894,6 +894,14 @@ th {
 
 /* Adam's base container components */
 
+.ib-layout {
+
+}
+
+.ib-main {
+  
+}
+
 .ib-container {
   width: 100%;
   background-color: #F7F9FB;

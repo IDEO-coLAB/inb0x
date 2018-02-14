@@ -196,9 +196,9 @@
 /*
 Add transition to containers so they can push in and out.
 */
-#layout,
-#side-bar,
-.menu-link {
+.layout,
+.side-bar,
+.ib-menu-link {
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -206,58 +206,58 @@ Add transition to containers so they can push in and out.
     transition: all 0.3s ease-out;
 }
 
-/*#menu:active {
+/*#ib-menu:active {
     width: 0px;
 }*/
-#menu-toggle {display: none}
-#menu-toggle + label {
-    position: absolute;
+.ib-menu-toggle {display: none}
+.ib-menu-toggle + label {
+    right: 100px;
+    padding-top: 36px;
+    position: fixed;
+    top: 0;
     right: 0;
-    z-index: 1001;
+    bottom: 0;
+    z-index: 1;
 }
 
-#menu-toggle:checked ~ #ib-side-bar {width: 54px; overflow-x: hidden;}
-#menu-toggle:checked ~ .ib-content {margin-left: 198px;}
+.ib-menu-toggle:checked ~ .ib-side-bar {width: 54px; overflow-x: hidden;}
+.ib-menu-toggle:checked ~ .ib-content {margin-left: 198px;}
 
 /*
 This is the parent `<div>` that contains the menu and the content area.
 */
-#ib-layout {
+.ib-layout {
     position: relative;
     left: 0;
     padding-left: 0;
 }
-#ib-layout.active #side-bar {
+.ib-layout:active .side-bar {
         right: -198px;
         width: 0px;
     }
 
-#ib-layout.active .menu-link {
-
-    }
 /*
 The content `<div>` is where all your content goes.
 */
 
 
-#ib-side-bar{
-   padding-top: 36px;
-    width: 198px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000; /* so the menu stays above all content */
-    background: rgb(247, 249, 251);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    box-sizing: border-box;
-    padding-left: 24px;
+.ib-side-bar{
+  padding-top: 36px;
+  width: 198px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(247, 249, 251);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  padding-left: 24px;
 }
     /*
     All anchors inside the menu should be styled like this.
     */
-    #ib-side-bar a {
+    .ib-side-bar a {
         color: rgba(151, 151, 151, .5);
         border: none;
         padding: 0.6em 0 0.6em 0.6em;
@@ -266,6 +266,3 @@ The content `<div>` is where all your content goes.
 .ib-menu-link > span{
     margin-right: 12px;
 }
-
-
-
