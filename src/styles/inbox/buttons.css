@@ -14,7 +14,6 @@
             user-select: none;
     box-sizing: border-box;
 }
-
 /* Firefox: Get rid of the inner focus border */
 .ib-btn::-moz-focus-inner {
     padding: 0;
@@ -58,10 +57,21 @@
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
+
+
 .ib-btn-container {
   float: right;
   padding-right: 0.75em;
   padding-top: 1.8em;
+}
+
+.ib-btn-search {
+  margin-left: -50px;
+  margin: 0.25em 0;
+  height: 3.643em;
+  width: 4.714em;
+  background-color: #65CEB7;
+  border-radius: 0 4px 4px 0;
 }
 
 .ib-btn-success {
@@ -104,6 +114,8 @@
 .ib-btn-disabled:active {
     border: none;
     background-image: none;
+    background-color: #E1E6E8;
+    color: black;
     /* csslint ignore:start */
     filter: alpha(opacity=40);
     /* csslint ignore:end */

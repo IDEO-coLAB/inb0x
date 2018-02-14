@@ -908,6 +908,10 @@ th {
   padding-left: 0.55em;
 }
 
+.ib-container-flex {
+  display: flex;
+}
+
 .ib-content {
     margin: 0 0 0 36px;
     padding: 0 2em;
