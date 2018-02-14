@@ -35,6 +35,14 @@ so we can ignore the csslint warning.
   background-color: #F7F9FB;
 }
 
+.ib-form input[type="number"] {
+  text-overflow: none;
+}
+
+.ib-form .ib-form-eth input[type="number"] {
+  background-color: #E1E6E8;
+}
+
 .ib-form textarea {
   width: 100%;
   height: 10.071em;
@@ -106,10 +114,12 @@ since IE8 won't execute CSS that contains a CSS3 selector.
 .ib-form .ib-checkbox,
 .ib-form .ib-radio {
   margin: 0.5em 0;
+  padding-top: 0.55em;
 }
 
 .ib-form .ib-inline {
-  padding-top: 0.6em;
+  padding-top: 0.55em;
+  padding-left: 0em;
 }
 
 .ib-form input[type="text"][disabled],
