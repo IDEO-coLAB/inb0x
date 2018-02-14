@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../src/styles/inbox/tables.css" >
   <link rel="stylesheet" href="../src/styles/inbox/radio-buttons.css" >
   <link rel="stylesheet" href="../src/styles/inbox/icons.css" >
+  <link rel="stylesheet" href="../src/styles/inbox/code-snippets.css" >
 
   <!--  -->
 
@@ -76,7 +77,7 @@
         <!-- appending -->
         <p>Input Groups</p>
         <div class="ib-input-group">
-          <input class="ib-input-group-field " placeholder="0x7df9a875a174b3bc565e6424a0050ebc1b2d1d82">
+          <input class="ib-input-group-field" placeholder="0x7df9a875a174b3bc565e6424a0050ebc1b2d1d82">
           <button class=" ib-btn ib-input-group-item"><span class="ib-icon-search"></span></button>
         </div>
 
@@ -93,15 +94,37 @@
         </div>
       </form>
 
+
+    <pre rel = "HTML">
+      <code>
+
+      &lt;div class="ib-input-group"&gt; 
+        &lt;input class="ib-input-group-field"  placeholder="search an address" &gt;
+        &lt;button class="ib-btn ib-input-group-item"&gt;&lt;span class="ib-icon-search" &gt;&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt; 
+      </code>
+    </pre>
+
       <p>Select</p>
   		<div class="ib-form-select">
   		  <select>
-  		    <option value="volvo">Volvo</option>
-  		    <option value="saab">Saab</option>
-  		    <option value="mercedes">Mercedes</option>
-  		    <option value="audi">Audi</option>
+  		    <option value="volvo">ETH</option>
+  		    <option value="saab">EOS</option>
+  		    <option value="mercedes">REP</option>
+  		    
   		  </select>
   		</div>
+
+      <pre rel = "HTML">
+        <code>
+
+        &lt;div class="ib-input-group"&gt; 
+          &lt;option value="volvo">ETH &gt;&lt;/option&gt;
+          &lt;option value="volvo">EOS &gt;&lt;/option&gt;
+          &lt;option value="volvo">REP &gt;&lt;/option&gt;
+        &lt;/div&gt; 
+        </code>
+      </pre>
 
 
       <p>Radio Buttons</p>
@@ -145,6 +168,20 @@
         Message sent
       </div>
 
+      <pre rel = "HTML">
+        <code>
+
+        &lt;div class="ib-alert-error"&gt;
+          No Token found for "Nosh"
+        &lt;div&gt;
+ 
+        &lt;div class="ib-alert-succcess-big"&gt;
+          Message sent
+        &lt;div&gt;
+
+        </code>
+      </pre>
+
     </div>
 
     <div class="ib-content">
@@ -154,6 +191,20 @@
       <h2>Here they are</h2>
       <a class="ib-btn" href="#">Button</a>
       <button class="ib-btn ib-btn-success">Button</button>
+      <!-- code snippet -->
+      <!-- DO N0T FORMAT TABS -->
+      <pre rel = "HTML">
+        <code>
+
+        &lt;!-- link --&gt; 
+        &lt;a class="ib-btn" href="#"&gt;Button&lt;/a&gt;
+
+        &lt;!-- button --&gt;
+        &lt;button class="ib-btn ib-btn-success"&gt;Button&lt;/button&gt;
+
+        </code>
+      </pre>
+      
     </div>
 
 
@@ -315,6 +366,55 @@
           </fieldset>
         </form>
 
+        <pre rel = "HTML">
+        <code>
+
+        &lt;!-- link --&gt; 
+        &lt;form class="ib-form ib-form-stacked"&gt;
+          &lt;fieldset&gt;
+            &lt;div class="ib-g"&gt;
+              &lt;div class="ib-u-1-24"&gt;
+                  &lt;input id="increment" class="ib-u-23-24" type="text" value="1" readonly&gt;
+              &lt;/div&gt;
+
+              &lt;div class="ib-u-5-24"&gt;
+                  &lt;input id="address" class="ib-u-23-24" type="text" value="0x74fe2b73647252c9c997424eDEAF631e3f7F2Df7" readonly&gt;
+              &lt;/div&gt;
+
+              &lt;div class="ib-u-8-24"&gt;
+                  &lt;input id="message" class="ib-u-23-24" type="text" value="Hi, I noticed you hold some REP. Would you be interested in selling? Paying 10% over market for lots of 10,000 or more." readonly&gt;
+              &lt;/div&gt;
+
+              &lt;div class="ib-u-4-24"&gt;
+                  &lt;input id="bounty" class="ib-u-23-24" type="text" value="0.1 ETH" readonly&gt;
+              &lt;/div&gt;
+
+              &lt;div class="ib-u-5-24">
+                  &lt;input id="timestamp" class="ib-u-23-24" type="text" value=" 1/18/2017, 1:49 PM" readonly&gt;
+              &lt;/div&gt;
+
+              &lt;div class="ib-u-1-24"&gt;
+                  &lt;h3&gt;svg&lt;/h3&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/fieldset&gt;
+        &lt;/form&gt;
+
+        &lt;form class="ib-form ib-form-stacked"&gt;
+          &lt;fieldset&gt;
+            &lt;div class="ib-g"&gt;
+              &lt;div class="ib-u-1"&gt;
+                &lt;label class="ib-u-1"&gt;Message&lt;/label&gt;
+                &lt;textarea id="message" class="ib-input-1" placeholder="Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?"&gt;&lt;/textarea&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          <&lt;fieldset&gt;
+        &lt;/form&gt;
+        
+
+        </code>
+      </pre>
+
       </div>
 
       <br>
@@ -383,6 +483,73 @@
         </form>
       </div>
 
+      <pre rel = "HTML">
+        <code>
+
+        &lt;div class="ib-container"&gt;
+        &lt;form class="ib-form ib-form-stacked"&gt;
+          &lt;fieldset&gt;
+            &lt;div class="ib-g"&gt;
+              &lt;div class="ib-u-1-4"&gt;
+
+                &lt;label class="ib-u-1"&gt;Read Bounty&lt;/label&gt;
+                &lt;div class="ib-u-1 ib-container-register-to-grid"&gt;
+
+                  &lt;div class="ib-u-1-5"&gt;
+                    &lt;input id="select-01" type="radio" name="optionsRadios" value=".01" checked&gt;
+                    &lt;label for="select-01" class="ib-radio "&gt;.01&lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class="ib-u-1-5"&gt;
+                    &lt;input id="select-05" type="radio" name="optionsRadios" value=".01"&gt;
+                    &lt;label for="select-05" class="ib-radio "&gt;.05&lt;/label&gt;
+                  &lt;/div&gt;
+<!-- Flag as question for gavin about ::after psuedo elements as labels -->
+                  &lt;div class="ib-u-1-3"&gt;
+                    &lt;input id="readbounty" class="ib-u-1 ib-form-grey" type="number" value=".01" style=""&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+              &lt;/div&gt;
+              &lt;div class="ib-u-1-2"&gt;
+                &lt;div class="ib-u-1"&gt;
+                  &lt;div class="ib-u-1-4"&gt;
+                    &lt;label class="ib-u-1"&gt;Gas Limit&lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class="ib-u-1-4"&gt;
+                    &lt;label class="ib-u-1"&gt;Gas &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class="ib-u-1-4"&gt;
+                    &lt;label class="ib-u-1"&gt;Total &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="ib-u-1"&gt;
+                  &lt;div class="ib-u-1-4"&gt;
+                    &lt;input id="gaslimit" class="ib-u-1" type="number" value="21000" &gt;
+                  &lt;/div&gt;
+                  &lt;div class="ib-u-1-4"&gt;
+                    &lt;input id="gas" class="ib-u-1" type="number" value="7000" &gt;
+                  &lt;/div&gt;
+                  &lt;div class="ib-u-1-4"&gt;
+                    &lt;input id="total" class="ib-u-1" type="number" value="0.050021" readonly&gt;
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+
+              &lt;div class="ib-u-1-4"&gt;
+                &lt;div class="ib-btn-container"&gt;
+                  &lt;button class="ib-btn ib-btn-success"&gt;Send&lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+          &lt;/fieldset&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+
+        </code>
+      </pre>
+
       <br>
       <h1>Search Bar</h1>
       <p>Molecule search bar using forms</p>
@@ -400,12 +567,87 @@
         </div>
       </form>
 
+      <br>
+      <h1>Icons</h1>
+      <hr>
+      <p>Compose <span class="ib-icon-compose"></span></p>
+      <p>Arrow <span class="ib-icon-leftarrow"></span></p>
+      <p>Envelope <span class="ib-icon-mail"></span></p>
+      <p>Search <span class="ib-icon-search"></span></p>
+      <p>Error<span class="ib-icon-error-x"></span></p>
+
+      <pre rel = "HTML">
+        <code>
+ 
+        &lt;span class="ib-icon-compose"&gt;&lt;/span&gt;
+        &lt;span class="ib-icon-leftarrow"&gt;&lt;/span>
+        &lt;span class="ib-icon-mail"&gt;&lt;/span>
+        &lt;span class="ib-icon-search"&gt;&lt;/span>
+        &lt;span class="ib-icon-error-x"&gt;&lt;/span>
+
+        </code>
+      </pre>
+
+      <br>
+      <h1>Side Menu</h1>
+      <p>Molecule search bar using forms</p>
+      <hr>
+      <h2>Right side Bar</h2>
+
+      <pre rel= "HTML">
+        <code>
+          &lt;div id="ib-layout"&gt;
+            <!-- Menu toggle -->
+
+            &lt;div id="ib-main"&gt;
+              &lt;input class="menu-toggle" type="checkbox" name="exampleRadios" id="menu-toggle" value="option1"&gt;
+              &lt;label for="menu-toggle"&gt;
+                &lt;span class="ib-icon-leftarrow"&gt;&lt;/span&gt;
+              &lt;/label&gt;
+
+              &lt;div id="ib-side-bar"&gt;
+
+                &lt;ul class="ib-menu-list"&gt;
+                  &lt;li class="ib-menu-item "&gt;
+                    &lt;a href="#" class="ib-menu-link"&gt;
+                      &lt;span class="ib-icon-compose"&gt;&lt;/span&gt;
+                      &lt;span class="ib-menu-text"&gt;...&lt;/span&gt;
+                    &lt;/a>
+                  &lt;/li>
+                  &lt;li class="ib-menu-item "&gt;
+                    &lt;a href="#" class="ib-menu-link"&gt;
+                      &lt;span class="ib-icon-mail"&gt;&lt;/span&gt;
+                      &lt;span class="ib-menu-text"&gt;...&lt;/span&gt;
+                    &lt;/a>
+                  &lt;/li>
+                  &lt;li class="ib-menu-item "&gt;
+                    &lt;a href="#" class="ib-menu-link"&gt;
+                      &lt;span class="ib-icon-search"&gt;&lt;/span&gt;
+                      &lt;span class="ib-menu-text"&gt;...&gt;/span&gt;
+                    &lt;/a&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/div&gt;
+
+              &lt;div class="content"&gt;
+                Some Content
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+        </code>
+      </pre>
+
     </div>
 
   </div>
 </div>
 
-
+<style type="text/css">
+  
+}
+</style>
 
 </body>
 </html>

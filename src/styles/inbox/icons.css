@@ -34,3 +34,13 @@
    /*margin-right: 12px;*/
    
 }
+
+.ib-icon-error-x{
+   background:url(../../icons/error-x.svg) left top; 
+   width:16px; 
+   height:16px;
+   display: block;
+   float: left;
+   /*margin-right: 12px;*/
+   
+}
