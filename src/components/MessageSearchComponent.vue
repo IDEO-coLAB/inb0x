@@ -29,6 +29,7 @@
           <div class="ib-container-flex">
             <input id="searchfield" class="ib-u-1 ib-form-search ib-form-active" type="text" v-model="input" placeholder="search an address" style="">
             <button class="ib-btn ib-btn-search ib-btn-live" v-show="!isLocked" type="submit" @click="submit" ><span class="ib-icon-search" ></span></button>
+            <button class="ib-btn ib-btn-search ib-btn-live" v-show="isLocked" type="submit" @click="submit" >Searching...</button>
           </div>
         </div>
       </div>

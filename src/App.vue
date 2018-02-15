@@ -1,43 +1,32 @@
 <template>
-  <div class="ib-layout">
-    <div class="ib-main">
-      <input class="ib-menu-toggle" type="checkbox" role="button" id="ib-menu-toggle" >
-      <label for="ib-menu-toggle">
-        <span class="ib-icon-leftarrow"></span>
-      </label>
+  <div class="app-container pure-g">
 
-      <div class="ib-side-bar">
-        CUR ROUTE: <br> {{$router.currentRoute.name}}
-        <br>
-        <br>
-        <ul class="ib-menu-list">
-          <li class="ib-menu-item ">
-            <router-link clas="ib-menu-link"
-        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}">TOKENS</router-link>
-          </li>
+    <app-notifications-component />
 
-          <li class="ib-menu-item ">
-            <router-link class="ib-menu-link"
-        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}">MESSAGES</router-link>
-          </li>
-        </ul>
-      </div> <!-- end sidebar -->
-      <app-notifications-component />
-      <div class="ib-header">
-        <h1>Inb0x </h1>
-        <h2>Imagine the future</h2>
-      </div>
+    <div class="app-main pure-u-3-4">
 
-      <div class="ib-content">
-        <router-view></router-view>
-      </div>
+      <!-- turn into header component -->
+      <div class="main-header"><samp>inb0x</samp> header logo etc.</div>
+      <!-- turn into header component -->
 
+      <router-view></router-view>
     </div>
+
+    <!-- turn into sidebar component -->
+    <div class="app-sidebar pure-u-1-4">
+      CUR ROUTE: <br> {{$router.currentRoute.name}}
+      <br>
+      <br>
+      <router-link
+        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}">TOKENS</router-link>
+      <br>
+      <br>
+      <router-link
+        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}">MESSAGES</router-link>
+    </div>
+    <!-- turn into sidebar component -->
+
   </div>
-
-  <!--  ^^^ -->
-
-  
 </template>
 
 <script>

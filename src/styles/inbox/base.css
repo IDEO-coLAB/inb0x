@@ -916,8 +916,14 @@ th {
 /* Adam's base container components */
 
 .ib-layout {
-
+    position: relative;
+    left: 0;
+    padding-left: 0;
 }
+.ib-layout:active .side-bar {
+        right: -198px;
+        width: 0px;
+    }
 
 .ib-main {
   
@@ -968,7 +974,15 @@ th {
         margin-top: 0;
 }
 
-
+.layout,
+.menu,
+.ib-menu-link {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+} 
 
 
 
