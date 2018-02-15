@@ -212,16 +212,18 @@ Add transition to containers so they can push in and out.
 .ib-menu-toggle {display: none}
 .ib-menu-toggle + label {
     right: 100px;
-    padding-top: 36px;
     position: fixed;
+    padding-top: 36px;
+    padding-right: 120px;
     top: 0;
     right: 0;
-    bottom: 0;
     z-index: 1;
+    display: block;
 }
 
-.ib-menu-toggle:checked ~ .ib-side-bar {width: 54px; overflow-x: hidden;}
+.ib-menu-toggle:checked ~ .ib-side-bar {width: 78px; overflow-x: hidden; padding-right: 24px;}
 .ib-menu-toggle:checked ~ .ib-content {margin-left: 198px;}
+.ib-menu-toggle:checked ~ .ib-menu-text {visibility: hidden;}
 
 /*
 This is the parent `<div>` that contains the menu and the content area.
@@ -242,7 +244,7 @@ The content `<div>` is where all your content goes.
 
 
 .ib-side-bar{
-  padding-top: 36px;
+  padding-top: 66px;
   width: 198px;
   position: fixed;
   top: 0;

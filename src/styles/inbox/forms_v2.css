@@ -23,7 +23,8 @@ so we can ignore the csslint warning.
 .ib-form input[type="search"],
 .ib-form input[type="tel"],
 .ib-form input[type="color"],
-.ib-form select {
+.ib-form select,
+.ib-form-search {
   padding: 0.5em 0.6em;
   display: inline-block;
   border: 0px;
@@ -39,9 +40,14 @@ so we can ignore the csslint warning.
 }
 
 .ib-form-search {
-  background-color: #50E3C2;
   height: 3.643em;
   border-radius: 4px 0 0 4px;
+  outline: none;
+  margin-bottom: .4em;
+}
+
+.ib-form-active {
+  background-color: #50E3C2;
 }
 
 .ib-form input[type="number"] {
@@ -481,8 +487,6 @@ background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
 .ib-form-select select:focus {
   outline: none;
 }
-
-/* Legacy code for search above */
 
 .ib-alert-error{
   width: 100%;

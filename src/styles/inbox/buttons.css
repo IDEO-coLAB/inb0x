@@ -67,20 +67,23 @@
 
 .ib-btn-search {
   margin-left: -50px;
-  margin: 0.25em 0;
   height: 3.643em;
   width: 4.714em;
-  background-color: #65CEB7;
+
   border-radius: 0 4px 4px 0;
 }
 
 .ib-btn-success {
-    background: rgb(87, 226, 194); /* this is a green */
-    color: white;
+  background: rgb(87, 226, 194); /* this is a green */
+  color: white;
+}
+
+.ib-btn-live {
+  background-color: #65CEB7;
 }
 
 .ib-btn-danger{
-    background: #FCCFCF; /* this is a maroon */
+    background: #FFB9BB; /* this is a maroon */
 }
 
 .ib-btn-warning {
