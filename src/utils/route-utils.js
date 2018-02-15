@@ -1,5 +1,4 @@
-import web3Utils from 'web3-utils'
-import web3 from 'web3'
+import Web3 from 'web3'
 
 import { MUTATION_TYPES } from '../constants/mutations'
 import { ACTION_TYPES } from '../constants/actions'
@@ -7,7 +6,7 @@ import ROUTE_NAMES from '../constants/routes'
 
 export default (router, store) => {
   const routeAddr = router.currentRoute.query.address
-  const routeAddrIsValid = web3Utils.isAddress(routeAddr)
+  const routeAddrIsValid = Web3.utils.isAddress(routeAddr)
 
   const curMessagesAddr = store.getters.search.messagesAddr
   const curTokensAddr = store.getters.search.tokensAddr
@@ -17,7 +16,7 @@ export default (router, store) => {
 
   switch (router.currentRoute.name) {
 
-    // Handler for /messages
+    // Route handler for /messages
     case ROUTE_NAMES.MESSAGES_PAGE:
 
       // if there is nothing new in the url, exit
@@ -44,7 +43,7 @@ export default (router, store) => {
       }
       break
 
-    // Handler for /tokens
+    // Route handler for /tokens
     case ROUTE_NAMES.TOKENS_PAGE:
       // if there is nothing new in the url, exit
       if (!routeHasNewTokensAddr) return console.log('no new address for token holders in route utils')

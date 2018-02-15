@@ -3,21 +3,27 @@
     <form  v-on:submit="submit">
 
       <div class="form-group">
-        <label class="form-label">Read Bounty</label>
-        <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="txAmount" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Reply Bounty</label>
-        <input class="form-input" type="number" placeholder="0.0" step="0.01" v-model="gasLimit" />
-      </div>
-
-      <div class="form-group">
         <textarea class="form-input" placeholder="Your message" rows="5" v-model="message"></textarea>
       </div>
 
+      <div class="form-group">
+        <label class="form-label">Read Bounty (ETH)</label>
+        <input class="form-input" type="number" :placeholder="readBounty" step="0.01" v-model="readBounty" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Gas for Tx (Units)</label>
+        <input class="form-input" type="number" :placeholder="gasPrice" step="1" v-model="gasPrice" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Gas Limit (GWEI)</label>
+        <input class="form-input" type="number" :placeholder="gas" step="1000" v-model="gas" />
+      </div>
+
       <div>
-        <button type="submit" @click="submit">Reply to this Message</button>
+        <button v-show="!isLocked" type="submit" @click="submit">Send Message</button>
+        <button v-show="isLocked">Sending, please wait...</button>
       </div>
 
 
@@ -26,16 +32,18 @@
 </template>
 
 <script>
-  import web3 from 'web3'
-  import web3Utils from 'web3-utils'
+  import Web3 from 'web3'
   import { MUTATION_TYPES } from '../constants/mutations'
+  import { NOTIFICATION_TYPES } from '../models/notification'
 
   export default {
     data () {
       return {
         message: '',
-        txAmount: 0,
-        gasLimit: 0,
+        gas: 300000,
+        gasPrice: 21,
+        readBounty: 0,
+        replyBounty: 0, // not used currently
       }
     },
     props: {
@@ -44,73 +52,62 @@
         required: true
       },
     },
-    // MetaMask code scratch...to be used soon :)
-    // mounted () {
-    //   if (!_.isUndefined(web3)) {
-    //     // Use Mist/MetaMask's provider
-    //     const prov = new Web3(web3.currentProvider)
-    //     console.log('prov', prov)
-    //     console.log('prov', prov.eth.accounts)
-
-
-    //     // web3.version.getNetwork((err, netId) => {console.log(err, netId)})
-    //     // console.log('prov', )
-    //     // this.$store.commit(MUTATION_TYPES.UPDATE_WEB3_PROVIDER, prov)
-    //   }
-    // },
+    computed: {
+      isLocked () {
+        return this.$store.getters.isLocked
+      }
+    },
     methods: {
       submit (event) {
         event.preventDefault()
-
-
         const contract = this.$store.getters.inboxContractObj
 
+        const sender = this.$store.getters.web3Addr
+        const recipient = this.recipient
 
+        const message = this.message
+        const readBounty = Web3.utils.toWei(this.readBounty.toString())
+        const replyBounty = Web3.utils.toWei(this.replyBounty.toString())
 
-        // if (!contract) console.warn('NO CONTRACT!')
-        //   return
+        const txValue = (Number(replyBounty) + Number(readBounty)).toString()
+        const gas = this.gas.toString()
+        const gasPrice = Web3.utils.toWei(this.gasPrice.toString(), 'gwei')
 
+        this.$store.commit(MUTATION_TYPES.SET_LOCK_STATE, true)
 
-        var send_to = this.recipient
-        var message = this.message
-        var readBounty = 0.001
-        var replyBounty = 0.001
-        const value = (readBounty+replyBounty).toString()
-
-        console.log(send_to, message, readBounty, replyBounty)
-
+        // http://web3js.readthedocs.io/en/1.0/web3-eth-contract.html?highlight=.send#methods-mymethod-send
         contract.methods
-          .sendMessage(send_to, message, readBounty, replyBounty)
+          .sendMessage(recipient, message, readBounty, replyBounty)
           .send({
-            from: this.$store.getters.web3AccountId,
-            value: web3Utils.toWei(value),
-            gas: 3000000,
+            from: sender,
+            value: txValue,
+            gas,
+            gasPrice,
           })
           .then(() => {
-            console.log('SENT!!!')
+            this.$store.commit(MUTATION_TYPES.SET_LOCK_STATE, false)
+            console.log(`Sent from: ${sender}  => to: ${recipient}`)
+            console.log(`${message}`)
+            console.log(`read bounty: ${readBounty}`)
+            console.log(`gas: ${gasPrice}, tx value: ${txValue}`)
+
+            const notification = {
+              text: `Your message was successfully sent.`,
+              type: NOTIFICATION_TYPES.SUCCESS,
+            }
+            this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
+
           })
           .catch((error) => {
+            this.$store.commit(MUTATION_TYPES.SET_LOCK_STATE, false)
             console.warn('ERROR SENDING', error)
+            const notification = {
+              text: `Your message failed to send: ${error.message}`,
+              type: NOTIFICATION_TYPES.ERROR,
+            }
+            this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
           })
-
-
-
-
-        // console.log('Submitted =>', event, this.messageHex)
-        // console.log('HEX => ', this.messageHex)
-
-        // this.web3Provider.eth.sendTransaction({
-        //   to: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
-        //   from: '0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A',
-        //   value: '1',
-        //   data: 'this is something'
-        // }, (err, data) => console.log(err, data))
       },
-    },
-    computed: {
-      web3Provider () {
-        return this.$store.getters.web3Provider
-      }
     },
   }
 </script>

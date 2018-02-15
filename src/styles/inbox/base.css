@@ -15,6 +15,10 @@ html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+}
+/* app-level elements */
+
+.app-container {
   height: 100%;
 }
 
@@ -362,6 +366,19 @@ input[type="search"] {
   -webkit-appearance: textfield; /* 1 */
   box-sizing: content-box; /* 2 */
 }
+.app-main {
+  height: inherit;
+  /*width: calc(100% - 250px);*/
+  background-color: yellow;
+  /*overflow: auto;*/
+}
+
+.app-sidebar {
+  height: inherit;
+  /*max-width: 250px;*/
+  background-color: red;
+  /*overflow: hidden;*/
+}
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
@@ -369,6 +386,7 @@ input[type="search"] {
  * padding (and `textfield` appearance).
  */
 
+<<<<<<< HEAD
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -400,6 +418,9 @@ legend {
 
 textarea {
   overflow: auto;
+}
+.main-header {
+  min-height: 90px;
 }
 
 /**

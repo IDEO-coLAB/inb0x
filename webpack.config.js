@@ -17,6 +17,10 @@ module.exports = {
           'css-loader'
         ],
       },
+      {    
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: "file-loader"
+      },
       {
         test: /\.scss$/,
         use: [

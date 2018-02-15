@@ -2,6 +2,7 @@ import _ from 'lodash'
 import Vue from 'vue'
 import { MUTATION_TYPES } from '../../constants/mutations'
 import { ACTION_TYPES } from '../../constants/actions'
+import { NOTIFICATION_TYPES } from '../../models/notification'
 
 // Initial state
 const state = {
@@ -24,10 +25,10 @@ const getters = {
 // Mutations
 const mutations = {
   [MUTATION_TYPES.SET_MSGS] (state, message) {
-    // Vue does not track deeply nested objects
     if (_.isUndefined(message)) {
       state.messages.list = []
     } else {
+      // Vue does not track deeply nested objects
       Vue.set(state.messages.list, message.index, message.message)
     }
     console.log(MUTATION_TYPES.SET_MSGS, message)
@@ -48,10 +49,13 @@ const actions = {
   [ACTION_TYPES.FETCH_MSGS_HEADERS] ({ dispatch, commit, state }, address) {
     const contract = this.getters.inboxContractObj
 
-    if (!contract) {
-      console.error('MISSING A CONTRACT—CANNOT FETCH MESSAGES YET')
+    if (_.isNil(contract)) {
+      const notification = {
+        text: `The inb0x contract has not been set up yet. What do now (web3)?`,
+        type: NOTIFICATION_TYPES.ERROR,
+      }
+      commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
       return
-     // throw new Error('Missing inb0x contract')
     }
 
     commit(MUTATION_TYPES.SET_MSGS)
@@ -92,7 +96,15 @@ const actions = {
 
   [ACTION_TYPES.FETCH_MSG] ({ commit }, { address, index }) {
     const contract = this.getters.inboxContractObj
-    if (!contract) throw new Error('Missing inb0x contract')
+
+    if (_.isNil(contract)) {
+      const notification = {
+        text: `The inb0x contract has not been set up yet. What do now (web3)?`,
+        type: NOTIFICATION_TYPES.ERROR,
+      }
+      commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
+      return
+    }
 
     return contract.methods.getMessage(address, index).call()
       .then((message) => {

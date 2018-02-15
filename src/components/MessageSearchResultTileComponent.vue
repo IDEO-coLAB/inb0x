@@ -1,15 +1,15 @@
 <template>
-  <div class="pure-g">
+  <div class="ib-g">
 
-    <div class="pure-u-2-3">
+    <div class="ib-u-2-3">
       Message {{index}} from {{messageObject[0]}}
     </div>
 
-    <div class="pure-u-1-3" @click="toggleMessage(messageObject, $event)">
+    <div class="ib-u-1-3" @click="toggleMessage(messageObject, $event)">
       Click to {{isExpanded ? 'close' : 'open'}}
     </div>
 
-    <div class="pure-u-1-1" v-show="isExpanded">
+    <div class="ib-u-1-1" v-show="isExpanded">
       <br>
       <span>{{messageObject[1]}}</span>
       <br>
@@ -22,8 +22,6 @@
 </template>
 
 <script>
-  import web3 from 'web3'
-  import { MUTATION_TYPES } from '../constants/mutations'
   import ComposeComponent from './ComposeComponent'
 
   export default {

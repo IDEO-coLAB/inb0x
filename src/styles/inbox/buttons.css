@@ -1,3 +1,4 @@
+
 .ib-btn {
     /* Structure */
     display: inline-block;
@@ -46,7 +47,7 @@
     font-family: inherit;
     font-size: 100%;
     padding: 0.9em 1.7em;
-    color: inherit;
+    color: #042D45;
     border: 1px solid #999;  /*IE 6/7/8*/
     border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
     background-color: rgb(247, 249, 251);
