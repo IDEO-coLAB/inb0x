@@ -29,10 +29,6 @@
     text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
 }
 
-.opera-only :-o-prefocus,
-.ib-btn-group {
-    word-spacing: -0.43em;
-}
 
 .ib-btn-group .ib-btn {
     letter-spacing: normal;
@@ -107,7 +103,6 @@
 }
 .ib-btn-active,
 .ib-btn:active {
-    box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
     border-color: #000\9;
 }
 

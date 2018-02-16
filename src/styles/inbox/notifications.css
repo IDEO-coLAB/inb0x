@@ -1,0 +1,22 @@
+.ib-notification{
+  width: 100%;
+  height: 30px;
+  line-height: 36px;
+  padding: 6px;
+  color: white;
+  border-radius: 0  0 4px 4px;
+}
+
+.ib-notification.error{
+	background: #EA4D4D;
+}
+
+.ib-notification.success{
+	background: #50E3C2;
+}
+
+.ib-notification.big{
+	padding-top: 150px;
+	padding-bottom: 150px;
+}
+

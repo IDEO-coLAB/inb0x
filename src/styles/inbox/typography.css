@@ -48,6 +48,10 @@ pre {
 	text-transform: uppercase;
 }
 
+.ib--text-error{
+  color: #EA4D4D;
+}
+
 .u-pl-1{ padding-left: 6px; }
 
 .u-pl-1{ padding-left: 12px; }
@@ -55,6 +59,8 @@ pre {
 .u-pl-1{ padding-left: 18px; }
 
 .u-pl-1{ padding-left: 24px; }
+
+
 
 /* adding relevant fonts */
 @font-face {

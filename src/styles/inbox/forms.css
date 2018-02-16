@@ -1,14 +1,5 @@
 
 
-
-/*csslint box-model:false*/
-/*
-Box-model set to false because we're setting a height on select elements, which
-also have border and padding. This is done because some browsers don't render
-the padding. We explicitly set the box-model for select elements to border-box,
-so we can ignore the csslint warning.
-*/
-
 .ib-form input[type="text"],
 .ib-form input[type="password"],
 .ib-form input[type="email"],
@@ -30,7 +21,7 @@ so we can ignore the csslint warning.
   border: 0px;
   vertical-align: middle;
   box-sizing: border-box;
-  font-family: 'Cerebri Sans Regular';
+  font-family: 'Cerebri Sans Regular', "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-overflow: ellipsis;
 }
 
@@ -75,10 +66,10 @@ Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
 since IE8 won't execute CSS that contains a CSS3 selector.
 */
 .ib-form input:not([type]) {
-    padding: 0.5em 0.6em;
-    display: inline-block;
-    border: none;
-    box-sizing: border-box;
+  padding: 0.5em 0.6em;
+  display: inline-block;
+  border: none;
+  box-sizing: border-box;
 }
 
 
@@ -113,14 +104,7 @@ since IE8 won't execute CSS that contains a CSS3 selector.
 Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
 since IE8 won't execute CSS that contains a CSS3 selector.
 */
-.ib-form input:not([type]):focus {
-}
 
-.ib-form input[type="file"]:focus,
-.ib-form input[type="radio"]:focus,
-.ib-form input[type="checkbox"]:focus {
-
-}
 .ib-form .ib-checkbox,
 .ib-form .ib-radio {
   margin: 0.5em 0;
@@ -160,20 +144,14 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   background-color: #eaeded;
   color: #cad2d3;
 }
-.ib-form input[readonly],
-.ib-form select[readonly],
-.ib-form textarea[readonly] {
-}
+
 
 .ib-form input:focus:invalid,
 .ib-form textarea:focus:invalid,
 .ib-form select:focus:invalid {
   color: #b94a48;
 }
-.ib-form input[type="file"]:focus:invalid:focus,
-.ib-form input[type="radio"]:focus:invalid:focus,
-.ib-form input[type="checkbox"]:focus:invalid:focus {
-}
+
 .ib-form select {
   /* Normalizes the height; padding is not sufficient. */
   height: 2.25em;
@@ -349,72 +327,69 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   font-size: 0.875em;
 }
 
-@media only screen and (max-width : 480px) {
-  .ib-form button[type="submit"] {
-    margin: 0.7em 0 0;
-  }
 
-  .ib-form input:not([type]),
-  .ib-form input[type="text"],
-  .ib-form input[type="password"],
-  .ib-form input[type="email"],
-  .ib-form input[type="url"],
-  .ib-form input[type="date"],
-  .ib-form input[type="month"],
-  .ib-form input[type="time"],
-  .ib-form input[type="datetime"],
-  .ib-form input[type="datetime-local"],
-  .ib-form input[type="week"],
-  .ib-form input[type="number"],
-  .ib-form input[type="search"],
-  .ib-form input[type="tel"],
-  .ib-form input[type="color"],
-  .ib-form label {
-    margin-bottom: 0.3em;
-    display: block;
-  }
 
-  .ib-group input:not([type]),
-  .ib-group input[type="text"],
-  .ib-group input[type="password"],
-  .ib-group input[type="email"],
-  .ib-group input[type="url"],
-  .ib-group input[type="date"],
-  .ib-group input[type="month"],
-  .ib-group input[type="time"],
-  .ib-group input[type="datetime"],
-  .ib-group input[type="datetime-local"],
-  .ib-group input[type="week"],
-  .ib-group input[type="number"],
-  .ib-group input[type="search"],
-  .ib-group input[type="tel"],
-  .ib-group input[type="color"] {
-    margin-bottom: 0;
-  }
-
-  .ib-form-aligned .ib-control-group label {
-    margin-bottom: 0.3em;
-    text-align: left;
-    display: block;
-    width: 100%;
-  }
-
-  .ib-form-aligned .ib-controls {
-    margin: 1.5em 0 0 0;
-  }
-
-  /* NOTE: ib-help-inline is deprecated. Use .ib-form-message-inline instead. */
-  .ib-form .ib-help-inline,
-  .ib-form-message-inline,
-  .ib-form-message {
-    display: block;
-    font-size: 0.75em;
-    /* Increased bottom padding to make it group with its related input element. */
-    padding: 0.2em 0 0.8em;
-    text-overflow: none;
-    overflow-wrap: normal;
-  }
+.ib-form input:not([type]),
+.ib-form input[type="text"],
+.ib-form input[type="password"],
+.ib-form input[type="email"],
+.ib-form input[type="url"],
+.ib-form input[type="date"],
+.ib-form input[type="month"],
+.ib-form input[type="time"],
+.ib-form input[type="datetime"],
+.ib-form input[type="datetime-local"],
+.ib-form input[type="week"],
+.ib-form input[type="number"],
+.ib-form input[type="search"],
+.ib-form input[type="tel"],
+.ib-form input[type="color"],
+.ib-form label {
+  margin-bottom: 0.3em;
+  display: block;
 }
+
+.ib-group input:not([type]),
+.ib-group input[type="text"],
+.ib-group input[type="password"],
+.ib-group input[type="email"],
+.ib-group input[type="url"],
+.ib-group input[type="date"],
+.ib-group input[type="month"],
+.ib-group input[type="time"],
+.ib-group input[type="datetime"],
+.ib-group input[type="datetime-local"],
+.ib-group input[type="week"],
+.ib-group input[type="number"],
+.ib-group input[type="search"],
+.ib-group input[type="tel"],
+.ib-group input[type="color"] {
+  margin-bottom: 0;
+}
+
+.ib-form-aligned .ib-control-group label {
+  margin-bottom: 0.3em;
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+
+.ib-form-aligned .ib-controls {
+  margin: 1.5em 0 0 0;
+}
+
+/* NOTE: ib-help-inline is deprecated. Use .ib-form-message-inline instead. */
+.ib-form .ib-help-inline,
+.ib-form-message-inline,
+.ib-form-message {
+  display: block;
+  font-size: 0.75em;
+  /* Increased bottom padding to make it group with its related input element. */
+  padding: 0.2em 0 0.8em;
+  text-overflow: none;
+  overflow-wrap: normal;
+}
+
 
 /* Legacy code for search below */
 
@@ -488,104 +463,63 @@ background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
   outline: none;
 }
 
-.ib-alert-error{
-  width: 100%;
-  height: 30px;
-  background: #EA4D4D;
-  border-radius: 0  0 4px 4px;
-  color: white;
-  padding: 6px;
-  line-height: 36px;
-}
-
-.ib-alert-success{
-  width: 100%;
-  height: 30px;
-  background: #50E3C2;
-  border-radius: 0  0 4px 4px;
-  color: white;
-  padding: 6px;
-  line-height: 36px;
-}
-
-.ib-alert-error-big{
-  width: 100%;
-  height: 300px;
-  background: #EA4D4D;
-  border-radius: 4px;
-  color: white;
-  padding: 6px;
-  line-height: 36px;
-  text-align: center;
-}
-
-.ib-alert-success-big{
-  width: 100%;
-  height: 300px;
-  background: #50E3C2;
-  border-radius: 4px;
-  color: white;
-  padding: 6px;
-  line-height: 36px;
-  text-align: center;
-}
-
-.ib-error-text{
-  color: #EA4D4D;
-}
-
 /* custom css */
 
 
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 [type="radio"]:checked + label,
 [type="radio"]:not(:checked) + label {
-    position: relative;
-    cursor: pointer;
-    padding-bottom: 5px;
-    line-height: 24px;
-    display: inline-block;
-    color: #fff;
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 5px;
+  line-height: 24px;
+  display: inline-block;
+  color: #fff;
 }
 [type="radio"]:checked + label:before,
 [type="radio"]:not(:checked) + label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 34px;
-    height: 34px;
-    border: 1px solid #ddd;
-    border-radius: 100%;
-    background: #E1E6E8;
-    z-index: -2;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  background: #E1E6E8;
+  z-index: -2;
 }
 [type="radio"]:checked + label:after,
 [type="radio"]:not(:checked) + label:after {
-    content: '';
-    width: 34px;
-    height: 34px;
-    background: rgb(4, 45, 69);
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    border-radius: 100%;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-    z-index: -1;
+  content: '';
+  width: 34px;
+  height: 34px;
+  background: rgb(4, 45, 69);
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  z-index: -1;
 }
 [type="radio"]:not(:checked) + label:after {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    transform: scale(0);
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
 }
 [type="radio"]:checked + label:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1);
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+@media only screen and (max-width : 480px) {
+.ib-form button[type="submit"] {
+  margin: 0.7em 0 0;
 }
 
