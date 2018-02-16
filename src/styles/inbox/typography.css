@@ -75,6 +75,19 @@ label {
   color: #89969F;
 }
 
+.ib-message-text {
+	font-family: 'Cerebri Sans Regular';
+  font-size: 1.286em;
+  line-height: 1.6em;
+}
+
+.ib-message-data-text {
+	font-family: 'Cerebri Sans Medium';
+	text-transform: uppercase;
+	font-size: 0.786em;
+	color: #89969F;
+}
+
 /* adding relevant fonts */
 @font-face {
 font-family: "Cerebri Sans Regular";

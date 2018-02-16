@@ -49,6 +49,7 @@
   background:url(../../icons/collapse-arrow.svg) left top;
   width:16px;
   height:16px;
+  margin-top: .4em;
   display: block;
-  float: left;
+  float: right;
 }

@@ -34,3 +34,43 @@
 .u-pl-5 {
   padding-left: 1.25em;
 }
+
+
+
+.u-pr-1 {
+  padding-right: 0.25em;
+}
+
+.u-pr-2 {
+  padding-right: 0.5em;
+}
+
+.u-pr-3 {
+  padding-right: 0.75em;
+}
+
+.u-pr-4 {
+  padding-right: 1.0em;
+}
+
+.u-pr-5 {
+  padding-right: 1.25em;
+}
+
+
+.u-p-1 {
+  padding: 0.25em;
+}
+
+.u-p-2 {
+  padding: 0.5em;
+}
+
+
+.u-f-l {
+  float: left;
+}
+
+.u-f-r {
+  float: right;
+}
