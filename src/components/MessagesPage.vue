@@ -1,20 +1,18 @@
 <template>
-  <div class="main-body">
+  <div class="ib-main-body u-plr-4">
 
     <message-search-component />
 
-    <div class="ib-content">
+    <div class="ib-container">
       <message-search-result-tile-component
         v-show="messages"
         v-for="(message, index) in messages"
         :message-object="message"
         :index="index"
         :key="index" />
+      </div>
     </div>
 
-    <div class="body-footer">
-      Some messages footer :)
-    </div>
 
   </div>
 </template>

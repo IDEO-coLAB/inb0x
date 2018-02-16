@@ -3,22 +3,9 @@
 
     <form class="ib-form">
       <fieldset class="ib-g">
-        <input
-          class="ib-input-3-4"
-          type="text"
-          v-model="input"
-          placeholder="Enter an Ethereum address" />
 
         <button
-          class="ib-btn ib-btn-primary ib-input-1-4"
-          v-show="!isLocked"
-          type="submit"
-          @click="submit">
-          Search
-        </button>
-
-        <button
-          class="ib-btn ib-btn-primary ib-input-1-4"
+          class="ib-btn ib-btn-primary"
           v-show="isLocked">
           Searching...
         </button>

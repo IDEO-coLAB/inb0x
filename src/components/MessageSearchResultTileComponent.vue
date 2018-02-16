@@ -1,7 +1,7 @@
 <template>
   <div class="ib-g">
 
-    <div class="ib-u-2-3">
+    <div class="ib-data ib-u-2-3">
       Message {{index}} from {{messageObject[0]}}
     </div>
 

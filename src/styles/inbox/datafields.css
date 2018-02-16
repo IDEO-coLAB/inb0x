@@ -1,0 +1,9 @@
+.ib-data{
+  padding: 0.5em 0.6em;
+  display: inline-block;
+  border: 0px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-family: 'Cerebri Sans Regular';
+  text-overflow: ellipsis;
+}

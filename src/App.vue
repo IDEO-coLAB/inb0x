@@ -1,28 +1,29 @@
 <template>
-  <div class="app-container pure-g">
+  <div class="ib-layout ib-g">
 
     <app-notifications-component />
 
-    <div class="app-main pure-u-3-4">
+    <div class="ib-main ib-u-3-4">
 
       <!-- turn into header component -->
-      <div class="main-header"><samp>inb0x</samp> header logo etc.</div>
+      <div class="main-header u-plr-4"><samp><h1>inb0x</h1></samp></div>
       <!-- turn into header component -->
 
       <router-view></router-view>
     </div>
 
     <!-- turn into sidebar component -->
-    <div class="app-sidebar pure-u-1-4">
-      CUR ROUTE: <br> {{$router.currentRoute.name}}
-      <br>
-      <br>
-      <router-link
-        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}">TOKENS</router-link>
-      <br>
-      <br>
-      <router-link
-        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}">MESSAGES</router-link>
+    <div class="ib-sidebar ib-u-1-4">
+
+        <div class="ib-sidebar-container">
+          <router-link class="ib-menu-text u-pl-2"
+            :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}"><span class="ib-icon-search"></span>TOKENS</router-link>
+          <br>
+          <br>
+          <router-link class="ib-menu-text u-pl-2"
+            :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}"><span class="ib-icon-mail"></span>MESSAGES</router-link>
+        </div>
+
     </div>
     <!-- turn into sidebar component -->
 
@@ -61,6 +62,7 @@
       // If web3 is defined, set up the app
       if (!_.isUndefined(window.web3)) {
         // Store the contract interface so we can interact with it directly
+
         const provider = new Web3(window.web3.currentProvider)
         const inboxContract = new provider.eth.Contract(inboxABI, this.$store.getters.inboxContractAddr)
         this.$store.commit(MUTATION_TYPES.SET_INBOX_CONTRACT_OBJ, inboxContract)
