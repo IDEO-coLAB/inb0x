@@ -1,74 +1,60 @@
-
-h1 {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 24px;
+* {
 	font-style: normal;
 	font-variant: normal;
+}
+
+html, h1, p, pre {
+  font-family: 'Cerebri Sans Regular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #042D45;
+}
+
+h1 {
+	font-size: 1.571em;
 	font-weight: 500;
 	line-height: 26.4px;
 }
+
+h2 {
+    font-family: 'Cerebri Sans Medium', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.786em;
+    color: #89969F;
+}
+
 h3 {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: 'Cerebri Sans Medium', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
 	font-weight: 500;
 	line-height: 15.4px;
 }
 p {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
+	font-size: 1.286em;
+    line-height: 1.6em;
 	font-weight: 400;
-	line-height: 20px;
 }
 blockquote {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: 'Cerebri Sans Medium', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 21px;
-	font-style: normal;
-	font-variant: normal;
 	font-weight: 400;
 	line-height: 30px;
 }
 pre {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
-	font-style: normal;
-	font-variant: normal;
 	font-weight: 400;
 	line-height: 18.5714px;
 }
 /* type */
 
-/* Manage typesetting */
-
-html, h1, p {
-  font-family: 'Cerebri Sans Regular';
-  color: #042D45;
+.u-text-uppercase{
+	text-transform: uppercase;
 }
 
-h1 {
-  font-size: 1.571em;
-}
+.u-pl-1{ padding-left: 6px; }
 
-h2 {
-  font-family: 'Cerebri Sans Medium';
-  font-size: 0.786em;
-  color: #89969F;
-}
+.u-pl-1{ padding-left: 12px; }
 
-p {
-  font-size: 1.286em;
-  line-height: 1.6em;
-}
+.u-pl-1{ padding-left: 18px; }
 
-label {
-  font-family: 'Cerebri Sans Medium';
-  text-transform: uppercase;
-  font-size: 0.786em;
-  color: #89969F;
-}
+.u-pl-1{ padding-left: 24px; }
 
 /* adding relevant fonts */
 @font-face {
