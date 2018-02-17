@@ -36,7 +36,6 @@
 }
 
 
-
 .u-pr-1 {
   padding-right: 0.25em;
 }
@@ -73,4 +72,8 @@
 
 .u-f-r {
   float: right;
+}
+
+.u-1-4-w-less {
+  width: 23.5%;
 }

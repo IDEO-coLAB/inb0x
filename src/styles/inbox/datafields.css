@@ -1,10 +1,14 @@
 .ib-data{
   border: 0px;
-
   box-sizing: border-box;
   font-family: 'Cerebri Sans Regular';
   text-overflow: ellipsis;
   padding: .75em;
+  background-color: #F7F9FB;
+}
+
+.ib-data-container {
+  margin-bottom: .5em;
 }
 
 .ib-data-field {

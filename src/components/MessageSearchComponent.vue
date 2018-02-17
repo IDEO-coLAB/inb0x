@@ -2,21 +2,13 @@
   <div class="body-search">
 
     <form class="ib-form">
-      <fieldset class="ib-g">
-
-        <button
-          class="ib-btn ib-btn-primary"
-          v-show="isLocked">
-          Searching...
-        </button>
-      </fieldset>
 
       <div class="ib-g">
         <div class="ib-u-1">
           <div class="ib-container-flex">
             <input id="searchfield" class="ib-u-1 ib-form-search ib-form-active" type="text" v-model="input" placeholder="search an address" style="">
             <button class="ib-btn ib-btn-search ib-btn-live" v-show="!isLocked" type="submit" @click="submit" ><span class="ib-icon-search" ></span></button>
-            <button class="ib-btn ib-btn-search ib-btn-live" v-show="isLocked" type="submit" @click="submit" >Searching...</button>
+            <button class="ib-btn ib-btn-search ib-btn-live" v-show="isLocked" type="submit" @click="submit" ><span class="ib-icon-search" ></span></button>
           </div>
         </div>
       </div>

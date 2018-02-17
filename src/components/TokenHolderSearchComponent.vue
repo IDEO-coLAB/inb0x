@@ -1,29 +1,31 @@
 <template>
   <div class="body-search">
 
-    <form class="ib-form">
-      <fieldset class="ib-g">
+
+    <div class="ib-u-1">
+      <div class="ib-container-flex">
         <input
-          class="ib-input-3-4"
+          class="ib-u-1 ib-form-search ib-form-active"
           type="text"
           v-model="input"
           placeholder="Enter an Ethereum address" />
 
         <button
-          class="ib-button ib-btn-primary ib-input-1-4"
+          class="ib-btn ib-btn-search ib-btn-live"
           v-show="!isLocked"
           type="submit"
           @click="submit">
-          Search
+          <span class="ib-icon-search" ></span>
         </button>
 
         <button
-          class="ib-button ib-btn-primary ib-input-1-4"
+          class="ib-btn ib-btn-search ib-btn-live"
           v-show="isLocked">
-          Searching...
+          <span class="ib-icon-search" ></span>
         </button>
-      </fieldset>
-    </form>
+      </div>
+    </div>
+
 
   </div>
 </template>

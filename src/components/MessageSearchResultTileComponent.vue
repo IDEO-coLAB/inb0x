@@ -9,7 +9,7 @@
       {{isExpanded ? 'close' : 'open'}}
     </div>
     <div class="ib-u-1-24">
-      <span class="ib-icon-collapse-arrow u-plr-1"></span>
+      <span class="ib-icon-collapse-arrow u-plr-1 u-f-r"></span>
     </div>
 
     <div class="ib-u-1-1" v-show="isExpanded">

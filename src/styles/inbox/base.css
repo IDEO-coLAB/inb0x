@@ -41,7 +41,6 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 
 .ib-container {
   width: 100%;
-  background-color: #F7F9FB;
   border: 0px;
   border-radius: 4px;
   margin-bottom: 0.5em;
@@ -58,9 +57,6 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
   margin-bottom: .4em;
 }
 
-.ib-container-message {
-  
-}
 
 .ib-header {
    margin: 0;

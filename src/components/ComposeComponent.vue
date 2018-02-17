@@ -8,22 +8,22 @@
         <textarea class="form-input" placeholder="Your message" rows="5" v-model="message"></textarea>
       </div>
       <div class="ib-u-1-1">
-        <div class="ib-u-6-24">
+        <div class="ib-u-1-4">
           <label class="u-pl-3">Read Bounty (ETH)</label>
           <input class="" type="number" :placeholder="readBounty" step="0.01" v-model="readBounty" />
         </div>
 
-        <div class="ib-u-6-24">
+        <div class="ib-u-1-4">
           <label class="u-pl-3">Gas for Tx (Units)</label>
           <input class="" type="number" :placeholder="gasPrice" step="1" v-model="gasPrice" />
         </div>
 
-        <div class="ib-u-5-24">
+        <div class="ib-u-1-4">
           <label class="u-pl-3">Gas Limit (GWEI)</label>
           <input class="" type="number" :placeholder="gas" step="1000" v-model="gas" />
         </div>
 
-        <div class="ib-u-6-24">
+        <div class="ib-u-1-4 u-1-4-w-less">
           <button class="ib-btn ib-btn-live u-f-r" v-show="!isLocked" type="submit" @click="submit">Send Message</button>
           <button class="ib-btn ib-btn-live u-f-r" v-show="isLocked">Sending, please wait...</button>
         </div>

@@ -1,11 +1,11 @@
 <template>
-  <div class="main-body">
+  <div class="ib-main-body u-plr-4">
 
     <!-- search bar -->
     <token-holder-search-component />
 
     <!-- search results -->
-    <div class="ib-content">
+    <div class="ib-container">
       <token-search-result-tile-component
         v-show="tokenHolders"
         v-for="(tokenHolder, index) in tokenHolders"
@@ -15,9 +15,6 @@
     </div>
 
     <!-- pagination / footer -->
-    <div class="body-footer">
-      Some search footer :)
-    </div>
 
   </div>
 </template>
