@@ -1,20 +1,23 @@
 <template>
-  <div class="ib-main-body u-plr-4">
+  <div class="layout-main--page">
 
     <!-- search bar -->
     <token-holder-search-component />
 
-    <!-- search results -->
-    <div class="ib-container">
-      <token-search-result-tile-component
-        v-show="tokenHolders"
-        v-for="(tokenHolder, index) in tokenHolders"
-        :search-object="tokenHolder"
-        :index="index"
-        :key="index" />
+    <!-- Search results list header-->
+    <div class="list-header pure-g">
+      <div class="pure-u-2-5">Address</div>
+      <div class="pure-u-2-5">Holdings</div>
+      <div class="pure-u-1-5">Percent</div>
     </div>
 
-    <!-- pagination / footer -->
+    <!-- search results -->
+    <token-search-result-tile-component
+      v-show="tokenHolders"
+      v-for="(tokenHolder, index) in tokenHolders"
+      :search-object="tokenHolder"
+      :index="index"
+      :key="index" />
 
   </div>
 </template>

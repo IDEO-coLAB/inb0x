@@ -3,11 +3,11 @@
 
 /* single input controls */
 
-.input-has-buttons-right {
+.form .input-has-buttons-right {
   display: flex;
 }
 
-.input-has-buttons-right input {
+.form .input-has-buttons-right input {
   border-radius: 4px 0px 0px 4px;
 }
 
@@ -21,19 +21,21 @@
   outline: none;
   border: 0px;
 
-  /*background-color: yellow;*/
+  background-color: rgb(231, 233, 234);
 
   border-radius: 4px;
   margin-bottom: 6px;
-  padding-left: 1%;
-  padding-right: 1%;
+
+  padding-left: .6em;
+  padding-right: .6em;
+
   height: 2.2em;
   line-height: 2.2em;
 }
 
 .form textarea {
   width: 100%;
-  height: 10.071em;
+  min-height: 10em;
   box-sizing: border-box;
   outline: none;
   resize: inherit;
@@ -42,7 +44,11 @@
   display: inline-block;
   border-radius: 4px;
   border: 0px;
-  background-color: #F7F9FB;
+
+  padding: .6em;
+
+  /*background-color: #F7F9FB;*/
+  background-color: rgb(231, 233, 234);
 }
 
 .form input:focus,
@@ -97,7 +103,7 @@
 .form-stacked select,
 .form-stacked textarea {
   display: block;
-  margin: 0.25em 0;
+  margin: .75em 0;
 }
 
 .form-stacked label {
@@ -122,6 +128,7 @@
 input.input-lg {
   height: 3.4em;
   line-height: 3.4em;
+  background-color: #F7F9FB;
 }
 
 
@@ -189,18 +196,24 @@ input.input-lg {
 
 
 
-
+/*TODO ??? */
 /* Rounded Inputs */
-.form input.input-rounded,
+/*.form input.input-rounded,
 .form .input-rounded {
   border-radius: 2em;
   padding: 0.5em 1em;
-}
+}*/
+
+
+
+
+
 
 /* Grouped Inputs */
 .form .form-group fieldset {
   margin-bottom: 14px;
 }
+
 .form .form-group input,
 .form .form-group textarea {
   display: block;
@@ -254,6 +267,9 @@ input.input-lg {
 .form .input-1-4 {
   width: 25%;
 }
+
+
+
 
 
 

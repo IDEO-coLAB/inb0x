@@ -1,8 +1,44 @@
 <template>
-  <div class="body-search">
+  <div class="pure-g">
+    <form class="form pure-u-1 u-no-pad">
+
+      <div class="input-has-buttons-right">
+        <input
+          class="input-1 input-lg"
+          type="text"
+          v-model="input"
+          placeholder="Enter an Ethereum token contract address" />
+
+        <!-- TODO: Spend time thinking through clean up CSS class .btn -->
+        <button
+          class="btn btn-lg btn-icon btn-primary"
+          v-show="!isLocked"
+          type="submit"
+          @click="submit">
+          <span class="icon-search" ></span>
+        </button>
+
+        <button
+          class="btn btn-lg btn-icon btn-primary btn-disabled"
+          v-show="isLocked" >
+          <span class="icon-search" ></span>
+        </button>
+      </div>
 
 
-    <div class="ib-u-1">
+
+
+
+
+
+
+
+
+
+
+
+
+<!--     <div class="ib-u-1">
       <div class="ib-container-flex">
         <input
           class="ib-u-1 ib-form-search ib-form-active"
@@ -24,8 +60,10 @@
           <span class="ib-icon-search" ></span>
         </button>
       </div>
-    </div>
+    </div> -->
 
+
+    </form>
 
   </div>
 </template>

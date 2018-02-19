@@ -1,26 +1,25 @@
 <template>
-  <div class="ib-data-container" >
-    <div class="ib-data ib-g">
-      <div class="ib-data-field ib-u-22-24">
-        <span>{{searchObject.address}} <span class="ib-message-data-text u-plr-2">has</span> {{searchObject.amount}}</span>
-      </div>
+  <div class="list-tile pure-g">
 
-      <div class="ib-data-field ib-u-1-24 ib-message-data-text" @click="toggleMessage(searchObject, $event)">
-        {{isExpanded ? 'close' : 'open'}}
-      </div>
-      <div class="ib-u-1-24">
-        <span class="ib-icon-collapse-arrow u-plr-1 u-f-r"></span>
-      </div>
+    <div class="pure-u-2-5 list-tile-content">
+      {{searchObject.address}}
+    </div>
 
-      <div class="ib-u-1-1" v-show="isExpanded">
-        <br>
-        <span class="ib-message-data-text">Send this token holder a message</span>
-        <br>
-        <br>
+    <div class="pure-u-2-5 list-tile-content">
+      {{searchObject.amount}}
+    </div>
+
+    <div class="pure-u-1-5 list-tile-content">
+      {{searchObject.percentage}}
+      <span class="icon-collapse-arrow u-float-r" @click="toggleMessage(searchObject, $event)"></span>
+    </div>
+
+    <div class="pure-u-1-1" v-show="isExpanded">
+      <div class="u-p-3">
         <compose-component :recipient="searchObject.address"></compose-component>
-        <br>
       </div>
     </div>
+
   </div>
 </template>
 

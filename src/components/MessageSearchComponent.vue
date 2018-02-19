@@ -3,11 +3,24 @@
     <form class="form pure-u-1 u-no-pad">
 
       <div class="input-has-buttons-right">
-        <input class="input-1 input-lg" type="text" v-model="input" placeholder="search an address" />
-        <button class="btn btn-icon btn-primary" v-show="!isLocked" type="submit" @click="submit" >
+        <input
+          class="input-1 input-lg"
+          type="text"
+          v-model="input"
+          placeholder="Enter an Ethereum address" />
+
+        <!-- TODO: Spend time thinking through clean up CSS class .btn -->
+        <button
+          class="btn btn-lg btn-icon btn-primary"
+          v-show="!isLocked"
+          type="submit"
+          @click="submit" >
           <span class="icon-search" ></span>
         </button>
-        <button class="btn btn-icon btn-primary btn-disabled" v-show="isLocked" >
+
+        <button
+          class="btn btn-lg btn-icon btn-primary btn-disabled"
+          v-show="isLocked" >
           <span class="icon-search" ></span>
         </button>
       </div>

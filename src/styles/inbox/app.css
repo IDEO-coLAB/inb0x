@@ -67,12 +67,24 @@ body {
   padding: 0 !important;
 }
 
+.u-pl-0 {
+  padding-left: 0 !important;
+}
+
+.u-pr-0 {
+  padding-left: 0 !important;
+}
+
 .u-p-3 {
   padding: 18px;
 }
 
 .u-mb-3 {
   margin-bottom: 18px;
+}
+
+.u-mt-5 {
+  margin-top: 30px;
 }
 
 .u-mb-4 {
@@ -94,26 +106,3 @@ body {
 .u-color-light {
   color: #89969F;
 }
-
-/* text */
-
-.u-text-uppercase {
-  text-transform: uppercase;
-  font-family: 'Cerebri Sans Medium';
-  text-transform: uppercase;
-  font-size: 0.786em;
-}
-
-.u-text-lg {
-  font-family: 'Cerebri Sans Regular';
-  font-size: 1.286em;
-  line-height: 1.6em;
-}
-
-
-
-
-
-
-
-

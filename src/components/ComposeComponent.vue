@@ -2,30 +2,29 @@
   <div>
     <form class="form form-stacked pure-g" v-on:submit="submit">
 
+      <!-- reply box -->
       <div class="pure-u-1-1">
-        <label>Compose Reply</label>
+        <label>Compose</label>
+        <textarea class="input-1" placeholder="Start typing here..." v-model="message"></textarea>
       </div>
 
-      <div class="pure-u-1-1">
-        <textarea class="form-input" placeholder="Your message" v-model="message"></textarea>
-      </div>
-
+      <!-- transaction inputs -->
       <div class="pure-u-1-1">
 
         <div class="pure-g">
-          <div class="pure-u-1-4">
-            <label class="u-pl-3">Gas for Tx (Units)</label>
-            <input class="" type="number" :placeholder="gasPrice" step="1" v-model="gasPrice" />
+          <div class="pure-u-1-4 u-pl-0">
+            <label>Gas for Tx (Units)</label>
+            <input type="number" :placeholder="gasPrice" step="1" v-model="gasPrice" />
           </div>
 
           <div class="pure-u-1-4">
-            <label class="u-pl-3">Gas Limit (GWEI)</label>
-            <input class="" type="number" :placeholder="gas" step="1000" v-model="gas" />
+            <label>Gas Limit (GWEI)</label>
+            <input type="number" :placeholder="gas" step="1000" v-model="gas" />
           </div>
 
-          <div class="pure-u-1-4">
-            <button class="btn btn-live u-f-r" v-show="!isLocked" type="submit" @click="submit">Send Message</button>
-            <button class="btn btn-live u-f-r" v-show="isLocked">Sending, please wait...</button>
+          <div class="pure-u-1-2 u-pr-0">
+            <button class="btn btn-primary u-float-r u-mt-5" v-show="!isLocked" type="submit" @click="submit">Send</button>
+            <button class="btn btn-primary u-float-r u-mt-5" v-show="isLocked">Sending...</button>
           </div>
         </div>
 
@@ -52,6 +51,7 @@
       }
     },
     props: {
+      // TODO: Possibly pass in text for placeholder and field labels
       recipient: {
         type: String,
         required: true
