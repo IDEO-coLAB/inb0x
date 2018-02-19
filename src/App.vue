@@ -1,29 +1,22 @@
 <template>
-  <div class="ib-layout ib-g">
+  <div class="layout-container">
 
     <app-notifications-component />
 
-    <div class="ib-main ib-u-3-4">
-
-      <!-- turn into header component -->
-      <div class="main-header u-plr-4"><samp><h1>inb0x</h1></samp></div>
-      <!-- turn into header component -->
-
+    <div class="layout-main">
+      <!-- turn main-header into header component -->
+      <div class="layout-main--header"><samp><h1>inb0x</h1></samp></div>
       <router-view></router-view>
     </div>
 
-    <!-- turn into sidebar component -->
-    <div class="ib-sidebar ib-u-1-4">
-
-        <div class="ib-sidebar-container">
-          <router-link class="ib-menu-text u-pl-2"
-            :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}"><span class="ib-icon-search"></span>TOKENS</router-link>
-          <br>
-          <br>
-          <router-link class="ib-menu-text u-pl-2"
-            :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}"><span class="ib-icon-mail"></span>MESSAGES</router-link>
-        </div>
-
+    <!-- turn layout-sidebar into sidebar component -->
+    <div class="layout-sidebar">
+      <router-link class="ib-menu-text u-pl-2"
+        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}"><span class="ib-icon-search"></span>TOKENS</router-link>
+      <br>
+      <br>
+      <router-link class="ib-menu-text u-pl-2"
+        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}"><span class="ib-icon-mail"></span>MESSAGES</router-link>
     </div>
     <!-- turn into sidebar component -->
 

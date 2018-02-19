@@ -1,20 +1,24 @@
 <template>
-  <div class="body-search">
+  <div class="grid-container">
+    <form class="form grid-unit-1">
 
-    <form class="ib-form">
 
-      <div class="ib-g">
-        <div class="ib-u-1">
-          <div class="ib-container-flex">
-            <input id="searchfield" class="ib-u-1 ib-form-search ib-form-active" type="text" v-model="input" placeholder="search an address" style="">
-            <button class="ib-btn ib-btn-search ib-btn-live" v-show="!isLocked" type="submit" @click="submit" ><span class="ib-icon-search" ></span></button>
-            <button class="ib-btn ib-btn-search ib-btn-live" v-show="isLocked" type="submit" @click="submit" ><span class="ib-icon-search" ></span></button>
-          </div>
-        </div>
+
+      <div class="input-control input-with-button">
+        <input class="grid-unit-1" type="text" v-model="input" placeholder="search an address" />
+        <!-- TODO: Clean up CSS/HTML -->
+        <button class="btn btn-input btn-icon btn-primary" v-show="!isLocked" type="submit" @click="submit" >
+          <span class="ib-icon-search" ></span>
+        </button>
+        <button class="btn btn-input btn-icon btn-primary btn-disabled" v-show="isLocked" >
+          <span class="ib-icon-search" ></span>
+        </button>
       </div>
 
-    </form>
 
+
+
+    </form>
   </div>
 </template>
 

@@ -1,0 +1,55 @@
+
+/* FONTS */
+
+@font-face {
+  font-family: "Cerebri Sans Regular";
+  src: url("../../assets/fonts/CerebriSans-Regular.otf");
+}
+
+@font-face {
+  font-family: "Cerebri Sans Medium";
+  src: url("../../assets/fonts/CerebriSans-Medium.otf");
+}
+
+/* APP BASE */
+
+html,
+body {
+  font-family: 'Cerebri Sans Regular';
+  background-color: #fff;
+  overflow: hidden;
+  height: 100%;
+}
+
+.layout-container {
+  height: inherit;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.layout-main,
+.layout-sidebar {
+  box-sizing: border-box;
+  display: inline-block;
+  height: inherit;
+  float: left;
+  padding: 0 .3em;
+}
+
+.layout-main {
+  width: calc(100% - 250px);
+}
+
+.layout-main--header {
+  min-height: 70px;
+}
+
+.layout-main--page {
+  height: calc(100% - 70px);
+  overflow: auto;
+}
+
+.layout-sidebar {
+  width: 250px;
+  background-color: #F7F9FB;
+}

@@ -1,5 +1,5 @@
 .ib-icon-compose {
-   background:url(../../icons/compose-icon.svg) left top;
+   background:url(../../assets/icons/compose-icon.svg) left top;
    width:15px;
    height:16px;
    display: block;
@@ -8,7 +8,7 @@
 }
 
 .ib-icon-leftarrow {
-   background:url(../../icons/thin-arrow-inbox.svg) left top;
+   background:url(../../assets/icons/thin-arrow-inbox.svg) left top;
    width:42px;
    height:16px;
    display: block;
@@ -17,7 +17,7 @@
 }
 
 .ib-icon-mail{
-   background:url(../../icons/mail.svg) left top;
+   background:url(../../assets/icons/mail.svg) left top;
    width:16px;
    height:11px;
    display: block;
@@ -26,7 +26,7 @@
 }
 
 .ib-icon-search{
-   background:url(../../icons/search.svg) left top;
+   background:url(../../assets/icons/search.svg) left top;
    width:16px;
    height:16px;
    display: block;
@@ -36,7 +36,7 @@
 }
 
 .ib-icon-error-x{
-   background:url(../../icons/error-x.svg) left top;
+   background:url(../../assets/icons/error-x.svg) left top;
    width:16px;
    height:16px;
    display: block;
@@ -46,7 +46,7 @@
 }
 
 .ib-icon-collapse-arrow{
-  background:url(../../icons/collapse-arrow.svg) left top;
+  background:url(../../assets/icons/collapse-arrow.svg) left top;
   width:16px;
   height:16px;
   margin-top: .4em;

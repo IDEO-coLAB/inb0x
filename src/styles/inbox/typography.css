@@ -1,4 +1,14 @@
 
+
+
+
+
+
+
+
+
+
+
 h1 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 24px;
@@ -88,13 +98,4 @@ label {
 	color: #89969F;
 }
 
-/* adding relevant fonts */
-@font-face {
-font-family: "Cerebri Sans Regular";
-src: url("../../fonts/CerebriSans-Regular.otf");
-}
 
-@font-face {
-font-family: "Cerebri Sans Medium";
-src: url("../../fonts/CerebriSans-Medium.otf");
-}

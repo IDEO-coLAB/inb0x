@@ -1,18 +1,16 @@
 <template>
-  <div class="ib-main-body u-plr-4">
+  <div class="layout-main--page">
 
+    <!-- Search bar -->
     <message-search-component />
 
-    <div class="ib-container">
-      <message-search-result-tile-component
-        v-show="messages"
-        v-for="(message, index) in messages"
-        :message-object="message"
-        :index="index"
-        :key="index" />
-      </div>
-    </div>
-
+    <!-- Search result tiles -->
+    <message-search-result-tile-component
+      v-show="messages"
+      v-for="(message, index) in messages"
+      :message-object="message"
+      :index="index"
+      :key="index" />
 
   </div>
 </template>

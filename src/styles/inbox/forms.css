@@ -1,66 +1,48 @@
 
+/* FORMS */
+
+/* single input controls */
+.input-control {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.input-with-button input {
+  border-radius: 4px 0 0 4px;
+}
 
 
-/*csslint box-model:false*/
-/*
-Box-model set to false because we're setting a height on select elements, which
-also have border and padding. This is done because some browsers don't render
-the padding. We explicitly set the box-model for select elements to border-box,
-so we can ignore the csslint warning.
-*/
 
-.ib-form input[type="text"],
-.ib-form input[type="password"],
-.ib-form input[type="email"],
-.ib-form input[type="url"],
-.ib-form input[type="date"],
-.ib-form input[type="month"],
-.ib-form input[type="time"],
-.ib-form input[type="datetime"],
-.ib-form input[type="datetime-local"],
-.ib-form input[type="week"],
-.ib-form input[type="number"],
-.ib-form input[type="search"],
-.ib-form input[type="tel"],
-.ib-form input[type="color"],
-.ib-form select,
-.ib-form-search {
-  padding: 0.5em 0.6em;
+
+
+
+.form input[type="text"],
+.form input[type="password"],
+.form input[type="email"],
+.form input[type="url"],
+.form input[type="number"],
+.form input[type="search"],
+.form select {
+  padding: 1em 0.7em;
   display: inline-block;
   border: 0px;
   vertical-align: middle;
   box-sizing: border-box;
-  font-family: 'Cerebri Sans Regular';
   text-overflow: ellipsis;
-}
-
-.ib-form-grey {
-  background-color: #E1E6E8;
   border-radius: 4px;
-}
-
-.ib-form-search {
-  height: 3.643em;
-  border-radius: 4px 0 0 4px;
   outline: none;
-  margin-bottom: .4em;
 }
 
-.ib-form-active {
-  background-color: #50E3C2;
-}
-
-.ib-form input[type="number"] {
+.form input[type="number"] {
   text-overflow: none;
 }
 
-.ib-form textarea {
+.form textarea {
   width: 100%;
   height: 10.071em;
   box-sizing: border-box;
   outline: none;
   resize: inherit;
-  font-family: 'Cerebri Sans Regular';
   font-size: 1.286em;
   line-height: 1.6em;
   display: inline-block;
@@ -69,131 +51,56 @@ so we can ignore the csslint warning.
   background-color: #F7F9FB;
 }
 
-/*
-Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
-since IE8 won't execute CSS that contains a CSS3 selector.
-*/
-.ib-form input:not([type]) {
-    padding: 0.5em 0.6em;
-    display: inline-block;
-    border: none;
-    box-sizing: border-box;
-}
-
-
-/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
-/* May be able to remove this tweak as color inputs become more standardized across browsers. */
-.ib-form input[type="color"] {
-  padding: 0.2em 0.5em;
-}
-
-
-.ib-form input[type="text"]:focus,
-.ib-form input[type="password"]:focus,
-.ib-form input[type="email"]:focus,
-.ib-form input[type="url"]:focus,
-.ib-form input[type="date"]:focus,
-.ib-form input[type="month"]:focus,
-.ib-form input[type="time"]:focus,
-.ib-form input[type="datetime"]:focus,
-.ib-form input[type="datetime-local"]:focus,
-.ib-form input[type="week"]:focus,
-.ib-form input[type="number"]:focus,
-.ib-form input[type="search"]:focus,
-.ib-form input[type="tel"]:focus,
-.ib-form input[type="color"]:focus,
-.ib-form select:focus,
-.ib-form textarea:focus {
+.form input[type="text"]:focus,
+.form input[type="password"]:focus,
+.form input[type="email"]:focus,
+.form input[type="url"]:focus,
+.form input[type="number"]:focus,
+.form input[type="search"]:focus,
+.form select:focus,
+.form textarea:focus {
   outline: none;
-
 }
 
-/*
-Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
-since IE8 won't execute CSS that contains a CSS3 selector.
-*/
-.ib-form input:not([type]):focus {
-}
-
-.ib-form input[type="file"]:focus,
-.ib-form input[type="radio"]:focus,
-.ib-form input[type="checkbox"]:focus {
-
-}
-.ib-form .ib-checkbox,
-.ib-form .ib-radio {
-  margin: 0.5em 0;
-  padding-top: 0.55em;
-}
-
-.ib-form .ib-inline {
-  padding-top: 0.55em;
-  padding-left: 0em;
-}
-
-.ib-form input[type="text"][disabled],
-.ib-form input[type="password"][disabled],
-.ib-form input[type="email"][disabled],
-.ib-form input[type="url"][disabled],
-.ib-form input[type="date"][disabled],
-.ib-form input[type="month"][disabled],
-.ib-form input[type="time"][disabled],
-.ib-form input[type="datetime"][disabled],
-.ib-form input[type="datetime-local"][disabled],
-.ib-form input[type="week"][disabled],
-.ib-form input[type="number"][disabled],
-.ib-form input[type="search"][disabled],
-.ib-form input[type="tel"][disabled],
-.ib-form input[type="color"][disabled],
-.ib-form select[disabled],
-.ib-form textarea[disabled] {
+.form input[type="text"][disabled],
+.form input[type="password"][disabled],
+.form input[type="email"][disabled],
+.form input[type="url"][disabled],
+.form input[type="number"][disabled],
+.form input[type="search"][disabled],
+.form select[disabled],
+.form textarea[disabled] {
   cursor: not-allowed;
 }
 
-/*
-Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
-since IE8 won't execute CSS that contains a CSS3 selector.
-*/
-.ib-form input:not([type])[disabled] {
-  cursor: not-allowed;
-  background-color: #eaeded;
-  color: #cad2d3;
-}
-.ib-form input[readonly],
-.ib-form select[readonly],
-.ib-form textarea[readonly] {
-}
-
-.ib-form input:focus:invalid,
-.ib-form textarea:focus:invalid,
-.ib-form select:focus:invalid {
+.form input:focus:invalid,
+.form textarea:focus:invalid,
+.form select:focus:invalid {
   color: #b94a48;
 }
-.ib-form input[type="file"]:focus:invalid:focus,
-.ib-form input[type="radio"]:focus:invalid:focus,
-.ib-form input[type="checkbox"]:focus:invalid:focus {
-}
-.ib-form select {
+
+.form select {
   /* Normalizes the height; padding is not sufficient. */
   height: 2.25em;
   border: 1px solid #ccc;
   background-color: white;
 }
-.ib-form select[multiple] {
+.form select[multiple] {
   height: auto;
 }
 
-.ib-form label {
+.form label {
   margin: 0.5em 0 0.2em;
 }
 
-.ib-form fieldset {
+.form fieldset {
   margin: 0;
   padding: 0.35em 0.625em 0.75em;
   padding-bottom: 0.2em;
   border: 0;
 }
-.ib-form legend {
+
+.form legend {
   display: block;
   width: 100%;
   padding: 0.3em 0;
@@ -202,81 +109,86 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   border-bottom: 1px solid #e5e5e5;
 }
 
-.ib-form-stacked input[type="text"],
-.ib-form-stacked input[type="password"],
-.ib-form-stacked input[type="email"],
-.ib-form-stacked input[type="url"],
-.ib-form-stacked input[type="date"],
-.ib-form-stacked input[type="month"],
-.ib-form-stacked input[type="time"],
-.ib-form-stacked input[type="datetime"],
-.ib-form-stacked input[type="datetime-local"],
-.ib-form-stacked input[type="week"],
-.ib-form-stacked input[type="number"],
-.ib-form-stacked input[type="search"],
-.ib-form-stacked input[type="tel"],
-.ib-form-stacked input[type="color"],
-.ib-form-stacked input[type="file"],
-.ib-form-stacked select,
-.ib-form-stacked textarea {
+.form-stacked input[type="text"],
+.form-stacked input[type="password"],
+.form-stacked input[type="email"],
+.form-stacked input[type="url"],
+.form-stacked input[type="number"],
+.form-stacked input[type="search"],
+.form-stacked select,
+.form-stacked textarea {
   display: block;
   margin: 0.25em 0;
 }
-.ib-form-stacked label {
+
+.form-stacked label {
   display: block;
   margin: 0.5em 0;
 }
-/*
-Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
-since IE8 won't execute CSS that contains a CSS3 selector.
-*/
-.ib-form-stacked input:not([type]) {
-  display: block;
-  margin: 0.25em 0;
-}
-.ib-form-aligned input,
-.ib-form-aligned textarea,
-.ib-form-aligned select,
-/* NOTE: ib-help-inline is deprecated. Use .ib-form-message-inline instead. */
-.ib-form-aligned .ib-help-inline,
-.ib-form-message-inline {
+
+
+/* TODO: IB-FIXME */
+/* TODO: IB-FIXME */
+/* TODO: IB-FIXME */
+.form-aligned input,
+.form-aligned textarea,
+.form-aligned select,
+/* NOTE: ib-help-inline is deprecated. Use .form-message-inline instead. */
+.form-aligned .ib-help-inline,
+.form-message-inline {
   display: inline-block;
   *display: inline;
   *zoom: 1;
   vertical-align: middle;
 }
-.ib-form-aligned textarea {
+
+.form-aligned textarea {
   vertical-align: top;
 }
 
+
+
+
+
 /* Aligned Forms */
-.ib-form-aligned .ib-control-group {
+/* TODO: IB-FIXME */
+/* TODO: IB-FIXME */
+/* TODO: IB-FIXME */
+.form-aligned .control-group {
   margin-bottom: 0.5em;
 }
-.ib-form-aligned .ib-control-group label {
+.form-aligned .control-group label {
   text-align: right;
   display: inline-block;
   vertical-align: middle;
   width: 10em;
   margin: 0 1em 0 0;
 }
-.ib-form-aligned .ib-controls {
+.form-aligned .ib-controls {
   margin: 1.5em 0 0 11em;
 }
 
+
+
+
+
+
+
+
+
 /* Rounded Inputs */
-.ib-form input.ib-input-rounded,
-.ib-form .ib-input-rounded {
+.form input.input-rounded,
+.form .input-rounded {
   border-radius: 2em;
   padding: 0.5em 1em;
 }
 
 /* Grouped Inputs */
-.ib-form .ib-group fieldset {
+.form .form-group fieldset {
   margin-bottom: 14px;
 }
-.ib-form .ib-group input,
-.ib-form .ib-group textarea {
+.form .form-group input,
+.form .form-group textarea {
   display: block;
   padding: 10px;
   margin: 0 0 -1px;
@@ -284,55 +196,62 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   position: relative;
   top: -1px;
 }
-.ib-form .ib-group input:focus,
-.ib-form .ib-group textarea:focus {
+.form .form-group input:focus,
+.form .form-group textarea:focus {
   z-index: 3;
 }
-.ib-form .ib-group input:first-child,
-.ib-form .ib-group textarea:first-child {
+.form .form-group input:first-child,
+.form .form-group textarea:first-child {
   top: 1px;
   border-radius: 4px 4px 0 0;
   margin: 0;
 }
-.ib-form .ib-group input:first-child:last-child,
-.ib-form .ib-group textarea:first-child:last-child {
+.form .form-group input:first-child:last-child,
+.form .form-group textarea:first-child:last-child {
   top: 1px;
   border-radius: 4px;
   margin: 0;
 }
-.ib-form .ib-group input:last-child,
-.ib-form .ib-group textarea:last-child {
+.form .form-group input:last-child,
+.form .form-group textarea:last-child {
   top: -2px;
   border-radius: 0 0 4px 4px;
   margin: 0;
 }
-.ib-form .ib-group button {
+.form .form-group button {
   margin: 0.35em 0;
 }
 
-.ib-form .ib-input-1 {
+.form .input-1 {
   width: 100%;
 }
-.ib-form .ib-input-3-4 {
+.form .input-3-4 {
   width: 75%;
 }
-.ib-form .ib-input-2-3 {
+.form .input-2-3 {
   width: 66%;
 }
-.ib-form .ib-input-1-2 {
+.form .input-1-2 {
   width: 50%;
 }
-.ib-form .ib-input-1-3 {
+.form .input-1-3 {
   width: 33%;
 }
-.ib-form .ib-input-1-4 {
+.form .input-1-4 {
   width: 25%;
 }
 
+
+
+
+
+/* TODO: IB-FIXME */
+/* TODO: IB-FIXME */
+/* TODO: IB-FIXME */
 /* Inline help for forms */
-/* NOTE: ib-help-inline is deprecated. Use .ib-form-message-inline instead. */
-.ib-form .ib-help-inline,
-.ib-form-message-inline {
+/* NOTE: ib-help-inline is deprecated. Use .form-message-inline instead. */
+.form .ib-help-inline,
+.form-message-inline {
   display: inline-block;
   padding-left: 0.3em;
   color: #666;
@@ -341,70 +260,65 @@ since IE8 won't execute CSS that contains a CSS3 selector.
 }
 
 /* Block help for forms */
-.ib-form-message {
+.form-message {
   display: block;
   color: #666;
   font-size: 0.875em;
 }
 
+
+
+
+
+
 @media only screen and (max-width : 480px) {
-  .ib-form button[type="submit"] {
+  .form button[type="submit"] {
     margin: 0.7em 0 0;
   }
 
-  .ib-form input:not([type]),
-  .ib-form input[type="text"],
-  .ib-form input[type="password"],
-  .ib-form input[type="email"],
-  .ib-form input[type="url"],
-  .ib-form input[type="date"],
-  .ib-form input[type="month"],
-  .ib-form input[type="time"],
-  .ib-form input[type="datetime"],
-  .ib-form input[type="datetime-local"],
-  .ib-form input[type="week"],
-  .ib-form input[type="number"],
-  .ib-form input[type="search"],
-  .ib-form input[type="tel"],
-  .ib-form input[type="color"],
-  .ib-form label {
+  .form input:not([type]),
+  .form input[type="text"],
+  .form input[type="password"],
+  .form input[type="email"],
+  .form input[type="url"],
+  .form input[type="number"],
+  .form input[type="search"],
+  .form label {
     margin-bottom: 0.3em;
     display: block;
   }
 
-  .ib-group input:not([type]),
-  .ib-group input[type="text"],
-  .ib-group input[type="password"],
-  .ib-group input[type="email"],
-  .ib-group input[type="url"],
-  .ib-group input[type="date"],
-  .ib-group input[type="month"],
-  .ib-group input[type="time"],
-  .ib-group input[type="datetime"],
-  .ib-group input[type="datetime-local"],
-  .ib-group input[type="week"],
-  .ib-group input[type="number"],
-  .ib-group input[type="search"],
-  .ib-group input[type="tel"],
-  .ib-group input[type="color"] {
+  .form-group input:not([type]),
+  .form-group input[type="text"],
+  .form-group input[type="password"],
+  .form-group input[type="email"],
+  .form-group input[type="url"],
+  .form-group input[type="number"],
+  .form-group input[type="search"] {
     margin-bottom: 0;
   }
 
-  .ib-form-aligned .ib-control-group label {
+  .form-aligned .control-group label {
     margin-bottom: 0.3em;
     text-align: left;
     display: block;
     width: 100%;
   }
 
-  .ib-form-aligned .ib-controls {
+  /* TODO: IB-FIXME */
+  /* TODO: IB-FIXME */
+  /* TODO: IB-FIXME */
+  .form-aligned .ib-controls {
     margin: 1.5em 0 0 0;
   }
 
-  /* NOTE: ib-help-inline is deprecated. Use .ib-form-message-inline instead. */
-  .ib-form .ib-help-inline,
-  .ib-form-message-inline,
-  .ib-form-message {
+  /* TODO: IB-FIXME */
+  /* TODO: IB-FIXME */
+  /* TODO: IB-FIXME */
+  /* NOTE: ib-help-inline is deprecated. Use .form-message-inline instead. */
+  .form .ib-help-inline,
+  .form-message-inline,
+  .form-message {
     display: block;
     font-size: 0.75em;
     /* Increased bottom padding to make it group with its related input element. */
@@ -414,65 +328,86 @@ since IE8 won't execute CSS that contains a CSS3 selector.
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Legacy code for search below */
 
-.ib-input-success {
+.input-success {
   background-color: rgb(87, 226, 194);
 }
 
-.ib-input-danger {
+.input-danger {
   background-color: #FCCFCF;
 }
 
-.ib-input-group {
+.input-group {
   display: flex;
   margin-bottom: 1.5em;
 }
 
-.ib-input-group-field {
+.input-group-field {
   flex: 1;
 }
-.ib-input-group-field:not(:first-child) {
+.input-group-field:not(:first-child) {
   border-left: 0;
 
 }
-.ib-input-group-field:not(:last-child) {
+.input-group-field:not(:last-child) {
   border-right: 0;
 
 }
 
-.ib-input-group-item {
+.input-group-item {
   font: inherit;
   font-weight: normal;
 }
 
-.ib-input-group-field,
-.ib-input-group-item {
+.input-group-field,
+.input-group-item {
  /* border: 1px solid rgba(147, 128, 108, 0.25);*/
   padding: 0.5em 0.75em;
   color: inherit;
 }
-.ib-input-group-field:first-child,
-.ib-input-group-item:first-child {
+.input-group-field:first-child,
+.input-group-item:first-child {
   border-radius: 4px 0 0 4px;
   margin-right: -1px;
 
 }
-.ib-input-group-field:last-child,
-.ib-input-group-item:last-child {
+.input-group-field:last-child,
+.input-group-item:last-child {
   border-radius: 0 4px 4px 0;
   margin-left: -1px;
 }
 
-.ib-form-select {
+.form-select {
 border: 1px solid #ccc;
 width: 120px;
 border-radius: 3px;
 overflow: hidden;
-background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
+background: #fafafa url("../../assets/icons/Arrow Down.png") no-repeat 90% 50%;
 }
 
-.ib-form-select select {
+.form-select select {
   padding: 5px 8px;
   width: 130%;
   border: none;
@@ -482,9 +417,33 @@ background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
   -webkit-appearance: none;
 }
 
-.ib-form-select select:focus {
+.form-select select:focus {
   outline: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .ib-alert-error{
   width: 100%;
@@ -531,4 +490,46 @@ background: #fafafa url("../../icons/Arrow Down.png") no-repeat 90% 50%;
 
 .ib-error-text{
   color: #EA4D4D;
+}
+
+
+
+
+
+
+.form-grey {
+  background-color: #E1E6E8;
+  border-radius: 4px;
+}
+
+.form-search {
+  height: 3.643em;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  margin-bottom: .4em;
+}
+
+.form-active {
+  background-color: #50E3C2;
+}
+
+
+
+
+
+
+
+
+
+
+
+.form .ib-checkbox,
+.form .ib-radio {
+  margin: 0.5em 0;
+  padding-top: 0.55em;
+}
+
+.form .ib-inline {
+  padding-top: 0.55em;
+  padding-left: 0em;
 }
