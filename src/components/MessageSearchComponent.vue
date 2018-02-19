@@ -1,22 +1,16 @@
 <template>
-  <div class="grid-container">
-    <form class="form grid-unit-1">
+  <div class="pure-g">
+    <form class="form pure-u-1 u-no-pad">
 
-
-
-      <div class="input-control input-with-button">
-        <input class="grid-unit-1" type="text" v-model="input" placeholder="search an address" />
-        <!-- TODO: Clean up CSS/HTML -->
-        <button class="btn btn-input btn-icon btn-primary" v-show="!isLocked" type="submit" @click="submit" >
-          <span class="ib-icon-search" ></span>
+      <div class="input-has-buttons-right">
+        <input class="input-1 input-lg" type="text" v-model="input" placeholder="search an address" />
+        <button class="btn btn-icon btn-primary" v-show="!isLocked" type="submit" @click="submit" >
+          <span class="icon-search" ></span>
         </button>
-        <button class="btn btn-input btn-icon btn-primary btn-disabled" v-show="isLocked" >
-          <span class="ib-icon-search" ></span>
+        <button class="btn btn-icon btn-primary btn-disabled" v-show="isLocked" >
+          <span class="icon-search" ></span>
         </button>
       </div>
-
-
-
 
     </form>
   </div>

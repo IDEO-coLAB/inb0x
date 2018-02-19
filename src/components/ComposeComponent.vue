@@ -1,32 +1,34 @@
 <template>
   <div>
-    <form class="ib-form ib-form-stacked ib-g" v-on:submit="submit">
-      <div class="ib-u-1-1">
+    <form class="form form-stacked pure-g" v-on:submit="submit">
+
+      <div class="pure-u-1-1">
         <label>Compose Reply</label>
       </div>
-      <div class="ib-u-1-1">
-        <textarea class="form-input" placeholder="Your message" rows="5" v-model="message"></textarea>
+
+      <div class="pure-u-1-1">
+        <textarea class="form-input" placeholder="Your message" v-model="message"></textarea>
       </div>
-      <div class="ib-u-1-1">
-        <div class="ib-u-1-4">
-          <label class="u-pl-3">Read Bounty (ETH)</label>
-          <input class="" type="number" :placeholder="readBounty" step="0.01" v-model="readBounty" />
+
+      <div class="pure-u-1-1">
+
+        <div class="pure-g">
+          <div class="pure-u-1-4">
+            <label class="u-pl-3">Gas for Tx (Units)</label>
+            <input class="" type="number" :placeholder="gasPrice" step="1" v-model="gasPrice" />
+          </div>
+
+          <div class="pure-u-1-4">
+            <label class="u-pl-3">Gas Limit (GWEI)</label>
+            <input class="" type="number" :placeholder="gas" step="1000" v-model="gas" />
+          </div>
+
+          <div class="pure-u-1-4">
+            <button class="btn btn-live u-f-r" v-show="!isLocked" type="submit" @click="submit">Send Message</button>
+            <button class="btn btn-live u-f-r" v-show="isLocked">Sending, please wait...</button>
+          </div>
         </div>
 
-        <div class="ib-u-1-4">
-          <label class="u-pl-3">Gas for Tx (Units)</label>
-          <input class="" type="number" :placeholder="gasPrice" step="1" v-model="gasPrice" />
-        </div>
-
-        <div class="ib-u-1-4">
-          <label class="u-pl-3">Gas Limit (GWEI)</label>
-          <input class="" type="number" :placeholder="gas" step="1000" v-model="gas" />
-        </div>
-
-        <div class="ib-u-1-4 u-1-4-w-less">
-          <button class="ib-btn ib-btn-live u-f-r" v-show="!isLocked" type="submit" @click="submit">Send Message</button>
-          <button class="ib-btn ib-btn-live u-f-r" v-show="isLocked">Sending, please wait...</button>
-        </div>
       </div>
 
 
@@ -45,7 +47,7 @@
         message: '',
         gas: 300000,
         gasPrice: 21,
-        readBounty: 0,
+        readBounty: 0, // not used currently
         replyBounty: 0, // not used currently
       }
     },

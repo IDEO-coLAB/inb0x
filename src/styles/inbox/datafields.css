@@ -1,28 +1,28 @@
-.ib-data{
-  border: 0px;
+
+/* TILES */
+
+.list-header {
+  text-transform: uppercase;
+  padding: 1.6em 0;
+  color: #89969F;
+}
+
+.list-tile {
   box-sizing: border-box;
-  font-family: 'Cerebri Sans Regular';
-  text-overflow: ellipsis;
-  padding: .75em;
-  background-color: #F7F9FB;
-}
-
-.ib-data-container {
-  margin-bottom: .5em;
-}
-
-.ib-data-field {
-  vertical-align: middle;
-  padding: .5em 0 .5em 0;
-}
-
-.ib-data-message {
+  margin-bottom: .8em;
+  border-radius: 4px;
   width: 100%;
-  box-sizing: border-box;
-  outline: none;
-  resize: inherit;
+  padding: .8em 0;
+  background-color: rgb(247, 249, 251);
+}
+
+.list-tile-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: inline-block;
-  border: 0px;
-  background-color: #F7F9FB;
-  padding-bottom: .4em;
+}
+
+.list-tile-content:last-of-type {
+  /*float: right;*/
 }
