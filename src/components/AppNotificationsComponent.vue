@@ -2,17 +2,29 @@
   <div class="notification-container">
 
     <div
-      class="ib-g"
+      class="pure-g"
       v-for="(notification, index) in notifications"
       :notification-object="notification"
       :index="index"
       :key="index" >
-        <div class="ib-u-1-1 ib-alert-error-big">
-          
-          {{notification.type}} <br>
-          {{notification.text}} <br><br>
-          <a class="ib-btn" @click="handleClose(notification)">Close Me</a>
-          
+        <div
+          class="pure-u-1-1 notification"
+          v-bind:class="{
+            'notification-warn': isError(notification),
+            'notification-info': isInfo(notification),
+            'notification-success': isSuccess(notification),
+          }">
+
+          <div class="pure-g">
+            <div class="pure-u-2-3">
+              <p>{{notification.text}}</p>
+            </div>
+
+            <div class="pure-u-1-3">
+              <a class="btn btn-warn u-float-r u-mt-1" @click="handleClose(notification)">Close</a>
+            </div>
+          </div>
+
         </div>
     </div>
 
@@ -21,12 +33,22 @@
 
 <script>
   import { MUTATION_TYPES } from '../constants/mutations'
+  import { NOTIFICATION_TYPES } from '../constants/notifications'
 
   export default {
     methods: {
       handleClose (notification) {
         this.$store.commit(MUTATION_TYPES.REMOVE_NOTIFICATION, notification)
       },
+      isError (notification) {
+        return notification.type === NOTIFICATION_TYPES.ERROR
+      },
+      isSuccess (notification) {
+        return notification.type === NOTIFICATION_TYPES.SUCCESS
+      },
+      isInfo (notification) {
+        return notification.type === NOTIFICATION_TYPES.INFO
+      }
     },
     computed: {
       notifications () {
@@ -35,14 +57,3 @@
     }
   }
 </script>
-
-<!-- FIXME: this is a spike for style; move thisinto css -->
-<style scoped>
-  .notification-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: magenta;
-  }
-</style>

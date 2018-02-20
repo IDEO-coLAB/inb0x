@@ -1,0 +1,28 @@
+
+/* NOTIFICATIONS */
+
+.notification-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.notification {
+  background-color: #56c2e3;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+}
+
+.notification-success {
+  background-color: rgb(87, 226, 194); /* green */
+}
+
+.notification-info {
+  background-color: #56c2e3; /* blue */
+}
+
+.notification-warn {
+  background-color: #EA4D4D;; /* red */
+}

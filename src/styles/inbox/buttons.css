@@ -25,17 +25,12 @@
   border-radius: 4px;
 }
 
-.btn-lg {
-  padding: 0.9em 1.3em;
-}
-
 /* Firefox: Get rid of the inner focus border */
 .btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
 
-/* Inherit .grid-container styles */
 .btn-group {
   letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
   text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
@@ -48,104 +43,13 @@
   text-rendering: auto;
 }
 
-
-
-
-
-
-input + .btn {
-  border-radius: 0px 4px 4px 0px;
-  height: 2.2em;
-}
-
-input.input-lg + .btn {
-  height: 3.4em;
-}
-
-
-
-
-/*.btn-input {
-  padding: 1em 0.7em;
-  border-radius: 0px 4px 4px 0px;
-}*/
-
-/*.btn-icon {
-  padding: 1em 1.7em;
-}*/
-
-
-.btn-primary {
-  background: rgb(87, 226, 194);
-  color: white;
-}
-
-
-
-
-
-
-
-
-/*
-
-
-.btn-container {
-  float: right;
-  padding-right: 0.75em;
-  padding-top: 1.8em;
-}
-
-.btn-search {
-  margin-left: -50px;
-  height: 3.643em;
-  width: 4.714em;
-  border-radius: 0 4px 4px 0;
-}
-*/
-
-
-
-
-.btn-success {
-  background: rgb(87, 226, 194); /* this is a green */
-  color: white;
-}
-
-.btn-live {
-  background-color: #65CEB7;
-}
-
-.btn-danger{
-  background: #FFB9BB; /* this is a maroon */
-}
-
-.btn-warning {
-  background: rgb(223, 117, 20); /* this is an orange */
-}
-
-.btn-secondary {
-  background: rgb(4, 45, 69); /* this is a light blue */
-}
-
-
-
-
-
-.btn-hover,
 .btn:hover,
 .btn:focus {
-  /* csslint ignore:start */
   filter: alpha(opacity=90);
-  /* csslint ignore:end */
 }
+
 .btn:focus {
   outline: 0;
-}
-.btn-active,
-.btn:active {
-  box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
-  border-color: #000\9;
 }
 
 .btn[disabled],
@@ -156,10 +60,7 @@ input.input-lg + .btn {
   border: none;
   background-image: none;
   background-color: #E1E6E8;
-  color: black;
-  /* csslint ignore:start */
   filter: alpha(opacity=40);
-  /* csslint ignore:end */
   opacity: 0.40;
   cursor: not-allowed;
   box-shadow: none;
@@ -170,19 +71,11 @@ input.input-lg + .btn {
   display: none;
 }
 
-.btn-primary,
-.btn-selected,
-a.btn-primary,
-a.btn-selected {
-  background: rgb(87, 226, 194); /* this is a green */
-  color: #fff;
-}
+/* groups of buttons */
 
-/* Button Groups */
 .btn-group .btn {
   margin: 0;
   border-radius: 0;
-  border-right: 1px solid #111;  /* fallback color for rgba() for IE7/8 */
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 
 }
@@ -195,4 +88,38 @@ a.btn-selected {
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   border-right: none;
+}
+
+/* sizes */
+
+.btn-lg {
+  padding: 0.9em 1.3em;
+}
+
+
+/* inputs with buttons in the field */
+
+input + .btn {
+  border-radius: 0px 4px 4px 0px;
+  height: 2.2em;
+}
+
+input.input-lg + .btn {
+  height: 3.4em;
+}
+
+
+/* button colors */
+
+.btn-primary {
+  background: rgb(87, 226, 194); /* green */
+  color: white;
+}
+
+.btn-secondary {
+  background: rgb(4, 45, 69); /* this is a light blue */
+}
+
+.btn-warn {
+  background: #FFB9BB; /* this is a maroon */
 }

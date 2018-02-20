@@ -25,46 +25,7 @@
         </button>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--     <div class="ib-u-1">
-      <div class="ib-container-flex">
-        <input
-          class="ib-u-1 ib-form-search ib-form-active"
-          type="text"
-          v-model="input"
-          placeholder="Enter an Ethereum address" />
-
-        <button
-          class="ib-btn ib-btn-search ib-btn-live"
-          v-show="!isLocked"
-          type="submit"
-          @click="submit">
-          <span class="ib-icon-search" ></span>
-        </button>
-
-        <button
-          class="ib-btn ib-btn-search ib-btn-live"
-          v-show="isLocked">
-          <span class="ib-icon-search" ></span>
-        </button>
-      </div>
-    </div> -->
-
-
     </form>
-
   </div>
 </template>
 
@@ -97,7 +58,7 @@
         if (!validEthAddress) {
           // TODO/FIXME: inline errors
           const notification = {
-            text: `FIXME (inline error): You can only use a valid ethereum address`,
+            text: `FIXME (switch this to an inline error): You can only use a valid ethereum address`,
             type: NOTIFICATION_TYPES.ERROR,
           }
           this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
