@@ -3,13 +3,40 @@
 
 /* single input controls */
 
-.form .input-has-buttons-right {
+.form .input-has-buttons-right,
+.form .input-has-buttons-left,
+.form .input-has-addons-right,
+.form .input-has-addons-left {
   display: flex;
 }
 
-.form .input-has-buttons-right input {
+.form .input-has-buttons-right input,
+.form .input-has-addons-right input {
   border-radius: 4px 0px 0px 4px;
 }
+
+.form .input-has-buttons-left input,
+.form .input-has-addons-left input {
+  border-radius: 0px 4px 4px 0px;
+}
+
+.input-has-addons-left .input-addon,
+.input-has-addons-left .input-addon-lg {
+  border-radius: 4px 0px 0px 4px;
+  padding: 0em .6em;
+  background-color: #e7e9ea;
+}
+
+.input-has-addons-left .input-addon {
+  height: 2.2em;
+  line-height: 2.2em;
+}
+
+.input-has-addons-left .input-addon-lg {
+  height: 3.4em;
+  line-height: 3.4em;
+}
+
 
 /* single inputs */
 

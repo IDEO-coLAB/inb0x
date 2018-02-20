@@ -9,16 +9,24 @@
       <router-view></router-view>
     </div>
 
+
+
     <!-- turn layout-sidebar into sidebar component -->
     <div class="layout-sidebar">
       <router-link class="ib-menu-text u-pl-2"
-        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}"><span class="ib-icon-search"></span>TOKENS</router-link>
+        :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}"><span class="icon-search"></span>Tokens</router-link>
       <br>
       <br>
-      <router-link class="ib-menu-text u-pl-2"
-        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}"><span class="ib-icon-mail"></span>MESSAGES</router-link>
+      <router-link class="menu-text u-pl-2"
+        :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}"><span class="icon-mail"></span>Messages</router-link>
+      <br>
+      <br>
+      <router-link class="menu-text u-pl-2"
+        :to="{ path: 'compose' }"><span class="icon-mail"></span>Compose</router-link>
     </div>
     <!-- turn into sidebar component -->
+
+
 
   </div>
 </template>

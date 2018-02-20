@@ -28,8 +28,8 @@
           </div>
 
           <!-- Show when composing -->
-          <compose-component :recipient="messageObject[0]"></compose-component>
-          <br>
+          <compose-component :recipient="messageObject[0]" />
+
         </div>
       </div>
 

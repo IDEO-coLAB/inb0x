@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import ROUTE_NAMES from '../constants/routes'
 import MessagesPage from '../components/MessagesPage'
 import TokensPage from '../components/TokensPage'
+import ComposePage from '../components/ComposePage'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,12 @@ const routes = [
     path: '/tokens',
     component: TokensPage,
     name: ROUTE_NAMES.TOKENS_PAGE,
-  }
+  },
+  {
+    path: '/compose',
+    component: ComposePage,
+    name: ROUTE_NAMES.COMPOSE_PAGE,
+  },
 ]
 
 const router = new VueRouter({
