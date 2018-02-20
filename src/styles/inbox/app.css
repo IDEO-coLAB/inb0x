@@ -15,7 +15,7 @@
 
 html,
 body {
-  font-family: 'Cerebri Sans Regular';
+  font-family: 'Cerebri Sans Regular', sans-serif;
   background-color: #fff;
   color: #042D45;
   overflow: hidden;
