@@ -46,7 +46,7 @@
       console.log('0xf230b790e05390fc8295f4d3f60332c93bed42e2')
       console.log('=================================\n\n\n')
 
-      this.$router.push('/messages?address=0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+      this.$router.push('/messages')
       // this.$router.push('/tokens?address=0xf230b790e05390fc8295f4d3f60332c93bed42e2')
       // this.$router.push('/messages?address=somethingBogus')
       // this.$router.push('/search?address=somethingnotGood')

@@ -49,15 +49,6 @@ const actions = {
   [ACTION_TYPES.FETCH_MSGS_HEADERS] ({ dispatch, commit, state }, address) {
     const contract = this.getters.inboxContractObj
 
-    // // WEB3 ISSUE! read more at https://github.com/ethereum/web3.js/issues/1089
-    // // WEB3 ISSUE!
-    // // WEB3 ISSUE!
-    // commit(MUTATION_TYPES.SET_MSGS, { index: 0, message: ['0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A','Hi, I’m with EOBase, we just launched our app that takes pencils and converts them to digital currency, powered by XMR, since you’ve got some, why not give our app a spin?'] })
-    // return Promise.resolve()
-    // // WEB3 ISSUE!
-    // // WEB3 ISSUE!
-    // // WEB3 ISSUE!
-
     if (_.isNil(contract)) {
       const notification = {
         text: `The inb0x contract has not been set up yet. What do now (web3)?`,

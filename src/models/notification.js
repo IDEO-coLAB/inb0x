@@ -1,5 +1,7 @@
 import _ from 'lodash'
 
+// TODO: use exports from constants
+
 const INFO = 'INFO'
 const ERROR = 'ERROR'
 const SUCCESS = 'SUCCESS'
