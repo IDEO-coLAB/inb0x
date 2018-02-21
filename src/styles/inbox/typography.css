@@ -4,6 +4,8 @@
 h1 {
   font-size: 1.571em;
   margin-bottom: 18px;
+  margin-top: 0;
+  padding-top: .6em;
 }
 
 p {
@@ -13,6 +15,7 @@ p {
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 label {

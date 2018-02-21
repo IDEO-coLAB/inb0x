@@ -7,7 +7,7 @@
 
       <div class="pure-u-3-5 list-tile-content">
         {{messageObject[1]}}
-        <span class="icon-collapse-arrow u-float-r" @click="toggleMessage(messageObject, $event)"></span>
+        <span class="icon-arrow--collapse u-float-r" @click="toggleMessage(messageObject, $event)"></span>
       </div>
 
 

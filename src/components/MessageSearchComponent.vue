@@ -15,13 +15,13 @@
           v-show="!isLocked"
           type="submit"
           @click="submit" >
-          <span class="icon-search" ></span>
+          <span class="icon-mail" ></span>
         </button>
 
         <button
           class="btn btn-lg btn-icon btn-primary btn-disabled"
           v-show="isLocked" >
-          <span class="icon-search" ></span>
+          <span class="icon-mail" ></span>
         </button>
       </div>
 

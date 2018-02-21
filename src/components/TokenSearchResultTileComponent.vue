@@ -11,7 +11,7 @@
 
     <div class="pure-u-1-5 list-tile-content">
       {{searchObject.percentage}}
-      <span class="icon-collapse-arrow u-float-r" @click="toggleMessage(searchObject, $event)"></span>
+      <span class="icon-arrow--collapse u-float-r" @click="toggleMessage(searchObject, $event)"></span>
     </div>
 
     <div class="pure-u-1-1" v-show="isExpanded">

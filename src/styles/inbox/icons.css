@@ -6,32 +6,35 @@
   float: left;
   width: 16px;
   height: 16px;
+  vertical-align: middle;
 }
 
-.icon-compose {
-  background: no-repeat url(../../assets/icons/compose-icon.svg) left top;
-}
-
-.icon-leftarrow {
-  background: no-repeat url(../../assets/icons/thin-arrow-inbox.svg) left top;
+/*.icon-arrow--left {
+  background: no-repeat url(../../assets/icons/thin-arrow-inbox.svg) center center;
   width: 42px;
   height: 16px;
 }
+*/
+
+.icon-arrow--collapse {
+  background: no-repeat url(../../assets/icons/collapse-arrow.svg) center center;
+}
+
+
+.icon-pencil {
+  background: no-repeat url(../../assets/icons/compose-icon.svg) center center;
+}
 
 .icon-mail {
-  background: no-repeat url(../../assets/icons/mail.svg) left top;
+  background: no-repeat url(../../assets/icons/mail.svg) center center;
   width: 16px;
   height: 11px;
 }
 
 .icon-search {
-  background: no-repeat url(../../assets/icons/search.svg) left top;
+  background: no-repeat url(../../assets/icons/search.svg) center center;
 }
 
 .icon-error-x {
-  background: no-repeat url(../../assets/icons/error-x.svg) left top;
-}
-
-.icon-collapse-arrow {
-  background: no-repeat url(../../assets/icons/collapse-arrow.svg) left top;
+  background: no-repeat url(../../assets/icons/error-x.svg) center center;
 }
