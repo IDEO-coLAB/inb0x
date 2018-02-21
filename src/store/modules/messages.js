@@ -16,9 +16,9 @@ const state = {
 const getters = {
   messageHeaders: state => state.messages.headers,
   messageList: (state) => {
-    return _.filter(state.messages.list, (msg) => {
+    return _.reverse(_.filter(state.messages.list, (msg) => {
       return !_.isUndefined(msg)
-    })
+    }))
   }
 }
 
