@@ -117,7 +117,8 @@ input.input-lg + .btn {
 }
 
 .btn-secondary {
-  background: rgb(4, 45, 69); /* this is a light blue */
+  background: rgb(4, 45, 69); /* this is a dark blue */
+  color: white;
 }
 
 .btn-warn {

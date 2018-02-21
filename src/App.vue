@@ -9,53 +9,7 @@
       <router-view></router-view>
     </div>
 
-
-
-
-
-    <!-- turn layout-sidebar into sidebar component -->
-    <div class="layout-sidebar">
-      <div class="layout-sidebar--header"></div>
-
-
-
-      <div class="menu">
-        <ul class="menu-list">
-
-          <li class="menu-item">
-            <router-link class="menu-link"
-              :to="{ path: 'tokens', query: { address: $store.getters.search.tokensAddr }}">
-              <span class="icon-search u-mr-2"></span>Tokens
-            </router-link>
-          </li>
-
-          <li class="menu-item">
-            <router-link class="menu-link"
-              :to="{ path: 'messages', query: { address: $store.getters.search.messagesAddr }}" >
-              <span class="icon-mail u-mr-2"></span>Messages
-            </router-link>
-          </li>
-
-          <li class="menu-item">
-            <router-link class="menu-link"
-              :to="{ path: 'compose' }" >
-              <span class="icon-pencil u-mr-2"></span>Compose
-            </router-link>
-          </li>
-
-        </ul>
-      </div>
-
-
-
-
-    </div>
-    <!-- turn into sidebar component -->
-
-
-
-
-
+    <app-sidebar-component />
 
   </div>
 </template>
@@ -66,6 +20,7 @@
 
   import inboxABI from './ethereum/inbox-abi'
   import AppNotificationsComponent from './components/AppNotificationsComponent'
+  import AppSidebarComponent from './components/AppSidebarComponent'
   import { MUTATION_TYPES } from './constants/mutations'
   import { ACTION_TYPES } from './constants/actions'
   import { NOTIFICATION_TYPES } from './models/notification'
@@ -74,6 +29,7 @@
   export default {
     components: {
       AppNotificationsComponent,
+      AppSidebarComponent,
     },
     beforeCreate () {
       console.log('\n\n\n=================================')
@@ -83,8 +39,8 @@
       console.log('0xf230b790e05390fc8295f4d3f60332c93bed42e2')
       console.log('=================================\n\n\n')
 
-      // this.$router.push('/messages')
-      this.$router.push('/messages?address=0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
+      this.$router.push('/messages')
+      // this.$router.push('/messages?address=0x7dDEcE90E00785c97daFe08dF75f61786Fa4d47A')
       // this.$router.push('/tokens?address=0xf230b790e05390fc8295f4d3f60332c93bed42e2')
       // this.$router.push('/messages?address=somethingBogus')
       // this.$router.push('/search?address=somethingnotGood')

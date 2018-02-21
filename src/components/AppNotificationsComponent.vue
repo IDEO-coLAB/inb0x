@@ -7,6 +7,9 @@
       :notification-object="notification"
       :index="index"
       :key="index" >
+
+        <!-- TODO: FIXME: clean up CSS naming conventions -->
+
         <div
           class="pure-u-1-1 notification"
           v-bind:class="{
@@ -21,7 +24,15 @@
             </div>
 
             <div class="pure-u-1-3">
-              <a class="btn btn-warn u-float-r u-mt-1" @click="handleClose(notification)">Close</a>
+              <a
+                class="btn u-float-r u-mt-1"
+                v-bind:class="{
+                  'btn-warn': isError(notification),
+                  'btn-secondary': isInfo(notification) || isSuccess(notification),
+                }"
+                @click="handleClose(notification)">
+                Close
+              </a>
             </div>
           </div>
 
