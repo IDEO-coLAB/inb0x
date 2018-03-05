@@ -55,6 +55,8 @@
         const validEthAddress = Web3.utils.isAddress(inputAddress)
         const curAddress = this.$store.getters.search.tokensAddr
 
+        // this check is now happening on backend
+
         // if (!validEthAddress) {
         //   // TODO/FIXME: inline errors
         //   const notification = {
