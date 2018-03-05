@@ -55,15 +55,15 @@
         const validEthAddress = Web3.utils.isAddress(inputAddress)
         const curAddress = this.$store.getters.search.tokensAddr
 
-        if (!validEthAddress) {
-          // TODO/FIXME: inline errors
-          const notification = {
-            text: `FIXME (switch this to an inline error): You can only use a valid ethereum address`,
-            type: NOTIFICATION_TYPES.ERROR,
-          }
-          this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
-          return
-        }
+        // if (!validEthAddress) {
+        //   // TODO/FIXME: inline errors
+        //   const notification = {
+        //     text: `FIXME (switch this to an inline error): You can only use a valid ethereum address`,
+        //     type: NOTIFICATION_TYPES.ERROR,
+        //   }
+        //   this.$store.commit(MUTATION_TYPES.ADD_NOTIFICATION, notification)
+        //   return
+        // }
 
         return this.$store.dispatch(ACTION_TYPES.FETCH_TOKEN_HOLDERS, inputAddress)
           .then(() => {
