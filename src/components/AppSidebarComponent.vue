@@ -1,6 +1,8 @@
 <template>
-  <div class="layout-sidebar">
-    <div class="layout-sidebar--header"></div>
+  <div class="layout-sidebar" id = "main-sidebar">
+    <div class="layout-sidebar--header">
+      <span class="icon-arrow--right u-mr-2" v-on:click="closeNav()" ></span>
+    </div>
 
     <div class="menu">
       <ul class="menu-list">
@@ -35,5 +37,15 @@
 <script>
   export default {
 
+    methods: {
+      openNav: function (event){
+        alert('Open nav');
+      },
+      closeNav: function (event){
+        document.getElementsByClassName("layout-sidebar")[0].style.width = "50px";
+        document.getElementsByClassName("layout-main")[0].style.width = "calc(100% - 50px)";
+        
+      }
+    }
   }
 </script>

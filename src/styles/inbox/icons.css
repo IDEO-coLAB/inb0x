@@ -9,12 +9,13 @@
   vertical-align: middle;
 }
 
-/*.icon-arrow--left {
-  background: no-repeat url(../../assets/icons/thin-arrow-inbox.svg) center center;
-  width: 42px;
-  height: 16px;
+.icon-arrow--right {
+  background: no-repeat url(../../assets/icons/thin-arrow-inbox-right.svg) center center;
+  
 }
-*/
+
+
+
 
 .icon-arrow--collapse {
   background: no-repeat url(../../assets/icons/collapse-arrow.svg) center center;

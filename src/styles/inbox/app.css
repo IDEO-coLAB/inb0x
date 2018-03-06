@@ -63,4 +63,5 @@ body {
   box-sizing: border-box;
   height: 70px;
   max-height: 70px;
+  padding-top: 1em;
 }
