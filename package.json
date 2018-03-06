@@ -9,10 +9,11 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "eth": "testrpc & node tasks/deploy-local-eth-contract.js & npm run dev",
-    "start": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "start": "node server.js"
   },
   "dependencies": {
     "axios": "0.17.1",
+    "express": "^4.16.2",
     "lodash": "4.17.4",
     "moment": "2.19.3",
     "solc": "0.4.19",
