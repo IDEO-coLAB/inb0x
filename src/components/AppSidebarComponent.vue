@@ -1,7 +1,10 @@
 <template>
   <div class="layout-sidebar" id = "main-sidebar">
     <div class="layout-sidebar--header">
-      <span class="icon-arrow--right u-mr-2" v-on:click="closeNav()" ></span>
+      
+      <span class="icon-hamburger " v-on:click="closeNav()" id="nav-close" style="display:none;"></span>
+      <span class="icon-hamburger " v-on:click="openNav()" id="nav-open" ></span>
+      
     </div>
 
     <div class="menu">
@@ -42,9 +45,16 @@
         alert('Open nav');
       },
       closeNav: function (event){
+        document.getElementById("nav-close").style.display = "none";
+        document.getElementById("nav-open").style.display = "block";
         document.getElementsByClassName("layout-sidebar")[0].style.width = "50px";
         document.getElementsByClassName("layout-main")[0].style.width = "calc(100% - 50px)";
-        
+      },
+      openNav: function (event){
+        document.getElementById("nav-open").style.display = "none";
+        document.getElementById("nav-close").style.display = "block";
+        document.getElementsByClassName("layout-sidebar")[0].style.width = "250px";
+        document.getElementsByClassName("layout-main")[0].style.width = "calc(100% - 250px)";
       }
     }
   }

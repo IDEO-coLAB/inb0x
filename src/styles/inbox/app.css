@@ -39,7 +39,8 @@ body {
 
 .layout-main {
   box-sizing: border-box;
-  width: calc(100% - 250px);
+  width: calc(100% - 50px);
+  transition: 0.5s;
 }
 
 .layout-main--header {
@@ -55,8 +56,9 @@ body {
 }
 
 .layout-sidebar {
-  width: 250px;
+  width: 50px;
   background-color: #F7F9FB;
+  transition: 0.5s;
 }
 
 .layout-sidebar--header {
@@ -65,3 +67,5 @@ body {
   max-height: 70px;
   padding-top: 1em;
 }
+
+
