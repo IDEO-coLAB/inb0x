@@ -14,6 +14,10 @@
   background: no-repeat url(../../assets/icons/arrow-right.svg) center center;
 }
 
+.icon-arrow--left {
+  background: no-repeat url(../../assets/icons/thin-arrow-inbox-left.svg) center center;
+}
+
 
 .icon-hamburger {
   background: no-repeat url(../../assets/icons/hamburger.svg) center center;

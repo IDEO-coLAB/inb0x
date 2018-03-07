@@ -2,8 +2,8 @@
   <div class="layout-sidebar" id = "main-sidebar">
     <div class="layout-sidebar--header">
       
-      <span class="icon-hamburger " v-on:click="closeNav()" id="nav-close" style="display:none;"></span>
-      <span class="icon-hamburger " v-on:click="openNav()" id="nav-open" ></span>
+      <span class="icon-arrow--right " v-on:click="closeNav()" id="nav-close" style="display:none;"></span>
+      <span class="icon-arrow--left " v-on:click="openNav()" id="nav-open" ></span>
       
     </div>
 
